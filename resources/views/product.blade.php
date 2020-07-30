@@ -2,12 +2,30 @@
 @section('title') Apple Products | Doctor Display @endsection
 @section('metadesc') @endsection
 @section('breadcrumb')
-<div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
+<div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
 </div>
 @endsection
 @section('pagecontent')
 <main class="page-content">
-  <div class="breadcaump-area breadcaump-title-bar pull-left">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <center>
+            <h5 class="modal-title" id="exampleModalLabel">Would you like to buy Tempered glass as well?<br>
+            <small>It will only cost you &#8377;99!</small></h5>
+          </center><br>
+          <form action="/confirmorder" method="get">
+          <center>
+            <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Yes</button>
+            <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
+          </center>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="breadcaump-area breadcaump-title-bar pull-left hidden-xs">
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -29,52 +47,53 @@
     <!-- Start Single Product -->
     <div class="brook-single-product plr--160 plr_lg--100 plr_md--50 plr_sm--50">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 hidden-xs">
                 <div class="single-product-left-side">
                     <div class="product__details__container">
                         <div class="tab_container big_img_container">
                             <div class="big_img tab-pane fade show active" id="img1" role="tabpanel">
-                                <img class="w-100" src="img/models/01.png" alt="gomes restaurant">
+                                <img class="w-100" src="img/models/01.png" alt="model image">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-12 mt_sm--40">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                 <div class="single-product-details-side"><br><br>
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
+                                  <img class="w-t float-left hidden-md" src="img/models/01.png" alt="model image">
                                 <h1 class="heading heading-h4">Apple iPhone 11</h1>&nbsp;&nbsp;
                                 <div class="product-badges">
                                     <span>New</span>
                                 </div>
                             </div>
-
                             <div class="price">
                                 <p class="theme-color">
                                   <a href=''><u>Space Grey</u></a> | <a href=''>Jet Black</a> | <a href=''>Gold White</a>
                                 </p>
                             </div>
                             <div class="description row">
-                              <div class="col-md-6">
-                              <input type='radio' name='screen_type' class='input-radio'> Ordinary Quality - <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 5000</span>
+                              <div class="col-md-6 col-xs-6">
+                              <input type='radio' name='screen_type' class='input-radio' required> Ordinary Quality<br><strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 5000</span>
                               </div>
-                              <div class="col-md-6">
-                              <input type='radio' name='screen_type' class='input-radio'> Premium Quality - <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 2500</span>
+                              <div class="col-md-6 col-xs-6">
+                              <input type='radio' name='screen_type' class='input-radio' required> Premium Quality<br><strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 2500</span>
                               <br><br>
                               </div>
                                 <p class="bk_pra">Add an extra-special touch to décor with this charming
                                     lantern that features sleek angles and a modern-edge design. A must-have
                                     for your house this holiday. Buy now to get a special discount for early
-                                    bird order.<br><br>
-                      <button type="submit" class="col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Confirm</button>
+                                    bird order.
+                                    </p><br>
+                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Confirm</button>
+                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-xs-size">Confirm</button>
                                     <br><br>
-* In case of any queries regarding repairing your screen, Kindly contact us at 04446270777<br>
+<p class="bk_pra">* In case of any queries regarding repairing your screen, Kindly contact us at <a href='tel:04446270777'>04446270777</a><br>
 * Prices displayed are inclusive of 18% GST.<br>
-* Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.
+* Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
 <br><br>
-</p>
                             </div>
 
                         </div>

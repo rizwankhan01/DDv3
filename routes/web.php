@@ -28,3 +28,21 @@ Route::get('/colors', function(){
 Route::get('/product', function(){
     return view('product');
 });
+Route::get('/confirmorder', function(){
+    return view('confirmorder');
+});
+Route::get('/orderconfirmed', function(){
+    return view('orderconfirmed');
+});
+Route::get('/contact', function(){
+    return view('contact');
+});
+Route::get('/our-story', function(){
+    return view('our-story');
+});
+Route::get('/privacy', function(){
+    return view('privacy');
+});
+Route::get('/report', function(){
+    return view('report');
+});
