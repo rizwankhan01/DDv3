@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 col-12">
-                <div class="single-product-details-side"><br><br>
+                <div class="single-product-details-side"><br>
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
@@ -69,6 +69,17 @@
                                     <span>New</span>
                                 </div>
                             </div>
+                            <div class="product" style="float:left;">
+                            <div class="product-info">
+                            <ul class="rating">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i> </li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul>
+                          </div>
+                        </div><br><br>
                             <div class="price">
                                 <p class="theme-color">
                                   <a href=''><u>Space Grey</u></a> | <a href=''>Jet Black</a> | <a href=''>Gold White</a>

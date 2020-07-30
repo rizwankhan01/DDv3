@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/revoulation.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/plugins.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('style.min.css')}}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="template-color-1 template-font-1">

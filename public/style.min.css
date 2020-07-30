@@ -19,4 +19,6 @@
    text-align: center;
    z-index: 3;
   }
-}.modal-open .modal{z-index: 10000;top: 20%;} .w-t{width:auto;height:125px;}
+}.modal-open .modal{z-index: 10000;top: 20%;} .w-t{width:auto;height:125px;}.product .product-info2{
+    text-align: left;
+}
