@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="brand-wrapper">
-                        <div class="brand__list brand-default brand-style--2">
+                        <div class="brand__list brand-default brand-style--3">
                             <div class="brand">
                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                               <figure>

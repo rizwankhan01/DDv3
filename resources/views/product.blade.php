@@ -25,6 +25,48 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="compare" tabindex="-1" role="dialog" aria-labelledby="compareLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <table class="table">
+            <thead style="background:#fccf27">
+              <th></th>
+              <th>Basic</th>
+              <th>Premium</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Warranty</th>
+                <td>90 days</td>
+                <td>90 days</td>
+              </tr>
+              <tr>
+                <th>Stock</th>
+                <td>Third Party</td>
+                <td>OEM</td>
+              </tr>
+              <tr>
+                <th>Quality</th>
+                <td>Differed Color Temperature</td>
+                <td>Same Color Temperature</td>
+              </tr>
+              <tr>
+                <th>Prefer If</th>
+                <td>Phone age > 1 Year</td>
+                <td>Phone age < 6 Months</td>
+              </tr>
+              <tr>
+                <th>Price</th>
+                <td>Price A</td>
+                <td>Price A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="breadcaump-area breadcaump-title-bar pull-left hidden-xs">
   <div class="container">
       <div class="row">
@@ -69,38 +111,61 @@
                                     <span>New</span>
                                 </div>
                             </div>
-                            <div class="product" style="float:left;">
-                            <div class="product-info">
+                            <div class="product">
+                            <div class="product-info" style="float:left;">
                             <ul class="rating">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i> </li>
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>
+                                &nbsp;&nbsp;5 (8 Reviews)
                             </ul>
-                          </div>
-                        </div><br><br>
-                            <div class="price">
+                          </div><br><br>
+                              Add an extra-special touch to décor with this charming
+                              lantern that features sleek angles and a modern-edge design. A must-have
+                              for your house this holiday. Buy now to get a special discount for early
+                              bird order.
+                        </div><br>
+                            <div class="price" style="margin-bottom:0px;">
                                 <p class="theme-color">
                                   <a href=''><u>Space Grey</u></a> | <a href=''>Jet Black</a> | <a href=''>Gold White</a>
                                 </p>
+                                <p>Select Quality:</p>
                             </div>
-                            <div class="description row">
-                              <div class="col-md-6 col-xs-6">
-                              <input type='radio' name='screen_type' class='input-radio' required> Ordinary Quality<br><strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 5000</span>
+                            <div class="description">
+                              <div class="row">
+                                    <ul class="nav nav-pills mb-3 col-md-12 col-xs-12" id="pills-tab" role="tablist">
+                                        <li class="nav-item col-md-3 col-xs-6">
+                                            <a class="nav-link active" id="basic-tab" data-toggle="pill"
+                                                href="#basic" role="tab" aria-controls="basic"
+                                                aria-selected="true">Basic</a>
+                                        </li>
+                                        <li class="nav-item col-md-3 col-xs-6">
+                                            <a class="nav-link" id="premium-tab" data-toggle="pill"
+                                                href="#premium" role="tab" aria-controls="premium"
+                                                aria-selected="false" style="border: 1px solid #ddd;">Premium</a>
+                                        </li>
+                                    </ul>
+                                    <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
+                                      <div class="tab-pane fade show active" id="basic" role="tabpanel"
+                                          aria-labelledby="basic-tab">
+                                          <h4>Price: <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 5000</span></h4>
+                                      </div>
+                                      <div class="tab-pane fade" id="premium" role="tabpanel"
+                                          aria-labelledby="premium-tab">
+                                          <h4>Price: <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 2500</span></h4>
+                                      </div>
+
+                                      <small><a href="#" class="icon" data-toggle="modal" data-target="#compare">
+                                        What is the difference between Basic and Premium Screens?</a></small>
+                                    </span>
                               </div>
-                              <div class="col-md-6 col-xs-6">
-                              <input type='radio' name='screen_type' class='input-radio' required> Premium Quality<br><strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 2500</span>
-                              <br><br>
-                              </div>
-                                <p class="bk_pra">Add an extra-special touch to décor with this charming
-                                    lantern that features sleek angles and a modern-edge design. A must-have
-                                    for your house this holiday. Buy now to get a special discount for early
-                                    bird order.
-                                    </p><br>
                       <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Confirm</button>
                       <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-xs-size">Confirm</button>
-                                    <br><br>
+
+
+                                    <br>
 <p class="bk_pra">* In case of any queries regarding repairing your screen, Kindly contact us at <a href='tel:04446270777'>04446270777</a><br>
 * Prices displayed are inclusive of 18% GST.<br>
 * Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
@@ -114,7 +179,63 @@
         </div>
     </div>
     <!-- End Single Product -->
+    <div class="brook-icon-boxes-area pb--120 bg_color--1">
+        <div class="container">
+            <div class="row mt--30">
+                <!-- Start Single Icon Boxes -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="icon-box text-center no-border mt--30">
+                        <div class="inner">
+                            <div class="icon">
+                                <i class="ion-ios-eye-outline"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="heading heading-h5">Modern design</h5>
+                                <p class="bk_pra">Brook embraces a modern look with various enhanced
+                                    pre-defined page elements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Icon Boxes -->
 
+                <!-- Start Single Icon Boxes -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="icon-box text-center no-border mt--30">
+                        <div class="inner">
+                            <div class="icon">
+                                <i class="ion-ios-bookmarks-outline"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="heading heading-h5">Modern design</h5>
+                                <p class="bk_pra">This is the theme for businesses & companies operating in a
+                                    wide range of areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Icon Boxes -->
+
+                <!-- Start Single Icon Boxes -->
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="icon-box text-center no-border mt--30">
+                        <div class="inner">
+                            <div class="icon">
+                                <i class="ion-ios-browsers-outline"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="heading heading-h5">Modern design</h5>
+                                <p class="bk_pra">Brook is highly responsive thanks to built-in WP Bakery Page
+                                    Builder & Slider Revolution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Icon Boxes -->
+
+            </div>
+        </div>
+    </div>
     <!-- Start Product Review -->
     <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
         <div class="container">
