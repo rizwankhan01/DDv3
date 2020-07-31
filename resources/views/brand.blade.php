@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Apple Products | Doctor Display @endsection
+@section('title') {{ $brands->name }} Products | Doctor Display @endsection
 @section('metadesc') @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -7,13 +7,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcaump-inner text-center">
-                    <h2 class="heading">Apple Products</h2>
-                    <small>If you are looking to fix your Apple phones, we are there for your rescue. Our team of trained screen repair technicians will come to your doorstep and get your screens replaced whenever you want to fix it.</small>
+                    <h2 class="heading">
+                      {{ $brands->name }}
+                       Products</h2>
+                    <small>If you are looking to fix your {{ $brands->name }} phones, we are there for your rescue. Our team of trained screen repair technicians will come to your doorstep and get your screens replaced whenever you want to fix it.</small>
                     <div class="breadcrumb-insite">
                         <ul class="core-breadcaump">
                             <li><a href="/">Home</a></li>
                             <li><a href="/allbrands">All Brands</a></li>
-                            <li class="current">Apple Products</li>
+                            <li class="current">{{ $brands->name }} Products</li>
                         </ul>
                     </div>
                 </div>
@@ -32,53 +34,16 @@
                 <div class="col-lg-12">
                     <div class="brand-wrapper">
                         <div class="brand__list brand-default brand-style--2">
-                            <div class="brand">
-                            <a href="/colors">
-                              <figure>
-                              <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                              <figcaption>iPhone 11</figcaption>
-                              </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay=".13s">
-                            <a href="/colors">
+                          @foreach($models  as  $model)
+                          <div class="brand">
+                          <a href="/colors/{{ $model->id }}">
                             <figure>
-                            <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>iPhone 11</figcaption>
+                            <img src="../img/models/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
+                            <figcaption>{{$model->series }} / {{ $model->name }}</figcaption>
                             </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.16s">
-                            <a href="/colors">
-                            <figure>
-                            <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>iPhone 11</figcaption>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.19s">
-                            <a href="/colors">
-                            <figure>
-                            <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>iPhone 11</figcaption>
-                            </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.22s">
-                            <a href="/colors">
-                            <figure>
-                            <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>iPhone 11</figcaption>
-                            </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.25s">
-                            <a href="/colors">
-                            <figure>
-                            <img src="img/models/01.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>iPhone 11</figcaption>
-                            </figure>
-                            </a>
-                            </div>
+                          </a>
+                          </div>
+                          @endforeach
                         </div>
                     </div>
                 </div>

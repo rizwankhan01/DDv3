@@ -30,53 +30,16 @@
                 <div class="col-lg-12">
                     <div class="brand-wrapper">
                         <div class="brand__list brand-default brand-style--2">
-                            <div class="brand">
-                            <a href="/brand">
-                              <figure>
-                              <img src="https://doctordisplay.in/images/models/apple.png" class="logo-thumbnail" alt="logo image">
-                              <figcaption>Apple</figcaption>
-                              </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay=".13s">
-                            <a href="/brand">
+                          @foreach($brands as $brand)
+                          <div class="brand">
+                          <a href="/brand/{{$brand->name}}">
                             <figure>
-                            <img src="https://doctordisplay.in/images/models/redmi.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>RedMi</figcaption>
+                            <img src="{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
+                            <figcaption>{{$brand->name}}</figcaption>
                             </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.16s">
-                            <a href="/brand">
-                            <figure>
-                            <img src="https://doctordisplay.in/images/models/samsung.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>Samsung</figcaption>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.19s">
-                            <a href="/brand">
-                            <figure>
-                            <img src="https://doctordisplay.in/images/models/oneplus.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>One Plus</figcaption>
-                            </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.22s">
-                            <a href="/brand">
-                            <figure>
-                            <img src="https://doctordisplay.in/images/models/motorola.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>Motorola</figcaption>
-                            </figure>
-                            </a>
-                            </div>
-                            <div class="brand move-up wow" data-wow-delay="0.25s">
-                            <a href="/brand">
-                            <figure>
-                            <img src="https://doctordisplay.in/images/models/huwaei.png" class="logo-thumbnail" alt="logo image">
-                            <figcaption>Huawei</figcaption>
-                            </figure>
-                            </a>
-                            </div>
+                          </a>
+                          </div>
+                          @endforeach
                         </div>
                     </div>
                 </div>
