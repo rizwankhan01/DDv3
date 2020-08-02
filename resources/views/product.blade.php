@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Apple Products | Doctor Display @endsection
+@section('title') {{$models->brand->name}} {{$models->name}} | Doctor Display @endsection
 @section('metadesc') @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -56,10 +56,17 @@
                 <td>Phone age > 1 Year</td>
                 <td>Phone age < 6 Months</td>
               </tr>
+              @if(!empty($pricing->ord_compare_description) AND !empty($pricing->org_compare_description))
+              <tr>
+                <th>Screen Type</th>
+                <td>{{$pricing->ord_compare_description}}</td>
+                <td>{{$pricing->org_compare_description}}</td>
+              </tr>
+              @endif
               <tr>
                 <th>Price</th>
-                <td>Price A</td>
-                <td>Price A</td>
+                <td>&#8377; {{$pricing->ord_selling_price}}</td>
+                <td>&#8377; {{$pricing->org_selling_price}}</td>
               </tr>
             </tbody>
           </table>
@@ -73,12 +80,11 @@
           <div class="col-lg-12">
               <div class="breadcaump-inner">
                   <div class="breadcrumb-insite">
-                  <small style="float:right;">Last Updated: 20-08-2020</small>
+                  <small style="float:right;">Last Updated: {{$models->updated_at}}</small>
                       <ul class="core-breadcaump">
                           <li><a href="/">Home</a></li>
                           <li><a href="/allbrands">All Brands</a></li>
-                          <li><a href="/colors">Apple Products</a></li>
-                          <li class="current">iPhone 11</li>
+                          <li class="current">{{$models->name}}</li>
                       </ul>
                   </div>
               </div>
@@ -94,7 +100,7 @@
                     <div class="product__details__container">
                         <div class="tab_container big_img_container">
                             <div class="big_img tab-pane fade show active" id="img1" role="tabpanel">
-                                <img class="w-100" src="img/models/01.png" alt="model image">
+                                <img class="w-100" src="../../{{$color->image}}" alt="{{$color->name}} image">
                             </div>
                         </div>
                     </div>
@@ -105,8 +111,8 @@
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
-                                  <img class="w-t float-left hidden-md" src="img/models/01.png" alt="model image">
-                                <h1 class="heading heading-h4">Apple iPhone 11</h1>&nbsp;&nbsp;
+                                  <img class="w-t float-left hidden-md" src="../../{{$color->image}}" alt="{{$color->name}} image">
+                                <h1 class="heading heading-h4">{{$models->brand->name}} {{$models->name}}</h1>&nbsp;&nbsp;
                                 <div class="product-badges">
                                     <span>New</span>
                                 </div>
@@ -122,14 +128,13 @@
                                 &nbsp;&nbsp;5 (8 Reviews)
                             </ul>
                           </div><br><br>
-                              Add an extra-special touch to décor with this charming
-                              lantern that features sleek angles and a modern-edge design. A must-have
-                              for your house this holiday. Buy now to get a special discount for early
-                              bird order.
+                              {{$models->description}}
                         </div><br>
                             <div class="price" style="margin-bottom:0px;">
                                 <p class="theme-color">
-                                  <a href=''><u>Space Grey</u></a> | <a href=''>Jet Black</a> | <a href=''>Gold White</a>
+                                  @foreach($colors as $color)
+                                  <a href='/product/{{$models->name}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                  @endforeach
                                 </p>
                                 <p>Select Quality:</p>
                             </div>
@@ -139,7 +144,7 @@
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link active" id="basic-tab" data-toggle="pill"
                                                 href="#basic" role="tab" aria-controls="basic"
-                                                aria-selected="true">Basic</a>
+                                                aria-selected="true" style="border: 1px solid #ddd;">Basic</a>
                                         </li>
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link" id="premium-tab" data-toggle="pill"
@@ -150,11 +155,11 @@
                                     <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
                                       <div class="tab-pane fade show active" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
-                                          <h4>Price: <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 5000</span></h4>
+                                          <h4>Price: <strike class="red">&#8377; {{ $pricing->ord_selling_price+300 }}</strike> <span class="green">&#8377; {{ $pricing->ord_selling_price }}</span></h4>
                                       </div>
                                       <div class="tab-pane fade" id="premium" role="tabpanel"
                                           aria-labelledby="premium-tab">
-                                          <h4>Price: <strike class="red">&#8377; 5000</strike> <span class="green">&#8377; 2500</span></h4>
+                                          <h4>Price: <strike class="red">&#8377; {{ $pricing->org_selling_price+250 }}</strike> <span class="green">&#8377; {{ $pricing->org_selling_price }}</span></h4>
                                       </div>
 
                                       <small><a href="#" class="icon" data-toggle="modal" data-target="#compare">

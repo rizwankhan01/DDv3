@@ -17,12 +17,12 @@ class CreatePricingsTable extends Migration
             $table->id();
             $table->unsignedInteger('color_id')->nullable();
             $table->string('ord_selling_price')->nullable();
-            $table->string('original_selling_price')->nullable();
+            $table->string('org_selling_price')->nullable();
             $table->string('preferred_type')->nullable();
             $table->string('ord_stock_availablity')->nullable();
             $table->string('org_stock_availablity')->nullable();
             $table->string('ord_compare_description')->nullable();
-            $table->string('org_compare desciption')->nullable();
+            $table->string('org_compare_description')->nullable();
             $table->timestamps();
         });
     }

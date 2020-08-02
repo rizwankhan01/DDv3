@@ -17,4 +17,8 @@ class models extends Model
       'image',
       'additional_image'
     ];
+
+    public function brand(){
+      return $this->belongsTo(brands::class);
+    }
 }

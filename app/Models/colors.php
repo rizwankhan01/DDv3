@@ -13,4 +13,8 @@ class colors extends Model
       'screen_color',
       'image'
     ];
+
+    public function model(){
+      return $this->belongsTo(models::class);
+    }
 }

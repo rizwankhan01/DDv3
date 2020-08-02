@@ -16,16 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
   return view('welcome');
 });
+
 Route::resource('/allbrands', 'AllBrandsController');
-
 Route::resource('/brand', 'BrandController');
+Route::resource('/colors', 'ColorController');
+Route::get('/product/{name}/{color}','ProductController@getproduct');
+Route::resource('/product', 'ProductController');
+Route::resource('/customer', 'CustomerController');
 
-Route::get('/colors', function(){
-    return view('colors');
-});
-Route::get('/product', function(){
+Route::get('/pro', function(){
     return view('product');
 });
+
 Route::get('/confirmorder', function(){
     return view('confirmorder');
 });

@@ -10,11 +10,11 @@ class pricings extends Model
     protected $fillable = [
       'color_id',
       'ord_selling_price',
-      'original_selling_price',
+      'org_selling_price',
       'preferred_type',
       'ord_stock_availablity',
       'org_stock_availablity',
       'ord_compare_description',
-      'org_compare desciption'
+      'org_compare_description'
     ];
 }
