@@ -16,6 +16,9 @@
             <small>It will only cost you &#8377;99!</small></h5>
           </center><br>
           <form action="/confirmorder" method="get">
+          <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
+          <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+          <input type='text' name='price' id='price' value="{{ $pricing->ord_selling_price }}" hidden>
           <center>
             <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Yes</button>
             <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
@@ -144,14 +147,17 @@
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link active" id="basic-tab" data-toggle="pill"
                                                 href="#basic" role="tab" aria-controls="basic"
-                                                aria-selected="true" style="border: 1px solid #ddd;">Basic</a>
+                                                aria-selected="true" style="border: 1px solid #ddd;"
+                                                onclick="document.getElementById('price').value = {{ $pricing->ord_selling_price }}">Basic</a>
                                         </li>
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link" id="premium-tab" data-toggle="pill"
                                                 href="#premium" role="tab" aria-controls="premium"
-                                                aria-selected="false" style="border: 1px solid #ddd;">Premium</a>
+                                                aria-selected="false" style="border: 1px solid #ddd;"
+                                                onclick="document.getElementById('price').value = {{ $pricing->org_selling_price }}">Premium</a>
                                         </li>
                                     </ul>
+
                                     <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
                                       <div class="tab-pane fade show active" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
@@ -451,7 +457,6 @@
 <script src="js/revolution.extension.parallax.min.js"></script>
 <script src="js/revolution.extension.slideanims.min.js"></script>
 <script src="js/revolution.extension.video.min.js"></script> -->
-
 
 
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->

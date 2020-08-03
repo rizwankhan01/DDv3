@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\customers;
 use App\Models\colors;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -43,7 +44,9 @@ class CustomerController extends Controller
         $color_id = $request->color_id;
         $color    = colors::findOrFail($color_id);
         $model    = $color->model->name;
-        return redirect('product/'.$model)->with('cus_id',$cus_id)->with('color_id',$color_id);
+        Session::put('cus_id', $cus_id);
+        Session::put('color_id',$color_id);
+        return redirect('product/'.$model.'/'.$color->name);
     }
 
     /**

@@ -131,7 +131,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="footer-widget text-var--2">
                             <div class="logo">
                                 <a href="/">
@@ -144,24 +144,28 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="footer-widget text-var--2 menu--about">
                             <h2 class="widgettitle">Links</h2>
                             <div class="footer-menu">
-                                <ul class="ft-menu-list bk-hover">
+                                <ul class="ft-menu-list bk-hover row">
+                                  <div class="col-6">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="/our-story">Our Story</a></li>
                                     <li><a href="/blog">Blog</a></li>
                                     <li><a href="/contact">Contact</a></li>
+                                  </div>
+                                  <div class="col-6">
                                     <li><a href="/privacy">Privacy Policy</a></li>
                                     <li><a href="/report">Report an Issue</a></li>
                                     <li><a href="http://jobs.doctordisplay.in/">Jobs</a></li>
+                                  </div>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="footer-widget text-var--2 menu--contact">
                             <h2 class="widgettitle">Contact</h2>
                             <div class="footer-address">
