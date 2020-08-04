@@ -13,4 +13,17 @@ class order_lists extends Model
       'price',
       'prod_type'
     ];
+
+    public function color(){
+      return $this->belongsTo(colors::class);
+    }
+
+    public function addon_product(){
+      return $this->belongsTo(addon_products::class, 'color_id');
+    }
+
+    public function coupon(){
+      return $this->belongsTo(coupons::class, 'color_id');
+    }
+
 }

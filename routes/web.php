@@ -23,14 +23,10 @@ Route::resource('/colors', 'ColorController');
 Route::get('/product/{name}/{color}','ProductController@getproduct');
 Route::resource('/product', 'ProductController');
 Route::resource('/customer', 'CustomerController');
+Route::resource('/confirmorder','OrderController');
 
-Route::get('/pro', function(){
-    return view('product');
-});
 
-Route::get('/confirmorder', function(){
-    return view('confirmorder');
-});
+
 Route::get('/orderconfirmed', function(){
     return view('orderconfirmed');
 });

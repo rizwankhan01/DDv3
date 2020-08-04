@@ -7,27 +7,6 @@
 @endsection
 @section('pagecontent')
 <main class="page-content">
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <center>
-            <h5 class="modal-title" id="exampleModalLabel">Would you like to buy Tempered glass as well?<br>
-            <small>It will only cost you &#8377;99!</small></h5>
-          </center><br>
-          <form action="/confirmorder" method="get">
-          <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
-          <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
-          <input type='text' name='price' id='price' value="{{ $pricing->ord_selling_price }}" hidden>
-          <center>
-            <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Yes</button>
-            <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
-          </center>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="modal fade" id="compare" tabindex="-1" role="dialog" aria-labelledby="compareLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -148,16 +127,15 @@
                                             <a class="nav-link active" id="basic-tab" data-toggle="pill"
                                                 href="#basic" role="tab" aria-controls="basic"
                                                 aria-selected="true" style="border: 1px solid #ddd;"
-                                                onclick="document.getElementById('price').value = {{ $pricing->ord_selling_price }}">Basic</a>
+                                                onclick="changevalue({{ $pricing->ord_selling_price }},'BASIC')">Basic</a>
                                         </li>
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link" id="premium-tab" data-toggle="pill"
                                                 href="#premium" role="tab" aria-controls="premium"
                                                 aria-selected="false" style="border: 1px solid #ddd;"
-                                                onclick="document.getElementById('price').value = {{ $pricing->org_selling_price }}">Premium</a>
+                                                onclick="changevalue({{ $pricing->org_selling_price }},'PREMIUM')">Premium</a>
                                         </li>
                                     </ul>
-
                                     <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
                                       <div class="tab-pane fade show active" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
@@ -188,6 +166,49 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <script>
+      function changevalue(price, type){
+        document.getElementById('price').value = price;
+        document.getElementById('price2').value = price;
+        document.getElementById('prod_type').value = type;
+        document.getElementById('prod_type2').value = type;
+      }
+    </script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <center>
+              <h5 class="modal-title" id="exampleModalLabel">Would you like to buy Tempered glass as well?<br>
+              <small>It will only cost you &#8377;99!</small></h5>
+            </center><br>
+            <span class='row'>
+            <form action="/confirmorder" method="post" class='col-md-6 col-6'>
+              {{ csrf_field() }}
+              {{ method_field('post') }}
+            <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
+            <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+            <input type='hidden' name='price' id='price' value='{{ $pricing->ord_selling_price }}'>
+            <input type='hidden' name='prod_type' id='prod_type' value='BASIC'>
+            <input type='number' name='tg' value='99' hidden>
+              <button type="submit" class="float-right brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Yes</button>
+            </form>
+            <form action="/confirmorder" method="post" class='col-md-6 col-6'>
+              {{ csrf_field() }}
+              {{ method_field('post') }}
+            <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
+            <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+            <input type='hidden' name='price' id='price2' value='{{ $pricing->ord_selling_price }}'>
+            <input type='hidden' name='prod_type' id='prod_type2' value='BASIC'>
+            <input type='number' name='tg' value='0' hidden>
+              <button type="submit" class="float-left brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
+            </form>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Single Product -->
     <div class="brook-icon-boxes-area pb--120 bg_color--1">
@@ -457,7 +478,6 @@
 <script src="js/revolution.extension.parallax.min.js"></script>
 <script src="js/revolution.extension.slideanims.min.js"></script>
 <script src="js/revolution.extension.video.min.js"></script> -->
-
 
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->
 <script src="{{ URL::asset('js/vendor/vendor.min.js') }}"></script>

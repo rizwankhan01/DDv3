@@ -13,5 +13,6 @@ class addon_products extends Model
       'description',
       'price',
       'image'
-    ]
+    ];
+    
 }

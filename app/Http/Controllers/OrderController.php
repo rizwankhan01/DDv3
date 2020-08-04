@@ -1,0 +1,154 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\orders;
+use App\Models\order_lists;
+use App\Models\coupons;
+use App\Models\customers;
+use App\Models\city_areas;
+use App\Models\addresses;
+use Session;
+
+class OrderController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $customer     = customers::findOrFail(Session::get('cus_id'));
+        $order_id     = Session::get('order_id');
+        $order        = orders::findOrFail($order_id);
+        $areas        = city_areas::all();
+        $olist        = order_lists::where('order_id', $order_id)->get();
+        $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->first();
+        return view('/confirmorder', compact('order','olist','pricefortax','customer','areas'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //creating new order
+        $orders = new orders;
+        $orders->customer_id  = $request->cus_id;
+        $orders->save();
+        $order_id = $orders->id;
+        Session::put('order_id',$order_id);
+        // inserting order id and color id
+        $olist  = new order_lists;
+        $olist->order_id  = $order_id;
+        $olist->color_id  = $request->color_id;
+        $olist->price     = $request->price;
+        $olist->prod_type = $request->prod_type;
+        $olist->save();
+        // inserting order id and TG
+        if($request->tg!=0){
+          $olist2 = new order_lists;
+          $olist2->order_id = $order_id;
+          $olist2->color_id = 1;
+          $olist2->price    = $request->tg;
+          $olist2->prod_type = "ADDON";
+          $olist2->save();
+        }
+        return view('/confirmorder');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+      if(!empty($request->coupon)){
+        $olist  = new order_lists;
+        $coupon = coupons::where('name',$request->coupon)->where('status',1)->first();
+        if(!empty($coupon->id)){
+        $olist->order_id  = $id;
+        $olist->color_id  = $coupon->id;
+        $olist->price     = "-".$coupon->amount;
+        $olist->prod_type = "COUPON";
+        $olist->save();
+          return redirect('/confirmorder')->with('success','Coupon Applied');
+        }else{
+          return redirect('/confirmorder')->with('failure','This coupon is not applicable.');
+        }
+      }else if(!empty($request->name)){
+        $order                = orders::findOrFail($id);
+        $address              = new addresses;
+        $address->customer_id = $order->customer_id;
+        $address->address     = $request->address;
+        $address->area        = $request->area;
+        $address->city        = $request->city;
+        $address->pincode     = $request->pincode;
+        $address->save();
+        $address_id           = $address->id;
+        $order->address_id    = $address_id;
+        $order->slot_time     = $request->time_slot;
+        $order->slot_date     = $request->date;
+        $order->status        = 1;
+        $order->update();
+        $customer             = customers::findOrFail($order->customer_id);
+        $customer->name       = $request->name;
+        $customer->phone_number= $request->phone;
+        $customer->email      = $request->email;
+        $customer->update();
+        return redirect('/orderconfirmed');
+      }
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
