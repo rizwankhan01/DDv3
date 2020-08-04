@@ -47,6 +47,42 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        if(empty($request->cus_id)){
+        //creating new customer
+        $check = customers::where('phone_number',$request->phone)->first();
+        if(empty($check->id)){ // checking if phone number already exists
+          $customer = new customers;
+          $customer->ga_id = $request->ga_id;
+          $customer->save();
+          $cus_id = $customer->id;
+        }else{
+          $cus_id = $check->id;
+        }
+        Session::put('cus_id',$cus_id);
+        Session::put('color_id',$request->color_id);
+        //creating new order
+        $orders = new orders;
+        $orders->customer_id  = $cus_id;
+        $orders->save();
+        $order_id = $orders->id;
+        Session::put('order_id',$order_id);
+        //inserting order id and color id
+        $olist  = new order_lists;
+        $olist->order_id  = $order_id;
+        $olist->color_id  = $request->color_id;
+        $olist->price     = $request->price;
+        $olist->prod_type = $request->prod_type;
+        $olist->save();
+        //inserting order id and TG
+        if($request->tg!=0){
+        $olist2 = new order_lists;
+        $olist2->order_id = $order_id;
+        $olist2->color_id = 1;
+        $olist2->price    = $request->tg;
+        $olist2->prod_type = "ADDON";
+        $olist2->save();
+        }
+        }else{
         //creating new order
         $orders = new orders;
         $orders->customer_id  = $request->cus_id;
@@ -69,7 +105,8 @@ class OrderController extends Controller
           $olist2->prod_type = "ADDON";
           $olist2->save();
         }
-        return view('/confirmorder');
+        }
+        return redirect('/confirmorder');
     }
 
     /**

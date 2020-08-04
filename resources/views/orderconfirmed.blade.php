@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Apple Products | Doctor Display @endsection
+@section('title') Order Confirmed | Doctor Display @endsection
 @section('metadesc') @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -10,7 +10,7 @@
   <div class="container"><br><br>
     <div class="row justify-content-center">
       <h4 class="h3">Thank you. Your Order has been placed!<Br>
-      <p class="lead">We've sent you an email. Go check that out.</p></h4>
+      <center><p class="lead">We've sent you an email. Go check that out.</p></center></h4>
       <div class="col-xl-9 col-lg-10">
         <div class="card card-body shadow-lg">
           <div class="d-flex justify-content-between align-items-start pb-4 pb-md-5 mb-4 mb-md-5 border-bottom">
@@ -33,20 +33,21 @@
             <div class="col-sm">
               <h6>Invoice to:</h6>
               <div>
-                <div>Larry Billings</div>
-                <div>Some Company</div>
+                <div>{{ $customer->name }}</div>
                 <address>
-                  382 Harrington Road,
-                  <br />Paramatta NSW 3928
+                  {{ $address->address }}
+                  <br />{{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}
                 </address>
               </div>
             </div>
             <div class="col-sm col-lg-4">
               <dl class="row text-sm-right">
                 <dt class="col-6"><strong>Invoice No.</strong></dt>
-                <dd class="col-6">482263</dd>
+                <dd class="col-6">{{ $order->id }}</dd>
                 <dt class="col-6"><strong>Appointment Date:</strong></dt>
-                <dd class="col-6">31/05/2019</dd>
+                <dd class="col-6">{{ $order->slot_date }}</dd>
+                <dt class="col-6"><strong>Time:</strong></dt>
+                <dd class="col-6">{{ $order->slot_time }}</dd>
               </dl>
             </div>
           </div>
@@ -57,26 +58,56 @@
                   <th scope="col" class="border-0 text-left">
                     Item
                   </th>
-                  <th scope="col" class="border-0">
+                  <th scope="col" class="border-0 text-right">
                     Rate
                   </th>
                 </tr>
               </thead>
               <tbody>
+                @foreach($olist as $list)
+                @if($list->prod_type=='ADDON')
                 <tr>
                   <th scope="row" class="text-left">
-                    Apple iPhone X (Ordinary Quality)
+                    {{$list->addon_product->name}}
                   </th>
-                  <td>
-                    &#8377; 39.00
+                  <td class="text-right">
+                    &#8377; {{ $list->price }}
+                  </td>
+                </tr>
+                @elseif($list->prod_type!='COUPON')
+                <tr>
+                  <th scope="row" class="text-left">
+                    {{$list->color->model->name}} ({{$list->color->name}})<br class="hidden-md"> {{ $list->prod_type }}
+                  </th>
+                  <td class="text-right">
+                    &#8377; {{ round($list->price/1.18) }}
+                  </td>
+                </tr>
+                @else
+                <tr>
+                  <th scope="row" class="text-left">
+                    {{$list->coupon->name}} - COUPON
+                  </th>
+                  <td class="text-right">
+                    - &#8377; {{ abs($list->price )}}
+                  </td>
+                </tr>
+                @endif
+                @endforeach
+                <tr>
+                  <th scope="row" class="text-left">
+                    CGST
+                  </th>
+                  <td class="text-right">
+                    &#8377; {{  round(($pricefortax->price/1.18)*0.09) }}
                   </td>
                 </tr>
                 <tr>
                   <th scope="row" class="text-left">
-                    Tempered Glass
+                    SGST
                   </th>
-                  <td>
-                    &#8377; 59.00
+                  <td class="text-right">
+                    &#8377; {{  round(($pricefortax->price/1.18)*0.09) }}
                   </td>
                 </tr>
               </tbody>
@@ -84,7 +115,7 @@
             <div class="d-flex justify-content-end text-right mb-4 py-4 border-bottom">
               <div>
                 <div>Balance due:</div>
-                <div class="h4 mb-0 mt-2">&#8377; 434.00</div>
+                <div class="h4 mb-0 mt-2">&#8377; {{ $olist->sum('price') }}</div>
               </div>
             </div>
           </div>

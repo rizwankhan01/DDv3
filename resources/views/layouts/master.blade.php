@@ -31,6 +31,20 @@
     <link rel="stylesheet" href="{{ URL::asset('css/revoulation.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/plugins.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('style.min.css')}}">
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-65390322-3', 'auto');
+    ga('send', 'pageview');
+    ga(function() {
+      var trackers = ga.getAll();
+      trackers.forEach(function(tracker) {
+        var clientId = tracker.get('clientId');
+        document.getElementById('ga_id').value = clientId;
+        document.getElementById('ga_id2').value = clientId;
+      });
+    });
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
 </head>
 
 <body class="template-color-1 template-font-1">

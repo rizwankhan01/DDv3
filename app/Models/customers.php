@@ -17,4 +17,5 @@ class customers extends Model
       'ga_id',
       'image'
     ];
+
 }

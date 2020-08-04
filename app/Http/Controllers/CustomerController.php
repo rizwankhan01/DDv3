@@ -37,10 +37,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $check    = customers::where('phone_number',$request->phone)->first();
+        if(empty($check->id)){ // checking if phone number already exists
         $customer = new customers();
         $customer->phone_number = $request->phone;
+        $customer->ga_id        = $request->ga_id;
         $customer->save();
         $cus_id   = $customer->id;
+        }else{
+        $cus_id   = $check->id;
+        }
         $color_id = $request->color_id;
         $color    = colors::findOrFail($color_id);
         $model    = $color->model->name;

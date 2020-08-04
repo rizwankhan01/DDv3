@@ -38,6 +38,7 @@
             {{ method_field('post') }}
           <center>
             <input type="number" name="color_id" value="{{$color->id}}" hidden>
+            <input type="hidden" name="ga_id" id="ga_id">
             <input type="number" placeholder="Enter Phone Number" required name="phone">
             <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Next</button>
           </center>

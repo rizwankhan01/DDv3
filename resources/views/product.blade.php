@@ -188,8 +188,13 @@
             <form action="/confirmorder" method="post" class='col-md-6 col-6'>
               {{ csrf_field() }}
               {{ method_field('post') }}
-            <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
-            <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+              <input type='hidden' name='ga_id' id='ga_id'>
+              <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
+              @if(empty(Session::get('color_id')))
+              <input type='hidden' name='color_id' value='{{ $color->id }}'>
+              @else
+              <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+              @endif
             <input type='hidden' name='price' id='price' value='{{ $pricing->ord_selling_price }}'>
             <input type='hidden' name='prod_type' id='prod_type' value='BASIC'>
             <input type='number' name='tg' value='99' hidden>
@@ -198,10 +203,15 @@
             <form action="/confirmorder" method="post" class='col-md-6 col-6'>
               {{ csrf_field() }}
               {{ method_field('post') }}
-            <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
-            <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+              <input type='hidden' name='ga_id' id='ga_id2'>
+              <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
+              @if(empty(Session::get('color_id')))
+              <input type='hidden' name='color_id' value='{{ $color->id }}'>
+              @else
+              <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
+              @endif
             <input type='hidden' name='price' id='price2' value='{{ $pricing->ord_selling_price }}'>
-            <input type='hidden' name='prod_type' id='prod_type2' value='BASIC'>
+            <input type='hidden' name='prod_type' id='prod_type2' value='PREMIUM'>
             <input type='number' name='tg' value='0' hidden>
               <button type="submit" class="float-left brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
             </form>

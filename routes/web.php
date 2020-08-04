@@ -24,12 +24,8 @@ Route::get('/product/{name}/{color}','ProductController@getproduct');
 Route::resource('/product', 'ProductController');
 Route::resource('/customer', 'CustomerController');
 Route::resource('/confirmorder','OrderController');
+Route::resource('/orderconfirmed','OrderConfirmedController');
 
-
-
-Route::get('/orderconfirmed', function(){
-    return view('orderconfirmed');
-});
 Route::get('/contact', function(){
     return view('contact');
 });
