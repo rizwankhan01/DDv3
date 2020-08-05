@@ -156,7 +156,7 @@ alt="Product"></a></td>
 
 <div class="col-md-4 col-12 mb--20">
 <label>Town/City*</label>
-<input type="text" placeholder="Town/City" name='city' value='Chennai' disabled>
+<input type="text" placeholder="Town/City" name='city' value='Chennai' required>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Date*</label>
@@ -222,7 +222,7 @@ alt="Product"></a></td>
 </div>
 <!-- Checkout Page End -->
 </div>
-<div class='stick2foot btn btn-primary noborder hidden-md'>
+<div class='stick2foot btn btn-primary noborder hidden-md' style="background:#0038e3;">
 <div class='float-left'>&#8377; {{ $olist->sum('price') }}<br><small><a data-toggle="modal" data-target="#coupon">Apply Coupon</a></small></div>
 <div class='float-right'><button type="submit" class='brook-btn bk-btn-white btn-xs-size btn-rounded space-between'>Confirm</button></div>
 </div>

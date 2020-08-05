@@ -84,11 +84,14 @@
                                   </nav>
                               </div>
                             </div>
-                            <div class="header-right have-not-flex d-sm-flex pl--35 pr_md--40 pr_sm--40">
+                            <div class="header-right have-not-flex d-sm-flex pl--35 pr_md--40">
                                 <div class="preview-button d-none d-sm-block">
                                   <a href="tel:04446270777" class="brook-btn bk-btn-white btn-sd-size btn-rounded space-between">
                                     <i class='fa fa-phone'></i>&nbsp;04446270777
                                   </a>
+                                </div>
+                                <div class="d-block d-lg-none light-version d-block d-xl-none">
+                                  <a href="tel:04446270777" class="text-white"><i class="fa fa-phone"></i></a>
                                 </div>
                                 <div class="manu-hamber popup-mobile-click d-block d-lg-none light-version d-block d-xl-none">
                                     <div>
@@ -189,11 +192,10 @@
                                     <p><a href="tel:04446270777">04446270777</a></p>
                                 </div>
                                 <div class="social-share social--transparent text-white">
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-youtube"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                                    <a href="https://www.facebook.com/displaydoctors"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/doctor_display"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/doctordisplay/"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCtnKHSIMmcyR_FfMEiDvg6A"><i class="fab fa-youtube"></i></a>
                                 </div>
                             </div>
                         </div>

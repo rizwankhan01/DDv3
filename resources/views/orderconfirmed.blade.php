@@ -9,6 +9,13 @@
 <main class="page-content">
   <div class="container"><br><br>
     <div class="row justify-content-center">
+      @if(session('err'))
+      Error: {{ session('err') }}
+      @endif
+
+      @if(session('response'))
+      Response: {{ session('response') }}
+      @endif
       <h4 class="h3">Thank you. Your Order has been placed!<Br>
       <center><p class="lead">We've sent you an email. Go check that out.</p></center></h4>
       <div class="col-xl-9 col-lg-10">

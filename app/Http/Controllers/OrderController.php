@@ -25,7 +25,7 @@ class OrderController extends Controller
         $order        = orders::findOrFail($order_id);
         $areas        = city_areas::all();
         $olist        = order_lists::where('order_id', $order_id)->get();
-        $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->first();
+        $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->where('prod_type','!=','COUPON')->first();
         return view('/confirmorder', compact('order','olist','pricefortax','customer','areas'));
     }
 
@@ -141,38 +141,53 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       if(!empty($request->coupon)){
-        $olist  = new order_lists;
         $coupon = coupons::where('name',$request->coupon)->where('status',1)->first();
+        $checkifexists = order_lists::where('prod_type','COUPON')->first();
         if(!empty($coupon->id)){
-        $olist->order_id  = $id;
-        $olist->color_id  = $coupon->id;
-        $olist->price     = "-".$coupon->amount;
-        $olist->prod_type = "COUPON";
-        $olist->save();
+          if(!empty($checkifexists->id)){
+            $olist  = order_lists::findOrFail($checkifexists->id);
+            $olist->order_id  = $id;
+            $olist->color_id  = $coupon->id;
+            $olist->price     = "-".$coupon->amount;
+            $olist->prod_type = "COUPON";
+            $olist->update();
+          }else{
+            $olist  = new order_lists;
+            $olist->order_id  = $id;
+            $olist->color_id  = $coupon->id;
+            $olist->price     = "-".$coupon->amount;
+            $olist->prod_type = "COUPON";
+            $olist->save();
+          }
           return redirect('/confirmorder')->with('success','Coupon Applied');
         }else{
           return redirect('/confirmorder')->with('failure','This coupon is not applicable.');
         }
       }else if(!empty($request->name)){
         $order                = orders::findOrFail($id);
-        $address              = new addresses;
-        $address->customer_id = $order->customer_id;
-        $address->address     = $request->address;
-        $address->area        = $request->area;
-        $address->city        = $request->city;
-        $address->pincode     = $request->pincode;
-        $address->save();
-        $address_id           = $address->id;
-        $order->address_id    = $address_id;
-        $order->slot_time     = $request->time_slot;
-        $order->slot_date     = $request->date;
-        $order->status        = 1;
-        $order->update();
-        $customer             = customers::findOrFail($order->customer_id);
-        $customer->name       = $request->name;
-        $customer->phone_number= $request->phone;
-        $customer->email      = $request->email;
-        $customer->update();
+        $check_address        = addresses::where('customer_id',$order->customer_id);
+        if(empty($check_address->id)){
+          $address              = new addresses;
+          $address->customer_id = $order->customer_id;
+          $address->address     = $request->address;
+          $address->area        = $request->area;
+          $address->city        = $request->city;
+          $address->pincode     = $request->pincode;
+          $address->save();
+          $address_id           = $address->id;
+        }else{
+          $address_id           = $check_address->id;
+        }
+          $order->address_id    = $address_id;
+          $order->slot_time     = $request->time_slot;
+          $order->slot_date     = $request->date;
+          $order->status        = 1;
+          $order->update();
+          $customer             = customers::findOrFail($order->customer_id);
+          $customer->name       = $request->name;
+          $customer->phone_number= $request->phone;
+          $customer->email      = $request->email;
+          $customer->update();
         return redirect('/orderconfirmed');
       }
 

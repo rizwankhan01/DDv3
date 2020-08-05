@@ -110,7 +110,7 @@
                                 &nbsp;&nbsp;5 (8 Reviews)
                             </ul>
                           </div><br><br>
-                              {{$models->description}}
+                              <span style="font-size:12px;">{{$models->description}}</span>
                         </div><br>
                             <div class="price" style="margin-bottom:0px;">
                                 <p class="theme-color">
@@ -118,7 +118,7 @@
                                   <a href='/product/{{$models->name}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
                                   @endforeach
                                 </p>
-                                <p>Select Quality:</p>
+                                <p>Select Screen Quality:</p>
                             </div>
                             <div class="description">
                               <div class="row">
@@ -146,16 +146,16 @@
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->org_selling_price+250 }}</strike> <span class="green">&#8377; {{ $pricing->org_selling_price }}</span></h4>
                                       </div>
 
-                                      <small><a href="#" class="icon" data-toggle="modal" data-target="#compare">
-                                        What is the difference between Basic and Premium Screens?</a></small>
+                                      <u><small><a href="#" class="icon" data-toggle="modal" data-target="#compare">
+                                        See the difference between Basic and Premium Screens?</a></small></u>
                                     </span>
                               </div>
-                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Confirm</button>
-                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-xs-size">Confirm</button>
+                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
+                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
 
 
                                     <br>
-<p class="bk_pra">* In case of any queries regarding repairing your screen, Kindly contact us at <a href='tel:04446270777'>04446270777</a><br>
+<p class="bk_pra">
 * Prices displayed are inclusive of 18% GST.<br>
 * Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
 <br><br>
