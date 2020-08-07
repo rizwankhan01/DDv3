@@ -92,7 +92,7 @@ class OrderConfirmedController extends Controller
       curl_setopt($connection, CURLOPT_URL, "https://doctordisplay.freshdesk.com/api/v2/tickets");
       $response = curl_exec($connection);
       //echo 'RESULT:'.$response;
-      return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','err','response'));
+      return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','response'));
     }
 
     /**
