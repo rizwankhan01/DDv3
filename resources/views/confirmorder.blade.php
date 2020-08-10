@@ -134,7 +134,7 @@ alt="Product"></a></td>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
-<input type="number" placeholder="Phone number" name="phone" value="{{ $customer->phone_number }}" required>
+<input type="number" placeholder="Phone number" maxlength="10" name="phone" value="{{ $customer->phone_number }}" required>
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
@@ -151,7 +151,7 @@ alt="Product"></a></td>
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Pin Code*</label>
-<input type="text" placeholder="Pin Code" name='pincode' required>
+<input type="number" placeholder="Pin Code" name='pincode' required>
 </div>
 
 <div class="col-md-4 col-12 mb--20">

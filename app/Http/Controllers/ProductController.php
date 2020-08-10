@@ -41,7 +41,7 @@ class ProductController extends Controller
         //
     }
 
-    public function getproduct($name, $color){
+    public function getproduct($name, $color){ 
       $models = models::where('name',$name)->first();
       $colors = colors::where('model_id',$models->id)->get();
       $color  = colors::where('name',$color)->where('model_id',$models->id)->first();

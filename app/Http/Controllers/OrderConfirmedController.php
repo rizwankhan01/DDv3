@@ -41,11 +41,16 @@ class OrderConfirmedController extends Controller
         $coupon = $coupon->price;
       }
 
-      if($tempered->price==0){
-        $tg = 0;
+      if(!empty($tempered->id)){
+        if($tempered->price==0){
+          $tg = 0;
+        }else{
+          $tg = 99;
+        }
       }else{
-        $tg = 99;
+        $tg = 0;
       }
+
       $data = array(
         "type"=> "Orders through api",
         //"id"=> $order_id,
@@ -59,6 +64,7 @@ class OrderConfirmedController extends Controller
         "description" => "New Order For: ".$ord->model->name." (".$ord->screen_color.") - ".$model_ord->prod_type."
                          | TG: ".$tg." | Appointment Date: ".$order->slot_date." | Slot Time: ".$order->slot_time,
         "custom_fields"=> array(
+            "cf_order_id" => $order->id,
             "cf_appdate" => $order->slot_date,
             "cf_slot_time" => $order->slot_time,
             "cf_total_price" => $olist->sum('price'),
