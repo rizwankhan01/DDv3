@@ -6,4 +6,4 @@ The Codebase of DoctorDisplay V2.0 on Laravel.
 
 ## Wubbalubbadubdub
 
-All praise the Almighty C-137 Rick Sanchez. Rick resides on DigitalOcean too.
+All praise the Almighty C-137 Rick Sanchez.
