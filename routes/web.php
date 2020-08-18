@@ -38,3 +38,7 @@ Route::get('/privacy', function(){
 Route::get('/report', function(){
     return view('report');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

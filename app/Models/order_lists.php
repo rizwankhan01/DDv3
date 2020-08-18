@@ -26,4 +26,7 @@ class order_lists extends Model
       return $this->belongsTo(coupons::class, 'color_id');
     }
 
+    public function order(){
+      return $this->belongsTo(orders::class);
+    }
 }

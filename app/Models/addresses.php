@@ -17,4 +17,8 @@ class addresses extends Model
       'gps_location',
       'pass',
     ];
+
+    public function customer(){
+      return $this->belongsTo(customers::class);
+    }
 }

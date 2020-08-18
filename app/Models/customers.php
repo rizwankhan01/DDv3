@@ -17,5 +17,7 @@ class customers extends Model
       'ga_id',
       'image'
     ];
-
+    public function address(){
+      return $this->hasMany(addresses::class);
+    }
 }
