@@ -1,65 +1,48 @@
 <template>
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header">Orders</div>
+  <div class="contentbar mt-100">
+      <!-- Start row -->
+      <div class="row">
+          <!-- Start col -->
+          <div class="col-lg-12">
+              <div class="card m-b-30">
+                  <div class="card-header">
+                      <div class="widgetbar pull-right">
+                          <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
+                      </div>
+                      <h5 class="card-title">Data Export Table</h5>
+                  </div>
                   <div class="card-body">
-                      <table class='table table-bordered'>
-                        <thead>
-                          <th>Order ID</th>
-                          <th>Customer</th>
-                          <th>Slot Date</th>
-                          <th>Slot Time</th>
-                          <th>Actions</th>
-                        </thead>
-                        <tbody>
-                          <tr v-for="order in orders" v-bind:key="order.id">
-                            <td>OID: {{ order.id }}</td>
-                            <td>{{ order.customer.name }}</td>
-                            <td>{{ order.slot_date }}</td>
-                            <td>{{ order.slot_time }}</td>
-                            <td><button @click="fetchSingleOrder(order.id)" class='btn btn-sm btn-primary'>Expand</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-<div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
- aria-hidden="true"
- v-bind:style="[ showlist ? {'display':'block'} : {'display':'hidden'} ]">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <a @click="closeModal()">&times;</a>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-        <thead>
-          <th>Item</th>
-          <th>Type</th>
-          <th>Price</th>
-        </thead>
-        <tbody>
-        <tr v-for="olist in olists" v-bind:key="olist.id">
-          <td>{{ olist.color_id }}</td>
-          <td>{{ olist.prod_type }}</td>
-          <td>{{ olist.price }}</td>
-        </tr>
-        </tbody>
-        </table>
-        <p>{{ customer.name }}<br>
-        {{ customer.phone_number }}<br>
-        {{ customer.email }}</p>
-      </div>
-    </div>
-  </div>
-</div>
+                      <h6 class="card-subtitle">Export data to Copy, CSV, Excel & Note.</h6>
+                      <div class="table-responsive">
+                          <table id="datatable-buttons" class="table table-striped table-bordered">
+                              <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th>Position</th>
+                                  <th>Office</th>
+                                  <th>Age</th>
+                                  <th>Start date</th>
+                                  <th>Salary</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>Tiger Nixon</td>
+                                  <td>System Architect</td>
+                                  <td>Edinburgh</td>
+                                  <td>61</td>
+                                  <td>2011/04/25</td>
+                                  <td>$320,800</td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
                   </div>
               </div>
           </div>
+          <!-- End col -->
       </div>
+      <!-- End row -->
   </div>
 </template>
 <script>

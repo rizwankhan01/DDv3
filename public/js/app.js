@@ -1988,23 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37680,172 +37663,81 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Orders")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.orders, function(order) {
-                  return _c("tr", { key: order.id }, [
-                    _c("td", [_vm._v("OID: " + _vm._s(order.id))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(order.customer.name))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(order.slot_date))]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(order.slot_time))]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm btn-primary",
-                          on: {
-                            click: function($event) {
-                              return _vm.fetchSingleOrder(order.id)
-                            }
-                          }
-                        },
-                        [_vm._v("Expand")]
-                      )
-                    ])
-                  ])
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal fade show",
-                style: [
-                  _vm.showlist ? { display: "block" } : { display: "hidden" }
-                ],
-                attrs: {
-                  id: "exampleModal",
-                  tabindex: "-1",
-                  role: "dialog",
-                  "aria-labelledby": "exampleModalLabel",
-                  "aria-hidden": "true"
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "modal-dialog", attrs: { role: "document" } },
-                  [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _c("div", { staticClass: "modal-header" }, [
-                        _c(
-                          "h5",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "exampleModalLabel" }
-                          },
-                          [_vm._v("Order Details")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "close",
-                            attrs: {
-                              type: "button",
-                              "data-dismiss": "modal",
-                              "aria-label": "Close"
-                            }
-                          },
-                          [
-                            _c(
-                              "a",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    return _vm.closeModal()
-                                  }
-                                }
-                              },
-                              [_vm._v("×")]
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("table", { staticClass: "table table-bordered" }, [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.olists, function(olist) {
-                              return _c("tr", { key: olist.id }, [
-                                _c("td", [_vm._v(_vm._s(olist.color_id))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(olist.prod_type))]),
-                                _vm._v(" "),
-                                _c("td", [_vm._v(_vm._s(olist.price))])
-                              ])
-                            }),
-                            0
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(_vm._s(_vm.customer.name)),
-                          _c("br"),
-                          _vm._v(
-                            "\n        " + _vm._s(_vm.customer.phone_number)
-                          ),
-                          _c("br"),
-                          _vm._v("\n        " + _vm._s(_vm.customer.email))
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              ]
-            )
-          ])
-        ])
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("th", [_vm._v("Order ID")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Customer")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Slot Date")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Slot Time")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Actions")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("th", [_vm._v("Item")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Type")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Price")])
+    return _c("div", { staticClass: "contentbar mt-100" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "card m-b-30" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("div", { staticClass: "widgetbar pull-right" }, [
+                _c("button", { staticClass: "btn btn-primary-rgba" }, [
+                  _c("i", { staticClass: "feather icon-plus mr-2" }),
+                  _vm._v("Actions")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Data Export Table")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h6", { staticClass: "card-subtitle" }, [
+                _vm._v("Export data to Copy, CSV, Excel & Note.")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-striped table-bordered",
+                    attrs: { id: "datatable-buttons" }
+                  },
+                  [
+                    _c("thead", [
+                      _c("tr", [
+                        _c("th", [_vm._v("Name")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Position")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Office")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Age")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Start date")]),
+                        _vm._v(" "),
+                        _c("th", [_vm._v("Salary")])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", [_vm._v("Tiger Nixon")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("System Architect")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("Edinburgh")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("61")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("2011/04/25")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$320,800")])
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
     ])
   }
 ]
