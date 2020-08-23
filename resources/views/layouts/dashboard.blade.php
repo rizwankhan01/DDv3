@@ -104,6 +104,14 @@
     <li><a href="/dealers">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Dealers</span>
     </a></li>
+    <li>
+      <a href="{{ route('logout') }}"
+      onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="profile-icon">
+      <img src="{{ asset('assets\images\svg-icon\logout.svg') }}" class="img-fluid" alt="logout">{{ __('Logout') }}</a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
+    </li>
 </ul>
 </div>
 <!-- End Navigationbar -->
