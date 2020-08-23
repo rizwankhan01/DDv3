@@ -143,7 +143,7 @@ return{
 }
 },
 created(){
-  this.interval = setInterval(()=> this.fetchCoupons(), 10000);
+  this.interval = setInterval(() => this.fetchCoupons(), 1000);
 },
 methods:{
 fetchCoupons(page_url){

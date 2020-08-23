@@ -2053,18 +2053,22 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     };
   },
   created: function created() {
-    this.fetchCoupons();
+    var _this = this;
+
+    this.interval = setInterval(function () {
+      return _this.fetchCoupons();
+    }, 1000);
   },
   methods: {
     fetchCoupons: function fetchCoupons(page_url) {
-      var _this = this;
+      var _this2 = this;
 
       var vm = this;
       page_url = page_url || '/api/coupons';
       fetch(page_url).then(function (res) {
         return res.json();
       }).then(function (res) {
-        _this.coupons = res.data;
+        _this2.coupons = res.data;
         vm.makePagination(res.meta, res.links);
       })["catch"](function (err) {
         return console.log(err);
@@ -2080,7 +2084,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       this.pagination = pagination;
     },
     deleteCoupon: function deleteCoupon(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       swal({
         title: 'Are you sure?',
@@ -2099,9 +2103,9 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           }).then(function (res) {
             return res.json();
           }).then(function (data) {
-            _this2.fetchCoupons();
+            _this3.fetchCoupons();
 
-            _this2.clearForm();
+            _this3.clearForm();
 
             new PNotify({
               title: 'Coupon Deleted!',
@@ -2117,7 +2121,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       });
     },
     updateCoupon: function updateCoupon() {
-      var _this3 = this;
+      var _this4 = this;
 
       var id = this.coupon.id;
       fetch("api/coupons/".concat(id), {
@@ -2135,15 +2139,15 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           type: 'primary'
         });
 
-        _this3.fetchCoupons();
+        _this4.fetchCoupons();
 
-        _this3.clearForm();
+        _this4.clearForm();
       })["catch"](function (err) {
         return console.log(err);
       });
     },
     addCoupon: function addCoupon() {
-      var _this4 = this;
+      var _this5 = this;
 
       fetch('api/coupons', {
         method: 'post',
@@ -2160,11 +2164,11 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           type: 'success'
         });
 
-        _this4.fetchCoupons();
+        _this5.fetchCoupons();
 
-        _this4.clearForm();
+        _this5.clearForm();
 
-        _this4.modalShow = false;
+        _this5.modalShow = false;
       })["catch"](function (err) {
         return console.log(err);
       });
