@@ -7,7 +7,7 @@
 <div class="card m-b-30">
 <div class="card-header">
 <div class="widgetbar pull-right">
-<button class="btn btn-primary-rgba" data-toggle="modal" data-target="#CreateModal"><i class="feather icon-plus mr-2"></i>New</button>
+<button class="btn btn-primary-rgba" @click="showModal()"><i class="feather icon-plus mr-2"></i>New</button>
 <div class="modal fade show" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="EditModalLabel" aria-hidden="true"
 v-bind:style="[ edit ? {'display':'block'} : {'display':'none'} ]">
 <div class="modal-dialog" role="document">
@@ -41,12 +41,13 @@ v-bind:style="[ edit ? {'display':'block'} : {'display':'none'} ]">
 </div>
 </div>
 </div>
-<div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true">
+<div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
+v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">
 <h5 class="modal-title" id="CreateModalLabel">Create New Coupon</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal()">
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
@@ -66,7 +67,7 @@ v-bind:style="[ edit ? {'display':'block'} : {'display':'none'} ]">
 </div>
 </div>
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal()">Close</button>
 <button type="submit" class="btn btn-primary">Save changes</button>
 </div>
 </form>
@@ -137,7 +138,8 @@ return{
   moment: moment,
   coupon_id:'',
   pagination:{},
-  edit: false
+  edit: false,
+  modalShow: false
 }
 },
 created(){
@@ -165,28 +167,35 @@ makePagination(meta, links){
   this.pagination = pagination;
 },
 deleteCoupon(id){
-    if(swal({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger m-l-10',
-      confirmButtonText: 'Yes, delete it!'
-    })){
-    fetch(`api/coupons/${id}`,{
-    method: 'delete'
+  swal({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+    confirmButtonClass: 'btn btn-success',
+    cancelButtonClass: 'btn btn-danger m-l-10',
+    buttonsStyling: false
+})
+.then((willDelete) => {
+  if (willDelete) {
+    fetch(`api/coupons/${id}`, {
+      method: 'delete'
     })
-    .then(res => res.json())
-    .then(data =>{
+    .then(res=>res.json())
+    .then(data=>{
       this.fetchCoupons();
       this.clearForm();
       new PNotify( {
-          title: 'Coupon Deleted!', text: 'Coupon removed successfully!.', type: 'warning'
+            title: 'Coupon Deleted!', text: 'Coupon was removed successfully!', type: 'danger'
         });
     })
     .catch(err => console.log(err));
+  } else {
+    swal("Your imaginary file is safe!");
   }
+});
 },
 updateCoupon(){
   var id = this.coupon.id;
@@ -221,6 +230,8 @@ addCoupon(){
             title: 'Coupon Inserted!', text: 'Coupon added successfully!.', type: 'success'
         });
       this.fetchCoupons();
+      this.clearForm();
+      this.modalShow = false;
     })
     .catch(err => console.log(err));
 },
@@ -242,6 +253,10 @@ clearForm(){
 },
 closeModal(){
   this.edit = false;
+  this.modalShow = false;
+},
+showModal(){
+  this.modalShow = true;
 }
 }
 }

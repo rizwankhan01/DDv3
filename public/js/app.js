@@ -2032,6 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2047,7 +2048,8 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       moment: moment,
       coupon_id: '',
       pagination: {},
-      edit: false
+      edit: false,
+      modalShow: false
     };
   },
   created: function created() {
@@ -2080,31 +2082,39 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     deleteCoupon: function deleteCoupon(id) {
       var _this2 = this;
 
-      if (swal({
+      swal({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
         type: 'warning',
         showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
         confirmButtonClass: 'btn btn-success',
         cancelButtonClass: 'btn btn-danger m-l-10',
-        confirmButtonText: 'Yes, delete it!'
-      })) {
-        fetch("api/coupons/".concat(id), {
-          method: 'delete'
-        }).then(function (res) {
-          return res.json();
-        }).then(function (data) {
-          _this2.fetchCoupons();
+        buttonsStyling: false
+      }).then(function (willDelete) {
+        if (willDelete) {
+          fetch("api/coupons/".concat(id), {
+            method: 'delete'
+          }).then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            _this2.fetchCoupons();
 
-          new PNotify({
-            title: 'Coupon Deleted!',
-            text: 'Coupon removed successfully!.',
-            type: 'warning'
+            _this2.clearForm();
+
+            new PNotify({
+              title: 'Coupon Deleted!',
+              text: 'Coupon was removed successfully!',
+              type: 'danger'
+            });
+          })["catch"](function (err) {
+            return console.log(err);
           });
-        })["catch"](function (err) {
-          return console.log(err);
-        });
-      }
+        } else {
+          swal("Your imaginary file is safe!");
+        }
+      });
     },
     updateCoupon: function updateCoupon() {
       var _this3 = this;
@@ -2151,6 +2161,10 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
         });
 
         _this4.fetchCoupons();
+
+        _this4.clearForm();
+
+        _this4.modalShow = false;
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -2173,6 +2187,10 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     },
     closeModal: function closeModal() {
       this.edit = false;
+      this.modalShow = false;
+    },
+    showModal: function showModal() {
+      this.modalShow = true;
     }
   }
 });
@@ -59252,7 +59270,21 @@ var render = function() {
         _c("div", { staticClass: "card m-b-30" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("div", { staticClass: "widgetbar pull-right" }, [
-              _vm._m(0),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary-rgba",
+                  on: {
+                    click: function($event) {
+                      return _vm.showModal()
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "feather icon-plus mr-2" }),
+                  _vm._v("New")
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -59468,6 +59500,9 @@ var render = function() {
                 "div",
                 {
                   staticClass: "modal fade show",
+                  style: [
+                    _vm.modalShow ? { display: "block" } : { display: "none" }
+                  ],
                   attrs: {
                     id: "CreateModal",
                     tabindex: "-1",
@@ -59485,7 +59520,38 @@ var render = function() {
                     },
                     [
                       _c("div", { staticClass: "modal-content" }, [
-                        _vm._m(1),
+                        _c("div", { staticClass: "modal-header" }, [
+                          _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "CreateModalLabel" }
+                            },
+                            [_vm._v("Create New Coupon")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "modal",
+                                "aria-label": "Close"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.closeModal()
+                                }
+                              }
+                            },
+                            [
+                              _c("span", { attrs: { "aria-hidden": "true" } }, [
+                                _vm._v("×")
+                              ])
+                            ]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c(
                           "form",
@@ -59605,7 +59671,33 @@ var render = function() {
                               ])
                             ]),
                             _vm._v(" "),
-                            _vm._m(2)
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.closeModal()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Close")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Save changes")]
+                              )
+                            ])
                           ]
                         )
                       ])
@@ -59766,67 +59858,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-primary-rgba",
-        attrs: { "data-toggle": "modal", "data-target": "#CreateModal" }
-      },
-      [_c("i", { staticClass: "feather icon-plus mr-2" }), _vm._v("New")]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "CreateModalLabel" } },
-        [_vm._v("Create New Coupon")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save changes")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
