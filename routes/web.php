@@ -39,6 +39,13 @@ Route::get('/report', function(){
     return view('report');
 });
 
+//////////////////////////dashboard///////////////////////////
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/coupons', function(){
+  return view('admin.coupons');
+});
+Route::get('/customers', function(){
+  return view('admin.customers');
+});

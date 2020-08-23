@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('orders', require('./components/OrdersComponent.vue').default);
+Vue.component('coupons', require('./components/CouponsComponent.vue').default);
+Vue.component('customers', require('./components/CustomersComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
