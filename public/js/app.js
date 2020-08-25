@@ -2053,22 +2053,19 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     };
   },
   created: function created() {
-    var _this = this;
-
-    this.interval = setInterval(function () {
-      return _this.fetchCoupons();
-    }, 1000);
+    //this.interval = setInterval(() => this.fetchCoupons(), 1000);
+    this.fetchCoupons();
   },
   methods: {
     fetchCoupons: function fetchCoupons(page_url) {
-      var _this2 = this;
+      var _this = this;
 
       var vm = this;
       page_url = page_url || '/api/coupons';
       fetch(page_url).then(function (res) {
         return res.json();
       }).then(function (res) {
-        _this2.coupons = res.data;
+        _this.coupons = res.data;
         vm.makePagination(res.meta, res.links);
       })["catch"](function (err) {
         return console.log(err);
@@ -2084,7 +2081,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       this.pagination = pagination;
     },
     deleteCoupon: function deleteCoupon(id) {
-      var _this3 = this;
+      var _this2 = this;
 
       swal({
         title: 'Are you sure?',
@@ -2103,9 +2100,9 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           }).then(function (res) {
             return res.json();
           }).then(function (data) {
-            _this3.fetchCoupons();
+            _this2.fetchCoupons();
 
-            _this3.clearForm();
+            _this2.clearForm();
 
             new PNotify({
               title: 'Coupon Deleted!',
@@ -2121,7 +2118,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
       });
     },
     updateCoupon: function updateCoupon() {
-      var _this4 = this;
+      var _this3 = this;
 
       var id = this.coupon.id;
       fetch("api/coupons/".concat(id), {
@@ -2139,15 +2136,15 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           type: 'primary'
         });
 
-        _this4.fetchCoupons();
+        _this3.fetchCoupons();
 
-        _this4.clearForm();
+        _this3.clearForm();
       })["catch"](function (err) {
         return console.log(err);
       });
     },
     addCoupon: function addCoupon() {
-      var _this5 = this;
+      var _this4 = this;
 
       fetch('api/coupons', {
         method: 'post',
@@ -2164,11 +2161,11 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
           type: 'success'
         });
 
-        _this5.fetchCoupons();
+        _this4.fetchCoupons();
 
-        _this5.clearForm();
+        _this4.clearForm();
 
-        _this5.modalShow = false;
+        _this4.modalShow = false;
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -2353,6 +2350,317 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
     },
     closeModal: function closeModal() {
       this.edit = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DealersComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DealersComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      dealers: [],
+      dealer: {
+        id: '',
+        dealer_name: '',
+        phone_number: '',
+        address: '',
+        email: ''
+      },
+      moment: moment,
+      dealer_id: '',
+      pagination: {},
+      edit: false,
+      modalShow: false
+    };
+  },
+  created: function created() {
+    //this.interval = setInterval(() => this.fetchCoupons(), 1000);
+    this.fetchDealers();
+  },
+  methods: {
+    fetchDealers: function fetchDealers(page_url) {
+      var _this = this;
+
+      var vm = this;
+      page_url = page_url || '/api/dealers';
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.dealers = res.data;
+        vm.makePagination(res.meta, res.links);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    makePagination: function makePagination(meta, links) {
+      var pagination = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        prev_page_url: links.prev
+      };
+      this.pagination = pagination;
+    },
+    deleteDealer: function deleteDealer(id) {
+      var _this2 = this;
+
+      swal({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger m-l-10',
+        buttonsStyling: false
+      }).then(function (willDelete) {
+        if (willDelete) {
+          fetch("api/dealers/".concat(id), {
+            method: 'delete'
+          }).then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            _this2.fetchDealers();
+
+            _this2.clearForm();
+
+            new PNotify({
+              title: 'Dealer Deleted!',
+              text: 'Dealer was removed successfully!',
+              type: 'danger'
+            });
+          })["catch"](function (err) {
+            return console.log(err);
+          });
+        } else {
+          swal("Your dealer info is safe!");
+        }
+      });
+    },
+    updateDealer: function updateDealer() {
+      var _this3 = this;
+
+      var id = this.dealer.id;
+      fetch("api/dealers/".concat(id), {
+        method: 'put',
+        body: JSON.stringify(this.dealer),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        new PNotify({
+          title: 'Dealer Updated!',
+          text: 'Dealer updated successfully!.',
+          type: 'primary'
+        });
+
+        _this3.fetchDealers();
+
+        _this3.clearForm();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    addDealer: function addDealer() {
+      var _this4 = this;
+
+      //alert(this.dealer.dealer_name);
+      fetch('api/dealers', {
+        method: 'post',
+        body: JSON.stringify(this.dealer),
+        headers: {
+          'content-type': 'application/json'
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        new PNotify({
+          title: 'Dealer Inserted!',
+          text: 'Dealer added successfully!.',
+          type: 'success'
+        });
+
+        _this4.fetchDealers();
+
+        _this4.clearForm();
+
+        _this4.modalShow = false;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    editDealer: function editDealer(dealer) {
+      this.edit = true;
+      this.dealer.id = dealer.id;
+      this.dealer.dealer_id = dealer.id;
+      this.dealer.dealer_name = dealer.dealer_name;
+      this.dealer.phone_number = dealer.phone_number;
+      this.dealer.email = dealer.email;
+      this.dealer.address = dealer.address;
+    },
+    clearForm: function clearForm() {
+      this.edit = false;
+      this.dealer.id = '';
+      this.dealer.dealer_id = '';
+      this.dealer.dealer_name = '';
+      this.dealer.phone_number = '';
+      this.dealer.email = '';
+      this.dealer.address = '';
+    },
+    closeModal: function closeModal() {
+      this.edit = false;
+      this.modalShow = false;
+    },
+    showModal: function showModal() {
+      this.modalShow = true;
     }
   }
 });
@@ -60045,6 +60353,696 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "contentbar mt-100" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "card m-b-30" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("div", { staticClass: "widgetbar pull-right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary-rgba",
+                  on: {
+                    click: function($event) {
+                      return _vm.showModal()
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "feather icon-plus mr-2" }),
+                  _vm._v("New")
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade show",
+                  style: [
+                    _vm.edit ? { display: "block" } : { display: "none" }
+                  ],
+                  attrs: {
+                    id: "EditModal",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "EditModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "EditModalLabel" }
+                            },
+                            [_vm._v("Edit Dealer")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "modal",
+                                "aria-label": "Close"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.closeModal()
+                                }
+                              }
+                            },
+                            [
+                              _c("span", { attrs: { "aria-hidden": "true" } }, [
+                                _vm._v("×")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            attrs: { action: "" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.updateDealer()
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Dealer Name")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.dealer_name,
+                                      expression: "dealer.dealer_name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    name: "dealer_name",
+                                    placeholder: "Dealer Name",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.dealer_name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "dealer_name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Phone Number")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.phone_number,
+                                      expression: "dealer.phone_number"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    name: "phone_number",
+                                    placeholder: "Phone Number",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.phone_number },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "phone_number",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Email")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.email,
+                                      expression: "dealer.email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "email",
+                                    name: "email",
+                                    placeholder: "Email address",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Address")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.address,
+                                      expression: "dealer.address"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    name: "address",
+                                    placeholder: "Address",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.address },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.closeModal()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Close")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Save changes")]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade show",
+                  style: [
+                    _vm.modalShow ? { display: "block" } : { display: "none" }
+                  ],
+                  attrs: {
+                    id: "CreateModal",
+                    tabindex: "-1",
+                    role: "dialog",
+                    "aria-labelledby": "CreateModalLabel",
+                    "aria-hidden": "true"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-dialog",
+                      attrs: { role: "document" }
+                    },
+                    [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _c("div", { staticClass: "modal-header" }, [
+                          _c(
+                            "h5",
+                            {
+                              staticClass: "modal-title",
+                              attrs: { id: "CreateModalLabel" }
+                            },
+                            [_vm._v("Create New Dealer")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              attrs: {
+                                type: "button",
+                                "data-dismiss": "modal",
+                                "aria-label": "Close"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.closeModal()
+                                }
+                              }
+                            },
+                            [
+                              _c("span", { attrs: { "aria-hidden": "true" } }, [
+                                _vm._v("×")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            attrs: { action: "" },
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return _vm.addDealer($event)
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Dealer Name")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.dealer_name,
+                                      expression: "dealer.dealer_name"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    name: "dealer_name",
+                                    placeholder: "Dealer Name",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.dealer_name },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "dealer_name",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Phone Number")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.phone_number,
+                                      expression: "dealer.phone_number"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    name: "phone_number",
+                                    placeholder: "Phone Number",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.phone_number },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "phone_number",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Email")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.email,
+                                      expression: "dealer.email"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "email",
+                                    name: "email",
+                                    placeholder: "Email address",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("label", [_vm._v("Address")]),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dealer.address,
+                                      expression: "dealer.address"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    name: "address",
+                                    placeholder: "Address",
+                                    required: ""
+                                  },
+                                  domProps: { value: _vm.dealer.address },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.dealer,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.closeModal()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Close")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Save changes")]
+                              )
+                            ])
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("h5", { staticClass: "card-title" }, [_vm._v("Dealers")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body row" },
+            _vm._l(_vm.dealers, function(dealer) {
+              return _c(
+                "div",
+                { key: dealer.id, staticClass: "card m-b-30 col-6" },
+                [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "row align-items-center" }, [
+                      _c("div", { staticClass: "col-7" }, [
+                        _c("h4", { staticClass: "card-title font-16" }, [
+                          _vm._v("Name: " + _vm._s(dealer.dealer_name))
+                        ]),
+                        _vm._v(" "),
+                        _c("h5", { staticClass: "mb-0 font-12" }, [
+                          _vm._v(
+                            _vm._s(dealer.phone_number) +
+                              " | " +
+                              _vm._s(dealer.email) +
+                              " | " +
+                              _vm._s(dealer.address)
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-5" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-round btn-danger-rgba pull-right",
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteDealer(dealer.id)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "feather icon-trash-2" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-round btn-warning-rgba pull-right",
+                            on: {
+                              click: function($event) {
+                                return _vm.editDealer(dealer)
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "feather icon-edit" })]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer" }, [
+                    _c("div", { staticClass: "row align-items-center" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _c("span", { staticClass: "font-13" }, [
+                          _vm._v(
+                            _vm._s(_vm.moment(dealer.updated_at).fromNow())
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("nav", { attrs: { "aria-label": "Page navigation" } }, [
+            _c("ul", { staticClass: "pagination" }, [
+              _c(
+                "li",
+                { class: [{ disabled: !_vm.pagination.prev_page_url }] },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm",
+                      attrs: { href: "#", "aria-label": "Previous" },
+                      on: {
+                        click: function($event) {
+                          return _vm.fetchCoupons(_vm.pagination.prev_page_url)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("«")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "disabled" }, [
+                _c(
+                  "a",
+                  { staticClass: "page-link text-dark", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "Page " +
+                        _vm._s(_vm.pagination.current_page) +
+                        " of " +
+                        _vm._s(_vm.pagination.last_page)
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                { class: [{ disabled: !_vm.pagination.next_page_url }] },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm",
+                      attrs: { href: "#", "aria-label": "Next" },
+                      on: {
+                        click: function($event) {
+                          return _vm.fetchCoupons(_vm.pagination.next_page_url)
+                        }
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("»")
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("li", { staticClass: "page-link text-dark" }, [
+                _vm._v(_vm._s(_vm.dealers.length) + " records total")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -72382,6 +73380,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('orders', __webpack_require__(/*! ./components/OrdersComponent.vue */ "./resources/js/components/OrdersComponent.vue")["default"]);
 Vue.component('coupons', __webpack_require__(/*! ./components/CouponsComponent.vue */ "./resources/js/components/CouponsComponent.vue")["default"]);
 Vue.component('customers', __webpack_require__(/*! ./components/CustomersComponent.vue */ "./resources/js/components/CustomersComponent.vue")["default"]);
+Vue.component('dealers', __webpack_require__(/*! ./components/DealersComponent.vue */ "./resources/js/components/DealersComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -72572,6 +73571,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomersComponent_vue_vue_type_template_id_377065d3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomersComponent_vue_vue_type_template_id_377065d3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DealersComponent.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/DealersComponent.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DealersComponent.vue?vue&type=template&id=71ae298e& */ "./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e&");
+/* harmony import */ var _DealersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DealersComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/DealersComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DealersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DealersComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DealersComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/DealersComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DealersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DealersComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DealersComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DealersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./DealersComponent.vue?vue&type=template&id=71ae298e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DealersComponent.vue?vue&type=template&id=71ae298e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DealersComponent_vue_vue_type_template_id_71ae298e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

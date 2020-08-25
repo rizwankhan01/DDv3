@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('orders', require('./components/OrdersComponent.vue').default);
 Vue.component('coupons', require('./components/CouponsComponent.vue').default);
 Vue.component('customers', require('./components/CustomersComponent.vue').default);
+Vue.component('dealers', require('./components/DealersComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

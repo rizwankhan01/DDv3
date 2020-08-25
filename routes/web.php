@@ -49,3 +49,6 @@ Route::get('/coupons', function(){
 Route::get('/customers', function(){
   return view('admin.customers');
 });
+Route::get('/dealers', function(){
+  return view('admin.dealers');
+});

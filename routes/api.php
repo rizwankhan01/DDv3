@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('orders','Api\OrdersController');
 Route::resource('coupons','Api\CouponsController');
 Route::resource('customers','Api\CustomersController');
+Route::resource('dealers','Api\DealersController');
