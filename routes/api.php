@@ -22,3 +22,4 @@ Route::resource('orders','Api\OrdersController');
 Route::resource('coupons','Api\CouponsController');
 Route::resource('customers','Api\CustomersController');
 Route::resource('dealers','Api\DealersController');
+Route::resource('brands','Api\BrandsController');
