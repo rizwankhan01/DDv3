@@ -53,6 +53,14 @@
         <img src="assets\images\svg-icon\basic.svg" class="img-fluid" alt="basic"><span>Models</span>
       </router-link>
       </li>
+      </li>
+      <li>
+        <router-link active-class="active"
+                 exact :to="{ name: 'settings' }"
+                 class="nav-link">
+        <img src="assets\images\svg-icon\basic.svg" class="img-fluid" alt="basic"><span>Settings</span>
+      </router-link>
+      </li>
   </ul>
   </div>
   <!-- End Navigationbar -->

@@ -4,6 +4,7 @@ import Customers from '../pages/Customers.vue'
 import Dealers from '../pages/Dealers.vue'
 import Models from '../pages/Models.vue'
 import Brands from '../pages/Brands.vue'
+import Settings from '../pages/Settings.vue'
 
 export default{
   mode: 'history',
@@ -37,6 +38,11 @@ export default{
       path: '/brands',
       name: 'brands',
       component: Brands
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: Settings
     }
   ]
 }
