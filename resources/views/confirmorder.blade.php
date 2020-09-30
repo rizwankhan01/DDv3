@@ -89,20 +89,25 @@
 </thead>
 <tbody>
 @foreach($olist as $list)
-@if($list->prod_type=='ADDON')
-<tr>
-<td class="pro-thumbnail"><a href="#"><img src="{{$list->addon_product->image}}"
-alt="Product"></a></td>
-<td class="pro-title"><a href="#">{{$list->addon_product->name}}</a></td>
-<td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
-</tr>
-@elseif($list->prod_type!='COUPON')
-<tr>
-<td class="pro-thumbnail"><a href="#"><img src="{{$list->color->image}}"
-alt="Product"></a></td>
-<td class="pro-title"><a href="#">{{ $list->color->model->name }} ({{$list->color->name}}) - {{ $list->prod_type }}</a></td>
-<td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
-</tr>
+@if($list->prod_type=='COUPON')
+  <tr>
+    <td></td>
+    <td class="pro-title"><a href='#'>{{ $list->coupon->name }} - Coupon Code</a></td>
+    <td class="pro-price"><span>&#8377; - {{ abs($list->price) }}</span></td>
+  </tr>
+@elseif($list->prod_type=='ADDON')
+  <tr>
+    <td class="pro-thumbnail"><a href="#">
+      <img src="{{ URL::asset('img/tg.jpg') }}" alt="Product"></a></td>
+    <td class="pro-title"><a href="#">{{ $list->addonproduct->name }}</a></td>
+    <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
+  </tr>
+@elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+  <tr>
+    <td class="pro-thumbnail"><a href="#"><img src="storage/{{ $list->color->image }}"></a></td>
+    <td class="pro-title"><a href="#">{{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}</a></td>
+    <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
+  </tr>
 @endif
 @endforeach
 </tbody>
@@ -181,16 +186,14 @@ alt="Product"></a></td>
 <h4>Product <span>Total</span></h4>
 <ul>
 @foreach($olist as $list)
-@if($list->prod_type=='ADDON')
-<li>{{$list->addon_product->name}} <span>&#8377; {{ $list->price }}</span></li>
-@elseif($list->prod_type!='COUPON')
-<li>{{$list->color->model->name}} ({{$list->color->name}})<br class="hidden-md"> {{ $list->prod_type }} <span>&#8377; {{ round($list->price/1.18) }}</span></li>
-@else
-<li>{{$list->coupon->name}} - COUPON <span>- &#8377; {{ abs($list->price )}}</span></li>
+@if($list->prod_type=='COUPON')
+  <li>{{$list->coupon->name}} - COUPON <span>- &#8377; {{ abs($list->price )}}</span></li>
+@elseif( $list->prod_type=='ADDON' )
+  <li>{{ $list->addonproduct->name }} <span>&#8377; {{ $list->price }}</span></li>
+@elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+  <li>{{$list->color->model->name}} ({{$list->color->name }})<br class="hidden-md"> {{ $list->prod_type }} <span>&#8377; {{ $list->price }}</span></li>
 @endif
 @endforeach
-<li>CGST<span>&#8377; {{  round(($pricefortax->price/1.18)*0.09) }}</span></li>
-<li>SGST<span>&#8377; {{  round(($pricefortax->price/1.18)*0.09) }}</span></li>
 </ul>
 <br>
 <h4>Grand Total <span>&#8377; {{ $olist->sum('price') }}</span></h4>

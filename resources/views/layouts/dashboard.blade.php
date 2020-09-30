@@ -87,22 +87,40 @@
 <!-- Start Navigationbar -->
 <div class="navigationbar">
 <ul class="vertical-menu">
-    <li>
+    <!--<li>
         <a href="javaScript:void();">
           <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span><i class="feather icon-chevron-right pull-right"></i>
         </a>
         <ul class="vertical-submenu">
             <li><a href="/coupons">Coupons</a></li>
         </ul>
+    </li>-->
+    <li><a href="javaScript:void();">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Orders</span><i class="feather icon-chevron-right pull-right"></i>
+    </a>
+    <ul class="vertical-submenu">
+      <li><a href="/home">Open</a></li>
+      <li><a href="/close">Closed</a></li>
+      <li><a href="/cancel">Cancelled</a></li>
+    </ul>
     </li>
+    <li><a href="/brands">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
+    </a></li>
+    <li><a href="/models">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Models</span>
+    </a></li>
+    <li><a href="/modelcolors">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Colors</span>
+    </a></li>
     <li><a href="/coupons">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Coupons</span>
     </a></li>
-    <li><a href="/customers">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Customers</span>
-    </a></li>
     <li><a href="/dealers">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Dealers</span>
+    </a></li>
+    <li><a href="/customers">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Customers</span>
     </a></li>
     <li>
       <a href="{{ route('logout') }}"
@@ -126,7 +144,7 @@
 <div class="row align-items-center">
 <div class="col-md-12">
     <div class="mobile-logobar">
-        <a href="index.html" class="mobile-logo"><img src="{{ asset('assets\images\logo.svg') }}" class="img-fluid" alt="logo"></a>
+        <a href="/" class="mobile-logo"><img src="{{ asset('assets\images\logo.svg') }}" class="img-fluid" alt="logo"></a>
     </div>
     <div class="mobile-togglebar">
         <ul class="list-inline mb-0">
@@ -182,8 +200,8 @@
         </ul>
     </div>
     <div class="infobar">
-        <ul class="list-inline mb-0">
-            <li class="list-inline-item">
+        <ul class="list-inline">
+            <!--<li class="list-inline-item">
                 <div class="settingbar">
                     <a href="javascript:void(0)" id="infobar-settings-open" class="infobar-icon">
                         <img src="{{ asset('assets\images\svg-icon\settings.svg') }}" class="img-fluid" alt="settings">
@@ -211,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li>-->
             <li class="list-inline-item">
                 <div class="profilebar">
                     <div class="dropdown">
@@ -261,7 +279,7 @@
 <!-- Start Footerbar -->
 <div class="footerbar">
 <footer class="footer">
-<p class="mb-0">© 2020 Doctor Display - All Rights Reserved.</p>
+<p class="mb-0">© {{ date('Y') }} Doctor Display - All Rights Reserved.</p>
 </footer>
 </div>
 <!-- End Footerbar -->

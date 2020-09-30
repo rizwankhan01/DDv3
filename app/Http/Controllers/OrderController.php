@@ -75,29 +75,6 @@ class OrderController extends Controller
         $olist->save();
         //inserting order id and TG
         if($request->tg!=0){
-        $olist2 = new order_lists;
-        $olist2->order_id = $order_id;
-        $olist2->color_id = 1;
-        $olist2->price    = $request->tg;
-        $olist2->prod_type = "ADDON";
-        $olist2->save();
-        }
-        }else{
-        //creating new order
-        $orders = new orders;
-        $orders->customer_id  = $request->cus_id;
-        $orders->save();
-        $order_id = $orders->id;
-        Session::put('order_id',$order_id);
-        // inserting order id and color id
-        $olist  = new order_lists;
-        $olist->order_id  = $order_id;
-        $olist->color_id  = $request->color_id;
-        $olist->price     = $request->price;
-        $olist->prod_type = $request->prod_type;
-        $olist->save();
-        // inserting order id and TG
-        if($request->tg!=0){
           $olist2 = new order_lists;
           $olist2->order_id = $order_id;
           $olist2->color_id = 1;
@@ -105,6 +82,29 @@ class OrderController extends Controller
           $olist2->prod_type = "ADDON";
           $olist2->save();
         }
+        }else{
+          //creating new order
+          $orders = new orders;
+          $orders->customer_id  = $request->cus_id;
+          $orders->save();
+          $order_id = $orders->id;
+          Session::put('order_id',$order_id);
+          // inserting order id and color id
+          $olist  = new order_lists;
+          $olist->order_id  = $order_id;
+          $olist->color_id  = $request->color_id;
+          $olist->price     = $request->price;
+          $olist->prod_type = $request->prod_type;
+          $olist->save();
+          // inserting order id and TG
+          if($request->tg!=0){
+            $olist2 = new order_lists;
+            $olist2->order_id = $order_id;
+            $olist2->color_id = 1;
+            $olist2->price    = $request->tg;
+            $olist2->prod_type = "ADDON";
+            $olist2->save();
+          }
         }
         return redirect('/confirmorder');
     }

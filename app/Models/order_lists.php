@@ -15,10 +15,10 @@ class order_lists extends Model
     ];
 
     public function color(){
-      return $this->belongsTo(colors::class);
+      return $this->belongsTo(colors::class, 'color_id');
     }
 
-    public function addon_product(){
+    public function addonproduct(){
       return $this->belongsTo(addon_products::class, 'color_id');
     }
 
@@ -29,4 +29,5 @@ class order_lists extends Model
     public function order(){
       return $this->belongsTo(orders::class);
     }
+
 }

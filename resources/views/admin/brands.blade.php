@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title') Dealers | Doctor Display Dashboard @endsection
+@section('title') Brands | Doctor Display Dashboard @endsection
 
 @section('contentbar')
   <div class="contentbar mt-100">
@@ -16,30 +16,34 @@
                           <div class="modal-dialog" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                          <h5 class="modal-title" id="CreateModalLabel">Create New Dealer</h5>
+                          <h5 class="modal-title" id="CreateModalLabel">Create New Brand</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form action="/dealers" method="post">
+                          <form action="/brands" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <div class="modal-body">
                             <div class="form-group">
-                              <label>Dealer Name</label>
-                              <input type="text" class="form-control" name="dealer_name" placeholder="Dealer Name" required>
+                              <label>Brand Name</label>
+                              <input type="text" class="form-control" name="name" placeholder="Brand Name" required>
                             </div>
                             <div class="form-group">
-                              <label>Phone Number</label>
-                              <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" required>
+                              <label>Description</label>
+                              <input type="text" class="form-control" name="description" placeholder="Description" required>
                             </div>
                             <div class="form-group">
-                              <label>Address</label>
-                              <input type='text' class='form-control' name='address' placeholder="Address" required>
+                              <label>Meta Title</label>
+                              <input type="text" class="form-control" name="meta_title" placeholder="Meta Title" required>
                             </div>
                             <div class="form-group">
-                              <label>Email</label>
-                              <input type='email' class='form-control' name='email' placeholder="Email Address" required>
+                              <label>Meta Description</label>
+                              <input type="text" class="form-control" name="meta_description" placeholder="Meta Description" required>
+                            </div>
+                            <div class="form-group">
+                              <label>Brand Image</label>
+                              <input type='file' class='form-control' name='brand_image' accept='.png' required>
                             </div>
                             </div>
                             <div class="modal-footer">
@@ -51,42 +55,47 @@
                           </div>
                           </div>
                       </div>
-                      @if(!empty($dealer))
-                        <h5 class="card-title">{{ $dealer->dealer_name }}</h5>
+                      @if(!empty($brand))
+                        <h5 class="card-title">{{ $brand->name }}</h5>
                       @else
-                        <h5 class="card-title">All Dealers</h5>
+                        <h5 class="card-title">All Brands</h5>
                       @endif
                   </div>
                   <div class="card-body">
-                    @if(!empty($dealer))
-                      <form action="/dealers/{{ $dealer->id }}" method="post">
+                    @if(!empty($brand))
+                      <form action="/brands/{{ $brand->id }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('put')}}
                         <div class="modal-body">
-                          <div class="form-group">
-                            <label>Dealer Name</label>
-                            <input type="text" class="form-control" name="dealer_name" value="{{ $dealer->dealer_name }}" placeholder="Dealer Name" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="number" class="form-control" name="phone_number" value="{{ $dealer->phone_number }}" placeholder="Phone Number" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Address</label>
-                            <input type='text' class='form-control' name='address' value="{{ $dealer->address }}" placeholder="Address" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Email</label>
-                            <input type='email' class='form-control' name='email' placeholder="Email Address" value="{{ $dealer->email }}" required>
-                          </div>
+                        <div class="form-group">
+                          <label>Brand Name</label>
+                          <input type="text" class="form-control" name="name" value="{{ $brand->name }}" placeholder="Brand Name" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Description</label>
+                          <input type="text" class="form-control" name="description" value="{{ $brand->description }}" placeholder="Description" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Meta Title</label>
+                          <input type="text" class="form-control" name="meta_title" value="{{ $brand->meta_title }}" placeholder="Meta Title" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Meta Description</label>
+                          <input type="text" class="form-control" name="meta_description" value="{{ $brand->meta_description }}" placeholder="Meta Description" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Brand Image</label>
+                          <img src="../storage/{{ $brand->brand_logo}}" style="width:25px;height:25px;">
+                          <input type='file' class='form-control' name='brand_image' accept='.png'>
+                        </div>
                         </div>
                         <div class="modal-footer">
-                          <a href="/dealers" class="btn btn-secondary">Back</a>
+                          <a href="/brands" class="btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                       </form>
                     @else
-                    <h6 class="card-subtitle">You can Create/ Edit/ Delete Dealers Here.</h6>
+                    <h6 class="card-subtitle">You can Create/ Edit/ Delete Brands Here.</h6>
                       <div class="table-responsive">
                         @if(session('status'))
                           <div class="alert alert-success" role="alert">
@@ -96,25 +105,27 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
-                                  <th>Dealer Name</th>
-                                  <th>Phone Number</th>
-                                  <th>Address</th>
-                                  <th>Email</th>
+                                  <th>Name</th>
+                                  <th>Image</th>
+                                  <th>Description</th>
+                                  <th>Meta Title</th>
+                                  <th>Meta Description</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
                               <tbody>
-                              @foreach($dealers as $dealer)
+                              @foreach($brands as $brand)
                               <tr>
-                                  <td>{{ $dealer->dealer_name }}</td>
-                                  <td>{{ $dealer->phone_number }}</td>
-                                  <td>{{ $dealer->address }}</td>
-                                  <td>{{ $dealer->email }}</td>
+                                  <td>{{ $brand->name }}</td>
+                                  <td><img src='storage/{{ $brand->brand_logo }}' style="width:50px;height:50px;"></td>
+                                  <td>{{ $brand->description }}</td>
+                                  <td>{{ $brand->meta_title }}</td>
+                                  <td>{{ $brand->meta_description }}</td>
                                   <td>
-                                    <form action='/dealers/{{ $dealer->id }}' method='post'>
+                                    <form action='/brands/{{ $brand->id }}' method='post'>
                                       {{ csrf_field() }}
                                       {{ method_field('delete') }}
-                                      <a href='/dealers/{{ $dealer->id }}' class='btn btn-sm btn-warning'>Edit</a>
+                                      <a href='/brands/{{ $brand->id }}' class='btn btn-sm btn-warning'>Edit</a>
                                       <input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>
                                     </form>
                                   </td>

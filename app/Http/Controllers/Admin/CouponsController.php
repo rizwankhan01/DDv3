@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\customers;
-use App\Models\colors;
-use Session;
+use App\Models\coupons;
 
-class CustomerController extends Controller
+class CouponsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $coupons = coupons::all();
+        return view('admin.coupons', compact('coupons'));
     }
 
     /**
@@ -37,23 +37,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-          $check    = customers::where('phone_number',$request->input('phone'))->first();
-        if(empty($check->id)){ // checking if phone number already exists
-          $customer = new customers();
-          $customer->phone_number = $request->input('phone');
-          $customer->ga_id        = $request->input('ga_id');
-          $customer->otp          = rand(1111,9999);
-          $customer->save();
-          $cus_id   = $customer->id;
-        }else{
-          $cus_id   = $check->id;
-        }
-          $color_id = $request->input('color_id');
-          $color    = colors::findOrFail($color_id);
-          $model    = $color->model->name;
-          Session::put('cus_id', $cus_id);
-          Session::put('color_id',$color_id);
-          return redirect('product/'.$model.'/'.$color->name);
+        $coupon = new coupons;
+        $coupon->name     =   $request->input('name');
+        $coupon->validity =   $request->input('validity');
+        $coupon->amount   =   $request->input('amount');
+        $coupon->status   =   1;
+        $coupon->save();
+        return redirect('/coupons')->with('status','New Coupon Created Successfully!');
     }
 
     /**
@@ -64,7 +54,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+      $coupon = coupons::findOrFail($id);
+      return view('admin.coupons', compact('coupon'));
     }
 
     /**
@@ -87,7 +78,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $coupon = coupons::findOrFail($id);
+        $coupon->name     =   $request->input('name');
+        $coupon->validity =   $request->input('validity');
+        $coupon->amount   =   $request->input('amount');
+        $coupon->status   =   $request->input('status');
+        $coupon->update();
+        return redirect('/coupons')->with('status','Coupon Updated Successfully!');
     }
 
     /**
@@ -98,6 +95,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coupon = coupons::findOrFail($id);
+        $coupon->delete();
+        return redirect('/coupons')->with('status','Coupon Deleted Successfully!');
     }
 }

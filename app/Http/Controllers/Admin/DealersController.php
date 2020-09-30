@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\customers;
-use App\Models\colors;
-use Session;
+use App\Models\dealers;
 
-class CustomerController extends Controller
+class DealersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $dealers = dealers::all();
+        return view('admin.dealers',compact('dealers'));
     }
 
     /**
@@ -37,23 +37,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-          $check    = customers::where('phone_number',$request->input('phone'))->first();
-        if(empty($check->id)){ // checking if phone number already exists
-          $customer = new customers();
-          $customer->phone_number = $request->input('phone');
-          $customer->ga_id        = $request->input('ga_id');
-          $customer->otp          = rand(1111,9999);
-          $customer->save();
-          $cus_id   = $customer->id;
-        }else{
-          $cus_id   = $check->id;
-        }
-          $color_id = $request->input('color_id');
-          $color    = colors::findOrFail($color_id);
-          $model    = $color->model->name;
-          Session::put('cus_id', $cus_id);
-          Session::put('color_id',$color_id);
-          return redirect('product/'.$model.'/'.$color->name);
+        $dealer = new dealers;
+        $dealer->dealer_name  = $request->input('dealer_name');
+        $dealer->phone_number = $request->input('phone_number');
+        $dealer->address      = $request->input('address');
+        $dealer->email        = $request->input('email');
+        $dealer->save();
+        return redirect('/dealers')->with('status','New Dealer created Successfully!');
     }
 
     /**
@@ -64,7 +54,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $dealer = dealers::findOrFail($id);
+        return view('admin.dealers', compact('dealer'));
     }
 
     /**
@@ -87,7 +78,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $dealer = dealers::findOrFail($id);
+      $dealer->dealer_name  = $request->input('dealer_name');
+      $dealer->phone_number = $request->input('phone_number');
+      $dealer->address      = $request->input('address');
+      $dealer->email        = $request->input('email');
+      $dealer->update();
+      return redirect('/dealers')->with('status','Dealer updated Successfully!');
     }
 
     /**
@@ -98,6 +95,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dealer = dealers::findOrFail($id);
+        $dealer->delete();
+        return redirect('/dealers')->with('status','Dealer deleted Successfully!');
     }
 }

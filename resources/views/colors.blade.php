@@ -59,7 +59,7 @@
                             <div class="brand">
                               <a href="#" data-toggle="modal" data-target="#exampleModal">
                                 <figure>
-                                <img src="../{{$color->image}}" class="logo-thumbnail" alt="{{$color->name}} image">
+                                <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->name}} image">
                                 <figcaption>{{$color->name}}</figcaption>
                                 </figure>
                               </a>

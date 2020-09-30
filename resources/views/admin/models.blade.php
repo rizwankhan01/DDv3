@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title') Dealers | Doctor Display Dashboard @endsection
+@section('title') Models | Doctor Display Dashboard @endsection
 
 @section('contentbar')
   <div class="contentbar mt-100">
@@ -16,30 +16,47 @@
                           <div class="modal-dialog" role="document">
                           <div class="modal-content">
                           <div class="modal-header">
-                          <h5 class="modal-title" id="CreateModalLabel">Create New Dealer</h5>
+                          <h5 class="modal-title" id="CreateModalLabel">Create New Model</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form action="/dealers" method="post">
+                          <form action="/models" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <div class="modal-body">
                             <div class="form-group">
-                              <label>Dealer Name</label>
-                              <input type="text" class="form-control" name="dealer_name" placeholder="Dealer Name" required>
+                              <label>Brand Name</label>
+                              <select class="form-control" name="brand_id" required>
+                                <option value="">Select Brand</option>
+                                @foreach($brands as $brand)
+                                  <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label>Phone Number</label>
-                              <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" required>
+                              <label>Series</label>
+                              <input type="text" class="form-control" name="series" placeholder="Series" required>
                             </div>
                             <div class="form-group">
-                              <label>Address</label>
-                              <input type='text' class='form-control' name='address' placeholder="Address" required>
+                              <label>Model Name</label>
+                              <input type="text" class="form-control" name="name" placeholder="Model Name" required>
                             </div>
                             <div class="form-group">
-                              <label>Email</label>
-                              <input type='email' class='form-control' name='email' placeholder="Email Address" required>
+                              <label>Description</label>
+                              <input type="text" class="form-control" name="description" placeholder="Description" required>
+                            </div>
+                            <div class="form-group">
+                              <label>Meta Title</label>
+                              <input type="text" class="form-control" name="meta_title" placeholder="Meta Title" required>
+                            </div>
+                            <div class="form-group">
+                              <label>Meta Description</label>
+                              <input type="text" class="form-control" name="meta_description" placeholder="Meta Description" required>
+                            </div>
+                            <div class="form-group">
+                              <label>Model Image</label>
+                              <input type='file' class='form-control' name='model_image' accept='.png' required>
                             </div>
                             </div>
                             <div class="modal-footer">
@@ -51,42 +68,60 @@
                           </div>
                           </div>
                       </div>
-                      @if(!empty($dealer))
-                        <h5 class="card-title">{{ $dealer->dealer_name }}</h5>
+                      @if(!empty($model))
+                        <h5 class="card-title">{{ $model->name }}</h5>
                       @else
-                        <h5 class="card-title">All Dealers</h5>
+                        <h5 class="card-title">All Models</h5>
                       @endif
                   </div>
                   <div class="card-body">
-                    @if(!empty($dealer))
-                      <form action="/dealers/{{ $dealer->id }}" method="post">
+                    @if(!empty($model))
+                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('put')}}
                         <div class="modal-body">
-                          <div class="form-group">
-                            <label>Dealer Name</label>
-                            <input type="text" class="form-control" name="dealer_name" value="{{ $dealer->dealer_name }}" placeholder="Dealer Name" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="number" class="form-control" name="phone_number" value="{{ $dealer->phone_number }}" placeholder="Phone Number" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Address</label>
-                            <input type='text' class='form-control' name='address' value="{{ $dealer->address }}" placeholder="Address" required>
-                          </div>
-                          <div class="form-group">
-                            <label>Email</label>
-                            <input type='email' class='form-control' name='email' placeholder="Email Address" value="{{ $dealer->email }}" required>
-                          </div>
+                        <div class="form-group">
+                          <label>Brand Name</label>
+                          <select class="form-control" name="brand_id" required>
+                            <option value="">Select Brand</option>
+                            @foreach($brands as $brand)
+                              <option value="{{ $brand->id }}" @if($model->brand_id == $brand->id) {{ 'selected' }} @endif>{{ $brand->name }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Series</label>
+                          <input type="text" class="form-control" name="series" value="{{ $model->series }}" placeholder="Series" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Model Name</label>
+                          <input type="text" class="form-control" name="name" value="{{ $model->name }}" placeholder="Model Name" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Description</label>
+                          <input type="text" class="form-control" name="description" value="{{ $model->description }}" placeholder="Description" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Meta Title</label>
+                          <input type="text" class="form-control" name="meta_title" value="{{ $model->meta_title }}" placeholder="Meta Title" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Meta Description</label>
+                          <input type="text" class="form-control" name="meta_description" value="{{ $model->meta_description }}" placeholder="Meta Description" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Model Image</label>
+                          <img src='../storage/{{ $model->image }}' style='width:25px;height:25px;'>
+                          <input type='file' class='form-control' name='model_image' accept='.png'>
+                        </div>
                         </div>
                         <div class="modal-footer">
-                          <a href="/dealers" class="btn btn-secondary">Back</a>
+                          <a href="/models" class="btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                       </form>
                     @else
-                    <h6 class="card-subtitle">You can Create/ Edit/ Delete Dealers Here.</h6>
+                    <h6 class="card-subtitle">You can Create/ Edit/ Delete Models Here.</h6>
                       <div class="table-responsive">
                         @if(session('status'))
                           <div class="alert alert-success" role="alert">
@@ -96,25 +131,31 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
-                                  <th>Dealer Name</th>
-                                  <th>Phone Number</th>
-                                  <th>Address</th>
-                                  <th>Email</th>
+                                  <th>Name</th>
+                                  <th>Brand</th>
+                                  <th>Series</th>
+                                  <th>Image</th>
+                                  <th>Description</th>
+                                  <th>Meta Title</th>
+                                  <th>Meta Description</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
                               <tbody>
-                              @foreach($dealers as $dealer)
+                              @foreach($models as $model)
                               <tr>
-                                  <td>{{ $dealer->dealer_name }}</td>
-                                  <td>{{ $dealer->phone_number }}</td>
-                                  <td>{{ $dealer->address }}</td>
-                                  <td>{{ $dealer->email }}</td>
+                                  <td>{{ $model->name }}</td>
+                                  <td>{{ $model->brand->name }}</td>
+                                  <td>{{ $model->series }}</td>
+                                  <td><img src='storage/{{ $model->image }}' style="width:50px;height:50px;"></td>
+                                  <td>{{ $model->description }}</td>
+                                  <td>{{ $model->meta_title }}</td>
+                                  <td>{{ $model->meta_description }}</td>
                                   <td>
-                                    <form action='/dealers/{{ $dealer->id }}' method='post'>
+                                    <form action='/models/{{ $model->id }}' method='post'>
                                       {{ csrf_field() }}
                                       {{ method_field('delete') }}
-                                      <a href='/dealers/{{ $dealer->id }}' class='btn btn-sm btn-warning'>Edit</a>
+                                      <a href='/models/{{ $model->id }}' class='btn btn-sm btn-warning'>Edit</a>
                                       <input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>
                                     </form>
                                   </td>

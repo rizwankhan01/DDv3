@@ -34,7 +34,7 @@
             <img src="https://doctordisplay.in/images/logo-mail.png" class="hidden-xs" alt="DoctorDisplay Logo">
           </div>
           <div class="mb-4">
-            <h4>Tax Invoice <small class="badge badge-success">Payable after service</small></h4>
+            <h4>Invoice <small class="badge badge-success">Payable after service</small></h4>
           </div>
           <div class="row justify-content-between mb-4 mb-md-5">
             <div class="col-sm">
@@ -75,7 +75,7 @@
                 @if($list->prod_type=='ADDON')
                 <tr>
                   <th scope="row" class="text-left">
-                    {{$list->addon_product->name}}
+                    {{$list->addonproduct->name}}
                   </th>
                   <td class="text-right">
                     &#8377; {{ $list->price }}
@@ -87,7 +87,7 @@
                     {{$list->color->model->name}} ({{$list->color->name}})<br class="hidden-md"> {{ $list->prod_type }}
                   </th>
                   <td class="text-right">
-                    &#8377; {{ round($list->price/1.18) }}
+                    &#8377; {{ round($list->price) }}
                   </td>
                 </tr>
                 @else
@@ -101,22 +101,6 @@
                 </tr>
                 @endif
                 @endforeach
-                <tr>
-                  <th scope="row" class="text-left">
-                    CGST
-                  </th>
-                  <td class="text-right">
-                    &#8377; {{  round(($pricefortax->price/1.18)*0.09) }}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-left">
-                    SGST
-                  </th>
-                  <td class="text-right">
-                    &#8377; {{  round(($pricefortax->price/1.18)*0.09) }}
-                  </td>
-                </tr>
               </tbody>
             </table>
             <div class="d-flex justify-content-end text-right mb-4 py-4 border-bottom">

@@ -40,8 +40,14 @@ Route::get('/report', function(){
 
 //////////////////////////dashboard///////////////////////////
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
+  Route::resource('/home', 'HomeController');
+  Route::resource('/brands','Admin\BrandsController');
+  Route::resource('/models','Admin\ModelsController');
+  Route::resource('/modelcolors','Admin\ColorsController');
+  Route::resource('/coupons','Admin\CouponsController');
+  Route::resource('/dealers','Admin\DealersController');
+});
 /*
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/coupons', function(){

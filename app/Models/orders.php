@@ -17,4 +17,8 @@ class orders extends Model
     public function customer(){
       return $this->belongsTo(customers::class, 'customer_id');
     }
+
+    public function address(){
+      return $this->belongsTo(addresses::class,'address_id');
+    }
 }

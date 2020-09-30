@@ -82,7 +82,7 @@
                     <div class="product__details__container">
                         <div class="tab_container big_img_container">
                             <div class="big_img tab-pane fade show active" id="img1" role="tabpanel">
-                                <img class="w-100" src="../../{{$color->image}}" alt="{{$color->name}} image">
+                                <img class="w-100" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
-                                  <img class="w-t float-left hidden-md" src="../../{{$color->image}}" alt="{{$color->name}} image">
+                                  <img class="w-t float-left hidden-md" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
                                 <h1 class="heading heading-h4">{{$models->brand->name}} {{$models->name}}</h1>&nbsp;&nbsp;
                                 <div class="product-badges">
                                     <span>New</span>
@@ -123,18 +123,22 @@
                             <div class="description">
                               <div class="row">
                                     <ul class="nav nav-pills mb-3 col-md-12 col-xs-12" id="pills-tab" role="tablist">
+                                      @if($pricing->ord_stock_availablity==1)
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link active" id="basic-tab" data-toggle="pill"
                                                 href="#basic" role="tab" aria-controls="basic"
                                                 aria-selected="true" style="border: 1px solid #ddd;"
                                                 onclick="changevalue({{ $pricing->ord_selling_price }},'BASIC')">Basic</a>
                                         </li>
+                                      @endif
+                                      @if($pricing->org_stock_availablity==1)
                                         <li class="nav-item col-md-3 col-xs-6">
                                             <a class="nav-link" id="premium-tab" data-toggle="pill"
                                                 href="#premium" role="tab" aria-controls="premium"
                                                 aria-selected="false" style="border: 1px solid #ddd;"
                                                 onclick="changevalue({{ $pricing->org_selling_price }},'PREMIUM')">Premium</a>
                                         </li>
+                                      @endif
                                     </ul>
                                     <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
                                       <div class="tab-pane fade show active" id="basic" role="tabpanel"
@@ -185,6 +189,7 @@
               <small>It will only cost you &#8377;99!</small></h5>
             </center><br>
             <span class='row'>
+              <!-- with tg -->
             <form action="/confirmorder" method="post" class='col-md-6 col-6'>
               {{ csrf_field() }}
               {{ method_field('post') }}
@@ -200,6 +205,7 @@
             <input type='number' name='tg' value='99' hidden>
               <button type="submit" class="float-right brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Yes</button>
             </form>
+            <!-- without tg -->
             <form action="/confirmorder" method="post" class='col-md-6 col-6'>
               {{ csrf_field() }}
               {{ method_field('post') }}
@@ -451,9 +457,7 @@
               </div>
                 <div class="single_review_content tab-pane fade" id="descrip" role="tabpanel">
                     <div class="content">
-                        <p>Add an extra-special touch to décor with this charming lantern that features sleek
-                            angles and a modern-edge design. A must-have for your house this holiday. Buy now
-                            to get a special discount for early bird order.</p>
+                        <p>{{ $color->model->description }}</p>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@
                           <div class="brand">
                           <a href="/brand/{{$brand->name}}">
                             <figure>
-                            <img src="{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
+                            <img src="storage/{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
                             <figcaption>{{$brand->name}}</figcaption>
                             </figure>
                           </a>
