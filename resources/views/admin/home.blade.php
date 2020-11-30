@@ -5,6 +5,7 @@
       <div class="row">
           <!-- Start col -->
           @if(!empty($order))
+            @section('title') Order ID: #{{ $order->id }} | Doctor Display Dashboard @endsection
             <div class="col-lg-12">
                 <div class="card m-b-30">
                     <div class="card-header">
@@ -59,7 +60,7 @@
                            @endforeach
                            <tr>
                              <td><b>Total:</b></td>
-                             <td>&#8377; {{ $list->sum('price') }}</td>
+                             <td>&#8377; {{ $olist->sum('price') }}</td>
                            </tr>
                          </tbody>
                        </table>
@@ -73,11 +74,12 @@
                    <h5 class="card-title">Stock Information</h5>
                  </div>
                 <div class="card-body">
-                  
+
                 </div>
                 </div>
              </div>
           @else
+          @section('title') Open Orders | Doctor Display Dashboard @endsection
           <div class="col-lg-12">
               <div class="card m-b-30">
                   <div class="card-header">

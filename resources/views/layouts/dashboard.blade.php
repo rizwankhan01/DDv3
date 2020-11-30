@@ -124,8 +124,8 @@
     </a></li>
     <li>
       <a href="{{ route('logout') }}"
-      onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="profile-icon">
-      <img src="{{ asset('assets\images\svg-icon\logout.svg') }}" class="img-fluid" alt="logout">{{ __('Logout') }}</a>
+      onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+      <img src="{{ asset('assets\images\svg-icon\logout.svg') }}" class="img-fluid" alt="logout"><span>{{ __('Logout') }}</span></a>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
       </form>

@@ -160,7 +160,6 @@
 
                                     <br>
 <p class="bk_pra">
-* Prices displayed are inclusive of 18% GST.<br>
 * Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
 <br><br>
                             </div>
