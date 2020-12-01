@@ -105,11 +105,11 @@ class AccountsController extends Controller
       $user->date_of_join   = $request->input('doj');
       $user->user_type      = $request->input('user_type');
       if($request->hasFile('profile_picture')){
-        $image  = explode('/',$request->file('profile_image')->store('public'));
-        $colors->profile_image  = $image[1];
+        $image  = explode('/',$request->file('profile_picture')->store('public'));
+        $user->profile_image  = $image[1];
       }
       $user->update();
-      return redirect('/accounts')->with('status','User Accounts Updated Successfully!');
+      return redirect()->back()->with('status','User Accounts Updated Successfully!');
     }
 
     /**

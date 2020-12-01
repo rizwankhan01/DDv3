@@ -42,7 +42,7 @@ Route::get('/report', function(){
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
-  
+    Route::resource('/settings','Admin\SettingsController');
 
   Route::group(['middleware' => 'serviceman'], function () {
     Route::resource('/serviceman','Serviceman\ServicemanController');
