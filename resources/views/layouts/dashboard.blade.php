@@ -122,6 +122,12 @@
     <li><a href="/customers">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Customers</span>
     </a></li>
+    <li><a href="/accounts">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Accounts</span>
+    </a></li>
+    <li><a href="/settings">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
+    </a></li>
     <li>
       <a href="{{ route('logout') }}"
       onclick="event.preventDefault();document.getElementById('logout-form').submit();">

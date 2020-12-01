@@ -42,6 +42,8 @@ Route::get('/report', function(){
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
+  
+
   Route::group(['middleware' => 'serviceman'], function () {
     Route::resource('/serviceman','Serviceman\ServicemanController');
   });
@@ -53,5 +55,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/modelcolors','Admin\ColorsController');
     Route::resource('/coupons','Admin\CouponsController');
     Route::resource('/dealers','Admin\DealersController');
+    Route::resource('/accounts','Admin\AccountsController');
   });
 });
