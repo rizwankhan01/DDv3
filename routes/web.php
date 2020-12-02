@@ -50,11 +50,19 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::group(['middleware' =>'admin'], function(){
     Route::resource('/home', 'HomeController');
+    Route::resource('/close','Admin\ClosedController');
+    Route::resource('/cancel','Admin\CancelledController');
     Route::resource('/brands','Admin\BrandsController');
     Route::resource('/models','Admin\ModelsController');
     Route::resource('/modelcolors','Admin\ColorsController');
     Route::resource('/coupons','Admin\CouponsController');
     Route::resource('/dealers','Admin\DealersController');
     Route::resource('/accounts','Admin\AccountsController');
+
+    Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
+    Route::put('/assign/{id}','Admin\OrderControlsController@assign');
+    Route::put('/reschedule/{id}','Admin\OrderControlsController@reschedule');
+    Route::put('/applycoupon/{id}','Admin\OrderControlsController@applycoupon');
+    Route::put('/cancelorder/{id}','Admin\OrderControlsController@cancelorder');
   });
 });

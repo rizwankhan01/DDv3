@@ -20,6 +20,8 @@ class AdminMiddleware
           return redirect('serviceman');
         }else if(auth()->user()->user_type=='Admin'){
           return $next($request);
+        }else{
+          return redirect(403);
         }
       }
     }

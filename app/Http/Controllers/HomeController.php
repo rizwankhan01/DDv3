@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\orders;
 use App\Models\order_lists;
+use App\Models\consultation;
+use App\Models\dealers;
+use App\user;
 
 class HomeController extends Controller
 {
@@ -34,7 +37,14 @@ class HomeController extends Controller
     public function show($id)
     {
       $order  = orders::findOrFail($id);
+      $screen = order_lists::where('order_id',$id)
+                            ->where('prod_type','!=','ADDON')
+                            ->where('prod_type','!=','COUPON')
+                            ->first();
       $olist = order_lists::where('order_id',$id)->get();
-      return view('admin.home', compact('order','olist'));
+      $consultation = consultation::where('order_id',$id)->first();
+      $smen  =  user::where('user_type','Service Man')->get();
+      $dealers  = dealers::all();
+      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers'));
     }
 }

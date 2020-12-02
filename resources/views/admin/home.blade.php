@@ -6,22 +6,45 @@
           <!-- Start col -->
           @if(!empty($order))
             @section('title') Order ID: #{{ $order->id }} | Doctor Display Dashboard @endsection
+            @extends('layouts.ordercontrols')
             <div class="col-lg-12">
-                <div class="card m-b-30">
-                    <div class="card-header">
-                        <div class="widgetbar pull-right">
+            @if(session('status'))
+              <div class="alert alert-success" role="alert">
+                  {{ session('status') }}
+              </div>
+            @endif
+                <div class="card m-b-30" style="background:#171C2A;">
+                    <div class="card-header row">
+                        <div class="col-md-10">
+                        <ul class="vertical-menu">
+                          <li><a href='/home/{{ $order->id }}'><i class="fa fa-archive"></i> <span>Order ID: #{{ $order->id }} | {{ date('d-m-Y', strtotime($order->slot_date)) }} - {{ $order->slot_time }}</span></a></li>
+                          <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $order->customer->name }}</span></a></li>
+                          <li><a href='tel:{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
+                          <li><a href='mailto:{{ $order->customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $order->customer->email }}</span></a></li>
+                          <li><a href="https://maps.google.com/?q={{ $order->customer->address->address }}, {{ $order->customer->address->area }}, {{ $order->customer->address->city }} - {{ $order->customer->address->pincode }}"><i class="fa fa-map-marker"></i>{{ $order->customer->address->address }}, {{ $order->customer->address->area }}, {{ $order->customer->address->city }} - {{ $order->customer->address->pincode }}</a></li>
+                        </ul>
+                        </div>
+                        <div class="col-md-2">
                             @if($order->status==1)
-                              <span class="btn btn-sm btn-success">Open</span>
+                              @if(empty($consultation->id))
+                                <button data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-sm btn-success pull-right col-md-12">Open</button><br><br>
+                              @else
+                                <button data-toggle="modal" data-target=".bd-example-modal-lg2" class="btn btn-sm btn-success pull-right col-md-12">Assign</button><br><br>
+                              @endif
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg3" class="btn btn-sm btn-primary pull-right col-md-12">Reschedule?</button><br><br>
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg4" class="btn btn-sm btn-warning pull-right col-md-12">Apply Coupon</button><br><br>
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg5" class="btn btn-sm btn-danger pull-right col-md-12">Cancel Order</button>
                             @elseif($order->status==2)
-                              <span class="btn btn-sm btn-warning">Assigned</span>
+                              <a href="#" class="btn btn-sm btn-warning pull-right col-md-12">Assigned</a><br><br>
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg3" class="btn btn-sm btn-primary pull-right col-md-12">Reschedule?</button><br><br>
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg4" class="btn btn-sm btn-warning pull-right col-md-12">Apply Coupon</button><br><br>
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg5" class="btn btn-sm btn-danger pull-right col-md-12">Cancel Order</button>
                             @elseif($order->status==3)
-                              <span class="btn btn-sm btn-success">Completed</span>
+                              <a href="#" class="btn btn-sm btn-success pull-right col-md-12">Completed</a><br><br>
                             @elseif($order->status==4)
-                              <span class="btn btn-sm btn-danger">Closed</span>
+                              <a href="#" class="btn btn-sm btn-danger pull-right col-md-12">Cancelled</a><br><br><span>Reason: {{ $order->cancel_reason }}</span><br><br>
                             @endif
                         </div>
-                        <h5 class="card-title">Order ID: #{{ $order->id }}</h5><br>
-                        <h6 class="card-subtitle">This order was placed on {{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}.</h6>
                     </div>
                   </div>
              </div>
@@ -71,13 +94,93 @@
              <div class="col-lg-6">
                <div class="card m-b-30">
                  <div class="card-header">
-                   <h5 class="card-title">Stock Information</h5>
+                   <h5 class="card-title">Technical & Stock Information</h5>
                  </div>
                 <div class="card-body">
-
+                  <div class="table-responsive">
+                      <table class="table table-striped table-bordered">
+                        <tbody>
+                          <tr>
+                            <td><b>Dealer</b></td>
+                            <td>{{ $order->dealer->dealer_name }}</td>
+                            <td>&#8377; {{ $order->stock_price }}</td>
+                          </tr>
+                          <tr>
+                            <td><b>Service Man</b></td>
+                            <td>
+                              <figure>
+                              <img src="../storage/{{ $order->serviceman->profile_image }}" style="width:150px;height:auto;border-radius:25px;">
+                              <figcaption>{{ $order->serviceman->name }}</figcaption>
+                              </figure>
+                            </td>
+                            <td><i>Time Taken</i></td>
+                          </tr>
+                          @if(!empty($order->reschedule_reason))
+                            <tr>
+                              <td><b>Rescheduled</b></td>
+                              <td>{{ $order->reschedule_reason }}</td>
+                              <td></td>
+                            </tr>
+                          @endif
+                          @if(!empty($order->cancel_reason))
+                            <tr>
+                              <td><b>Cancelled</b></td>
+                              <td>{{ $order->cancel_reason }}</td>
+                              <td></td>
+                            </tr>
+                          @endif
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
                 </div>
              </div>
+             @if(!empty($consultation->id))
+               <div class="col-lg-12">
+                 <div class="card m-b-30">
+                   <div class="card-header">
+                     <h5 class="card-title">Consultation Information</h5>
+                   </div>
+                   <div class="card-body">
+                     <div class="table-responsive">
+                         <table class="table table-striped table-bordered">
+                           <tbody>
+                             <tr>
+                               <td>Is the phone in Working Condition?</td>
+                               <td>{{ $consultation->q1 }}</td>
+                             </tr>
+                             <tr>
+                               <td>What kind of damage has happened?</td>
+                               <td>{{ $consultation->q2 }}</td>
+                             </tr>
+                             <tr>
+                               <td>How did the phone fall down?</td>
+                               <td>{{ $consultation->q3 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Is there any water drop?</td>
+                               <td>{{ $consultation->q4 }}</td>
+                             </tr>
+                             <tr>
+                               <td>How old is the phone?</td>
+                               <td>{{ $consultation->q5 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Has the screen been changed before?</td>
+                               <td>{{ $consultation->q6 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Any other issue with the phone?</td>
+                               <td>{{ $consultation->q7 }}</td>
+                             </tr>
+                           </tbody>
+                         </table>
+                       </div>
+                   </div>
+                 </div>
+               </div>
+             @endif
+             <div class="col-lg-12 m-b-30"><center><small>This order was placed on {{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}.</small></center></div>
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection
           <div class="col-lg-12">
