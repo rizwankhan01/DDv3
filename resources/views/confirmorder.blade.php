@@ -171,7 +171,13 @@
 <label>Time Slot*</label>
 <select name="time_slot" class="nice-select" required>
   <option value="">Select Slot</option>
-  <option value="10-11:30 AM">10-11:30 AM</option>
+  <option value='10:00AM to 11:30AM'>10:00AM to 11:30AM</option>
+  <option value='11:30AM to 01:00PM'>11:30AM to 01:00PM</option>
+  <option value='02:00PM to 03:30PM'>02:00PM to 03:30PM</option>
+  <option value='03:30PM to 05:00PM'>03:30PM to 05:00PM</option>
+  <option value='05:00PM to 06:30PM'>05:00PM to 06:30PM</option>
+  <option value='06:30PM to 08:00PM'>06:30PM to 08:00PM</option>
+  <option value='08:30PM to 10:00PM'>08:30PM to 10:00PM</option>
 </select>
 </div>
 </div>

@@ -41,6 +41,10 @@
                               <button data-toggle="modal" data-target=".bd-example-modal-lg5" class="btn btn-sm btn-danger pull-right col-md-12">Cancel Order</button>
                             @elseif($order->status==3)
                               <a href="#" class="btn btn-sm btn-success pull-right col-md-12">Completed</a><br><br>
+                              <div class="row">
+                                <img src="../storage/{{ $corder->pre_image }}" class="col-md-6">
+                                <img src="../storage/{{ $corder->post_image }}" class="col-md-6">
+                              </div>
                             @elseif($order->status==4)
                               <a href="#" class="btn btn-sm btn-danger pull-right col-md-12">Cancelled</a><br><br><span>Reason: {{ $order->cancel_reason }}</span><br><br>
                             @endif
@@ -85,6 +89,12 @@
                              <td><b>Total:</b></td>
                              <td>&#8377; {{ $olist->sum('price') }}</td>
                            </tr>
+                           @if(!empty($corder->payment_type))
+                             <tr>
+                               <td><b>Paid by</b></td>
+                               <td>{{ $corder->payment_type }}</td>
+                             </tr>
+                           @endif
                          </tbody>
                        </table>
                      </div>
@@ -100,11 +110,14 @@
                   <div class="table-responsive">
                       <table class="table table-striped table-bordered">
                         <tbody>
+                          @if(!empty($order->dealer->dealer_name))
                           <tr>
                             <td><b>Dealer</b></td>
                             <td>{{ $order->dealer->dealer_name }}</td>
                             <td>&#8377; {{ $order->stock_price }}</td>
                           </tr>
+                          @endif
+                          @if(!empty($order->serviceman->name))
                           <tr>
                             <td><b>Service Man</b></td>
                             <td>
@@ -113,8 +126,18 @@
                               <figcaption>{{ $order->serviceman->name }}</figcaption>
                               </figure>
                             </td>
-                            <td><i>Time Taken</i></td>
+                            <td>
+                              @if(!empty($corder->start_timestamp))
+                                <?php
+                                $start_t  = new DateTime($corder->start_timestamp);
+                                $end_t    = new DateTime($corder->end_timestamp);
+                                $diff   = $start_t->diff($end_t);
+                                ?>
+                                Completed in {{ $diff->format('%H:%I:%S') }} hours
+                              @endif
+                            </td>
                           </tr>
+                          @endif
                           @if(!empty($order->reschedule_reason))
                             <tr>
                               <td><b>Rescheduled</b></td>
@@ -126,6 +149,20 @@
                             <tr>
                               <td><b>Cancelled</b></td>
                               <td>{{ $order->cancel_reason }}</td>
+                              <td></td>
+                            </tr>
+                          @endif
+                          @if(!empty($order->pickup_reason))
+                            <tr>
+                              <td><b>Picked Up</b></td>
+                              <td>{{ $order->pickup_reason }}</td>
+                              <td></td>
+                            </tr>
+                          @endif
+                          @if(!empty($corder->imei))
+                            <tr>
+                              <td><b>IMEI</b></td>
+                              <td>{{ $corder->imei }}</td>
                               <td></td>
                             </tr>
                           @endif
@@ -194,7 +231,7 @@
                       <h5 class="card-title">Orders</h5>
                   </div>
                   <div class="card-body">
-                      <h6 class="card-subtitle">You can view here pending orders here.</h6>
+                      <h6 class="card-subtitle">You can view pending orders here.</h6>
                       <div class="table-responsive">
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>

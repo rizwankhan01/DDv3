@@ -46,6 +46,12 @@ Route::group(['middleware' => 'auth'], function () {
 
   Route::group(['middleware' => 'serviceman'], function () {
     Route::resource('/serviceman','Serviceman\ServicemanController');
+
+    Route::put('/cancelmyorder/{id}', 'Admin\OrderControlsController@cancelorder');
+    Route::put('/upload-pre-image/{id}','Serviceman\MyOrdersController@preimage');
+    Route::put('/start_tracking/{id}','Serviceman\MyOrdersController@start_tracking');
+    Route::put('/complete-order/{id}','Serviceman\MyOrdersController@completeorder');
+    Route::put('/pickup/{id}','Serviceman\MyOrdersController@pickup');
   });
 
   Route::group(['middleware' =>'admin'], function(){

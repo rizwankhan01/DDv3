@@ -19,6 +19,7 @@ class UpdateOrdersTable extends Migration
           $table->string('stock_price')->nullable();
           $table->string('reschedule_reason')->nullable();
           $table->string('cancel_reason')->nullable();
+          $table->string('pickup_reason')->nullable();
         });
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\orders;
 use App\Models\order_lists;
 use App\Models\consultation;
+use App\Models\closedorder;
 use App\Models\dealers;
 use App\user;
 
@@ -45,6 +46,7 @@ class HomeController extends Controller
       $consultation = consultation::where('order_id',$id)->first();
       $smen  =  user::where('user_type','Service Man')->get();
       $dealers  = dealers::all();
-      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers'));
+      $corder = closedorder::where('order_id',$id)->first();
+      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder'));
     }
 }

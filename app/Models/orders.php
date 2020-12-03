@@ -17,7 +17,8 @@ class orders extends Model
       'dealer_id',
       'stock_price',
       'reschedule_reason',
-      'cancel_reason'
+      'cancel_reason',
+      'pickup_reason'
     ];
     public function customer(){
       return $this->belongsTo(customers::class, 'customer_id');
@@ -34,4 +35,5 @@ class orders extends Model
     public function dealer(){
       return $this->belongsTo(dealers::class,'dealer_id');
     }
+
 }

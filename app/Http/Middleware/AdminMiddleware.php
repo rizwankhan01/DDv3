@@ -17,12 +17,11 @@ class AdminMiddleware
     {
       if(auth()->check()){
         if(auth()->user()->user_type=='Service Man'){
-          return redirect('serviceman');
-        }else if(auth()->user()->user_type=='Admin'){
-          return $next($request);
-        }else{
+          return redirect('/serviceman');
+        }else if(auth()->user()->user_type!='Admin'){
           return redirect(403);
         }
+          return $next($request);
       }
     }
 }

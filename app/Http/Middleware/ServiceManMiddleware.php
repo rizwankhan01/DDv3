@@ -16,11 +16,10 @@ class ServiceManMiddleware
     public function handle($request, Closure $next)
     {
       if(auth()->check()){
-        if(auth()->user()->user_type=='Service Man'){
-          return $next($request);
-        }else{
-          return redirect('home');
+        if(auth()->user()->user_type!='Service Man'){
+          return redirect(403);
         }
+          return $next($request);
       }
     }
 }

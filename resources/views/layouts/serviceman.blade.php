@@ -28,6 +28,7 @@
 <!-- End css -->
 </head>
 <body class="vertical-layout">
+<!-- End Infobar Setting Sidebar -->
 <!-- Start Containerbar -->
 <div id="containerbar">
 <!-- Start Leftbar -->
@@ -51,35 +52,17 @@
             <li><a href="/coupons">Coupons</a></li>
         </ul>
     </li>-->
-    <li><a href="javaScript:void();">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Orders</span><i class="feather icon-chevron-right pull-right"></i>
-    </a>
-    <ul class="vertical-submenu">
-      <li><a href="/home">Open</a></li>
-      <li><a href="/close">Closed</a></li>
-      <li><a href="/cancel">Cancelled</a></li>
-    </ul>
-    </li>
-    <li><a href="/brands">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
+    <li><a href="/serviceman">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>My Orders</span>
     </a></li>
-    <li><a href="/models">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Models</span>
+    <li><a href="/incentives">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Incentives</span>
     </a></li>
-    <li><a href="/modelcolors">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Colors</span>
+    <li><a href="/expenses">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Expenses</span>
     </a></li>
-    <li><a href="/coupons">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Coupons</span>
-    </a></li>
-    <li><a href="/dealers">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Dealers</span>
-    </a></li>
-    <li><a href="/customers">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Customers</span>
-    </a></li>
-    <li><a href="/accounts">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Accounts</span>
+    <li><a href="/tickets">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Tickets</span>
     </a></li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
