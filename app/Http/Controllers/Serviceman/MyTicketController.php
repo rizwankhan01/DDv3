@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Serviceman;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\tickets;
+use Auth;
 
-class TicketsController extends Controller
+class MyTicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        //
+        $tickets    = tickets::where('assigned_to', Auth()->user()->id)->get();
+        return view('serviceman.tickets', compact('tickets'));
     }
 
     /**
@@ -46,7 +49,8 @@ class TicketsController extends Controller
      */
     public function show($id)
     {
-        //
+      $ticket = tickets::findOrFail($id);
+      return view('serviceman.tickets', compact('ticket'));
     }
 
     /**
@@ -69,7 +73,13 @@ class TicketsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ticket = tickets::findOrFail($id);
+        $ticket->resolution = $request->input('resolution');
+        $ticket->date_close = date('Y-m-d');
+        $ticket->status     = 1;
+        $ticket->update();
+
+        return redirect('/mytickets');
     }
 
     /**

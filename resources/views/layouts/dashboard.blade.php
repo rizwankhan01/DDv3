@@ -60,6 +60,9 @@
       <li><a href="/cancel">Cancelled</a></li>
     </ul>
     </li>
+    <li><a href="/tickets">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="tickets"><span>Tickets</span>
+    </a></li>
     <li><a href="/brands">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
     </a></li>

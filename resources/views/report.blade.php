@@ -29,22 +29,43 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="contact-form">
-                        <form  action="">
+                      <p>We are sorry that you are facing a problem with our replaced screen!<br>
+                      <small>We will fix that right away in a jiffy.</small></p><hr>
+                      @if(!empty($order))
+                        <p>
+            				    <b>Name: </b>{{ $order->customer->name }}<BR>
+            				    <b>Phone Model:</b> {{ $olist->color->model->name }} {{ $olist->color->name }} - {{ $olist->prod_type }}<BR>
+            				    <b>Mobile Number: </b>{{ $order->customer->phone_number }}<BR><BR>
+            				    Please elaborate your issue and select a date for us to come by and fix it.<BR>
+            				    </p>
+                        <form action='/report/{{ $order->id }}' method='post'>
+                          {{ csrf_field() }}
+                          {{ method_field('put') }}
+                				    <textarea class='form-control' cols='4' placeholder='Eg. Touch not working properly' name='issue'></textarea><BR>
+                				    Select Service Date:<BR>
+                				    <input type='date' class='form-control' name='sdate' min='<?php $t  =   date('Y-m-d'); echo date('Y-m-d', strtotime($t. ' + 1 days'));?>'><BR>
+                				    <input type='submit' class='btn btn-primary' name='submit'>
+                				</form>
+                      @else
+                        <form action="/report" method="post">
+                          {{ csrf_field() }}
+                          {{ method_field('post') }}
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <input name="con_id" type="number" placeholder="Order ID *">
+                                  <input name="order_id" type="number" placeholder="Order ID" required>
+                                    @if(session('status'))
+                                      <small>{{ session('status') }}</small>
+                                    @endif
                                 </div>
-
                                 <div class="col-lg-12 mt--30">
-                                    <input name="con_phone" type="number" placeholder="Phone Number *">
+                                    <input name="phone" type="number" placeholder="Phone Number" required>
                                 </div>
-
                                 <div class="col-lg-12 mt--30">
-                                    <input type="submit" value="Search">
-
+                                  <input type="submit" value="Search">
                                 </div>
                             </div>
                         </form>
+                      @endif
                     </div>
                 </div>
             </div>

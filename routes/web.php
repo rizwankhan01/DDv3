@@ -24,6 +24,7 @@ Route::resource('/product', 'ProductController');
 Route::resource('/customer', 'CustomerController');
 Route::resource('/confirmorder','OrderController');
 Route::resource('/orderconfirmed','OrderConfirmedController');
+Route::resource('/report', 'TicketController');
 
 Route::get('/contact', function(){
     return view('contact');
@@ -34,18 +35,19 @@ Route::get('/our-story', function(){
 Route::get('/privacy', function(){
     return view('privacy');
 });
-Route::get('/report', function(){
-    return view('report');
+Route::get('/thankyou', function(){
+    return view('thankyou');
 });
 
 //////////////////////////dashboard///////////////////////////
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::resource('/settings','Admin\SettingsController');
+  Route::resource('/settings','Admin\SettingsController');
 
   Route::group(['middleware' => 'serviceman'], function () {
     Route::resource('/serviceman','Serviceman\ServicemanController');
+    Route::resource('/mytickets','Serviceman\MyTicketController');
 
     Route::put('/cancelmyorder/{id}', 'Admin\OrderControlsController@cancelorder');
     Route::put('/upload-pre-image/{id}','Serviceman\MyOrdersController@preimage');
@@ -64,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/coupons','Admin\CouponsController');
     Route::resource('/dealers','Admin\DealersController');
     Route::resource('/accounts','Admin\AccountsController');
+    Route::resource('/tickets','Admin\TicketController');
 
     Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
     Route::put('/assign/{id}','Admin\OrderControlsController@assign');

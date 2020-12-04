@@ -29,7 +29,8 @@
                               <button class="btn btn-sm btn-danger pull-right col-md-12">Order Cancelled</button>
                               <br><br><span>Reason: {{ $order->cancel_reason }}</span>
                           @elseif($order->status==3)
-                              <button class="btn btn-sm btn-success pull-right col-md-12">Order Completed</button>
+                              <button class="btn btn-sm btn-success pull-right col-md-12">Order Completed</button><br><br>
+                              IMEI: {{ $corder->imei }}
                           @else
                             @if(empty($corder->pre_image))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg1" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-camera"></i> Pre - Image</button><br><hr>

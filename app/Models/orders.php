@@ -36,4 +36,8 @@ class orders extends Model
       return $this->belongsTo(dealers::class,'dealer_id');
     }
 
+    public function order_list(){
+      return $this->belongsTo(order_lists::class,'id');
+    }
+
 }

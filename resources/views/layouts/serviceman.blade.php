@@ -61,7 +61,7 @@
     <li><a href="/expenses">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Expenses</span>
     </a></li>
-    <li><a href="/tickets">
+    <li><a href="/mytickets">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Tickets</span>
     </a></li>
     <li><a href="/settings">
