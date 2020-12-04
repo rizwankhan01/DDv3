@@ -85,7 +85,7 @@
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Customers</span>
     </a></li>
     <li><a href="/accounts">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Accounts</span>
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>User Accounts</span>
     </a></li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
@@ -172,7 +172,14 @@
             <li class="list-inline-item">
                 <div class="profilebar">
                     <div class="dropdown">
-                      <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
+                      <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php $profile_image = Auth()->user()->profile_image; ?>
+                        @if(empty($profile_image))
+                          <img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile">
+                        @else
+                          <img src="storage/{{ $profile_image }}" class="img-fluid" alt="profile">
+                        @endif
+                        <span class="feather icon-chevron-down live-icon"></span></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                             <div class="dropdown-item">
                                 <div class="profilename">

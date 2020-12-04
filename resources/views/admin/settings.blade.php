@@ -48,7 +48,7 @@
                       </div>
                       <div class="form-group">
                         <label>Secondary Phone</label>
-                        <input type="number" class="form-control" name="secondary_phone" placeholder="Secondary Phone" value="{{ $user->secondary_phone }}" required>
+                        <input type="number" class="form-control" name="secondary_phone" placeholder="Secondary Phone" value="{{ $user->secondary_phone }}">
                       </div>
                       <div class="form-group">
                         <label>Email</label>

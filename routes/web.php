@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/accounts','Admin\AccountsController');
     Route::resource('/tickets','Admin\TicketController');
     Route::resource('/enquiry','Admin\EnquiryController');
+    Route::resource('/customers','Admin\CustomerController');
 
     Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
     Route::put('/assign/{id}','Admin\OrderControlsController@assign');

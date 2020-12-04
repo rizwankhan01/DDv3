@@ -149,7 +149,14 @@
             <li class="list-inline-item">
                 <div class="profilebar">
                     <div class="dropdown">
-                      <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
+                      <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php $profile_image = Auth()->user()->profile_image; ?>
+                        @if(empty($profile_image))
+                          <img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile">
+                        @else
+                          <img src="storage/{{ $profile_image }}" class="img-fluid" alt="profile">
+                        @endif
+                        <span class="feather icon-chevron-down live-icon"></span></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                             <div class="dropdown-item">
                                 <div class="profilename">
