@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\enquiry;
 
 class EnquiryController extends Controller
 {
@@ -14,7 +15,8 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-        //
+        $enquiries  = enquiry::where('status','!=','Duplicate')->where('status','!=','Not Interested')->get();
+        return view('admin.enquiry', compact('enquiries'));
     }
 
     /**
@@ -35,7 +37,14 @@ class EnquiryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enquiry  = new enquiry;
+        $enquiry->model_name  = $request->input('model_name');
+        $enquiry->customer_name = $request->input('customer_name');
+        $enquiry->phone_number  = $request->input('phone_number');
+        $enquiry->city          = $request->input('city');
+        $enquiry->save();
+
+        return redirect('/thankyou');
     }
 
     /**
@@ -46,7 +55,8 @@ class EnquiryController extends Controller
      */
     public function show($id)
     {
-        //
+        $enquiry  = enquiry::findOrFail($id);
+        return view('admin.enquiry',compact('enquiry'));
     }
 
     /**
@@ -69,7 +79,12 @@ class EnquiryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $enquiry  = enquiry::findOrFail($id);
+        $enquiry->fdate = $request->input('fdate');
+        $enquiry->status = $request->input('status');
+        $enquiry->update();
+
+        return redirect('/enquiry');
     }
 
     /**

@@ -75,10 +75,11 @@
 <button type="submit" class="btn btn-success btn-lg btn-block font-18">
     {{ __('Login') }}</button>
 </form>
+<!--
 <div class="login-or">
   <h6 class="text-muted">OR</h6>
 </div>
-<p class="mb-0 mt-3">Don't have a account? <a href="/register">Sign up</a></p>
+<p class="mb-0 mt-3">Don't have a account? <a href="/register">Sign up</a></p>-->
 </div>
 </div>
 </div>

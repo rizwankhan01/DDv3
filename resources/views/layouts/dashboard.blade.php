@@ -63,6 +63,9 @@
     <li><a href="/tickets">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="tickets"><span>Tickets</span>
     </a></li>
+    <li><a href="/enquiry">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="enquiry"><span>Enquiry</span>
+    </a></li>
     <li><a href="/brands">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
     </a></li>
@@ -109,7 +112,7 @@
 <div class="row align-items-center">
 <div class="col-md-12">
     <div class="mobile-logobar">
-        <a href="/" class="mobile-logo"><img src="{{ asset('assets\images\logo.svg') }}" class="img-fluid" alt="logo"></a>
+        <a href="/" class="mobile-logo"><img src="{{ asset('img/logo/logo.png') }}" class="img-fluid" alt="logo"></a>
     </div>
     <div class="mobile-togglebar">
         <ul class="list-inline mb-0">
