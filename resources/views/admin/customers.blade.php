@@ -45,7 +45,7 @@
                                       <td>
                                       @if($order->slot_date == date('Y-m-d'))
                                         <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
-                                      @else
+                                      @elseif(!empty($order->slot_date))
                                         {{ date('d-m-Y', strtotime($order->slot_date)) }}
                                       @endif
                                       </td>
