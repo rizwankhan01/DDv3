@@ -9,7 +9,7 @@ use App\Models\order_lists;
 use App\Models\consultation;
 use App\Models\dealers;
 use App\Models\closedorder;
-use App\Models\address;
+use App\Models\addresses;
 use App\user;
 use Auth;
 
@@ -66,7 +66,7 @@ class ServicemanController extends Controller
         $smen  =  user::where('user_type','Service Man')->get();
         $dealers  = dealers::all();
         $corder = closedorder::where('order_id',$id)->first();
-        $address = address::where('customer_id',$order->customer_id)->first();
+        $address = addresses::where('customer_id',$order->customer_id)->first();
         return view('serviceman.serviceman', compact('order','olist','screen','consultation','smen','dealers','corder','address'));
     }
 
