@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\customers;
+use App\Models\addresses;
+use App\Models\orders;
 
 class CustomerController extends Controller
 {
@@ -48,7 +50,10 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer   = customers::findOrFail($id);
+        $address    = addresses::where('customer_id',$id)->first();
+        $orders     = orders::where('customer_id',$id)->get();
+        return view('admin.customers',compact('customer','address','orders'));
     }
 
     /**

@@ -41,11 +41,11 @@ Route::get('/thankyou', function(){
 
 //////////////////////////dashboard///////////////////////////
 Auth::routes();
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function(){
 
   Route::resource('/settings','Admin\SettingsController');
 
-  Route::group(['middleware' => 'serviceman'], function () {
+  Route::group(['middleware' => 'serviceman'], function(){
     Route::resource('/serviceman','Serviceman\ServicemanController');
     Route::resource('/mytickets','Serviceman\MyTicketController');
 

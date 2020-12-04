@@ -32,10 +32,10 @@
                               <button class="btn btn-sm btn-success pull-right col-md-12">Order Completed</button><br><br>
                               IMEI: {{ $corder->imei }}
                           @else
-                            @if(empty($corder->pre_image))
-                              <button data-toggle="modal" data-target=".bd-example-modal-lg1" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-camera"></i> Pre - Image</button><br><hr>
-                            @elseif(empty($corder->start_timestamp))
+                            @if(empty($corder->start_timestamp))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg2" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-map-marker"></i> Start Tracking</button><br><hr>
+                            @elseif(empty($corder->pre_image))
+                              <button data-toggle="modal" data-target=".bd-example-modal-lg1" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-camera"></i> Pre - Image</button><br><hr>
                             @endif
                               <button data-toggle="modal" data-target=".bd-example-modal-lg3" class="btn btn-sm btn-success pull-right col-md-12">Complete Order</button><br><br>
                               @if(empty($order->pickup_reason))
