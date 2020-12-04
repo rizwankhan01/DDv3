@@ -25,17 +25,17 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   <input type='hidden' value='{{ $screen->id }}' name='ol_id' hidden>
   Phone Color:<br><input type='text' class='form-control' name='pcolor' placeholder="Eg. Black, White, Silver"><Br>
   Address:<BR>
-  <input type='text' class='form-control' name='address' placeholder="Address" value="{{ $order->customer->address->address }}"><br>
-  <input type='text' class='form-control' name='area' placeholder="Area" value="{{ $order->customer->address->area }}"><br>
-  <input type='text' class='form-control' name='city' placeholder="City" value="{{ $order->customer->address->city }}"><br>
-  <input type='text' class='form-control' name='pincode' placeholder="Pincode" value="{{ $order->customer->address->pincode }}"><br>
+  <input type='text' class='form-control' name='address' placeholder="Address" value="{{ $address->address }}"><br>
+  <input type='text' class='form-control' name='area' placeholder="Area" value="{{ $address->area }}"><br>
+  <input type='text' class='form-control' name='city' placeholder="City" value="{{ $address->city }}"><br>
+  <input type='text' class='form-control' name='pincode' placeholder="Pincode" value="{{ $address->pincode }}"><br>
   Address Type:<br>
   <select class='form-control' name='address_type'>
   <option value=''>Select Address Type</option>
   <option value='Office' value='Office'>Office</option>
   <option value='Home' value='Home'>Home</option>
   </select><br>
-  <input type='hidden' class='form-control' name='address_id' value="{{ $order->customer->address->id }}" hidden>
+  <input type='hidden' class='form-control' name='address_id' value="{{ $address->id }}" hidden>
   Appointment Date: <input type='date' class='form-control' name='date' min="{{ date('Y-m-d') }}" value="{{ $order->slot_date }}"><br>
   </div>
   <div class='col-md-6'>

@@ -21,9 +21,7 @@
                           <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $order->customer->name }}</span></a></li>
                           <li><a href='tel:{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
                           <li><a href='mailto:{{ $order->customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $order->customer->email }}</span></a></li>
-                          @if(!empty($order->customer->address->address))
-                          <li><a href="https://maps.google.com/?q={{ $order->customer->address->address }}, {{ $order->customer->address->area }}, {{ $order->customer->address->city }} - {{ $order->customer->address->pincode }}"><i class="fa fa-map-marker"></i>{{ $order->customer->address->address }}, {{ $order->customer->address->area }}, {{ $order->customer->address->city }} - {{ $order->customer->address->pincode }}</a></li>
-                          @endif
+                          <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}"><i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
                         </ul>
                         </div>
                         <div class="col-md-2">
