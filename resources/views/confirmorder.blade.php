@@ -196,7 +196,7 @@ minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}"
 @if($list->prod_type=='COUPON')
   <li>{{$list->coupon->name}} - COUPON <span>- &#8377; {{ abs($list->price )}}</span></li>
 @elseif( $list->prod_type=='ADDON' )
-  <li>{{ $list->addonproduct->name }} <span>&#8377; {{ $list->price }}</span></li>
+  <li>@if(!empty($list->addonproduct->name)){{ $list->addonproduct->name }} @endif <span>&#8377; {{ $list->price }}</span></li>
 @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
   <li>{{$list->color->model->name}} ({{$list->color->name }})<br class="hidden-md"> {{ $list->prod_type }} <span>&#8377; {{ $list->price }}</span></li>
 @endif
