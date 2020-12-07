@@ -58,8 +58,8 @@
                     {{ method_field('post') }}
                     <input type="text" class="form-control" name="model_name" placeholder="Brand & Model Name"><br>
                     <input type="text" class="form-control" name="customer_name" placeholder="Your Name"><br>
-                    <input type="number" class="form-control" name="phone_number" placeholder="Phone Number" onkeypress="return isNumberKey(event)"
-                    minlength="16" maxlength="16"><br>
+                    <input type="text" class="form-control" name="phone_number" placeholder="Phone Number" onkeypress="return isNumberKey(event)"
+                    minlength="10" maxlength="10"><br>
                     <input type="text" class="form-control" name="city" placeholder="City"><br>
                     <input type="hidden" name="ga_id" id="ga_id">
                     <input type="submit" class="btn btn-sm btn-primary col-md-6" value="Enquire" name="enquire">

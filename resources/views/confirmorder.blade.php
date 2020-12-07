@@ -99,7 +99,7 @@
   <tr>
     <td class="pro-thumbnail"><a href="#">
       <img src="{{ URL::asset('img/tg.jpg') }}" alt="Product"></a></td>
-    <td class="pro-title"><a href="#">{{ $list->addonproduct->name }}</a></td>
+    <td class="pro-title"><a href="#">@if(!empty($list->addonproduct->name)){{ $list->addonproduct->name }}@endif</a></td>
     <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
   </tr>
 @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
@@ -131,54 +131,54 @@
 <div class="row">
 <div class="col-md-12 col-12 mb--20">
 <label>Full Name*</label>
-<input type="text" placeholder="Full Name" name="name" value="{{ $customer->name }}" required>
+<input type="text" placeholder="Full Name" name="name" value="{{ $customer->name }}" onkeyup='swap_name(this.value)' required>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Email Address*</label>
-<input type="email" placeholder="Email Address" name="email" value="{{ $customer->email }}" required>
+<input type="email" placeholder="Email Address" name="email" value="{{ $customer->email }}" onkeyup='swap_email(this.value)' required>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
 <input type="number" placeholder="Phone number"  onkeypress="return isNumberKey(event)"
-minlength="16" maxlength="16" name="phone" value="{{ $customer->phone_number }}" required>
+minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}" required>
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
-<input type="text" placeholder="Address" name='address' required value="@if(!empty($customer->address->address)){{ $customer->address->address }}@endif">
+<input type="text" placeholder="Address" name='address' onkeyup="swap_address(this.value)" required value="@if(!empty($address->address)){{ $address->address }}@endif">
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Area*</label>
-<select class="nice-select" name='area' required>
+<select class="nice-select" name='area' required onchange='swap_area(this.value)'>
 <option value=''>Select Area</option>
 @foreach($areas as $area)
-<option value='{{$area->area}}' @if(!empty($customer->address->area) && $customer->address->area==$area->area){{ 'selected' }} @endif>{{$area->area}}</option>
+<option value='{{$area->area}}' @if(!empty($address->area) && $address->area==$area->area){{ 'selected' }} @endif>{{$area->area}}</option>
 @endforeach
 </select>
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Pin Code*</label>
-<input type="number" placeholder="Pin Code" name='pincode' value='@if(!empty($customer->address->pincode)){{ $customer->address->pincode }}@endif' required>
+<input type="number" placeholder="Pin Code" onkeyup='swap_pincode(this.value)' name='pincode' value='@if(!empty($address->pincode)){{ $address->pincode }}@endif' required>
 </div>
 
 <div class="col-md-4 col-12 mb--20">
 <label>Town/City*</label>
-<input type="text" placeholder="Town/City" name='city' value='@if(!empty($customer->address->city)){{ $customer->address->city }}@endif' required>
+<input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value='@if(!empty($address->city)){{ $address->city }}@endif' required>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Date*</label>
-<input type="date" name="date" min="{{ date('Y-m-d',strtotime('now')) }}" max="{{ date('Y-m-d',strtotime('+1 week')) }}" required>
+<input type="date" name="date" min="{{ date('Y-m-d',strtotime('now')) }}" onchange='swap_date(this.value)' value="{{ $order->slot_date }}" max="{{ date('Y-m-d',strtotime('+1 week')) }}" required>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Time Slot*</label>
-<select name="time_slot" class="nice-select" required>
+<select name="time_slot" class="nice-select" onchange='swap_time_slot(this.value)' required>
   <option value="">Select Slot</option>
-  <option value='10:00AM to 11:30AM'>10:00AM to 11:30AM</option>
-  <option value='11:30AM to 01:00PM'>11:30AM to 01:00PM</option>
-  <option value='02:00PM to 03:30PM'>02:00PM to 03:30PM</option>
-  <option value='03:30PM to 05:00PM'>03:30PM to 05:00PM</option>
-  <option value='05:00PM to 06:30PM'>05:00PM to 06:30PM</option>
-  <option value='06:30PM to 08:00PM'>06:30PM to 08:00PM</option>
-  <option value='08:30PM to 10:00PM'>08:30PM to 10:00PM</option>
+  <option value='10:00AM to 11:30AM' @if($order->slot_time=='10:00AM to 11:30AM'){{ 'selected' }} @endif>10:00AM to 11:30AM</option>
+  <option value='11:30AM to 01:00PM' @if($order->slot_time=='11:30AM to 01:00PM'){{ 'selected' }} @endif>11:30AM to 01:00PM</option>
+  <option value='02:00PM to 03:30PM' @if($order->slot_time=='02:00PM to 03:30PM'){{ 'selected' }} @endif>02:00PM to 03:30PM</option>
+  <option value='03:30PM to 05:00PM' @if($order->slot_time=='03:30PM to 05:00PM'){{ 'selected' }} @endif>03:30PM to 05:00PM</option>
+  <option value='05:00PM to 06:30PM' @if($order->slot_time=='05:00PM to 06:30PM'){{ 'selected' }} @endif>05:00PM to 06:30PM</option>
+  <option value='06:30PM to 08:00PM' @if($order->slot_time=='06:30PM to 08:00PM'){{ 'selected' }} @endif>06:30PM to 08:00PM</option>
+  <option value='08:30PM to 10:00PM' @if($order->slot_time=='08:30PM to 10:00PM'){{ 'selected' }} @endif>08:30PM to 10:00PM</option>
 </select>
 </div>
 </div>
@@ -219,7 +219,7 @@ minlength="16" maxlength="16" name="phone" value="{{ $customer->phone_number }}"
 </div>
 @endif
 <div class="plceholder-button hidden-xs"><br>
-<button class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between" data-toggle="modal" data-target="#coupon">Apply Coupon</button>
+<a class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between" data-toggle="modal" data-target="#coupon">Apply Coupon</a>
 <button type="submit" class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between">Confirm Order</button>
 </div>
 </div>
@@ -251,6 +251,14 @@ minlength="16" maxlength="16" name="phone" value="{{ $customer->phone_number }}"
 <form action="/confirmorder/{{ $order->id }}" method="post">
   {{ csrf_field() }}
   {{ method_field('put') }}
+  <input type="hidden" name="name" id="name">
+  <input type="hidden" name="email" id="email">
+  <input type="hidden" name="address" id="address">
+  <input type="hidden" name="area" id="area">
+  <input type="hidden" name="pincode" id="pincode">
+  <input type="hidden" name="city" id="city">
+  <input type="hidden" name="date" id="date">
+  <input type="hidden" name="time_slot" id="time_slot">
 <center>
 <input type="text" placeholder="Enter Coupon Code" name="coupon" required>
 <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Apply</button>
@@ -263,6 +271,16 @@ minlength="16" maxlength="16" name="phone" value="{{ $customer->phone_number }}"
 </main>
 @endsection
 @section('scripts')
+  <script>
+  function swap_name(val){ var input = document.getElementById("name"); input.value = val; }
+  function swap_email(val){ var input = document.getElementById("email"); input.value = val; }
+  function swap_address(val){ var input = document.getElementById("address"); input.value = val; }
+  function swap_area(val){ var input = document.getElementById("area"); input.value = val; }
+  function swap_pincode(val){ var input = document.getElementById("pincode"); input.value = val; }
+  function swap_city(val){ var input = document.getElementById("city"); input.value = val; }
+  function swap_date(val){ var input = document.getElementById("date"); input.value = val; }
+  function swap_time_slot(val){ var input = document.getElementById("time_slot"); input.value = val; }
+  </script>
 <!--// Wrapper -->
 <!-- Js Files -->
 <!-- <script src="js/vendor/modernizr-3.6.0.min.js"></script>

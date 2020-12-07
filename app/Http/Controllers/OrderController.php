@@ -21,12 +21,13 @@ class OrderController extends Controller
     public function index()
     {
         $customer     = customers::findOrFail(Session::get('cus_id'));
+        $address      = addresses::where('customer_id',$customer->id)->first();
         $order_id     = Session::get('order_id');
         $order        = orders::findOrFail($order_id);
         $areas        = city_areas::all();
         $olist        = order_lists::where('order_id', $order_id)->get();
         $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->where('prod_type','!=','COUPON')->first();
-        return view('/confirmorder', compact('order','olist','pricefortax','customer','areas'));
+        return view('/confirmorder', compact('order','olist','pricefortax','customer','areas','address'));
     }
 
     /**
@@ -141,6 +142,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       if(!empty($request->input('coupon'))){
+        //dd($request->input('name'));
         $coupon = coupons::where('name',$request->input('coupon'))->where('status',1)->first();
         $checkifexists = order_lists::where('prod_type','COUPON')->first();
         if(!empty($coupon->id)){
@@ -175,21 +177,50 @@ class OrderController extends Controller
             $address_id           = $check_address->id;
           }
             $order->address_id    = $address_id;
-            $order->slot_time     = $request->input('time_slot');
-            $order->slot_date     = $request->input('date');
-            $order->status        = 1;
-            $order->update();
-            $customer             = customers::findOrFail($order->customer_id);
-            $customer->name       = $request->input('name');
-            $customer->phone_number= $request->input('phone');
-            $customer->email      = $request->input('email');
-            $customer->update();
+            if(!empty($request->input('time_slot'))){
+              $order->slot_time     = $request->input('time_slot');
+              $order->slot_date     = $request->input('date');
+              $order->update();
+            }
+            if(!empty($request->input('name'))){
+              $customer             = customers::findOrFail($order->customer_id);
+              $customer->name       = $request->input('name');
+              $customer->email      = $request->input('email');
+              $customer->update();
+            }
 
-          return redirect('/confirmorder')->with('success','Coupon Applied');
+          return redirect()->back()->with('success','Coupon Applied');
         }else{
-          return redirect('/confirmorder')->with('failure','This coupon is not applicable.');
+          $order                = orders::findOrFail($id);
+          $check_address        = addresses::where('customer_id',$order->customer_id);
+          if(empty($check_address->id)){
+            $address              = new addresses;
+            $address->customer_id = $order->customer_id;
+            $address->address     = $request->input('address');
+            $address->area        = $request->input('area');
+            $address->city        = $request->input('city');
+            $address->pincode     = $request->input('pincode');
+            $address->save();
+            $address_id           = $address->id;
+          }else{
+            $address_id           = $check_address->id;
+          }
+            $order->address_id    = $address_id;
+            if(!empty($request->input('time_slot'))){
+              $order->slot_time     = $request->input('time_slot');
+              $order->slot_date     = $request->input('date');
+              $order->update();
+            }
+            if(!empty($request->input('name'))){
+              $customer             = customers::findOrFail($order->customer_id);
+              $customer->name       = $request->input('name');
+              $customer->email      = $request->input('email');
+              $customer->update();
+            }
+
+          return redirect()->back()->with('failure','This coupon is not applicable.');
         }
-      }else if(!empty($request->input('name')) AND empty($request->input('coupon'))){
+      }else if(!empty($request->input('name'))){
         $order                = orders::findOrFail($id);
         $check_address        = addresses::where('customer_id',$order->customer_id);
         if(empty($check_address->id)){
@@ -214,6 +245,8 @@ class OrderController extends Controller
           $customer->phone_number= $request->input('phone');
           $customer->email      = $request->input('email');
           $customer->update();
+          //order confirmation mail
+
         return redirect('/orderconfirmed');
       }
 
