@@ -39,7 +39,8 @@
           <center>
             <input type="number" name="color_id" value="{{$color->id}}" hidden>
             <input type="hidden" name="ga_id" id="ga_id">
-            <input type="text" placeholder="Enter Phone Number" maxlength="10" required name="phone">
+            <input type="text" placeholder="Enter Phone Number"  onkeypress="return isNumberKey(event)"
+            minlength="10" maxlength="10" required name="phone">
             <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Next</button>
           </center>
           </form>

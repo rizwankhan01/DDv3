@@ -139,7 +139,8 @@
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
-<input type="number" placeholder="Phone number" maxlength="10" name="phone" value="{{ $customer->phone_number }}" required>
+<input type="number" placeholder="Phone number"  onkeypress="return isNumberKey(event)"
+minlength="16" maxlength="16" name="phone" value="{{ $customer->phone_number }}" required>
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
