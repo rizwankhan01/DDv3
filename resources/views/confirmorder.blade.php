@@ -251,7 +251,7 @@
   {{ csrf_field() }}
   {{ method_field('put') }}
 <center>
-<input type="text" placeholder="Enter Coupon Code" name="coupon">
+<input type="text" placeholder="Enter Coupon Code" name="coupon" required>
 <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Apply</button>
 </center>
 </form>

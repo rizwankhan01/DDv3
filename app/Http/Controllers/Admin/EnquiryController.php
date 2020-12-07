@@ -16,7 +16,7 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-        $enquiries  = enquiry::whereNull('status')->orWhere('status','!=','Duplicate')->orWhere('status','!=','Not Interested')->get();
+        $enquiries  = enquiry::whereNull('status')->get();
         return view('admin.enquiry', compact('enquiries'));
     }
 
