@@ -138,12 +138,26 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <form action="/cancelmyorder/{{ $order->id }}" method="post" class="col-md-12">
   {{ csrf_field() }}
   {{ method_field('put')}}
   <div class="modal-body">
     <div class='row'>
-      <input type="text" class="form-control" placeholder="Enter Reason for Cancellation" name="cancel_reason">
+      <select class="form-control" name="main_reason" id="type" required>
+        <option value="">Select Options</option>
+        <option value="Cant Do order from Our side">Cant Do order from Our side</option>
+        <option value="Customer Information Wrong">Customer Information Wrong</option>
+        <option value="Customer Wants to cancel">Customer Wants to cancel</option>
+        <option value="Mother board issues">Mother board issues</option>
+        <option value="Other City">Other City</option>
+        <option value="Other Reason">Other Reason</option>
+        <option value="Test Order">Test Order</option>
+      </select><br><br><br>
+      <select class='form-control' name='sub_reason' id='subtype'>
+        <option value=''>Select Options</option>
+      </select><br><br><br>
+      <input type="text" class="form-control" placeholder="Enter Reason for Cancellation" name="cancel_reason" required>
     </div>
   </div>
   <div class="modal-footer">
@@ -154,4 +168,22 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
 </div>
 </div>
 </div>
+<script>
+$(document).ready(function () {
+$("#type").change(function () {
+var val = $(this).val();
+if (val == "Other City") {
+$("#subtype").html("<option value='Madurai'>Madurai</option><option value='Coimbatore'>Coimbatore</option><option value='Bangalore'>Bangalore</option><option value='Delhi'>Delhi</option><option value='Others'>Others</option>");
+} else if (val == "Cant Do order from Our side") {
+$("#subtype").html("<option value='Price too low mistake in pricing'>Price too low mistake in pricing</option><option value='Stock not available'>Stock not available</option><option value='Distance too Long'>Distance too Long</option>");
+} else if (val == "Customer Information Wrong") {
+$("#subtype").html("<option value='Customer booked wrong model'>Customer booked wrong model</option><option value='Double order or duplicate order'>Double order or duplicate order</option><option value='Wrong number'>Wrong number</option><option value='Fake Order'>Fake Order</option>");
+} else if (val == "Customer Wants to cancel") {
+$("#subtype").html("<option value='Customer not interested'>Customer not interested</option><option value='Sent a mail for cancellation'>Sent a mail for cancellation</option><option value='Price issue. Stock price is too high'>Price issue. Stock price is too high</option><option value='Customer want original screen'>Customer want original screen</option><option value='Customer not picking up calls / Customer not available'>Customer not picking up calls / Customer not available</option><option value='Customer got better deal'>Customer got better deal</option><option value='Our Team did not respond'>Our Team did not respond</option><option value='Urgent for Customer'>Urgent for Customer</option>");
+} else if (val == "Mother board issues") {
+$("#subtype").html("<option value='Phone Dead Condition'>Phone Dead Condition</option><option value='Mother board bend'>Mother board bend</option><option value='Mother board Fault'>Mother board Fault</option>");
+}
+});
+});
+</script>
 @endif
