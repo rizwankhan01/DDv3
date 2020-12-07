@@ -81,6 +81,12 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
         <option value="Card">Card</option>
         <option value="UPI">UPI</option>
       </select><br>
+      Include Tempered glass:
+      <select class="form-control" name="tg" required>
+        <option value="">Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select><br>
       If Applicable, Company Name:
       <input type="text" class="form-control" name="company_name" placeholder="Company Name"><br>
       Company GST:

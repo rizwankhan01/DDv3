@@ -37,13 +37,14 @@
                               <button data-toggle="modal" data-target=".bd-example-modal-lg2" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-map-marker"></i> Start Tracking</button><br><hr>
                             @elseif(empty($corder->pre_image))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg1" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-camera"></i> Pre - Image</button><br><hr>
-                            @endif
+                            @else
                               <button data-toggle="modal" data-target=".bd-example-modal-lg3" class="btn btn-sm btn-success pull-right col-md-12">Complete Order</button><br><br>
                               @if(empty($order->pickup_reason))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg4" class="btn btn-sm btn-primary pull-right col-md-12">Pickup Phone</button><br><br>
                               @else
                               <button class="btn btn-sm btn-default pull-right col-md-12">Device Picked Up</button><br><br>
                               @endif
+                            @endif
                               <button data-toggle="modal" data-target=".bd-example-modal-lg5" class="btn btn-sm btn-danger pull-right col-md-12">Cancel Order</button>
                           @endif
                         </div>

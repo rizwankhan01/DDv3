@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\closedorder;
 use App\Models\orders;
+use App\Models\order_lists;
 
 class MyOrdersController extends Controller
 {
@@ -45,6 +46,20 @@ class MyOrdersController extends Controller
       $corder->update();
 
       $order  = orders::findOrFail($id);
+      if($request->input('tg')=='Yes'){
+        $check =  order_lists::where('order_id',$id)->where('prod_type','ADDON')->first();
+        if(empty($check->id)){
+          $addon = new order_lists;
+          $addon->order_id = $id;
+          $addon->color_id = 1;
+          $addon->price = 99;
+          $addon->prod_type = 'ADDON';
+          $addon->save();
+        }
+      }else{
+          $addon = order_lists::where('order_id',$id)->where('prod_type','ADDON')->first();
+          $addon->delete();
+      }
       $order->status  = 3;
       $order->update();
       //send mail to customer
@@ -57,7 +72,7 @@ class MyOrdersController extends Controller
       $order  = orders::findOrFail($id);
       $order->pickup_reason = $request->input('pickup_reason');
       $order->update();
-
+      //send mail to customer
       return redirect()->back();
     }
 }
