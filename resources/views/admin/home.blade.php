@@ -259,7 +259,7 @@
                                   @endif
                                   </td>
                                   <td>{{ $order->slot_time }}</td>
-                                  <td>{{ $order->address->area }}</td>
+                                  <td>@if(!empty($order->address->area)){{ $order->address->area }} @endif</td>
                                   <td>
                                     @if($order->status==1)
                                       <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>

@@ -15,7 +15,10 @@
                               <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $customer->name }}</span></a></li>
                               <li><a href='tel:{{ $customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $customer->phone_number }}</span></a></li>
                               <li><a href='mailto:{{ $customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $customer->email }}</span></a></li>
-                              <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}"><i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
+                              @if(!empty($address->address))
+                              <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}">
+                                <i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
+                              @endif
                             </ul>
                             </div>
                             <div class="col-md-2">
