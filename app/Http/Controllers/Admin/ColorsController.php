@@ -6,10 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\colors;
 use App\Models\models;
+use App\Models\brands;
 use App\Models\pricings;
 
 class ColorsController extends Controller
 {
+
+    public function getmodels($id){
+      $models = models::where('brand_id',$id)->pluck('name','id');
+      return json_encode($models);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +23,10 @@ class ColorsController extends Controller
      */
     public function index()
     {
+        $brands = brands::all();
         $models = models::all();
         $colors = colors::all();
-        return view('admin.colors', compact('models','colors'));
+        return view('admin.colors', compact('models','colors','brands'));
     }
 
     /**

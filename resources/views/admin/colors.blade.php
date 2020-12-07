@@ -26,12 +26,18 @@
                             {{ method_field('post')}}
                             <div class="modal-body">
                             <div class="form-group">
+                              <label>Brand</label>
+                              <select class="form-control" name="brand_id" required>
+                                <option value="">Select Brand</option>
+                                @foreach($brands as $brand)
+                                  <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group">
                               <label>Model Name</label>
                               <select class="form-control" name="model_id" required>
                                 <option value="">Select Model</option>
-                                @foreach($models as $model)
-                                  <option value="{{ $model->id }}">{{ $model->name }}</option>
-                                @endforeach
                               </select>
                             </div>
                             <div class="form-group">
@@ -166,6 +172,35 @@
 @endsection
 
 @section('scripts')
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="brand_id"]').on('change',function(){
+               var brand = jQuery(this).val();
+               if(brand)
+               {
+                  jQuery.ajax({
+                     url : '/getmodels/' +brand,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="model_id"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="model_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="model_id"]').empty();
+               }
+            });
+    });
+  </script>
   <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
   <script src="{{ asset('assets\js\popper.min.js') }}"></script>
   <script src="{{ asset('assets\js\bootstrap.min.js') }}"></script>
