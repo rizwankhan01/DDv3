@@ -11,20 +11,21 @@ class MyOrdersController extends Controller
 {
     public function preimage(Request $request, $id)
     {
-        $corder     = new closedorder;
+        $corder     = closedorder::where('order_id',$id)->first();
         $pre_image  = explode('/',$request->file('pre-image')->store('public'));
         $corder->pre_image  = $pre_image[1];
         $corder->order_id   = $id;
-        $corder->save();
+        $corder->update();
 
         return redirect()->back();
     }
 
     public function start_tracking(Request $request, $id)
     {
-      $corder     = closedorder::where('order_id',$id)->first();
-      $corder->start_timestamp  = $request->input('start_timestamp');
-      $corder->update();
+      $corder     = new closedorder;
+      $corder->order_id   = $id;
+      $corder->start_timestamp  = date('Y-m-d H:i:s');
+      $corder->save();
 
       return redirect()->back();
     }

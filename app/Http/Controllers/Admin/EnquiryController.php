@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\enquiry;
+use App\Models\customers;
 
 class EnquiryController extends Controller
 {
@@ -15,7 +16,7 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-        $enquiries  = enquiry::where('status','!=','Duplicate')->where('status','!=','Not Interested')->get();
+        $enquiries  = enquiry::whereNull('status')->orWhere('status','!=','Duplicate')->orWhere('status','!=','Not Interested')->get();
         return view('admin.enquiry', compact('enquiries'));
     }
 
@@ -37,13 +38,25 @@ class EnquiryController extends Controller
      */
     public function store(Request $request)
     {
-        $enquiry  = new enquiry;
-        $enquiry->model_name  = $request->input('model_name');
-        $enquiry->customer_name = $request->input('customer_name');
-        $enquiry->phone_number  = $request->input('phone_number');
-        $enquiry->city          = $request->input('city');
-        $enquiry->save();
+        $check    = customers::where('phone_number', $request->input('phone_number'))->first();
+        if(empty($check->id)){
+          $customer = new customers;
+          $customer->name = $request->input('customer_name');
+          $customer->phone_number = $request->input('phone_number');
+          $customer->ga_id        = $request->input('ga_id');
+          $customer->save();
 
+          $enquiry  = new enquiry;
+          $enquiry->model_name  = $request->input('model_name');
+          $enquiry->customer_id = $customer->id;
+          $enquiry->city        = $request->input('city');
+        }else{
+          $enquiry  = new enquiry;
+          $enquiry->customer_id = $check->id;
+          $enquiry->model_name  = $request->input('model_name');
+          $enquiry->city          = $request->input('city');
+          $enquiry->save();
+        }
         return redirect('/thankyou');
     }
 

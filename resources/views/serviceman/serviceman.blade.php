@@ -30,7 +30,8 @@
                               <br><br><span>Reason: {{ $order->cancel_reason }}</span>
                           @elseif($order->status==3)
                               <button class="btn btn-sm btn-success pull-right col-md-12">Order Completed</button><br><br>
-                              IMEI: {{ $corder->imei }}
+                              <button class="btn btn-sm btn-danger pull-right col-md-12">Paid &#8377; {{ $olist->sum('price') }} by {{ $corder->payment_type }}</button><br><br>
+                              <button class="btn btn-sm btn-primary pull-right col-md-12">IMEI: {{ $corder->imei }}</button>
                           @else
                             @if(empty($corder->start_timestamp))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg2" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-map-marker"></i> Start Tracking</button><br><hr>

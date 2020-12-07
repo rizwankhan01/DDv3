@@ -43,7 +43,6 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   <div class="modal-body">
     <div class='row'>
       Would you like to start tracking now?
-      <input type='hidden' value="{{ date('Y-m-d H:i:s') }}" name="start_timestamp">
     </div>
   </div>
   <div class="modal-footer">
@@ -73,7 +72,8 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
       Upload Phone image after servicing:
       <input type="file" name="post-image" class="form-control" required><br>
       IMEI Number:
-      <input type="text" name="imei" class="form-control" placeholder="IMEI Number" required><br>
+      <input type="text" name="imei" class="form-control" placeholder="IMEI Number" onkeypress="return isNumberKey(event)"
+      minlength="16" maxlength="16" required><br>
       Payment Type:
       <select class="form-control" name="payment_type" required>
         <option value="">Select</option>

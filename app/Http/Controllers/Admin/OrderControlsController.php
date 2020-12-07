@@ -16,14 +16,15 @@ class OrderControlsController extends Controller
 {
     public function consultation(Request $request, $id){
       $olist            = order_lists::findOrFail($request->input('ol_id'));
-      $color_id         = $olist->color_id;
-      $pricings         = pricings::where('color_id',$color_id)->first();
+      $pricings         = pricings::where('color_id',$request->input('pcolor'))->first();
       $olist->prod_type = $request->input('screen_type');
       if($request->input('screen_type')=='BASIC'){
         $olist->price     = $pricings->ord_selling_price;
       }else if($request->input('screen_type')=='PREMIUM'){
         $olist->price     = $pricings->org_selling_price;
       }
+      $olist->color_id    = $request->input('pcolor');
+
       $olist->update();
 
       $addresses               = addresses::findOrFail($request->input('address_id'));

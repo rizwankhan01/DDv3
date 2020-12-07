@@ -159,6 +159,32 @@ class OrderController extends Controller
             $olist->prod_type = "COUPON";
             $olist->save();
           }
+          
+          $order                = orders::findOrFail($id);
+          $check_address        = addresses::where('customer_id',$order->customer_id);
+          if(empty($check_address->id)){
+            $address              = new addresses;
+            $address->customer_id = $order->customer_id;
+            $address->address     = $request->address;
+            $address->area        = $request->area;
+            $address->city        = $request->city;
+            $address->pincode     = $request->pincode;
+            $address->save();
+            $address_id           = $address->id;
+          }else{
+            $address_id           = $check_address->id;
+          }
+            $order->address_id    = $address_id;
+            $order->slot_time     = $request->time_slot;
+            $order->slot_date     = $request->date;
+            $order->status        = 1;
+            $order->update();
+            $customer             = customers::findOrFail($order->customer_id);
+            $customer->name       = $request->name;
+            $customer->phone_number= $request->phone;
+            $customer->email      = $request->email;
+            $customer->update();
+
           return redirect('/confirmorder')->with('success','Coupon Applied');
         }else{
           return redirect('/confirmorder')->with('failure','This coupon is not applicable.');

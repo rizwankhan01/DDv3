@@ -40,7 +40,9 @@
                               <button data-toggle="modal" data-target=".bd-example-modal-lg4" class="btn btn-sm btn-warning pull-right col-md-12">Apply Coupon</button><br><br>
                               <button data-toggle="modal" data-target=".bd-example-modal-lg5" class="btn btn-sm btn-danger pull-right col-md-12">Cancel Order</button>
                             @elseif($order->status==3)
-                              <a href="#" class="btn btn-sm btn-success pull-right col-md-12">Completed</a><br><br>
+                              <a href="#" class="btn btn-sm btn-success pull-right col-md-12">Completed</a>
+                              <button class="btn btn-sm btn-danger pull-right col-md-12">Paid &#8377; {{ $olist->sum('price') }} by {{ $corder->payment_type }}</button>
+                              <button class="btn btn-sm btn-primary pull-right col-md-12">IMEI: {{ $corder->imei }}</button>
                               <div class="row">
                                 <img src="../storage/{{ $corder->pre_image }}" class="col-md-6">
                                 <img src="../storage/{{ $corder->post_image }}" class="col-md-6">

@@ -9,10 +9,13 @@ class enquiry extends Model
     protected $table = 'enquiries';
     protected $fillable = [
       'model_name',
-      'customer_name',
-      'phone_number',
+      'customer_id',
       'city',
       'fdate',
       'status'
     ];
+
+    public function customer(){
+      return $this->belongsTo(customers::class);
+    }
 }

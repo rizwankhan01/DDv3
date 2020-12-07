@@ -131,11 +131,11 @@
 <div class="row">
 <div class="col-md-12 col-12 mb--20">
 <label>Full Name*</label>
-<input type="text" placeholder="Full Name" name="name" required>
+<input type="text" placeholder="Full Name" name="name" value="{{ $customer->name }}" required>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Email Address*</label>
-<input type="email" placeholder="Email Address" name="email" required>
+<input type="email" placeholder="Email Address" name="email" value="{{ $customer->email }}" required>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
@@ -143,25 +143,25 @@
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
-<input type="text" placeholder="Address" name='address' required>
+<input type="text" placeholder="Address" name='address' required value="@if(!empty($customer->address->address)){{ $customer->address->address }}@endif">
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Area*</label>
 <select class="nice-select" name='area' required>
 <option value=''>Select Area</option>
 @foreach($areas as $area)
-<option value='{{$area->area}}'>{{$area->area}}</option>
+<option value='{{$area->area}}' @if(!empty($customer->address->area) && $customer->address->area==$area->area){{ 'selected' }} @endif>{{$area->area}}</option>
 @endforeach
 </select>
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Pin Code*</label>
-<input type="number" placeholder="Pin Code" name='pincode' required>
+<input type="number" placeholder="Pin Code" name='pincode' value='@if(!empty($customer->address->pincode)){{ $customer->address->pincode }}@endif' required>
 </div>
 
 <div class="col-md-4 col-12 mb--20">
 <label>Town/City*</label>
-<input type="text" placeholder="Town/City" name='city' value='Chennai' required>
+<input type="text" placeholder="Town/City" name='city' value='@if(!empty($customer->address->city)){{ $customer->address->city }}@endif' required>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Date*</label>

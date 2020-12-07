@@ -9,6 +9,7 @@ use App\Models\consultation;
 use App\Models\closedorder;
 use App\Models\dealers;
 use App\Models\addresses;
+use App\Models\colors;
 use App\user;
 
 class HomeController extends Controller
@@ -43,12 +44,14 @@ class HomeController extends Controller
                             ->where('prod_type','!=','ADDON')
                             ->where('prod_type','!=','COUPON')
                             ->first();
+      $color  = colors::where('id',$screen->color_id)->first();
+      $allcolors = colors::where('model_id',$color->model_id)->get();
       $olist = order_lists::where('order_id',$id)->get();
       $consultation = consultation::where('order_id',$id)->first();
       $smen  =  user::where('user_type','Service Man')->get();
       $dealers  = dealers::all();
       $corder = closedorder::where('order_id',$id)->first();
       $address = addresses::where('customer_id',$order->customer_id)->first();
-      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder','address'));
+      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder','address','allcolors','color'));
     }
 }

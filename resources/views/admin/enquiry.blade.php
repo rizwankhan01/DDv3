@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title') Tickets | Doctor Display Dashboard @endsection
+@section('title') Enquiry | Doctor Display Dashboard @endsection
 
 @section('contentbar')
   <div class="contentbar mt-100">
@@ -18,8 +18,8 @@
                   @if(!empty($enquiry))
                     <div class="card-body">
                       <h6 class="card-subtitle">
-                        <b>Customer Name:</b> {{ $enquiry->customer_name }}<br>
-                        <b>Phone Number:</b> <a href='tel:{{ $enquiry->phone_number }}'>{{ $enquiry->phone_number }}</a>
+                        <b>Customer Name:</b> {{ $enquiry->customer->name }}<br>
+                        <b>Phone Number:</b> <a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                       </h6>
                         <div class="table-responsive">
                           <form action="/enquiry/{{ $enquiry->id }}" method="post">
@@ -62,8 +62,8 @@
                                 @foreach($enquiries as $enquiry)
                                   <tr>
                                     <td>{{ $enquiry->model_name }}</td>
-                                    <td>{{ $enquiry->customer_name }}<br>
-                                      <small><a href='tel:{{ $enquiry->phone_number }}'>{{ $enquiry->phone_number}}</a></small>
+                                    <td>{{ $enquiry->customer->name }}<br>
+                                      <small><a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>
                                     <td>{{ $enquiry->city }}</td>
                                     <td>
