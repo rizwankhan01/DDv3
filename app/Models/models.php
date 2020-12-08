@@ -21,4 +21,8 @@ class models extends Model
     public function brand(){
       return $this->belongsTo(brands::class);
     }
+
+    public function colortypes(){
+      return $this->hasMany(colors::class,'model_id');
+    }
 }

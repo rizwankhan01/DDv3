@@ -17,4 +17,5 @@ class pricings extends Model
       'ord_compare_description',
       'org_compare_description'
     ];
+
 }

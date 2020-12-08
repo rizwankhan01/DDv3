@@ -71,7 +71,8 @@ class ColorsController extends Controller
       $models  = models::all();
       $color   = colors::findOrFail($id);
       $pricing = pricings::where('color_id',$id)->first();
-      return view('admin.colors', compact('models','color','pricing'));
+      $brands  = brands::all();
+      return view('admin.colors', compact('models','color','pricing','brands'));
     }
 
     /**

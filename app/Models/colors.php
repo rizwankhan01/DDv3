@@ -17,4 +17,8 @@ class colors extends Model
     public function model(){
       return $this->belongsTo(models::class);
     }
+
+    public function pricings(){
+      return $this->hasOne(pricings::class,'color_id','id');
+    }
 }

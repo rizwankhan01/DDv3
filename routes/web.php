@@ -74,6 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', function(){
         return view('admin.dashboard');
     });
+    Route::resource('/search','Admin\SearchController');
 
     Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
     Route::put('/assign/{id}','Admin\OrderControlsController@assign');
