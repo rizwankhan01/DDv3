@@ -131,6 +131,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>#</th>
                                   <th>Name</th>
                                   <th>Brand</th>
                                   <th>Series</th>
@@ -144,6 +145,7 @@
                               <tbody>
                               @foreach($models as $model)
                               <tr>
+                                  <td>{{ $model->id }}</td>
                                   <td>{{ $model->name }}</td>
                                   <td>{{ $model->brand->name }}</td>
                                   <td>{{ $model->series }}</td>

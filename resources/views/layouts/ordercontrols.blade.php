@@ -34,7 +34,8 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   <input type='text' class='form-control' name='address' placeholder="Address" value="{{ $address->address }}"><br>
   <input type='text' class='form-control' name='area' placeholder="Area" value="{{ $address->area }}"><br>
   <input type='text' class='form-control' name='city' placeholder="City" value="{{ $address->city }}"><br>
-  <input type='text' class='form-control' name='pincode' placeholder="Pincode" value="{{ $address->pincode }}"><br>
+  <input type='text' class='form-control'  onkeypress="return isNumberKey(event)"
+  minlength="6" maxlength="6" name='pincode' placeholder="Pincode" value="{{ $address->pincode }}"><br>
   Address Type:<br>
   <select class='form-control' name='address_type'>
   <option value=''>Select Address Type</option>

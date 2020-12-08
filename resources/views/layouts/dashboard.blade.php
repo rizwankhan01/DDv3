@@ -51,8 +51,11 @@
             <li><a href="/coupons">Coupons</a></li>
         </ul>
     </li>-->
+    <li><a href="/dashboard">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Dashboard</span>
+    </a></li>
     <li><a href="javaScript:void();">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Orders</span><i class="feather icon-chevron-right pull-right"></i>
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="orders"><span>Orders</span><i class="feather icon-chevron-right pull-right"></i>
     </a>
     <ul class="vertical-submenu">
       <li><a href="/home">Open</a></li>
@@ -177,7 +180,7 @@
                         @if(empty($profile_image))
                           <img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile">
                         @else
-                          <img src="{{ asset('storage/'.$profile_image ) }}" class="img-fluid" alt="profile">
+                          <img src="{{ asset('storage/'.$profile_image ) }}" class="img-fluid" alt="profile" style="border-radius:100%;">
                         @endif
                         <span class="feather icon-chevron-down live-icon"></span></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">

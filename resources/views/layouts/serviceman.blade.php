@@ -154,7 +154,7 @@
                         @if(empty($profile_image))
                           <img src="{{ asset('assets\images\users\profile.svg') }}" class="img-fluid" alt="profile">
                         @else
-                          <img src="{{ asset('storage/'.$profile_image ) }}" class="img-fluid" alt="profile">
+                          <img src="{{ asset('storage/'.$profile_image ) }}" class="img-fluid" alt="profile" style="border-radius:100%;">
                         @endif
                         <span class="feather icon-chevron-down live-icon"></span></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
