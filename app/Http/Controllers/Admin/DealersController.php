@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\dealers;
+use App\Models\orders;
 
 class DealersController extends Controller
 {
@@ -55,7 +56,8 @@ class DealersController extends Controller
     public function show($id)
     {
         $dealer = dealers::findOrFail($id);
-        return view('admin.dealers', compact('dealer'));
+        $orders = orders::where('dealer_id',$id)->get();
+        return view('admin.dealers', compact('dealer','orders'));
     }
 
     /**

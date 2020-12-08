@@ -40,4 +40,8 @@ class orders extends Model
       return $this->belongsTo(order_lists::class,'id');
     }
 
+    public function closedorder(){
+      return $this->hasOne(closedorder::class ,'order_id','id');
+    }
+
 }

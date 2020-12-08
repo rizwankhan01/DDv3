@@ -170,7 +170,36 @@
                         <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
-                      </form>
+                      </form><hr>
+                      @if($user->user_type=='Service Man')
+                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Slot Date</th>
+                                <th>Slot Time</th>
+                                <th>Time Taken</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              @foreach($orders as $order)
+                                <tr>
+                                  <td><a href="/home/{{$order->id}}">#{{ $order->id }}</a></td>
+                                  <td>{{ $order->slot_date }}</td>
+                                  <td>{{ $order->slot_time }}</td>
+                                  <td>@if(!empty($order->closedorder->id))
+                                    <?php
+                                    $start_t  = new DateTime($order->closedorder->start_timestamp);
+                                    $end_t    = new DateTime($order->closedorder->end_timestamp);
+                                    $diff   = $start_t->diff($end_t);
+                                    ?>
+                                    {{ $diff->format('%H:%I:%S') }} Hours
+                                  @endif</td>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                        </table>
+                      @endif
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete User Accounts Here.</h6>
                       <div class="table-responsive">

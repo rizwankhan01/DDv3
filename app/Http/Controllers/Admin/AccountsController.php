@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\orders;
 use Hash;
 
 class AccountsController extends Controller
@@ -66,7 +67,10 @@ class AccountsController extends Controller
     public function show($id)
     {
         $user = user::findOrFail($id);
-        return view('admin.accounts', compact('user'));
+        if($user->user_type=='Service Man'){
+          $orders = orders::where('serviceman_id',$user->id)->get();
+        }
+        return view('admin.accounts', compact('user','orders'));
     }
 
     /**

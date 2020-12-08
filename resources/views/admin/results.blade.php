@@ -14,7 +14,7 @@
         <div class="card-header">
             Search Results for "{{ $term }}"
         </div>
-        <div class="card-body">
+        <div class="card-body row">
           @foreach($results as $result)
           <div class="col-md-4">
               <div class="card m-b-30">
