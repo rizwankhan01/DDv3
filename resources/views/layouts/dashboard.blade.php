@@ -90,6 +90,9 @@
     <li><a href="/accounts">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>User Accounts</span>
     </a></li>
+    <li><a href="/reports">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Reports</span>
+    </a></li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
     </a></li>

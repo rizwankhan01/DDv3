@@ -63,6 +63,7 @@
                               <tr>
                                   <th>Order ID</th>
                                   <th>Customer</th>
+                                  <th>Model</th>
                                   <th>Dealer</th>
                                   <th>Issue</th>
                                   <th>Resolution</th>
@@ -79,6 +80,13 @@
                                   <td><a href='/home/{{ $ticket->order_id }}'>#{{ $ticket->order_id }}</a></td>
                                   <td>{{ $ticket->order->customer->name }}<br>
                                   <small><a href='tel:{{ $ticket->order->customer->phone_number }}'>{{ $ticket->order->customer->phone_number }}</a></small></td>
+                                  <td>
+                                    @foreach($ticket->order->order_lists as $list)
+                                      @if($list->prod_type!='ADDON' AND $list->prod_type!='COUPON')
+                                        {{ $list->color->model->brand->name }} {{ $list->color->model->name }} - <small>{{ $list->color->name }}</small>
+                                      @endif
+                                    @endforeach
+                                  </td>
                                   <td>{{ $ticket->order->dealer->dealer_name }}<br>
                                   <small><a href='tel:{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
                                   <td>{{ $ticket->issue }}</td>

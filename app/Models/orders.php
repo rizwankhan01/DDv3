@@ -37,7 +37,7 @@ class orders extends Model
     }
 
     public function order_lists(){
-      return $this->hasMany(order_lists::class);
+      return $this->hasMany(order_lists::class, 'order_id','id');
     }
 
     public function closedorder(){
