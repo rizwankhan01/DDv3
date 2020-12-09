@@ -227,6 +227,63 @@
                  </div>
                </div>
              @endif
+             @if(!empty($corder->feedback))
+               <div class="col-lg-12">
+                 <div class="card m-b-30">
+                   <div class="card-header">
+                     <h5 class="card-title">Feedback Information</h5>
+                   </div>
+                   <div class="card-body">
+                     <div class="table-responsive">
+                         <table class="table table-striped table-bordered">
+                           <tbody>
+                             <tr>
+                               <td>Is the display working fine?</td>
+                               <td>{{ $corder->rate4 }}</td>
+                             </tr>
+                             <tr>
+                               <td>All the points in the display is working?</td>
+                               <td>{{ $corder->rate5 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Is the Home button working?</td>
+                               <td>{{ $corder->rate6 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Is the Volume and Power button working?</td>
+                               <td>{{ $corder->rate7 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Does the Mic & Speaker work fine?</td>
+                               <td>{{ $corder->rate8 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Does the screen sensor work?</td>
+                               <td>{{ $corder->rate9 }}</td>
+                             </tr>
+                             <tr>
+                               <td>How much would you rate the service man?</td>
+                               <td>{{ $corder->rate1 }}</td>
+                             </tr>
+                             <tr>
+                               <td>How good was his communication?</td>
+                               <td>{{ $corder->rate2 }}</td>
+                             </tr>
+                             <tr>
+                               <td>How was his presentation?</td>
+                               <td>{{ $corder->rate3 }}</td>
+                             </tr>
+                             <tr>
+                               <td>Customer Feedback</td>
+                               <td>{{ $corder->feedback }}</td>
+                             </tr>
+                           </tbody>
+                         </table>
+                       </div>
+                   </div>
+                 </div>
+               </div>
+             @endif
              <div class="col-lg-12 m-b-30"><center><small>This order was placed on {{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}.</small></center></div>
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection

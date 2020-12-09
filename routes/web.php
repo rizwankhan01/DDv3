@@ -26,6 +26,7 @@ Route::resource('/confirmorder','OrderController');
 Route::resource('/orderconfirmed','OrderConfirmedController');
 Route::resource('/report', 'TicketController');
 Route::post('/enquire','Admin\EnquiryController@store');
+Route::resource('/feedback','FeedbackController');
 
 Route::get('/contact', function(){
     return view('contact');
