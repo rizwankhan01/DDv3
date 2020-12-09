@@ -73,6 +73,7 @@ class OrderControlsController extends Controller
       Regards,<br>
       Doctor Display
       ";
+      mail($to,$subject,$message,$headers);
       //end consultation mail
 
       return redirect()->back();
