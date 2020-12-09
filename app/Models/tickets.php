@@ -14,7 +14,9 @@ class tickets extends Model
       'date_open',
       'date_close',
       'assigned_to',
-      'status'
+      'status',
+      'r_stock_dealer',
+      'r_stock_amount'
     ];
 
     public function order(){
@@ -23,5 +25,9 @@ class tickets extends Model
 
     public function serviceman(){
       return $this->belongsTo('App\User','assigned_to');
+    }
+
+    public function dealer(){
+      return $this->belongsTo(dealers::class,'r_stock_dealer');
     }
 }

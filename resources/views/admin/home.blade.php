@@ -168,6 +168,13 @@
                               <td></td>
                             </tr>
                           @endif
+                          @if(!empty($ticket->r_stock_amount))
+                            <tr>
+                              <td><b>Ticket</b></td>
+                              <td>{{ $ticket->dealer->dealer_name }}</td>
+                              <td>&#8377; {{ $ticket->r_stock_amount }}</td>
+                            </tr>
+                          @endif
                         </tbody>
                       </table>
                     </div>

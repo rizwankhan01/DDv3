@@ -10,7 +10,11 @@
               <div class="card m-b-30">
                   <div class="card-header">
                     @if(isset($ticket))
-                        <h5 class="card-title">Ticket for <a href='/home/{{ $ticket->order_id }}'>Order ID: #{{ $ticket->order_id }}</a></h5><hr>
+                        <h5 class="card-title">Ticket for <a href='/home/{{ $ticket->order_id }}'>Order ID: #{{ $ticket->order_id }}</a></h5><br>
+                        <b>Device:</b> {{ $model->color->model->brand->name }} {{ $model->color->model->name }} {{ $model->color->name }}<br>
+                        <b>Stock From:</b> {{ $ticket->order->dealer->dealer_name }} for &#8377; {{ $ticket->order->stock_price }}<br>
+                        <b>Serviced By:</b> {{ $ticket->order->serviceman->name }}
+                        <hr>
                     @else
                         <h5 class="card-title">All Tickets</h5>
                     @endif
@@ -32,6 +36,15 @@
                           </select><br>
                           Date of Service:
                           <input type='date' name='date_open' value="{{ $ticket->date_open }}" class="form-control"><br>
+                          Replacement Stock From:
+                          <select class="form-control" name="dealer_id">
+                            <option value="">Select</option>
+                            @foreach($dealers as $dealer)
+                              <option value="{{ $dealer->id }}" @if($ticket->r_stock_dealer==$dealer->id) {{ 'selected' }} @endif>{{ $dealer->dealer_name }}</option>
+                            @endforeach
+                          </select><br>
+                          Replacement Stock Amount:
+                          <input type="number" class="form-control" name="stock_amount" value="{{ $ticket->r_stock_amount }}" placeholder="Stock Amount"><br>
                           <input type='submit' class='btn btn-sm btn-primary pull-right' value='Update'>
                       </form>
                     </div>
@@ -51,12 +64,12 @@
                                   <th>Order ID</th>
                                   <th>Customer</th>
                                   <th>Dealer</th>
-                                  <th>Phone Model</th>
                                   <th>Issue</th>
                                   <th>Resolution</th>
                                   <th>Date Open</th>
                                   <th>Service Date</th>
                                   <th>Assigned To</th>
+                                  <th>Replacement Stock</th>
                                   <th>Status</th>
                               </tr>
                               </thead>
@@ -68,16 +81,19 @@
                                   <small><a href='tel:{{ $ticket->order->customer->phone_number }}'>{{ $ticket->order->customer->phone_number }}</a></small></td>
                                   <td>{{ $ticket->order->dealer->dealer_name }}<br>
                                   <small><a href='tel:{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
-                                  <td>
-                                    @if($ticket->order->order_list->prod_type=='BASIC' || $ticket->order->order_list->prod_type=='PREMIUM')
-                                      {{ $ticket->order->order_list->color->model->name }} ({{ $ticket->order->order_list->color->name }}) - {{ $ticket->order->order_list->prod_type }}
-                                    @endif
-                                  </td>
                                   <td>{{ $ticket->issue }}</td>
                                   <td>{{ $ticket->resolution }}</td>
                                   <td>{{ date('d-m-Y', strtotime($ticket->created_at)) }}</td>
                                   <td>{{ date('d-m-Y', strtotime($ticket->date_open)) }}</td>
-                                  <td>{{ $ticket->serviceman->name }}</td>
+                                  <td>@if(!empty($ticket->assigned_to))
+                                    {{ $ticket->serviceman->name }}
+                                  @endif</td>
+                                  <td>
+                                    @if(!empty($ticket->dealer->dealer_name))
+                                      {{ $ticket->dealer->dealer_name }}<br>
+                                      <small>&#8377; {{ $ticket->r_stock_amount }}</small>
+                                    @endif
+                                  </td>
                                   <td>
                                     @if($ticket->status==0)
                                       <a href="/tickets/{{ $ticket->id }}" class="btn btn-sm btn-danger">Open</a>

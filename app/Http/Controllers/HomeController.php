@@ -10,6 +10,7 @@ use App\Models\closedorder;
 use App\Models\dealers;
 use App\Models\addresses;
 use App\Models\colors;
+use App\Models\tickets;
 use App\user;
 
 class HomeController extends Controller
@@ -52,6 +53,7 @@ class HomeController extends Controller
       $dealers  = dealers::all();
       $corder = closedorder::where('order_id',$id)->first();
       $address = addresses::where('customer_id',$order->customer_id)->first();
-      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder','address','allcolors','color'));
+      $ticket = tickets::where('order_id',$id)->first();
+      return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder','address','allcolors','color','ticket'));
     }
 }
