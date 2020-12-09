@@ -43,12 +43,12 @@ class OrderConfirmedController extends Controller
       $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
       <p>Hi ".$customer->name.",<br>
       Thanks for choosing Doctor Display, India's Leading Mobile Repair Service. You order is confirmed.<br><br>
-      You have scheduled a ".$model_ord->prod_type." screen repair for your ".$model_ord->color->model->name." (".$model_ord->color->name.")  between
+      You have scheduled a ".$model_ord->prod_type." screen repair for your ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name." (".$model_ord->color->name.")  between
       ".$order->slot_time." on ".$order->slot_date.". Our service technician will reach out to you an hour before the scheduled time.<br><br>
       The details for your order are bellow:<br>
       <table style='border:1px solid #eee;width:100%;'>
       <tr style='border:1px solid #eee;'><td>Order ID</td><td>".$order->id."</td></tr>
-      <tr style='border:1px solid #eee;'><td>Display for ".$model_ord->color->model->name." (".$model_ord->color->name.")</td><td>".$model_ord->price." INR</td></tr>";
+      <tr style='border:1px solid #eee;'><td>Display for ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name." (".$model_ord->color->name.")</td><td>".$model_ord->price." INR</td></tr>";
       if(!empty($tempered->id)){
       $message.="<tr style='border:1px solid #eee;'><td>Tempered Glass</td><td>99 INR</td></tr>";
       }
