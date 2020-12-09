@@ -47,21 +47,21 @@ class OrderConfirmedController extends Controller
       ".$order->slot_time." on ".$order->slot_date.". Our service technician will reach out to you an hour before the scheduled time.<br><br>
       The details for your order are bellow:<br>
       <table style='border:1px solid #eee;width:100%;'>
-      <tr><td>Order ID</td><td>".$order->id."</td></tr>
-      <tr><td>Display for ".$model_ord->color->model->name." (".$model_ord->color->name.")</td><td>".$model_ord->price." INR</td></tr>";
+      <tr style='border:1px solid #eee;'><td>Order ID</td><td>".$order->id."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Display for ".$model_ord->color->model->name." (".$model_ord->color->name.")</td><td>".$model_ord->price." INR</td></tr>";
       if(!empty($tempered->id)){
-      $message.="<tr><td>Tempered Glass</td><td>99 INR</td></tr>";
+      $message.="<tr style='border:1px solid #eee;'><td>Tempered Glass</td><td>99 INR</td></tr>";
       }
       if(!empty($coupon->id)){
-      $message.="<tr><td>Coupon Discount</td><td>".$coupon->price." INR</td></tr>";
+      $message.="<tr style='border:1px solid #eee;'><td>Coupon Discount</td><td>".$coupon->price." INR</td></tr>";
       }
-      $message.="<tr><td>Total Amount</td><td>".$olist->sum('price')." INR</td></tr>
-      <tr><td>Name</td><td>".$customer->name."</td></tr>
-      <tr><td>Phone Number</td><td>".$customer->phone_number."</td></tr>
-      <tr><td>Email address</td><td>".$customer->email."</td></tr>
-      <tr><td>Address</td><td>".$address->address.", ".$address->area.", ".$address->city." - ".$address->pincode."</td></tr>
-      <tr><td>Appointment Date</td><td>".$order->slot_date."</td></tr>
-      <tr><td>Appointment Time</td><td>".$order->slot_time."</td></tr>
+      $message.="<tr style='border:1px solid #eee;'><td>Total Amount</td><td>".$olist->sum('price')." INR</td></tr>
+      <tr style='border:1px solid #eee;'><td>Name</td><td>".$customer->name."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Phone Number</td><td>".$customer->phone_number."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Email address</td><td>".$customer->email."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Address</td><td>".$address->address.", ".$address->area.", ".$address->city." - ".$address->pincode."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Appointment Date</td><td>".$order->slot_date."</td></tr>
+      <tr style='border:1px solid #eee;'><td>Appointment Time</td><td>".$order->slot_time."</td></tr>
       </table><br><br>
       Thank you for choosing Doctor Display!<br><br>
       Regards,<br>
