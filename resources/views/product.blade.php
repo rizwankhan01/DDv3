@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') {{$models->brand->name}} {{$models->name}} | Doctor Display @endsection
+@section('title') {{$models->brand->name}} {{ $models->series }} {{$models->name}} | Doctor Display @endsection
 @section('metadesc') @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -66,7 +66,8 @@
                       <ul class="core-breadcaump">
                           <li><a href="/">Home</a></li>
                           <li><a href="/allbrands">All Brands</a></li>
-                          <li class="current">{{$models->name}}</li>
+                          <li><a href="/brand/{{ $models->brand->name }}">{{ $models->brand->name }} Products</a></li>
+                          <li class="current">{{ $models->series}} {{$models->name}}</li>
                       </ul>
                   </div>
               </div>

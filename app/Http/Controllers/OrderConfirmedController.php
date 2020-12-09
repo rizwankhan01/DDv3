@@ -34,12 +34,11 @@ class OrderConfirmedController extends Controller
       $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->first();
 
       //order confirmation mail
-      $to        = $customer->email;
+      $to        = $customer->email.", order@doctordisplay.in";
       $subject      = "Order Confirmation Mail | Doctor Display";
       $headers = "MIME-Version: 1.0" . "\r\n";
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
-      $headers .= 'Bcc: order@doctordisplay.in' . "\r\n";
 
       $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
       <p>Hi ".$customer->name.",<br>

@@ -84,7 +84,7 @@
                 @elseif($list->prod_type!='COUPON')
                 <tr>
                   <th scope="row" class="text-left">
-                    {{$list->color->model->name}} ({{$list->color->name}})<br class="hidden-md"> {{ $list->prod_type }}
+                    {{ $list->color->model->brand->name}} {{ $list->color->model->series }} {{$list->color->model->name}} ({{$list->color->name}})<br class="hidden-md"> {{ $list->prod_type }}
                   </th>
                   <td class="text-right">
                     &#8377; {{ round($list->price) }}
