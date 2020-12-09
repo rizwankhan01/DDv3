@@ -52,6 +52,29 @@ class OrderControlsController extends Controller
       $order->slot_time         = $request->input('time_slot');
       $order->update();
 
+      $customer   = cutomers::where('id', $order->customer_id)->first();
+      $model_ord    = order_lists::where('order_id',$id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
+
+      //consultation mail
+      $to        = $customer->email.", order@doctordisplay.in";
+      $subject      = "Consultation for your Order | Doctor Display";
+      $headers = "MIME-Version: 1.0" . "\r\n";
+      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+      $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
+
+      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
+      Hi ".$customer->name.",<Br>
+      It was a pleasure speaking with you.<br><br>
+      I'm emailing to note your confimed order #".$order->id." for
+      ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name."
+      (".$model_ord->color->name.") on ".$order->slot_date." between ".$order->slot_time.".
+      Our service technicians will reach out an hour before the appointment to co-ordinate.<br><br>
+      If you have any more queries, give u a call at 04446270777 and we'd be happy to help you.<br><br>
+      Regards,<br>
+      Doctor Display
+      ";
+      //end consultation mail
+
       return redirect()->back();
     }
 

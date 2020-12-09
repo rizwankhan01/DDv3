@@ -75,7 +75,8 @@
                            @elseif($list->prod_type=='ADDON')
                                {{ $list->addonproduct->name }}
                            @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
-                               <img src="../../storage/{{ $list->color->image }}" style="width:50px;height:50px;"> {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
+                               <img src="../../storage/{{ $list->color->image }}" style="width:50px;height:50px;">
+                               {{ $list->color->model->brand->name }} {{ $list->color->model->series}} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
                            @endif
                            </td>
                            <td>

@@ -94,11 +94,11 @@
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
-                                  <img class="w-t float-left hidden-md" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
-                                <h1 class="heading heading-h4">{{$models->brand->name}} {{$models->name}}</h1>&nbsp;&nbsp;
-                                <div class="product-badges">
+                                <img class="w-t float-left hidden-md" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
+                                <h1 class="heading heading-h4">{{$models->brand->name}} {{ $models->series }} {{$models->name}}</h1>&nbsp;&nbsp;
+                                <!--<div class="product-badges">
                                     <span>New</span>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="product">
                             <div class="product-info" style="float:left;">

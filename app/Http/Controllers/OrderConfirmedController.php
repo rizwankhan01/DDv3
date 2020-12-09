@@ -68,10 +68,8 @@ class OrderConfirmedController extends Controller
       Doctor Display";
 
       mail($to,$subject,$message,$headers);
-
-
-
       //end of order confirmation mail
+      
       session()->flush();
 
       return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','response'));
