@@ -105,7 +105,7 @@
 @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
   <tr>
     <td class="pro-thumbnail"><a href="#"><img src="storage/{{ $list->color->image }}"></a></td>
-    <td class="pro-title"><a href="#">{{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}</a></td>
+    <td class="pro-title"><a href="#">{{ $list->color->model->brand->name }} {{ $list->color->model->series }} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}</a></td>
     <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
   </tr>
 @endif
@@ -199,7 +199,7 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
 @elseif( $list->prod_type=='ADDON' )
   <li>@if(!empty($list->addonproduct->name)){{ $list->addonproduct->name }} @endif <span>&#8377; {{ $list->price }}</span></li>
 @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
-  <li>{{$list->color->model->name}} ({{$list->color->name }})<br class="hidden-md"> {{ $list->prod_type }} <span>&#8377; {{ $list->price }}</span></li>
+  <li>{{ $list->color->model->brand->name }} {{$list->color->model->series }} {{$list->color->model->name}} ({{$list->color->name }})<br class="hidden-md"> {{ $list->prod_type }} <span>&#8377; {{ $list->price }}</span></li>
 @endif
 @endforeach
 </ul>
