@@ -95,8 +95,29 @@ class OrderControlsController extends Controller
       $order->reschedule_reason = $request->input('reschedule_reason');
       $order->slot_time         = $request->input('slot_time');
       $order->slot_date         = $request->input('slot_date');
-      //dd($order->customer->email); mail customer
       $order->update();
+
+      $model_ord    = order_lists::where('order_id',$id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
+      $model        = $model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name."
+      (".$model_ord->color->name.")";
+
+      // Reschedule Order Mail
+      $to        = $order->customer->email.", order@doctordisplay.in";
+      $subject   = "Order Rescheduled | Doctor Display";
+      $headers = "MIME-Version: 1.0" . "\r\n";
+      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+      $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
+
+      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
+      Hello ".$order->customer->name.",<br>
+      Your screen replacement order for, ".$model." has been rescheduled to, ".$order->slot_date." ".$order->slot_time." upon request.<BR><br>
+      Thanks for choosing Doctor Display!<br>
+      <a href='www.doctordisplay.in'>www.doctordisplay.in</a>
+      ";
+
+      mail($to,$subject,$message,$headers);
+
+      // end of reschedule order mail
 
       return redirect()->back();
     }
