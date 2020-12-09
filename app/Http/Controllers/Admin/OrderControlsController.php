@@ -57,12 +57,12 @@ class OrderControlsController extends Controller
 
       //consultation mail
       $to        = $customer->email.", order@doctordisplay.in";
-      $subject      = "Consultation for your Order | Doctor Display";
+      $subject      = "Consultation for your Order #".$id." | Doctor Display";
       $headers = "MIME-Version: 1.0" . "\r\n";
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
+      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
       Hi ".$customer->name.",<Br>
       It was a pleasure speaking with you.<br><br>
       I'm emailing to note your confimed order #".$order->id." for
@@ -86,6 +86,7 @@ class OrderControlsController extends Controller
       $order->stock_price =   $request->input('stock_price');
       $order->status      =   2;
       $order->update();
+      
 
       return redirect()->back();
     }
@@ -103,12 +104,12 @@ class OrderControlsController extends Controller
 
       // Reschedule Order Mail
       $to        = $order->customer->email.", order@doctordisplay.in";
-      $subject   = "Order Rescheduled | Doctor Display";
+      $subject   = "Order Rescheduled #".$id." | Doctor Display";
       $headers = "MIME-Version: 1.0" . "\r\n";
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
+      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
       Hello ".$order->customer->name.",<br>
       Your screen replacement order for, ".$model." has been rescheduled to, ".$order->slot_date." ".$order->slot_time." upon request.<BR><br>
       Thanks for choosing Doctor Display!<br>

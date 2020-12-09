@@ -40,7 +40,7 @@ class OrderConfirmedController extends Controller
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR>
+      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
       <p>Hi ".$customer->name.",<br>
       Thanks for choosing Doctor Display, India's Leading Mobile Repair Service. You order is confirmed.<br><br>
       You have scheduled a ".$model_ord->prod_type." screen repair for your ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name." (".$model_ord->color->name.")  between
@@ -69,7 +69,7 @@ class OrderConfirmedController extends Controller
 
       mail($to,$subject,$message,$headers);
       //end of order confirmation mail
-      
+
       session()->flush();
 
       return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','response'));

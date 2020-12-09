@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\closedorder;
 use App\Models\orders;
+use App\Models\addresses;
 use App\Models\order_lists;
 
 class MyOrdersController extends Controller
@@ -27,6 +28,37 @@ class MyOrdersController extends Controller
       $corder->order_id   = $id;
       $corder->start_timestamp  = date('Y-m-d H:i:s');
       $corder->save();
+
+      $order = orders::findOrFail($id);
+      $model_ord    = order_lists::where('order_id',$id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
+      $model        = $model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name."
+      (".$model_ord->color->name.")";
+      $address      = addresses::where('customer_id',$order->customer->id)->first();
+      // technician on his way mail
+      $to        = $order->customer->email.", order@doctordisplay.in";
+      $subject   = "Serviceman on his way  #".$id." | Doctor Display";
+      $headers = "MIME-Version: 1.0" . "\r\n";
+      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+      $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
+
+      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><br><br>
+      Hello ".$order->customer->name.",<br>
+      Doctor Display here. Your technician ".auth()->user()->name." is on the way to your location with your brand new ".$model." display.
+      To ensure a smooth repair experience, please be ready for our technician during the time scheduled.
+      If you need to reach ".auth()->user()->name.", you may call ".auth()->user()->primary_phone.".<br><br>
+      Appointment details<br>
+      Date: ".$order->slot_date."<br>
+      Time: ".$order->slot_time."<br>
+      Location: ".$address->address.", ".$address->area.", ".$address->city." - ".$address->pincode."<br><br>
+      Service Requirements<br>
+      - Doctor Display practices social distancing on every order we complete. Please follow the guidelines to ensure a safe experience.<br>
+      - Provide the technician sufficient space for service. The ideal space is a table & chair in close proximity to a power socket.<br><br>
+      If there’s anything you need, just call us at ".auth()->user()->primary_phone." and we’ll help right away.<br><br>
+      Regards,<br>
+      Doctor Display
+      ";
+      mail($to,$subject,$message,$headers);
+      //end of mail
 
       return redirect()->back();
     }

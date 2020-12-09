@@ -158,14 +158,14 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
       Time Slot:
       <select class='form-control' name='slot_time' required>
         <option value=''>Select Time Slot</option>
-        <option value='08:00AM to 09:30AM'>08:00AM to 09:30AM</option>
-        <option value='10:00AM to 11:30AM'>10:00AM to 11:30AM</option>
-        <option value='11:30AM to 01:00PM'>11:30AM to 01:00PM</option>
-        <option value='02:00PM to 03:30PM'>02:00PM to 03:30PM</option>
-        <option value='03:30PM to 05:00PM'>03:30PM to 05:00PM</option>
-        <option value='05:00PM to 06:30PM'>05:00PM to 06:30PM</option>
-        <option value='06:30PM to 08:00PM'>06:30PM to 08:00PM</option>
-        <option value='08:30PM to 10:00PM'>08:30PM to 10:00PM</option>
+        <option value='08:00AM to 09:30AM' @if($order->slot_time=='08:00AM to 09:30AM'){{ 'selected' }} @endif>08:00AM to 09:30AM</option>
+        <option value='10:00AM to 11:30AM' @if($order->slot_time=='10:00AM to 11:30AM'){{ 'selected' }} @endif>10:00AM to 11:30AM</option>
+        <option value='11:30AM to 01:00PM' @if($order->slot_time=='11:30AM to 01:00PM'){{ 'selected' }} @endif>11:30AM to 01:00PM</option>
+        <option value='02:00PM to 03:30PM' @if($order->slot_time=='02:00PM to 03:30PM'){{ 'selected' }} @endif>02:00PM to 03:30PM</option>
+        <option value='03:30PM to 05:00PM' @if($order->slot_time=='03:30PM to 05:00PM'){{ 'selected' }} @endif>03:30PM to 05:00PM</option>
+        <option value='05:00PM to 06:30PM' @if($order->slot_time=='05:00PM to 06:30PM'){{ 'selected' }} @endif>05:00PM to 06:30PM</option>
+        <option value='06:30PM to 08:00PM' @if($order->slot_time=='06:30PM to 08:00PM'){{ 'selected' }} @endif>06:30PM to 08:00PM</option>
+        <option value='08:30PM to 10:00PM' @if($order->slot_time=='08:30PM to 10:00PM'){{ 'selected' }} @endif>08:30PM to 10:00PM</option>
       </select><br><br><br>
       <input type='text' class='form-control' name='reschedule_reason' placeholder='Reason for Rescheduling' required>
     </div>
