@@ -45,6 +45,7 @@
                                   <td>{{ $order->address->area }}</td>
                                   <td>
                                       <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Completed</a>
+                                      <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm btn-warning'>Invoice</a>
                                   </td>
                                 </tr>
                               @endforeach

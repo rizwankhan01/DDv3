@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
     });
     Route::resource('/search','Admin\SearchController');
     Route::resource('/reports','Admin\ReportsController');
+    Route::resource('/invoice','Admin\InvoiceController');
 
     Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
     Route::put('/assign/{id}','Admin\OrderControlsController@assign');

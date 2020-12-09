@@ -18,6 +18,6 @@ class customers extends Model
       'image'
     ];
     public function address(){
-      return $this->belongsTo(addresses::class, 'customer_id');
+      return $this->hasOne(addresses::class, 'customer_id','id');
     }
 }
