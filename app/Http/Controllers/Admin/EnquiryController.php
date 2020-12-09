@@ -55,8 +55,8 @@ class EnquiryController extends Controller
           $enquiry->customer_id = $check->id;
           $enquiry->model_name  = $request->input('model_name');
           $enquiry->city          = $request->input('city');
-          $enquiry->save();
         }
+          $enquiry->save();
         return redirect('/thankyou');
     }
 

@@ -62,7 +62,7 @@ class MyOrdersController extends Controller
       }
       $order->status  = 3;
       $order->update();
-      //send mail to customer
+      //send mail and invoice to customer
 
       return redirect()->back();
     }
