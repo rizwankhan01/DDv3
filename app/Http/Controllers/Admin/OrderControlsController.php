@@ -52,7 +52,7 @@ class OrderControlsController extends Controller
       $order->slot_time         = $request->input('time_slot');
       $order->update();
 
-      $customer   = cutomers::where('id', $order->customer_id)->first();
+      $customer   = customers::where('id', $order->customer_id)->first();
       $model_ord    = order_lists::where('order_id',$id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
 
       //consultation mail
