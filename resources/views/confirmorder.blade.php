@@ -157,7 +157,7 @@ minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}"
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Pin Code*</label>
-<input type="number" placeholder="Pin Code"  onkeypress="return isNumberKey(event)"
+<input type="text" placeholder="Pin Code"  onkeypress="return isNumberKey(event)"
 minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' value='@if(!empty($address->pincode)){{ $address->pincode }}@endif' required>
 </div>
 
