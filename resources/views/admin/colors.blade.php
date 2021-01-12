@@ -35,6 +35,12 @@
                               </select>
                             </div>
                             <div class="form-group">
+                              <label>Series</label>
+                              <select class="form-control" name="series_id" required>
+                                <option value="">Select Series</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
                               <label>Model Name</label>
                               <select class="form-control" name="model_id" required>
                                 <option value="">Select Model</option>
@@ -98,7 +104,7 @@
                         </div>
                         </div>
                         <div class="modal-footer">
-                          <a href="/colors" class="btn btn-secondary">Back</a>
+                          <a href="/modelcolors" class="btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                       </form><hr>
@@ -134,6 +140,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>#</th>
                                   <th>Model</th>
                                   <th>Color Name</th>
                                   <th>Screen Color</th>
@@ -144,7 +151,8 @@
                               <tbody>
                               @foreach($colors as $color)
                               <tr>
-                                  <td>{{ $color->model->name }}</td>
+                                  <td>{{ $color->id }}</td>
+                                  <td>{{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }}</td>
                                   <td>{{ $color->name }}</td>
                                   <td>{{ $color->screen_color }}</td>
                                   <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>
@@ -181,7 +189,34 @@
                if(brand)
                {
                   jQuery.ajax({
-                     url : '/getmodels/' +brand,
+                     url : '/getseries/' +brand,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="series_id"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="series_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="series_id"]').empty();
+               }
+            });
+    });
+    jQuery(document).ready(function ()
+    {
+      jQuery('select[name="series_id"]').bind('change',function(){
+               var series = jQuery(this).val();
+               console.log(series);
+               if(series)
+               {
+                  jQuery.ajax({
+                     url : '/getmodels/' +series,
                      type : "GET",
                      dataType : "json",
                      success:function(data)

@@ -132,9 +132,9 @@
                               <thead>
                               <tr>
                                   <th>#</th>
-                                  <th>Name</th>
                                   <th>Brand</th>
                                   <th>Series</th>
+                                  <th>Model</th>
                                   <th>Image</th>
                                   <th>Description</th>
                                   <th>Meta Title</th>
@@ -146,9 +146,9 @@
                               @foreach($models as $model)
                               <tr>
                                   <td>{{ $model->id }}</td>
-                                  <td>{{ $model->name }}</td>
                                   <td>{{ $model->brand->name }}</td>
                                   <td>{{ $model->series }}</td>
+                                  <td>{{ $model->name }}</td>
                                   <td><img src='storage/{{ $model->image }}' style="width:50px;height:50px;"></td>
                                   <td>{{ $model->description }}</td>
                                   <td>{{ $model->meta_title }}</td>

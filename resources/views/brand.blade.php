@@ -32,22 +32,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="brand-wrapper">
+                          <?php $series = $models; ?>
+                      <div class="brand-wrapper">
+                        @foreach($series as $serie => $models)
+                        <center><h3>{{ $serie }}</h3></center>
                         <div class="brand__list brand-default brand-style--2">
                           @foreach($models  as  $model)
-                          <div class="brand">
-                          <a href="/colors/{{ $model->id }}">
-                            <figure>
-                            <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
-                            <figcaption>{{$model->series }} / {{ $model->name }}</figcaption>
-                            </figure>
-                          </a>
-                          </div>
-                          @endforeach
-                        </div><hr><br>
-                    </div>
+                            <div class="brand">
+                              <a href="/colors/{{ $model->id }}">
+                                <figure>
+                                  <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
+                                  <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
+                                </figure>
+                              </a>
+                            </div>
+                          @endforeach<br><br><br>
+                        </div>
+                        @endforeach
+                      </div>
                 </div>
-            </div><hr>
+            </div><hr><br><br>
             <div class="row">
               <div class="col-lg-12">
                 <center>
