@@ -10,6 +10,7 @@ use App\Models\colors;
 use App\Models\customers;
 use App\Models\city_areas;
 use App\Models\addresses;
+use App\Models\enquiry;
 use Session;
 
 class OrderConfirmedController extends Controller
@@ -70,6 +71,8 @@ class OrderConfirmedController extends Controller
       mail($to,$subject,$message,$headers);
       //end of order confirmation mail
 
+      $enquiry  = enquiry::findOrFail(Session::get('enq_id'));
+      $enquiry->delete();
       session()->flush();
 
       return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','response'));

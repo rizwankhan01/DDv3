@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\customers;
 use App\Models\colors;
+use App\Models\enquiry;
 use Session;
 
 class CustomerController extends Controller
@@ -38,6 +39,11 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
           $check    = customers::where('phone_number',$request->input('phone'))->first();
+
+          $color_id = $request->input('color_id');
+          $color    = colors::findOrFail($color_id);
+          $model    = $color->model->name;
+
         if(empty($check->id)){ // checking if phone number already exists
           $customer = new customers();
           $customer->phone_number = $request->input('phone');
@@ -45,12 +51,20 @@ class CustomerController extends Controller
           $customer->otp          = rand(1111,9999);
           $customer->save();
           $cus_id   = $customer->id;
+
+          $enquiry  = new enquiry;
+          $enquiry->model_name  = $model." ".$color->name;
+          $enquiry->customer_id = $customer->id;
+          $enquiry->save();
         }else{
           $cus_id   = $check->id;
+
+          $enquiry  = new enquiry;
+          $enquiry->model_name  = $model." ".$color->name;
+          $enquiry->customer_id = $cus_id;
+          $enquiry->save();
         }
-          $color_id = $request->input('color_id');
-          $color    = colors::findOrFail($color_id);
-          $model    = $color->model->name;
+          Session::put('enq_id',$enquiry->id);
           Session::put('cus_id', $cus_id);
           Session::put('color_id',$color_id);
           return redirect('product/'.$model.'/'.$color->name);
