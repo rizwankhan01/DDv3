@@ -101,7 +101,7 @@
                                 </div>-->
                             </div>
                             <div class="product">
-                            <div class="product-info" style="float:left;">
+                            <!--<div class="product-info" style="float:left;">
                             <ul class="rating">
                                 <li><i class="fa fa-star"></i></li>
                                 <li><i class="fa fa-star"></i></li>
@@ -110,7 +110,7 @@
                                 <li><i class="fa fa-star"></i></li>
                                 &nbsp;&nbsp;5 (8 Reviews)
                             </ul>
-                          </div><br><br>
+                          </div><br><br>-->
                               <span style="font-size:12px;">{{$models->description}}</span>
                         </div><br>
                             <div class="price" style="margin-bottom:0px;">
@@ -319,8 +319,8 @@
                     <div class="description_nav nav nav-tabs d-block" role="tablist">
                       <a class="active" id="nav-review" data-toggle="tab" href="#review" role="tab"
                         aria-controls="review" aria-selected="false">Reviews</a>
-                        <a id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
-                            aria-controls="descrip" aria-selected="true">Description</a>
+                        <!--<a id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
+                            aria-controls="descrip" aria-selected="true">Description</a>-->
                     </div>
                 </div>
             </div>
@@ -329,22 +329,17 @@
                 <div class="brook-testimonial-area ptb-md--80">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12"><h4>Customers who replaced iPhone 11 Screen</h4></div>
-                            <!-- Start Single Testimonial -->
+                            <div class="col-md-12"><h4>Customers who replaced {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} screen said</h4></div>
+
+                            @foreach($orders as $olist)
+                            @if(!empty($olist->order->closedorder->feedback))
                             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="testimonial testimonial_style--1">
                                     <div class="content">
-                                        <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to use.
-                                            Even for a
-                                            WordPress beginner like me, Brook
-                                            offers all the functions and features with simple instructions”</p>
+                                        <p class="bk_pra">{{ $olist->order->closedorder->feedback }}</p>
                                         <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-1.jpg" alt="clint image">
-                                            </div>
                                             <div class="clint-info">
-                                                <h6>Harley Mills</h6>
-                                                <span>PR Officer</span>
+                                                <h6>{{ $olist->order->customer->name }}</h6>
                                             </div>
                                         </div>
                                         <div class="testimonial-quote">
@@ -353,130 +348,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Testimonial -->
-
-                            <!-- Start Single Testimonial -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up">
-                                <div class="testimonial testimonial_style--1 mt_sm--30">
-                                    <div class="content">
-                                        <p class="bk_pra">“I’m running a multi-area website so this multipurpose theme is
-                                            just what I need. <span class="theme-color">@Brook</span> really has great
-                                            concepts for creative agencies like ours.”</p>
-                                        <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-2.jpg" alt="clint image">
-                                            </div>
-                                            <div class="clint-info">
-                                                <h6>Harley Mills</h6>
-                                                <span>PR Officer</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <span class="fa fa-quote-right"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-
-                            <!-- Start Single Testimonial -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up">
-                                <div class="testimonial testimonial_style--1 mt_sm--30">
-                                    <div class="content">
-                                        <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to use.
-                                            Even for a
-                                            WordPress beginner like me, Brook
-                                            offers all the functions and features with simple instructions”</p>
-                                        <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-3.jpg" alt="clint image">
-                                            </div>
-                                            <div class="clint-info">
-                                                <h6>Blanche Fields</h6>
-                                                <span>Apple, Marketing</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <span class="fa fa-quote-right"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-
-                            <!-- Start Single Testimonial -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up">
-                                <div class="testimonial testimonial_style--1 mt--30">
-                                    <div class="content">
-                                        <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to use.
-                                            Even for a
-                                            WordPress beginner like me, Brook
-                                            offers all the functions and features with simple instructions”</p>
-                                        <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-4.jpg" alt="clint image">
-                                            </div>
-                                            <div class="clint-info">
-                                                <h6>Leck Cassie</h6>
-                                                <span>Lamium, Marketing</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <span class="fa fa-quote-right"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-
-                            <!-- Start Single Testimonial -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up">
-                                <div class="testimonial testimonial_style--1 mt--30">
-                                    <div class="content">
-                                        <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to use.
-                                            Even for a
-                                            WordPress beginner like me, Brook
-                                            offers all the functions and features with simple instructions”</p>
-                                        <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-5.jpg" alt="clint image">
-                                            </div>
-                                            <div class="clint-info">
-                                                <h6>Cassie Ventura</h6>
-                                                <span>Product Manager</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <span class="fa fa-quote-right"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-
-                            <!-- Start Single Testimonial -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12 wow move-up">
-                                <div class="testimonial testimonial_style--1 mt--30">
-                                    <div class="content">
-                                        <p class="bk_pra">“This is just the most powerful theme I’ve ever met. Love to talk
-                                            with their staff about how to explore all the capabilities of the <span class="theme-color">@Brook
-                                                theme.</span>”</p>
-                                        <div class="testimonial-info">
-                                            <div class="post-thumbnail">
-                                                <img src="img/testimonial/clint-1/clint-6.jpg" alt="clint image">
-                                            </div>
-                                            <div class="clint-info">
-                                                <h6>Rex Watson</h6>
-                                                <span>Marketing</span>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-quote">
-                                            <span class="fa fa-quote-right"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
+                            @endif
+                            @endforeach
 
                         </div>
                     </div>

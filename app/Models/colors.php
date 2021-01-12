@@ -8,6 +8,7 @@ class colors extends Model
 {
     protected $table = "colors";
     protected $fillable = [
+      'id',
       'model_id',
       'name',
       'screen_color',

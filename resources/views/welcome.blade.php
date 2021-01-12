@@ -204,130 +204,15 @@
 
 <div class="brook-product-area pb--150 pb-md--80 pb-sm--60 bg_color--1">
 <div class="container">
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-12">
             <ul class="nav product-tab-two justify-content-center">
-                <li><a class="active" data-toggle="tab" href="#all">Apple</a></li>
-                <li><a data-toggle="tab" href="#dinner">RedMi</a></li>
-                <li><a data-toggle="tab" href="#dessert">Samsung</a></li>
-                <li><a data-toggle="tab" href="#lunch">OnePlus</a></li>
-                <li><a data-toggle="tab" href="#cake">Motorola</a></li>
+                  <li><a class="active" data-toggle="tab" href="#Apple">Apple</a></li>
             </ul>
         </div>
-    </div>
+    </div>-->
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="all">
-            <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
-                "spaceBetween": 15,
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": false,
-                "infinite": true,
-                "dots": true,
-                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
-                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
-            }'
-                data-slick-responsive='[
-            {"breakpoint":1199, "settings": {"slidesToShow": 3}},
-            {"breakpoint":991, "settings": {"slidesToShow": 2}},
-            {"breakpoint":690, "settings": {"slidesToShow": 2}},
-            {"breakpoint":490, "settings": {"slidesToShow": 1}}
-            ]'>
-
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$58.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$20.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$19.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$25.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$26.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-
-            </div>
-        </div>
-        <div class="tab-pane fade show" id="dinner">
+        <div class="tab-pane fade active show" id="randomproducts">
             <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
                 "spaceBetween": 15,
                 "slidesToShow": 4,
@@ -344,431 +229,32 @@
             {"breakpoint":690, "settings": {"slidesToShow": 2}},
             {"breakpoint":590, "settings": {"slidesToShow": 1}}
             ]'>
-
-                <!-- Start Single Product -->
+              @foreach($models as $model)
                 <div class="col-12">
+                  <a href='/colors/{{ $model->id }}'>
                     <div class="product-style-two mt--30">
                         <div class="product-thumbnail">
                             <div class="thumbnail">
                                 <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
+                                    <img src="storage/{{ $model->image }}" class="w-50" alt="Multipurpose">
                                 </div>
                             </div>
                         </div>
                         <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$19.00</span></div>
+                            <h5 class="heading heading-h5">{{ $model->brand->name}} {{ $model->series }} {{ $model->name }}</h5>
+                            <span class="tag">
+                              @foreach($model->colortypes as $colors)
+                                {{ $colors->name }} |
+                              @endforeach
+                            </span>
+                            @if(!empty($model->colortypes->pricings))
+                              <div class="price"><span class="new-price theme-color">${{ $model->colortypes->pricings->ord_selling_price }}</span></div>
+                            @endif
                         </div>
                     </div>
+                  </a>
                 </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$25.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$26.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$58.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$20.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-
-            </div>
-        </div>
-        <div class="tab-pane fade show" id="dessert">
-            <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
-                "spaceBetween": 15,
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": false,
-                "infinite": true,
-                "dots": true,
-                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
-                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
-            }'
-                data-slick-responsive='[
-            {"breakpoint":1199, "settings": {"slidesToShow": 3}},
-            {"breakpoint":991, "settings": {"slidesToShow": 2}},
-            {"breakpoint":690, "settings": {"slidesToShow": 2}},
-            {"breakpoint":590, "settings": {"slidesToShow": 1}}
-            ]'>
-
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$20.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$19.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$25.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$58.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                  <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$26.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-
-            </div>
-        </div>
-        <div class="tab-pane fade show" id="lunch">
-            <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
-                "spaceBetween": 15,
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": false,
-                "infinite": true,
-                "dots": true,
-                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
-                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
-            }'
-                data-slick-responsive='[
-            {"breakpoint":1199, "settings": {"slidesToShow": 3}},
-            {"breakpoint":991, "settings": {"slidesToShow": 2}},
-            {"breakpoint":690, "settings": {"slidesToShow": 2}},
-            {"breakpoint":590, "settings": {"slidesToShow": 1}}
-            ]'>
-
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$58.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                  <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$20.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$19.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$25.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$26.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-
-            </div>
-        </div>
-        <div class="tab-pane fade show" id="cake">
-            <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
-                "spaceBetween": 15,
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": false,
-                "infinite": true,
-                "dots": true,
-                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
-                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
-            }'
-                data-slick-responsive='[
-            {"breakpoint":1199, "settings": {"slidesToShow": 3}},
-            {"breakpoint":991, "settings": {"slidesToShow": 2}},
-            {"breakpoint":690, "settings": {"slidesToShow": 2}},
-            {"breakpoint":590, "settings": {"slidesToShow": 1}}
-            ]'>
-
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$20.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/models/01.png" class="w-50" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$19.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/restaurant/product04.jpg" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$25.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/restaurant/product01.jpg" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$58.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-                <!-- Start Single Product -->
-                <div class="col-12">
-                    <div class="product-style-two mt--30">
-                        <div class="product-thumbnail">
-                            <div class="thumbnail">
-                                <div class="product-main-image">
-                                    <img src="img/restaurant/product01.jpg" alt="Multipurpose">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h5 class="heading heading-h5">Grilled Chicken Salad</h5>
-                            <span class="tag">Potato, Chicken, Olive oil, Salt</span>
-                            <div class="price"><span class="new-price theme-color">$26.00</span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Product -->
-
+              @endforeach
             </div>
         </div>
     </div>
@@ -795,20 +281,27 @@
                         {"breakpoint":481, "settings": {"slidesToShow": 1}}
                     ]'>
 
-                    <!-- Start Single Testimonial -->
+                    @foreach($feedbacks as $feedback)
+                      @foreach($feedback->order->order_lists as $list)
+                        @if($list->prod_type=='BASIC' || $list->prod_type=='PREMIUM')
+                          <?php
+                            $model = $list->color->model->brand->name." ".$list->color->model->series." ".$list->color->model->name;
+                            $image = $list->color->image;
+                          ?>
+                        @endif
+                      @endforeach
                     <div class="testimonial testimonial_style--1">
                         <div class="content">
-                            <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to
-                                use. Even for a
-                                WordPress beginner like me, Brook
-                                offers all the functions and features with simple instructions”</p>
+                            <p class="bk_pra">{{ $feedback->feedback }}</p>
                             <div class="testimonial-info">
-                                <div class="post-thumbnail">
-                                    <img src="img/testimonial/clint-1/clint-1.jpg" alt="clint image">
+                                <div>
+                                    <img src="storage/{{ $image }}" style="height:100px;width:auto;" alt="clint image">
                                 </div>
                                 <div class="clint-info">
-                                    <h6>Harley Mills</h6>
-                                    <span>PR Officer</span>
+                                    <h6>{{ $feedback->order->customer->name }}</h6>
+                                    <span>
+                                      <?php echo $model; ?>
+                                    </span>
                                 </div>
                             </div>
                             <div class="testimonial-quote">
@@ -816,99 +309,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Single Testimonial -->
-
-                    <!-- Start Single Testimonial -->
-                    <div class="testimonial testimonial_style--1">
-                        <div class="content">
-                            <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to
-                                use. Even for a
-                                WordPress beginner like me, Brook
-                                offers all the functions and features with simple instructions”</p>
-                            <div class="testimonial-info">
-                                <div class="post-thumbnail">
-                                    <img src="img/testimonial/clint-1/clint-2.jpg" alt="clint image">
-                                </div>
-                                <div class="clint-info">
-                                    <h6>Harley Mills</h6>
-                                    <span>PR Officer</span>
-                                </div>
-                            </div>
-                            <div class="testimonial-quote">
-                                <span class="fa fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-
-                    <!-- Start Single Testimonial -->
-                    <div class="testimonial testimonial_style--1">
-                        <div class="content">
-                            <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to
-                                use. Even for a
-                                WordPress beginner like me, Brook
-                                offers all the functions and features with simple instructions”</p>
-                            <div class="testimonial-info">
-                                <div class="post-thumbnail">
-                                    <img src="img/testimonial/clint-1/clint-3.jpg" alt="clint image">
-                                </div>
-                                <div class="clint-info">
-                                    <h6>Harley Mills</h6>
-                                    <span>PR Officer</span>
-                                </div>
-                            </div>
-                            <div class="testimonial-quote">
-                                <span class="fa fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-
-                    <!-- Start Single Testimonial -->
-                    <div class="testimonial testimonial_style--1">
-                        <div class="content">
-                            <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to
-                                use. Even for a
-                                WordPress beginner like me, Brook
-                                offers all the functions and features with simple instructions”</p>
-                            <div class="testimonial-info">
-                                <div class="post-thumbnail">
-                                    <img src="img/testimonial/clint-1/clint-4.jpg" alt="clint image">
-                                </div>
-                                <div class="clint-info">
-                                    <h6>Rex Watson</h6>
-                                    <span>Marketing</span>
-                                </div>
-                            </div>
-                            <div class="testimonial-quote">
-                                <span class="fa fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-
-                    <!-- Start Single Testimonial -->
-                    <div class="testimonial testimonial_style--1">
-                        <div class="content">
-                            <p class="bk_pra">“Theme is <span class="theme-color">@intuitive</span> to
-                                use. Even for a
-                                WordPress beginner like me, Brook
-                                offers all the functions and features with simple instructions”</p>
-                            <div class="testimonial-info">
-                                <div class="post-thumbnail">
-                                    <img src="img/testimonial/clint-1/clint-5.jpg" alt="clint image">
-                                </div>
-                                <div class="clint-info">
-                                    <h6>Cassie Ventura</h6>
-                                    <span>Product Manager</span>
-                                </div>
-                            </div>
-                            <div class="testimonial-quote">
-                                <span class="fa fa-quote-right"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
+                  @endforeach
                 </div>
             </div>
 

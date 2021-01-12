@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                          <?php $series = $models; ?>
+                      <?php $series = $models; ?>
                       <div class="brand-wrapper">
                         @foreach($series as $serie => $models)
                         <center><h3>{{ $serie }}</h3></center>

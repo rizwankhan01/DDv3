@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\pricings;
-use App\Models\colors;
+use App\Models\closedorder;
 use App\Models\models;
-use App\Models\model_resources;
-use App\Models\order_lists;
 
-class ProductController extends Controller
+class HomePageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $feedbacks = closedorder::whereNotNull('feedback')->get();
+        $models    = models::inRandomOrder()->limit(10)->get();
+        return view('welcome', compact('feedbacks','models'));
     }
 
     /**
@@ -40,15 +39,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    public function getproduct($name, $color){
-      $models = models::where('name',$name)->first();
-      $colors = colors::where('model_id',$models->id)->get();
-      $color  = colors::where('name',$color)->where('model_id',$models->id)->first();
-      $pricing  = pricings::where('color_id',$color->id)->first();
-      $orders = order_lists::where('color_id',$color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
-      return view('product', compact('models','colors','color','pricing','orders'));
     }
 
     /**

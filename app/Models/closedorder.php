@@ -35,4 +35,8 @@ class closedorder extends Model
       'company_gst',
       'company_address'
     ];
+
+    public function order(){
+      return $this->belongsTo(orders::class);
+    }
 }
