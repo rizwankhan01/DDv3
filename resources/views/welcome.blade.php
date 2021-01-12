@@ -204,13 +204,13 @@
 
 <div class="brook-product-area pb--150 pb-md--80 pb-sm--60 bg_color--1">
 <div class="container">
-    <!--<div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <ul class="nav product-tab-two justify-content-center">
-                  <li><a class="active" data-toggle="tab" href="#Apple">Apple</a></li>
+                  <li><a class="active" data-toggle="tab" href="#randomproducts"><h4 style="text-transform:capitalize;">Our Flagship Quality Products</h4></a></li>
             </ul>
         </div>
-    </div>-->
+    </div>
     <div class="tab-content">
         <div class="tab-pane fade active show" id="randomproducts">
             <div class="row mt--30 brook-element-carousel slick-dots-bottom" data-slick-options='{
