@@ -32,7 +32,7 @@
                         <button class="btn btn-sm btn-primary-rgba" type="submit">Filter</button>
                       </form>
                     </div>
-                      Reports
+                      <b>Reports</b>
                   </div>
                   <div class="card-body">
                     <h6 class="card-subtitle">You can view monthly sales reports here.</h6>

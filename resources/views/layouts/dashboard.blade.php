@@ -58,16 +58,18 @@
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="orders"><span>Orders</span><i class="feather icon-chevron-right pull-right"></i>
     </a>
     <ul class="vertical-submenu">
-      <li><a href="/home">Open</a></li>
-      <li><a href="/close">Closed</a></li>
-      <li><a href="/cancel">Cancelled</a></li>
+      <li><a href="/home">Open<span class='pull-right'>@if($open!=0) {{ $open }} @endif</span></a></li>
+      <li><a href="/close">Closed<span class='pull-right'>@if($close!=0) {{ $close }} @endif</span></a></li>
+      <li><a href="/cancel">Cancelled<span class='pull-right'>@if($cancel!=0) {{ $cancel }} @endif</span></a></li>
     </ul>
     </li>
     <li><a href="/tickets">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="tickets"><span>Tickets</span>
+    <span class='pull-right'>@if($ticket!=0) {{ $ticket }} @endif </span>
     </a></li>
     <li><a href="/enquiry">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="enquiry"><span>Enquiry</span>
+    <span class='pull-right'>@if($enquiry!=0){{ $enquiry }} @endif</span>
     </a></li>
     <li><a href="/brands">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
