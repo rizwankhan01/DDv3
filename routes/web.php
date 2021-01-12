@@ -85,5 +85,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/reschedule/{id}','Admin\OrderControlsController@reschedule');
     Route::put('/applycoupon/{id}','Admin\OrderControlsController@applycoupon');
     Route::put('/cancelorder/{id}','Admin\OrderControlsController@cancelorder');
+
+    Route::resource('/dealer-profile','Admin\DealerProfileController');
+    Route::resource('/serviceman-profile','Admin\ServicemanProfileController');
+    Route::resource('/customer-profile','Admin\CustomerProfileController');
   });
 });

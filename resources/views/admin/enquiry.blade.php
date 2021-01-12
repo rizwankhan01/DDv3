@@ -18,7 +18,7 @@
                   @if(!empty($enquiry))
                     <div class="card-body">
                       <h6 class="card-subtitle">
-                        <b>Customer Name:</b> {{ $enquiry->customer->name }}<br>
+                        <b>Customer Name:</b> <a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
                         <b>Phone Number:</b> <a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                       </h6>
                         <div class="table-responsive">
@@ -62,7 +62,7 @@
                                 @foreach($enquiries as $enquiry)
                                   <tr>
                                     <td>{{ $enquiry->model_name }}</td>
-                                    <td>{{ $enquiry->customer->name }}<br>
+                                    <td><a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
                                       <small><a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>
                                     <td>{{ $enquiry->city }}</td>

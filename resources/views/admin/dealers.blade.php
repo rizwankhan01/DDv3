@@ -84,27 +84,7 @@
                           <a href="/dealers" class="btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
-                      </form><hr>
-                      <table id="datatable-buttons" class="table table-striped table-bordered">
-                          <thead>
-                          <tr>
-                              <th>Order ID</th>
-                              <th>Slot Date</th>
-                              <th>Slot Time</th>
-                              <th>Stock Price</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                            @foreach($orders as $order)
-                              <tr>
-                                <td><a href="/home/{{$order->id}}">#{{ $order->id }}</a></td>
-                                <td>{{ $order->slot_date }}</td>
-                                <td>{{ $order->slot_time }}</td>
-                                <td>&#8377; {{ $order->stock_price }}</td>
-                              </tr>
-                            @endforeach
-                          </tbody>
-                      </table>
+                      </form>
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete Dealers Here.</h6>
                       <div class="table-responsive">
@@ -126,7 +106,7 @@
                               <tbody>
                               @foreach($dealers as $dealer)
                               <tr>
-                                  <td>{{ $dealer->dealer_name }}</td>
+                                  <td><a href='/dealer-profile/{{ $dealer->id }}'>{{ $dealer->dealer_name }}</a></td>
                                   <td>{{ $dealer->phone_number }}</td>
                                   <td>{{ $dealer->address }}</td>
                                   <td>{{ $dealer->email }}</td>

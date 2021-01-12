@@ -92,8 +92,8 @@
                           </div>
                           </div>
                       </div>
-                      @if(!empty($dealer))
-                        <h5 class="card-title">{{ $dealer->dealer_name }}</h5>
+                      @if(!empty($user))
+                        <h5 class="card-title">{{ $user->name }}</h5>
                       @else
                         <h5 class="card-title">All Accounts</h5>
                       @endif
@@ -170,36 +170,7 @@
                         <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
-                      </form><hr>
-                      @if($user->user_type=='Service Man')
-                        <table id="datatable-buttons" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Slot Date</th>
-                                <th>Slot Time</th>
-                                <th>Time Taken</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                              @foreach($orders as $order)
-                                <tr>
-                                  <td><a href="/home/{{$order->id}}">#{{ $order->id }}</a></td>
-                                  <td>{{ $order->slot_date }}</td>
-                                  <td>{{ $order->slot_time }}</td>
-                                  <td>@if(!empty($order->closedorder->id))
-                                    <?php
-                                    $start_t  = new DateTime($order->closedorder->start_timestamp);
-                                    $end_t    = new DateTime($order->closedorder->end_timestamp);
-                                    $diff   = $start_t->diff($end_t);
-                                    ?>
-                                    {{ $diff->format('%H:%I:%S') }} Hours
-                                  @endif</td>
-                                </tr>
-                              @endforeach
-                            </tbody>
-                        </table>
-                      @endif
+                      </form>
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete User Accounts Here.</h6>
                       <div class="table-responsive">
@@ -229,7 +200,12 @@
                                     @if($user->profile_image) <img src='storage/{{ $user->profile_image }}' class='img img-rounded' style="width:75px;height:auto;"> @endif
                                   </td>
                                   <td>
-                                      {{ $user->name }}<br><small>{{ $user->fathers_name }}</small>
+                                    @if($user->user_type=='Service Man')
+                                      <a href='serviceman-profile/{{ $user->id }}'>{{ $user->name }}</a>
+                                    @else
+                                      {{ $user->name }}
+                                    @endif
+                                      <br><small>{{ $user->fathers_name }}</small>
                                   </td>
                                   <td>
                                       <small><a href='tel:{{ $user->primary_phone }}'>{{ $user->primary_phone }}</a><br>

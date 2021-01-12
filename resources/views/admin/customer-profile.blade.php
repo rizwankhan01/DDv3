@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title') Customers | Doctor Display Dashboard @endsection
+@section('title') {{ $customer->name }} Customer Profile | Doctor Display Dashboard @endsection
 
 @section('contentbar')
   <div class="contentbar mt-100">
@@ -72,45 +72,7 @@
                           </div>
                         </div>
                       </div>
-                  @else
-                  <div class="card m-b-30">
-                  <div class="card-header">
-                    <h5 class="card-title">All Customers</h5>
-                  </div>
-                  <div class="card-body">
-                    <h6 class="card-subtitle">You can moderate customers here.</h6>
-                      <div class="table-responsive">
-                        @if(session('status'))
-                          <div class="alert alert-success" role="alert">
-                              {{ session('status') }}
-                          </div>
-                        @endif
-                          <table id="datatable-buttons" class="table table-striped table-bordered">
-                              <thead>
-                              <tr>
-                                  <th>Name</th>
-                                  <th>Phone Number</th>
-                                  <th>Email</th>
-                                  <th>Analytics</th>
-                                  <th>Actions</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                                @foreach($customers as $customer)
-                                  <tr>
-                                    <td><a href='/customer-profile/{{ $customer->id }}'>{{ $customer->name }}</a></td>
-                                    <td>{{ $customer->phone_number }}</td>
-                                    <td>{{ $customer->email }}</td>
-                                    <td><a href="https://analytics.google.com/analytics/web/#/report/visitors-user-activity/a65390322w119310705p124818505/_r.userId={{ $customer->ga_id }}&_r.userListReportStates=&_r.userListReportId=visitors-legacy-user-id/" target="_blank">Open GA</a></td>
-                                    <td><a href='/customers/{{ $customer->id}}' class='btn btn-sm btn-primary'>Expand</a></td>
-                                  </tr>
-                                @endforeach
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-                </div>
-                @endif
+                  @endif
           </div>
           <!-- End col -->
       </div>

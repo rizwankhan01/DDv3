@@ -12,8 +12,8 @@
                     @if(isset($ticket))
                         <h5 class="card-title">Ticket for <a href='/home/{{ $ticket->order_id }}'>Order ID: #{{ $ticket->order_id }}</a></h5><br>
                         <b>Device:</b> {{ $model->color->model->brand->name }} {{ $model->color->model->name }} {{ $model->color->name }}<br>
-                        <b>Stock From:</b> {{ $ticket->order->dealer->dealer_name }} for &#8377; {{ $ticket->order->stock_price }}<br>
-                        <b>Serviced By:</b> {{ $ticket->order->serviceman->name }}
+                        <b>Stock From:</b> <a href='/dealer-profile/{{ $ticket->order->dealer->id }}'>{{ $ticket->order->dealer->dealer_name }}</a> for &#8377; {{ $ticket->order->stock_price }}<br>
+                        <b>Serviced By:</b> <a href='/serviceman-profile/{{ $ticket->order->serviceman->id }}'>{{ $ticket->order->serviceman->name }}</a>
                         <hr>
                     @else
                         <h5 class="card-title">All Tickets</h5>
@@ -78,7 +78,7 @@
                               @foreach($tickets as $ticket)
                               <tr>
                                   <td><a href='/home/{{ $ticket->order_id }}'>#{{ $ticket->order_id }}</a></td>
-                                  <td>{{ $ticket->order->customer->name }}<br>
+                                  <td><a href='/customer-profile/{{ $ticket->order->customer->id }}'>{{ $ticket->order->customer->name }}</a><br>
                                   <small><a href='tel:{{ $ticket->order->customer->phone_number }}'>{{ $ticket->order->customer->phone_number }}</a></small></td>
                                   <td>
                                     @foreach($ticket->order->order_lists as $list)
@@ -87,18 +87,18 @@
                                       @endif
                                     @endforeach
                                   </td>
-                                  <td>{{ $ticket->order->dealer->dealer_name }}<br>
+                                  <td><a href='/dealer-profile/{{ $ticket->order->dealer->id }}'>{{ $ticket->order->dealer->dealer_name }}</a><br>
                                   <small><a href='tel:{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
                                   <td>{{ $ticket->issue }}</td>
                                   <td>{{ $ticket->resolution }}</td>
                                   <td>{{ date('d-m-Y', strtotime($ticket->created_at)) }}</td>
                                   <td>{{ date('d-m-Y', strtotime($ticket->date_open)) }}</td>
                                   <td>@if(!empty($ticket->assigned_to))
-                                    {{ $ticket->serviceman->name }}
+                                    <a href='/serviceman-profile/{{ $ticket->serviceman->id }}'>{{ $ticket->serviceman->name }}</a>
                                   @endif</td>
                                   <td>
                                     @if(!empty($ticket->dealer->dealer_name))
-                                      {{ $ticket->dealer->dealer_name }}<br>
+                                      <a href='/dealer-profile/{{ $ticket->dealer->id }}'>{{ $ticket->dealer->dealer_name }}</a><br>
                                       <small>&#8377; {{ $ticket->r_stock_amount }}</small>
                                     @endif
                                   </td>

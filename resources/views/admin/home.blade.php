@@ -116,7 +116,7 @@
                           @if(!empty($order->dealer->dealer_name))
                           <tr>
                             <td><b>Dealer</b></td>
-                            <td>{{ $order->dealer->dealer_name }}</td>
+                            <td><a href='/dealer-profile/{{ $order->dealer->id }}'>{{ $order->dealer->dealer_name }}</a></td>
                             <td>&#8377; {{ $order->stock_price }}</td>
                           </tr>
                           @endif
@@ -124,10 +124,12 @@
                           <tr>
                             <td><b>Service Man</b></td>
                             <td>
-                              <figure>
-                              <img src="../storage/{{ $order->serviceman->profile_image }}" style="width:150px;height:auto;border-radius:25px;">
-                              <figcaption>{{ $order->serviceman->name }}</figcaption>
-                              </figure>
+                              <a href='/serviceman-profile/{{ $order->serviceman->id }}'>
+                                <figure>
+                                <img src="../storage/{{ $order->serviceman->profile_image }}" style="width:150px;height:auto;border-radius:25px;">
+                                <figcaption>{{ $order->serviceman->name }}</figcaption>
+                                </figure>
+                              </a>
                             </td>
                             <td>
                               @if(!empty($corder->start_timestamp))
@@ -172,7 +174,7 @@
                           @if(!empty($ticket->r_stock_amount))
                             <tr>
                               <td><b>Ticket</b></td>
-                              <td>{{ $ticket->dealer->dealer_name }}</td>
+                              <td><a href='/dealer-profile/{{ $ticket->dealer->id }}'>{{ $ticket->dealer->dealer_name }}</a></td>
                               <td>&#8377; {{ $ticket->r_stock_amount }}</td>
                             </tr>
                           @endif
@@ -314,7 +316,7 @@
                               <tbody>
                               @foreach($orders as $order)
                                 <tr>
-                                  <td><b>{{ $order->customer->name }}</b></td>
+                                  <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
                                   <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
                                   <td>
                                   @if($order->slot_date == date('Y-m-d'))
