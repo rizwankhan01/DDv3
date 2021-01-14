@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
-@section('title') Doctor Display @endsection
+@section('title')Doorstep Mobile Screen Repair in Chennai | Doctor Display @endsection
+@section('metadesc') Fixing broken phone screens have always been a pain, right? What if we say we would come to your doorstep and replace
+  your phone screen right in front of your eyes, Crazy right! thats our pitch.The only transperant portal for changing broken mobile screens @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') Feedback | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('metadesc')  We value your feedback. Let us know how we did on our service. @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">

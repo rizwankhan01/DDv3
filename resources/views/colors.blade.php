@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') {{$color->model->brand->name}} {{ $color->model->series }} {{$color->model->name}} Colors | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('metadesc') Get your {{$color->model->brand->name}} {{ $color->model->series }} {{$color->model->name}} screen replaced at your doorstep in chennai within 30 minutes. Book appointment now! @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">

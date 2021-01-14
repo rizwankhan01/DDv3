@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') Contact | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('metadesc') Modern Tower, no.23, F6 ,First floor, Westcott Rd, Royapettah, Chennai, Tamil Nadu 600014 @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">

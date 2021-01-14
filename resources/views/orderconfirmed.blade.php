@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') Order Confirmed | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('metadesc') Thank you. Your Order has been placed! @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
 </div>

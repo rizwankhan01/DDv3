@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title') {{$models->brand->name}} {{ $models->series }} {{$models->name}} | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('title') {{$models->brand->name}} {{ $models->series }} {{$models->name}} Screen Repair | Doctor Display @endsection
+@section('metadesc') Get your {{$models->brand->name}} {{ $models->series }} {{$models->name}} screen replaced at your doorstep in chennai within 30 minutes. Book appointment now! @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
 </div>
@@ -62,7 +62,7 @@
           <div class="col-lg-12">
               <div class="breadcaump-inner">
                   <div class="breadcrumb-insite">
-                  <small style="float:right;">Last Updated: {{$models->updated_at}}</small>
+                  <small style="float:right;">Last Updated: {{ date("M jS, Y", strtotime($models->updated_at))}}</small>
                       <ul class="core-breadcaump">
                           <li><a href="/">Home</a></li>
                           <li><a href="/allbrands">All Brands</a></li>
@@ -262,17 +262,33 @@
     <div class="brook-icon-boxes-area pb--120 bg_color--1">
         <div class="container">
             <div class="row mt--30">
+
+            <!-- Start Single Icon Boxes -->
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                <div class="icon-box text-center no-border mt--30">
+                    <div class="inner">
+                        <div class="icon">
+                            <i class="ion-ios-analytics-outline"></i>
+                        </div>
+                        <div class="content">
+                            <h5 class="heading heading-h5">100% Data Security</h5>
+                            <p class="bk_pra">Get your screen replaced right in front of your eyes. All your data is safe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Single Icon Boxes -->
+
                 <!-- Start Single Icon Boxes -->
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="icon-box text-center no-border mt--30">
                         <div class="inner">
                             <div class="icon">
-                                <i class="ion-ios-eye-outline"></i>
+                                <i class="ion-ios-calendar-outline"></i>
                             </div>
                             <div class="content">
-                                <h5 class="heading heading-h5">Modern design</h5>
-                                <p class="bk_pra">Brook embraces a modern look with various enhanced
-                                    pre-defined page elements.</p>
+                                <h5 class="heading heading-h5">90 Days Warranty</h5>
+                                <p class="bk_pra">Get your screens replaced with warranty for 3 months, No Questions asked.</p>
                             </div>
                         </div>
                     </div>
@@ -284,29 +300,11 @@
                     <div class="icon-box text-center no-border mt--30">
                         <div class="inner">
                             <div class="icon">
-                                <i class="ion-ios-bookmarks-outline"></i>
+                                <i class="ion-happy-outline"></i>
                             </div>
                             <div class="content">
-                                <h5 class="heading heading-h5">Modern design</h5>
-                                <p class="bk_pra">This is the theme for businesses & companies operating in a
-                                    wide range of areas.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Icon Boxes -->
-
-                <!-- Start Single Icon Boxes -->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="icon-box text-center no-border mt--30">
-                        <div class="inner">
-                            <div class="icon">
-                                <i class="ion-ios-browsers-outline"></i>
-                            </div>
-                            <div class="content">
-                                <h5 class="heading heading-h5">Modern design</h5>
-                                <p class="bk_pra">Brook is highly responsive thanks to built-in WP Bakery Page
-                                    Builder & Slider Revolution.</p>
+                                <h5 class="heading heading-h5">5000+ Happy Customers</h5>
+                                <p class="bk_pra">Professional service at your doorstep. Don't believe us? See Our Google Reviews.</p>
                             </div>
                         </div>
                     </div>

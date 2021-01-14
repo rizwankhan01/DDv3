@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') {{ $brands->name }} Products | Doctor Display @endsection
-@section('metadesc') @endsection
+@section('metadesc') If you are looking to fix your {{ $brands->name }} phones, we are there for your rescue. Our team of trained screen repair technicians will come to your doorstep and get your screens replaced whenever you want to fix it. @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">
