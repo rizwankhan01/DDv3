@@ -86,7 +86,7 @@ class OrderControlsController extends Controller
       $order->stock_price =   $request->input('stock_price');
       $order->status      =   2;
       $order->update();
-      
+
 
       return redirect()->back();
     }

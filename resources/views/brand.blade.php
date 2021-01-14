@@ -41,7 +41,14 @@
                             <div class="brand">
                               <a href="/colors/{{ $model->id }}">
                                 <figure>
-                                  <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
+                                  @foreach($model->colortypes as $colors)
+                                    @if(empty($colors->image))
+                                      <?php $image = $model->image; ?>
+                                    @else
+                                      <?php $image = $colors->image; ?>
+                                    @endif
+                                  @endforeach
+                                  <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
                                 </figure>
                               </a>
