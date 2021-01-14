@@ -282,7 +282,7 @@
                     ]'>
 
                     @foreach($feedbacks as $feedback)
-                      @if(!empty($feedback))
+                      @if(!empty($feedback->order->order_lists))
                       @foreach($feedback->order->order_lists as $list)
                         @if($list->prod_type=='BASIC' || $list->prod_type=='PREMIUM')
                           <?php
