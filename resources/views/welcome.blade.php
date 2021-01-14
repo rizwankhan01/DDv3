@@ -201,7 +201,7 @@
 </div>
 </div>
 <!-- End Video Popup Area -->
-
+@if(!empty($models->id))
 <div class="brook-product-area pb--150 pb-md--80 pb-sm--60 bg_color--1">
 <div class="container">
     <div class="row">
@@ -260,6 +260,7 @@
     </div>
 </div>
 </div>
+@endif
 @if(count($feedbacks)!=0)
 <div class="brook-testimonial-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--7 slick-arrow-hover">
     <div class="container">

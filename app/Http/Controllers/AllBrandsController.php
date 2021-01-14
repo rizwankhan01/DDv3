@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\brands;
+use Session;
 
 class AllBrandsController extends Controller
 {
@@ -15,6 +16,7 @@ class AllBrandsController extends Controller
     public function index()
     {
       $brands = brands::all();
+      session()->flush();
       return view('/allbrands')->with('brands',$brands);
     }
 
