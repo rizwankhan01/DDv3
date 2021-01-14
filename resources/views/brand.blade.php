@@ -41,12 +41,7 @@
                             <div class="brand">
                               <a href="/colors/{{ $model->id }}">
                                 <figure>
-                                  <?php $color_image = $model->colortypes->image; ?>
-                                  @if($model->image == 'placeholder.png')
                                     <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
-                                  @elseif(!empty($color_image))
-                                    <img src="../storage/{{$color_image}}" class="logo-thumbnail" alt="{{ $color_image }} image">
-                                  @endif
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
                                 </figure>
                               </a>
