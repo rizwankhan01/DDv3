@@ -39,7 +39,6 @@ Route::get('/thankyou', function(){
     return view('thankyou');
 });
 
-
 //////////////////////////dashboard///////////////////////////
 Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
