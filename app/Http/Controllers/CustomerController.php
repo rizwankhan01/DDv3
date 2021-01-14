@@ -72,6 +72,7 @@ class CustomerController extends Controller
           if($color->name=='Black'){
             return redirect('screen-repair-'.$color->model->brand->name.'-'.$color->model->series.'-'.$model);
           }else{
+            $model = $select_model->id;
             return redirect('product/'.$model.'/'.$color->name);
           }
     }
