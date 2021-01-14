@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\customers;
 use App\Models\colors;
 use App\Models\enquiry;
+use App\Models\models;
 use Session;
 
 class CustomerController extends Controller
