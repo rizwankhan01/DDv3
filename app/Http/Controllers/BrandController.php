@@ -48,7 +48,7 @@ class BrandController extends Controller
     public function show($id)
     {
       $brands = brands::where('name', $id)->first();
-      $models = models::where('brand_id', $brands->id)->get()->groupBy('series')->orderBy('id', 'DESC');
+      $models = models::where('brand_id', $brands->id)->get()->groupBy('series');
       return view('brand', compact('brands','models'));
     }
 
