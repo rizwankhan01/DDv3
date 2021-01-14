@@ -53,14 +53,14 @@ class CustomerController extends Controller
           $cus_id   = $customer->id;
 
           $enquiry  = new enquiry;
-          $enquiry->model_name  = $model." ".$color->name;
+          $enquiry->model_name  = $model->brand->name." ".$model." ".$color->name;
           $enquiry->customer_id = $customer->id;
           $enquiry->save();
         }else{
           $cus_id   = $check->id;
 
           $enquiry  = new enquiry;
-          $enquiry->model_name  = $model." ".$color->name;
+          $enquiry->model_name  = $model->brand->name." ".$model." ".$color->name;
           $enquiry->customer_id = $cus_id;
           $enquiry->save();
         }

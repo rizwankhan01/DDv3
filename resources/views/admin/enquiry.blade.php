@@ -55,6 +55,7 @@
                                   <th>Customer</th>
                                   <th>City</th>
                                   <th>Follow back</th>
+                                  <th>Created at</th>
                                   <th>Status</th>
                               </tr>
                               </thead>
@@ -73,6 +74,7 @@
                                         {{ date('d-m-Y',strtotime($enquiry->fdate)) }}
                                       @endif
                                     </td>
+                                    <td>{{ $enquiry->created_at }}</td>
                                     <td>
                                       @if(empty($enquiry->status))
                                         <a href='/enquiry/{{ $enquiry->id }}' class='btn btn-sm btn-warning'>Update Status</a>

@@ -91,7 +91,9 @@ class MyOrdersController extends Controller
         }
       }else{
           $addon = order_lists::where('order_id',$id)->where('prod_type','ADDON')->first();
-          $addon->delete();
+          if(!empty($addon->id)){
+            $addon->delete();
+          }
       }
       $order->status  = 3;
       $order->update();

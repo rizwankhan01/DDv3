@@ -70,7 +70,7 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   <div class="modal-body">
     <div class='row'>
       Upload Phone image after servicing:
-      <input type="file" name="post-image" class="form-control" required><br>
+      <input type="file" name="post-image" class="form-control" accept=".jpg, jpeg, png" required><br>
       IMEI Number:
       <input type="text" name="imei" class="form-control" placeholder="IMEI Number" onkeypress="return isNumberKey(event)"
       minlength="16" maxlength="16" required><br>
