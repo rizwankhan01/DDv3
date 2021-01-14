@@ -41,7 +41,7 @@
                             <div class="brand">
                               <a href="/colors/{{ $model->id }}">
                                 <figure>
-                                    <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
+                                  <img src="../storage/{{$model->image}}" class="logo-thumbnail" alt="{{ $model->name }} image">
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
                                 </figure>
                               </a>
