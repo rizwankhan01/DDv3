@@ -42,10 +42,10 @@
                               <a href="/colors/{{ $model->id }}">
                                 <figure>
                                   @foreach($model->colortypes as $colors)
-                                    @if(empty($colors->image))
-                                      <?php $image = $model->image; ?>
-                                    @else
+                                    @if(!empty($colors->image))
                                       <?php $image = $colors->image; ?>
+                                    @else
+                                      <?php $image = $model->image; ?>
                                     @endif
                                   @endforeach
                                   <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
