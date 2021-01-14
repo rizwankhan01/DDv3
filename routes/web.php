@@ -89,3 +89,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/customer-profile','Admin\CustomerProfileController');
   });
 });
+
+Route::get('/{id}','HomePageController@show');
