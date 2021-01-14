@@ -328,7 +328,7 @@
                                   <td>{{ $order->slot_time }}</td>
                                   <td>@if(!empty($order->address->area)){{ $order->address->area }} @endif</td>
                                   <td>
-                                    @if(!empty($order->pickup_reason))
+                                    @if($order->pickup_reason==NULL)
                                       @if($order->status==1)
                                         <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
                                       @elseif($order->status==2)
