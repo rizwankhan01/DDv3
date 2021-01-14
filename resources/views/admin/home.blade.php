@@ -328,10 +328,14 @@
                                   <td>{{ $order->slot_time }}</td>
                                   <td>@if(!empty($order->address->area)){{ $order->address->area }} @endif</td>
                                   <td>
-                                    @if($order->status==1)
-                                      <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
-                                    @elseif($order->status==2)
-                                      <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Assigned</a>
+                                    @if(!empty($order->pickup_reason))
+                                      @if($order->status==1)
+                                        <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
+                                      @elseif($order->status==2)
+                                        <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Assigned</a>
+                                      @endif
+                                    @else
+                                      <a href="/home/{{ $order->id }}" class='btn btn-sm btn-warning'>Picked Up</a>
                                     @endif
                                   </td>
                                 </tr>
