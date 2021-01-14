@@ -43,7 +43,7 @@
                                 <figure>
                                   @foreach($model->colortypes as $colors)
                                     @if(!empty($colors->image))
-                                      <?php $image = $colors->image; ?>
+                                      <?php $image = $colors->image; exit();?>
                                     @else
                                       <?php $image = $model->image; ?>
                                     @endif
