@@ -236,7 +236,7 @@
                         <div class="product-thumbnail">
                             <div class="thumbnail">
                                 <div class="product-main-image">
-                                    <img src="storage/{{ $model->image }}" class="w-50" alt="Multipurpose">
+                                    <img src="storage/{{ $model->image }}" class="w-50" alt="{{ $model->brand->name}} {{ $model->series }} {{ $model->name }} image">
                                 </div>
                             </div>
                         </div>
@@ -260,6 +260,7 @@
     </div>
 </div>
 </div>
+@if(!empty($feedbacks))
 <div class="brook-testimonial-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--7 slick-arrow-hover">
     <div class="container">
         <div class="row">
@@ -318,6 +319,7 @@
         </div>
     </div>
 </div>
+@endif
 <!-- Start Call To Action -->
 <div class="brook-call-to-action bg_color--13 ptb--70 bg-as-text2">
 <div class="container">
