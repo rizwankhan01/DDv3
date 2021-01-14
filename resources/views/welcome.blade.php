@@ -260,7 +260,7 @@
     </div>
 </div>
 </div>
-@if(!empty($feedbacks))
+@if(count($feedbacks)!=0)
 <div class="brook-testimonial-area ptb--150 ptb-md--80 ptb-sm--60 bg_color--7 slick-arrow-hover">
     <div class="container">
         <div class="row">
