@@ -49,7 +49,11 @@
                                       <?php $image = $model->image; ?>
                                     @endif
                                   @endforeach
-                                  <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
+                                  @if(!empty($image))
+                                    <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
+                                  @else
+                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->image }} image">
+                                  @endif
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
                                 </figure>
                               </a>
