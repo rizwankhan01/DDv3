@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\closedorder;
 use App\Models\models;
+use App\Models\colors;
+use App\Models\pricings;
+use App\Models\order_lists;
+use Session;
 
 class HomePageController extends Controller
 {
@@ -49,7 +53,18 @@ class HomePageController extends Controller
      */
     public function show($id)
     {
-        //
+      $url      = explode('-',$id);
+      //dd($url);
+      $models   = models::where('name', $url[4])->where('series',$url[3])->first();
+      $colors   = colors::where('model_id', $models->id)->get();
+      if(!empty(Session::get('color_id'))){
+      $color    = colors::findOrFail(Session::get('color_id'));
+      }else{
+      $color    = colors::where('model_id', $models->id)->first();
+      }
+      $pricing  = pricings::where('color_id', $color->id)->first();
+      $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
+      return view('product', compact('models','colors','color','pricing','orders'));
     }
 
     /**

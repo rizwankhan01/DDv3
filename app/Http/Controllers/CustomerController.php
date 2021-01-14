@@ -67,7 +67,11 @@ class CustomerController extends Controller
           Session::put('enq_id',$enquiry->id);
           Session::put('cus_id', $cus_id);
           Session::put('color_id',$color_id);
-          return redirect('product/'.$model.'/'.$color->name);
+          if($color->name=='Black'){
+            return redirect('screen-repair-'.$color->model->brand->name.'-'.$color->model->series.'-'.$model);
+          }else{
+            return redirect('product/'.$model.'/'.$color->name);
+          }
     }
 
     /**

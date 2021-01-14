@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/','HomePageController');
+Route::get('/','HomePageController@index');
 Route::resource('/allbrands', 'AllBrandsController');
 Route::resource('/brand', 'BrandController');
 Route::resource('/colors', 'ColorController');
@@ -38,6 +38,7 @@ Route::get('/privacy', function(){
 Route::get('/thankyou', function(){
     return view('thankyou');
 });
+Route::get('/{id}','HomePageController@show');
 
 //////////////////////////dashboard///////////////////////////
 Auth::routes();
