@@ -115,8 +115,13 @@
                         </div><br>
                             <div class="price" style="margin-bottom:0px;">
                                 <p class="theme-color">
+                                  <?php $selected_color = $color->name; ?>
                                   @foreach($colors as $color)
-                                  <a href='/product/{{$models->name}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                    @if($color->name==$selected_color)
+                                      <a href='/product/{{$models->name}}/{{$color->name}}' style="color:#FCC72D;"><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                    @else
+                                      <a href='/product/{{$models->name}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                    @endif
                                   @endforeach
                                 </p>
                                 <p>Select Screen Quality:</p>
