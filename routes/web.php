@@ -38,7 +38,7 @@ Route::get('/privacy', function(){
 Route::get('/thankyou', function(){
     return view('thankyou');
 });
-Route::get('/{id}','HomePageController@show');
+
 
 //////////////////////////dashboard///////////////////////////
 Auth::routes();

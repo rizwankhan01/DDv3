@@ -187,7 +187,8 @@
                             <h2 class="widgettitle">Contact</h2>
                             <div class="footer-address">
                                 <div class="bk-hover">
-                                    <p>128,Danu Arkade, Below thick shake factory, Dr. Radhakrishnan Salai,<br>Mylapore, Chennai, Tamil Nadu 600004</p>
+                                    <p>Modern Tower, no.23, F6 ,First floor, Westcott Rd, <br>
+                                      Royapettah, Chennai, Tamil Nadu 600014</p>
                                     <p><a href="mailto:order@doctordisplay.in">order@doctordisplay.in</a></p>
                                     <p><a href="tel:04446270777">04446270777</a></p>
                                 </div>

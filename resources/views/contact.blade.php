@@ -33,8 +33,8 @@
                     <div class="classic-address text-center">
                         <h4 class="heading heading-h4">Visit our Office at</h4>
                         <div class="desc mt--15">
-                            <p class="bk_pra line-height-2-22">128,Danu Arkade, Below thick shake factory, Dr. Radhakrishnan Salai, <br>
-                              Mylapore, Chennai, Tamil Nadu 600004</p>
+                            <p class="bk_pra line-height-2-22">Modern Tower, no.23, F6 ,First floor, Westcott Rd, <br>
+                              Royapettah, Chennai, Tamil Nadu 600014</p>
                         </div>
                     </div>
                 </div>

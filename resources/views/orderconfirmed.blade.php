@@ -29,7 +29,7 @@
                 <p>Chennai</p>
 
               </address>
-              <a href="#">info@doctordisplay.com</a>
+              <a href="mailto:order@doctordisplay.in">order@doctordisplay.in</a>
             </div>
             <img src="https://doctordisplay.in/images/logo-mail.png" class="hidden-xs" alt="DoctorDisplay Logo">
           </div>
