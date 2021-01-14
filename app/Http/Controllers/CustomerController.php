@@ -43,8 +43,8 @@ class CustomerController extends Controller
 
           $color_id = $request->input('color_id');
           $color    = colors::findOrFail($color_id);
-          dd($color->model_id);
           $select_model = models::where('id',$color->model_id)->first();
+          dd($select_model);
           $model    = $select_model->name;
         if(empty($check->id)){ // checking if phone number already exists
           $customer = new customers();
