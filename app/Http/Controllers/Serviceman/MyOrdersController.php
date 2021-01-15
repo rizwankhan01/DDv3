@@ -42,7 +42,7 @@ class MyOrdersController extends Controller
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><br><br>
+      $message = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><br><br>
       Hello ".$order->customer->name.",<br>
       Doctor Display here. Your technician ".auth()->user()->name." is on the way to your location with your brand new ".$model." display.
       To ensure a smooth repair experience, please be ready for our technician during the time scheduled.
@@ -107,7 +107,7 @@ class MyOrdersController extends Controller
       <center><h3>TAX INVOICE</h3></center><hr>
       <div style='width:100%;height:300px;'>
       <div style='float:left;font-size:14px;'><br><br>
-      <img src='https://doctordisplay.in/images/logo-mail.png'><br><br>
+      <img src='http://doctordisplay.in/img/logo/logo-mail.png'><br><br>
       Invoice Number: ".$id."<br>
       Invoice Date: ".date('d-m-Y',strtotime($order->updated_at))."<br>
       Invoice Time: ".date('H:i',strtotime($order->updated_at))."<br>
@@ -203,7 +203,7 @@ class MyOrdersController extends Controller
       $to        = $order->customer->email.", order@doctordisplay.in";
       $from      = "order@doctordisplay.in";
       $subject   = "Order Completed #".$id." | Doctor Display";
-      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
+      $message = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><BR><br>
                   Hello ".$order->customer->name.",<br>
                   Phone Model: ".$model."<br>
                   IMEI No.: ".$corder->imei."<br>

@@ -62,7 +62,7 @@ class OrderControlsController extends Controller
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message  = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
+      $message  = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><BR><br>
       Hi ".$customer->name.",<Br>
       It was a pleasure speaking with you.<br><br>
       I'm emailing to note your confimed order #".$order->id." for
@@ -109,7 +109,7 @@ class OrderControlsController extends Controller
       $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
       $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message = "<img src='https://doctordisplay.in/images/logo-mail.png'><BR><br>
+      $message = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><BR><br>
       Hello ".$order->customer->name.",<br>
       Your screen replacement order for, ".$model." has been rescheduled to, ".$order->slot_date." ".$order->slot_time." upon request.<BR><br>
       Thanks for choosing Doctor Display!<br>
