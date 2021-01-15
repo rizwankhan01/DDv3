@@ -65,7 +65,7 @@
                             <div class="header-left flex-20">
                                 <div class="logo">
                                     <a href="/">
-                                        <img src="https://doctordisplay.in/images/logo.png" alt="Doctor Display Logo">
+                                        <img src="{{ URL::asset('img/logo/logo.png') }}" alt="Doctor Display Logo">
                                     </a>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                 <div class="mobileheader">
                     <div class="logo">
                         <a href="/">
-                            <img src="https://doctordisplay.in/images/logo-mail.png" alt="Multipurpose">
+                            <img src="{{ URL::asset('img/logo/logo-mail.png') }}" alt="Multipurpose">
                         </a>
                     </div>
                     <a class="mobile-close" href="#"></a>
