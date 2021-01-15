@@ -26,6 +26,9 @@ Route::resource('/report', 'TicketController');
 Route::post('/enquire','Admin\EnquiryController@store');
 Route::resource('/feedback','FeedbackController');
 
+Route::get('/blog', function(){
+  return abort(404);
+});
 Route::get('/contact', function(){
     return view('contact');
 });
