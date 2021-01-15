@@ -42,12 +42,12 @@ class ProductController extends Controller
         //
     }
 
-    public function getproduct($name, $color){
+    public function getproduct($name, $color_name){
       $models = models::where('id',$name)->first();
       $colors = colors::where('model_id',$models->id)->get();
-      $colorr  = colors::where('name', $color)->where('model_id',$models->id)->first();
-      $pricing  = pricings::where('color_id', $colorr->id)->first();
-      $orders = order_lists::where('color_id', $colorr->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
+      $color  = colors::where('name', $color_name)->where('model_id',$models->id)->first();
+      $pricing  = pricings::where('color_id', $color->id)->first();
+      $orders = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
       return view('product', compact('models','colors','color','pricing','orders'));
     }
 
