@@ -118,9 +118,9 @@
                                   <?php $selected_color = $color->name; ?>
                                   @foreach($colors as $color)
                                     @if($color->name==$selected_color)
-                                      <a href='/product/{{$models->name}}/{{$color->name}}' style="color:#FCC72D;"><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                      <a href='/product/{{$models->id}}/{{$color->name}}' style="color:#FCC72D;"><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
                                     @else
-                                      <a href='/product/{{$models->name}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
+                                      <a href='/product/{{$models->id}}/{{$color->name}}'><u>{{$color->name}}</u></a>&nbsp;&nbsp;&nbsp;
                                     @endif
                                   @endforeach
                                 </p>
