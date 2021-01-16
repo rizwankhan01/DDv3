@@ -300,7 +300,7 @@
                             <p class="bk_pra">{{ $feedback->feedback }}</p>
                             <div class="testimonial-info">
                                 <div>
-                                    <img src="storage/{{ $image }}" style="height:100px;width:auto;" alt="{{ $model }} image">
+                                    <img src="storage/{{ $image ?? '' }}" style="height:100px;width:auto;" alt="{{ $model }} image">
                                 </div>
                                 <div class="clint-info">
                                     <h6>{{ $feedback->order->customer->name }}</h6>
