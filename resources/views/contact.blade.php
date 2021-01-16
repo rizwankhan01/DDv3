@@ -58,11 +58,10 @@
                         <h4 class="heading heading-h4">Follow us</h4>
                         <div class="desc mt--15">
                             <ul class="social-icon icon-solid-rounded icon-size-medium text-center move-up wow">
-                                <li class="facebook"><a href="#" class="link" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
-                                <li class="twitter"><a href="#" class="link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li class="instagram"><a href="#" class="link" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                <li class="dribbble"><a href="#" class="link" aria-label="Dribbble"><i class="fab fa-youtube"></i></a></li>
-                                <li class="pinterest"><a href="#" class="link" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a></li>
+                                <li class="facebook"><a href="https://www.facebook.com/displaydoctors" class="link" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="https://twitter.com/doctor_display" class="link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li class="instagram"><a href="https://www.instagram.com/doctordisplay/" class="link" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                <li class="youtube"><a href="https://www.youtube.com/channel/UCtnKHSIMmcyR_FfMEiDvg6A" class="link" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
