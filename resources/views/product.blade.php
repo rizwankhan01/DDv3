@@ -131,14 +131,14 @@
                                     <ul class="nav nav-pills mb-3 col-md-12 col-xs-12" id="pills-tab" role="tablist">
                                       @if($pricing->ord_stock_availablity==1)
                                         <li class="nav-item col-md-3 col-xs-6">
-                                            <a class="nav-link active" id="basic-tab" data-toggle="pill"
+                                            <a class="nav-link @if($pricing->preferred_type=='BASIC') active  @endif" id="basic-tab" data-toggle="pill"
                                                 href="#basic" role="tab" aria-controls="basic"
                                                 aria-selected="true" style="border: 1px solid #ddd;"
                                                 onclick="changevalue({{ $pricing->ord_selling_price }},'BASIC')">Basic</a>
                                         </li>
                                       @else
                                         <li class="nav-item col-md-3 col-xs-6">
-                                            <a class="nav-link active" id="basic-tab" data-toggle="pill"
+                                            <a class="nav-link @if($pricing->preferred_type=='BASIC') active  @endif" id="basic-tab" data-toggle="pill"
                                                 href="#basicnone" role="tab" aria-controls="basic"
                                                 aria-selected="true" style="border: 1px solid #ddd;"
                                                 onclick="changevalue({{ $pricing->ord_selling_price }},'BASIC')">Basic</a>
@@ -146,14 +146,14 @@
                                       @endif
                                       @if($pricing->org_stock_availablity==1)
                                         <li class="nav-item col-md-3 col-xs-6">
-                                            <a class="nav-link" id="premium-tab" data-toggle="pill"
+                                            <a class="nav-link @if($pricing->preferred_type=='PREMIUM') active  @endif" id="premium-tab" data-toggle="pill"
                                                 href="#premium" role="tab" aria-controls="premium"
                                                 aria-selected="false" style="border: 1px solid #ddd;"
                                                 onclick="changevalue({{ $pricing->org_selling_price }},'PREMIUM')">Premium</a>
                                         </li>
                                       @else
                                         <li class="nav-item col-md-3 col-xs-6">
-                                          <a class="nav-link" id="premium-tab" data-toggle="pill"
+                                          <a class="nav-link @if($pricing->preferred_type=='PREMIUM') active  @endif" id="premium-tab" data-toggle="pill"
                                               href="#premiumnone" role="tab" aria-controls="premium"
                                               aria-selected="false" style="border: 1px solid #ddd;"
                                               onclick="changevalue({{ $pricing->org_selling_price }},'PREMIUM')">Premium</a>
@@ -162,23 +162,23 @@
                                     </ul>
                                     <span class="nav-item col-md-12 col-xs-12 tab-content" id="pills-tabContent">
                                       @if($pricing->ord_stock_availablity==1)
-                                      <div class="tab-pane fade show active" id="basic" role="tabpanel"
+                                      <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->ord_selling_price+300 }}</strike> <span class="green">&#8377; {{ $pricing->ord_selling_price }}</span></h4>
                                       </div>
                                       @else
-                                      <div class="tab-pane fade show active" id="basicnone" role="tabpanel"
+                                      <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basicnone" role="tabpanel"
                                           aria-labelledby="basic-tab">
                                           <h4>Stock Unavailable</h4>
                                       </div>
                                       @endif
                                       @if($pricing->org_stock_availablity==1)
-                                      <div class="tab-pane fade" id="premium" role="tabpanel"
+                                      <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premium" role="tabpanel"
                                           aria-labelledby="premium-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->org_selling_price+250 }}</strike> <span class="green">&#8377; {{ $pricing->org_selling_price }}</span></h4>
                                       </div>
                                       @else
-                                      <div class="tab-pane fade" id="premiumnone" role="tabpanel"
+                                      <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premiumnone" role="tabpanel"
                                           aria-labelledby="premium-tab">
                                           <h4>Stock Unavailable</h4>
                                       </div>
