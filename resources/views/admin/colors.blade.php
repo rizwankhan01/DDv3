@@ -159,18 +159,10 @@
                                   <td>{{ $color->name }}</td>
                                   <td>{{ $color->screen_color }}</td>
                                   <td>
-                                  @if($color->pricings->ord_stock_availablity==1)
                                     &#8377; {{ $color->pricings->ord_selling_price }}
-                                  @else
-                                    <strike>&#8377; {{ $color->pricings->ord_selling_price }}</strike>
-                                  @endif
                                   </td>
                                   <td>
-                                    @if($color->pricings->org_stock_availablity==1)
                                       &#8377; {{ $color->pricings->org_selling_price }}
-                                    @else
-                                      <strike>&#8377; {{ $color->pricings->org_selling_price }}</strike>
-                                    @endif
                                   </td>
                                   <td>{{ $color->pricings->preferred_type }}</td>
                                   <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>

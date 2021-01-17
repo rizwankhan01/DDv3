@@ -45,6 +45,7 @@
     });
     </script>
     <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5aff2d0e6d6a0b001193c222&product=sop' async='async'></script>
 </head>
 
 <body class="template-color-1 template-font-1">
@@ -224,7 +225,9 @@
     <!--// Footer -->
 
     @yield('scripts')
-
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8346739.js"></script>
+    <!-- End of HubSpot Embed Code -->
 </body>
 
 </html>
