@@ -51,6 +51,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>ID</th>
                                   <th>Model Name</th>
                                   <th>Customer</th>
                                   <th>City</th>
@@ -62,6 +63,7 @@
                               <tbody>
                                 @foreach($enquiries as $enquiry)
                                   <tr>
+                                    <td>{{ $enquiry->id }}</td>
                                     <td>{{ $enquiry->model_name }}</td>
                                     <td><a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
                                       <small><a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>

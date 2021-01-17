@@ -134,7 +134,9 @@ class ColorsController extends Controller
     public function destroy($id)
     {
       $colors = colors::findOrFail($id);
-      unlink('storage/'.$colors->image);
+      if(file_exists('storage/'.$colors->image)){
+        unlink('storage/'.$colors->image);
+      }
       $colors->delete();
       $pricing = pricings::where('color_id',$id)->first();
       $pricing->delete();

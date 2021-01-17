@@ -33,7 +33,7 @@
 <form method="POST" action="{{ route('login') }}">
   @csrf
   <div class="form-head">
-      <a href="/login" class="logo"><img src="{{ asset('img/logo/logo.png') }}" class="img-fluid" alt="logo"></a>
+      <a href="/login" class="logo"><img src="{{ asset('img/logo/logo-mail.png') }}" class="img-fluid" alt="logo"></a>
   </div>
   <div class="form-group">
     <input id="email" type="email" placeholder="Email/ Username" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

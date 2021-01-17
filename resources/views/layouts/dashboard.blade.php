@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 <title>@yield('title')</title>
 <!-- Fevicon -->
-<link rel="shortcut icon" href="{{ asset('assets\images\favicon.ico') }}">
+<!--<link rel="shortcut icon" href="assets\images\favicon.ico">-->
 <!-- Start css -->
 <!-- Switchery css -->
 <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
@@ -120,7 +120,7 @@
 <div class="row align-items-center">
 <div class="col-md-12">
     <div class="mobile-logobar">
-        <a href="/" class="mobile-logo"><img src="{{ asset('img/logo/logo.png') }}" class="img-fluid" alt="logo"></a>
+        <a href="/" class="mobile-logo"><img src="{{ asset('img/logo/logo-mail.png') }}" class="img-fluid" alt="logo"></a>
     </div>
     <div class="mobile-togglebar">
         <ul class="list-inline mb-0">

@@ -57,6 +57,23 @@ class EnquiryController extends Controller
           $enquiry->city          = $request->input('city');
         }
           $enquiry->save();
+          //enquiry mail
+          $to        = "order@doctordisplay.in";
+          $subject   = "Enquiry Alert | Doctor Display";
+          $headers   = "MIME-Version: 1.0" . "\r\n";
+          $headers  .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+          $headers  .= 'From: <order@doctordisplay.in>' . "\r\n";
+
+          $message   = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><BR><br>
+          Hello there!<Br>
+          We have a new enquiry for the model ".$request->input('model_name')." by ".$request->input('customer_name')." (".$request->input('phone_number').").
+          Kindly login to your dashboard to know more.<BR><BR>
+          Regards,<br>
+          Doctor Display
+          ";
+          mail($to,$subject,$message,$headers);
+          //end enquiry mail
+
         return redirect('/thankyou');
     }
 

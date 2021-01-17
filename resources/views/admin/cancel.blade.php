@@ -21,6 +21,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>ID</th>
                                   <th>Customer Name</th>
                                   <th>Phone</th>
                                   <th>Slot Date</th>
@@ -32,6 +33,7 @@
                               <tbody>
                               @foreach($orders as $order)
                                 <tr>
+                                  <td>{{ $order->id }}</td>
                                   <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
                                   <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
                                   <td>
