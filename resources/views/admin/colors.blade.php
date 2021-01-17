@@ -159,10 +159,14 @@
                                   <td>{{ $color->name }}</td>
                                   <td>{{ $color->screen_color }}</td>
                                   <td>
-                                    &#8377; {{ $color->pricings->ord_selling_price }}
+                                    @if(!empty($color->pricings->ord_selling_price))
+                                      &#8377; {{ $color->pricings->ord_selling_price }}
+                                    @endif
                                   </td>
                                   <td>
+                                    @if(!empty($color->pricings->org_selling_price))
                                       &#8377; {{ $color->pricings->org_selling_price }}
+                                    @endif
                                   </td>
                                   <td>{{ $color->pricings->preferred_type }}</td>
                                   <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>
