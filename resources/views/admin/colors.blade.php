@@ -144,6 +144,9 @@
                                   <th>Model</th>
                                   <th>Color Name</th>
                                   <th>Screen Color</th>
+                                  <th>Basic</th>
+                                  <th>Premium</th>
+                                  <th>Preferred</th>
                                   <th>Image</th>
                                   <th>Actions</th>
                               </tr>
@@ -155,6 +158,21 @@
                                   <td>{{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }}</td>
                                   <td>{{ $color->name }}</td>
                                   <td>{{ $color->screen_color }}</td>
+                                  <td>
+                                  @if($color->pricings->ord_stock_availablity==1)
+                                    &#8377; {{ $color->pricings->ord_selling_price }}
+                                  @else
+                                    <strike>&#8377; {{ $color->pricings->ord_selling_price }}</strike>
+                                  @endif
+                                  </td>
+                                  <td>
+                                    @if($color->pricings->org_stock_availablity==1)
+                                      &#8377; {{ $color->pricings->org_selling_price }}
+                                    @else
+                                      <strike>&#8377; {{ $color->pricings->org_selling_price }}</strike>
+                                    @endif
+                                  </td>
+                                  <td>{{ $color->pricings->preferred_type }}</td>
                                   <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>
                                   <td>
                                     <form action='/modelcolors/{{ $color->id }}' method='post'>
