@@ -168,7 +168,11 @@
                                       &#8377; {{ $color->pricings->org_selling_price }}
                                     @endif
                                   </td>
-                                  <td>{{ $color->pricings->preferred_type }}</td>
+                                  <td>
+                                    @if(!empty($color->pricings->preferred_type))
+                                      {{ $color->pricings->preferred_type }}
+                                    @endif
+                                  </td>
                                   <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>
                                   <td>
                                     <form action='/modelcolors/{{ $color->id }}' method='post'>
