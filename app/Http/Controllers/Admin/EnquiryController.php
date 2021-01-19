@@ -17,7 +17,8 @@ class EnquiryController extends Controller
     public function index()
     {
         $enquiries  = enquiry::whereNull('status')->get();
-        return view('admin.enquiry', compact('enquiries'));
+        $callback   = enquiry::where('status','Call Back')->count();
+        return view('admin.enquiry', compact('enquiries','callback'));
     }
 
     /**
