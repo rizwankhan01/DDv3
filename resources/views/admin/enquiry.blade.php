@@ -8,13 +8,24 @@
           <!-- Start col -->
           <div class="col-lg-12">
               <div class="card m-b-30">
-                  <div class="card-header">
-                    @if(!empty($enquiry))
-                        <h5 class="card-title">Enquiry for {{ $enquiry->model_name }}</h5>
-                    @else
-                        <h5 class="card-title">All Enquiries</h5>
-                    @endif
-                  </div>
+                <div class="card-header">
+                    <div class="widgetbar pull-right">
+                      <form action='/enquiry' method='post'>
+                        {{ csrf_field() }}
+                        {{ method_field('post') }}
+                        <button type='submit' name='filter' value='open' class="btn btn-sm btn-warning">Open Enquiries</button>
+                        <button type='submit' name='filter' value='Call Back' class="btn btn-sm btn-primary">To Call Back</button>
+                        <button type='submit' name='filter' value='Others' class="btn btn-sm btn-success">Others</button>
+                      </form>
+                    </div>
+                    <h5 class="card-title">
+                      @if(!empty($enquiry))
+                          <h5 class="card-title">Enquiry for {{ $enquiry->model_name }}</h5>
+                      @else
+                          <h5 class="card-title">All Enquiries</h5>
+                      @endif
+                    </h5>
+                </div>
                   @if(!empty($enquiry))
                     <div class="card-body">
                       <h6 class="card-subtitle">
@@ -76,7 +87,7 @@
                                         {{ date('d-m-Y',strtotime($enquiry->fdate)) }}
                                       @endif
                                     </td>
-                                    <td>{{ $enquiry->created_at }}</td>
+                                    <td>{{ $enquiry->created_at->diffForHumans() }}</td>
                                     <td>
                                       @if(empty($enquiry->status))
                                         <a href='/enquiry/{{ $enquiry->id }}' class='btn btn-sm btn-warning'>Update Status</a>

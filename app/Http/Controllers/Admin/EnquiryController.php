@@ -16,7 +16,7 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-        $enquiries  = enquiry::whereNull('status')->orWhere('status','!=','Duplicate')->orWhere('status','!=','Not Interested')->get();
+        $enquiries  = enquiry::whereNull('status')->get();
         return view('admin.enquiry', compact('enquiries'));
     }
 
@@ -38,6 +38,19 @@ class EnquiryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!empty($request->input('filter'))){
+          $status = $request->input('filter');
+          if($status=='open'){
+            $enquiries  = enquiry::whereNull('status')->get();
+            return view('admin.enquiry', compact('enquiries'));
+          }else if($status=='Call Back'){
+            $enquiries  = enquiry::where('status','Call Back')->get();
+            return view('admin.enquiry', compact('enquiries'));
+          }else{
+            $enquiries  = enquiry::whereNotNull('status')->where('status','!=','Call Back')->get();
+            return view('admin.enquiry', compact('enquiries'));
+          }
+        }else{
         $check    = customers::where('phone_number', $request->input('phone_number'))->first();
         if(empty($check->id)){
           $customer = new customers;
@@ -75,6 +88,7 @@ class EnquiryController extends Controller
           //end enquiry mail
 
         return redirect('/thankyou');
+      }
     }
 
     /**

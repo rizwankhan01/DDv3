@@ -22,16 +22,16 @@
         <div class="card card-body shadow-lg">
           <div class="d-flex justify-content-between align-items-start pb-4 pb-md-5 mb-4 mb-md-5 border-bottom">
             <div>
-              <h6>Doctor Display Inc.</h6>
+              <h6>Doctor Display - PsyferWorks Private Limited</h6>
               <address>
-                <p>Radhakrishnan Saalai,</p>
-                <p>Mylapore</p>
+                <p>Modern Towers,</p>
+                <p>Royapettah</p>
                 <p>Chennai</p>
 
               </address>
               <a href="mailto:order@doctordisplay.in">order@doctordisplay.in</a>
             </div>
-            <img src="https://doctordisplay.in/images/logo-mail.png" class="hidden-xs" alt="DoctorDisplay Logo">
+            <img src="https://doctordisplay.in/img/logo/logo-mail.png" class="hidden-xs" alt="DoctorDisplay Logo">
           </div>
           <div class="mb-4">
             <h4>Invoice <small class="badge badge-success">Payable after service</small></h4>

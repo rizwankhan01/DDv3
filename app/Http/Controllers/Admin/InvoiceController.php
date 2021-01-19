@@ -58,16 +58,16 @@ class InvoiceController extends Controller
       <center><h3>TAX INVOICE</h3></center><hr>
       <div style='width:100%;height:300px;'>
       <div style='float:left;font-size:14px;'><br><br>
-      <img src='http://doctordisplay.in/img/logo/logo-mail.png'><br><br>
+      <img src='https://doctordisplay.in/img/logo/logo-mail.png'><br><br>
       Invoice Number: ".$id."<br>
       Invoice Date: ".date('d-m-Y',strtotime($order->updated_at))."<br>
       Invoice Time: ".date('H:i',strtotime($order->updated_at))."<br>
       Date of Booking: ".date('d-m-Y',strtotime($order->slot_date))."<br>
       </div>
       <div style='float:right;font-size:14px;'><br><br>
-      <b>Doctor Display Services</b><br>
-      128, Radhakrishnan Salai,<br>
-      Mylapore,<br>
+      <b>Doctor Display - PsyferWorks Private Limited</b><br>
+      Modern Towers,<br>
+      Royapettah,<br>
       Chennai, Tamil Nadu 600014, India<br>
       04446270777 | order@doctordisplay.in<br><br>
       <b>Bill To</b><Br>
