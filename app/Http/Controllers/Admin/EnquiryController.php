@@ -101,7 +101,8 @@ class EnquiryController extends Controller
     public function show($id)
     {
         $enquiry  = enquiry::findOrFail($id);
-        return view('admin.enquiry',compact('enquiry'));
+        $callback   = enquiry::where('status','Call Back')->count();
+        return view('admin.enquiry',compact('enquiry','callback'));
     }
 
     /**
