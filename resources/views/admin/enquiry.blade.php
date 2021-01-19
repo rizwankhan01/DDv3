@@ -13,7 +13,7 @@
                       <form action='/enquiry' method='post'>
                         {{ csrf_field() }}
                         {{ method_field('post') }}
-                        <button type='submit' name='filter' value='open' class="btn btn-sm btn-warning">({{ count($enquiries) }}) Open Enquiries</button>
+                        <button type='submit' name='filter' value='open' class="btn btn-sm btn-warning">({{ $open }}) Open Enquiries</button>
                         <button type='submit' name='filter' value='Call Back' class="btn btn-sm btn-primary">({{ $callback }}) To Call Back</button>
                         <button type='submit' name='filter' value='Others' class="btn btn-sm btn-success">Others</button>
                       </form>

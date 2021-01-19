@@ -17,8 +17,10 @@ class EnquiryController extends Controller
     public function index()
     {
         $enquiries  = enquiry::whereNull('status')->get();
+        $open       = enquiry::whereNull('status')->count();
         $callback   = enquiry::where('status','Call Back')->count();
-        return view('admin.enquiry', compact('enquiries','callback'));
+
+        return view('admin.enquiry', compact('enquiries','callback','open'));
     }
 
     /**
@@ -41,15 +43,17 @@ class EnquiryController extends Controller
     {
         if(!empty($request->input('filter'))){
           $status = $request->input('filter');
+          $callback   = enquiry::where('status','Call Back')->count();
+          $open       = enquiry::whereNull('status')->count();
           if($status=='open'){
             $enquiries  = enquiry::whereNull('status')->get();
-            return view('admin.enquiry', compact('enquiries'));
+            return view('admin.enquiry', compact('enquiries','callback','open'));
           }else if($status=='Call Back'){
             $enquiries  = enquiry::where('status','Call Back')->get();
-            return view('admin.enquiry', compact('enquiries'));
+            return view('admin.enquiry', compact('enquiries','callback','open'));
           }else{
             $enquiries  = enquiry::whereNotNull('status')->where('status','!=','Call Back')->get();
-            return view('admin.enquiry', compact('enquiries'));
+            return view('admin.enquiry', compact('enquiries','callback','open'));
           }
         }else{
         $check    = customers::where('phone_number', $request->input('phone_number'))->first();
@@ -101,8 +105,7 @@ class EnquiryController extends Controller
     public function show($id)
     {
         $enquiry  = enquiry::findOrFail($id);
-        $callback   = enquiry::where('status','Call Back')->count();
-        return view('admin.enquiry',compact('enquiry','callback'));
+        return view('admin.enquiry',compact('enquiry'));
     }
 
     /**
