@@ -18,36 +18,10 @@
           @foreach($results as $result)
           <div class="col-md-4">
               <div class="card m-b-30">
-                <a href="/colors/{{ $result->id }}" target="_blank">
+                <a href="/screen-repair-{{ $result->brand->name }}-{{ $result->series }}-{{ $result->name }}" target="_blank">
                   <img class="card-img-top" src="{{ asset('storage/'.$result->image ) }}" alt="{{ $result->name }}">
                   <div class="card-body">
                       <h5 class="card-title font-18">{{ $result->brand->name }} {{ $result->series }} {{ $result->name }}</h5>
-                      <table class="table table-border">
-                        <thead>
-                          <tr>
-                            <th>Color</th>
-                            <th>Ord Price</th>
-                            <th>Org Price</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          @foreach($result->colortypes as $color)
-                              <tr>
-                                <td>{{ $color->name }}</td>
-                                <td>
-                                  <a href="#" class="btn btn-sm btn-rounded @if($color->pricings->ord_stock_availablity==1) btn-success-rgba @else btn-danger-rgba @endif">
-                                    &#8377; {{ $color->pricings->ord_selling_price }}
-                                  </a>
-                                </td>
-                                <td>
-                                  <a href="#" class="btn btn-sm btn-rounded @if($color->pricings->org_stock_availablity==1) btn-success-rgba @else btn-danger-rgba @endif">
-                                    &#8377; {{ $color->pricings->org_selling_price }}
-                                  </a>
-                                </td>
-                              </tr>
-                          @endforeach
-                        </tbody>
-                        </table>
                   </div>
                 </a>
               </div>
