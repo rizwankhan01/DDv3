@@ -16,7 +16,7 @@
         </div>
         <div class="card-body row">
           @foreach($results as $result)
-          <div class="col-md-4">
+          <div class="col-md-2">
               <div class="card m-b-30">
                 <a href="/screen-repair-{{ $result->brand->name }}-{{ $result->series }}-{{ $result->name }}" target="_blank">
                   <img class="card-img-top" src="{{ asset('storage/'.$result->image ) }}" alt="{{ $result->name }}">
