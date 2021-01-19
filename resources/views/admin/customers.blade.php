@@ -88,6 +88,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>#</th>
                                   <th>Name</th>
                                   <th>Phone Number</th>
                                   <th>Email</th>
@@ -98,6 +99,7 @@
                               <tbody>
                                 @foreach($customers as $customer)
                                   <tr>
+                                    <td>{{ $customer->id }}</td>
                                     <td><a href='/customer-profile/{{ $customer->id }}'>{{ $customer->name }}</a></td>
                                     <td>{{ $customer->phone_number }}</td>
                                     <td>{{ $customer->email }}</td>
@@ -141,7 +143,10 @@
   <script src="{{ asset('assets\plugins\datatables\buttons.colVis.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\datatables\dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\datatables\responsive.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('assets\js\custom\custom-table-datatable.js') }}"></script>
+
+  <script src="{{ asset('assets\plugins\pnotify\js\pnotify.custom.min.js') }}"></script>
+  <script src="{{ asset('assets\plugins\sweet-alert2\sweetalert2.min.js') }}"></script>
   <!-- Core js -->
   <script src="{{ asset('assets\js\core.js') }}"></script>
-  <script src="{{ asset('js/app.js') }}" defer></script>
 @endsection

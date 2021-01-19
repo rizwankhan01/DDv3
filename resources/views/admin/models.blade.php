@@ -157,8 +157,9 @@
                                     <form action='/models/{{ $model->id }}' method='post'>
                                       {{ csrf_field() }}
                                       {{ method_field('delete') }}
-                                      <a href='/models/{{ $model->id }}' class='btn btn-sm btn-warning'>Edit</a>
-                                      <input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>
+                                      <a href='/screen-repair-{{ $model->brand->name }}-{{ $model->series }}-{{ $model->name }}' class='btn btn-sm btn-primary' target='_blank'><i class='fa fa-link'></i></a>
+                                      <a href='/models/{{ $model->id }}' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i></a>
+                                      <button type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');"><i class='fa fa-trash'></i></button>
                                     </form>
                                   </td>
                               </tr>
