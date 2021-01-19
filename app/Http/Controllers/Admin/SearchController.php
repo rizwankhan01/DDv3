@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\models;
+use App\Models\brands;
 
 class SearchController extends Controller
 {
@@ -37,7 +38,9 @@ class SearchController extends Controller
     public function store(Request $request)
     {
       $term     = $request->input('search');
-      $results  = models::where('series','LIKE', "%{$term}%")->orWhere('name','LIKE',"%{$term}%")->get();
+      $first_term = explode(' ',$term);
+      $brand    = brands::where('name',$first_term[0])->first();
+      $results  = models::Where('series','LIKE', "%{$term}%")->orWhere('name','LIKE',"%{$term}%")->orwhere('brand_id',$brand->id)->get();
       return view('admin.results', compact('term','results'));
     }
 
