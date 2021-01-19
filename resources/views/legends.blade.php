@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') Legends | Doctor Display @endsection
+@section('title') Repository | Doctor Display @endsection
 @section('metadesc') A repository of all the products for which Doctor Display replaces screens @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -7,11 +7,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcaump-inner text-center">
-                    <h2 class="heading">Legends</h2>
+                    <h2 class="heading">Repository</h2>
                     <div class="breadcrumb-insite">
                         <ul class="core-breadcaump">
                             <li><a href="/">Home</a></li>
-                            <li class="current">Legends</li>
+                            <li class="current">Repository</li>
                         </ul>
                     </div>
                 </div>

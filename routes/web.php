@@ -25,7 +25,7 @@ Route::resource('/orderconfirmed','OrderConfirmedController');
 Route::resource('/report', 'TicketController');
 Route::post('/enquire','Admin\EnquiryController@store');
 Route::resource('/feedback','FeedbackController');
-Route::resource('/legend','LegendsController');
+Route::resource('/repository','LegendsController');
 
 Route::get('/blog', function(){
   return abort(404);
