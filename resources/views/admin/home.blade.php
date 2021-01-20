@@ -289,65 +289,128 @@
              <div class="col-lg-12 m-b-30"><center><small>This order was placed on {{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}.</small></center></div>
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection
-          <div class="col-lg-12">
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <div class="widgetbar pull-right">
-                          <button class="btn btn-sm btn-success">All</button>
-                          <button class="btn btn-sm btn-primary">Today</button>
-                          <button class="btn btn-sm btn-warning">Tomorrow</button>
-                      </div>
-                      <h5 class="card-title">Orders</h5>
-                  </div>
-                  <div class="card-body">
-                      <h6 class="card-subtitle">You can view pending orders here.</h6>
-                      <div class="table-responsive">
-                          <table id="datatable-buttons" class="table table-striped table-bordered">
-                              <thead>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Customer Name</th>
-                                  <th>Phone</th>
-                                  <th>Slot Date</th>
-                                  <th>Slot Time</th>
-                                  <th>Area</th>
-                                  <th>Actions</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              @foreach($orders as $order)
+            <div class="col-lg-12">
+                <div class="card m-b-30">
+                    <div class="card-header">
+                        <div class="widgetbar pull-right">
+                            <button class="btn btn-sm btn-success">All</button>
+                            <button class="btn btn-sm btn-primary">Today</button>
+                            <button class="btn btn-sm btn-warning">Tomorrow</button>
+                        </div>
+                        <h5 class="card-title">Orders</h5>
+                    </div>
+                    <!--<div class="card-body">
+                        <h6 class="card-subtitle">You can view pending orders here.</h6>
+                        <div class="table-responsive">
+                            <table id="datatable-buttons" class="table table-striped table-bordered">
+                                <thead>
                                 <tr>
-                                  <td>{{ $order->id }}</td>
-                                  <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
-                                  <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
-                                  <td>
-                                  @if($order->slot_date == date('Y-m-d'))
-                                    <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
-                                  @else
-                                    {{ date('d-m-Y', strtotime($order->slot_date)) }}
-                                  @endif
-                                  </td>
-                                  <td>{{ $order->slot_time }}</td>
-                                  <td>@if(!empty($order->address->area)){{ $order->address->area }} @endif</td>
-                                  <td>
-                                    @if($order->pickup_reason==NULL)
-                                      @if($order->status==1)
-                                        <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
-                                      @elseif($order->status==2)
-                                        <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Assigned</a>
-                                      @endif
-                                    @else
-                                      <a href="/home/{{ $order->id }}" class='btn btn-sm btn-warning'>Picked Up</a>
-                                    @endif
-                                  </td>
+                                    <th>ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Phone</th>
+                                    <th>Slot Date</th>
+                                    <th>Slot Time</th>
+                                    <th>Area</th>
+                                    <th>Actions</th>
                                 </tr>
-                              @endforeach
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                                </thead>
+                                <tbody>
+                                @foreach($orders as $order)
+                                  <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
+                                    <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
+                                    <td>
+                                    @if($order->slot_date == date('Y-m-d'))
+                                      <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
+                                    @else
+                                      {{ date('d-m-Y', strtotime($order->slot_date)) }}
+                                    @endif
+                                    </td>
+                                    <td>{{ $order->slot_time }}</td>
+                                    <td>@if(!empty($order->address->area)){{ $order->address->area }} @endif</td>
+                                    <td>
+                                      @if($order->pickup_reason==NULL)
+                                        @if($order->status==1)
+                                          <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
+                                        @elseif($order->status==2)
+                                          <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Assigned</a>
+                                        @endif
+                                      @else
+                                        <a href="/home/{{ $order->id }}" class='btn btn-sm btn-warning'>Picked Up</a>
+                                      @endif
+                                    </td>
+                                  </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+            <div class="col-lg-12">
+              @foreach($orders as $order)
+                  @foreach($order->order_lists as $list)
+                    @if($list->prod_type=='PREMIUM' || $list->prod_type=='BASIC')
+                      <?php
+                        $model = $list->color->model->brand->name." ".$list->color->model->series." ".$list->color->model->name;
+                        $color = $list->color->name;
+                        $type  = $list->prod_type;
+                        $image = $list->color->image;
+                      ?>
+                    @endif
+                  @endforeach
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <div class="best-product-slider">
+                            <div class="best-product-slider-item">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <center>
+                                          <img src="storage/{{ $image }}" class="img-fluid" alt="product" style="max-width:50%;height:auto;">
+                                        </center>
+                                    </div>
+                                    <div class="col-4">
+                                      <span class="font-12 text-uppercase">#{{ $order->id }}</span>
+                                      <h5 class="mt-2 mb-4 font-20">{{ $model }} - {{ $color }}</h5>
+                                      <span class="font-12 text-uppercase">{{ $type }}</span>
+                                    </div>
+                                    <div class="col-2">
+                                      <li class="list-inline-item">
+                                          <h4 class="mb-2 font-16">{{ $order->customer->name }}</h4>
+                                          <p class="mb-4"><a href='{{ $order->customer->phone }}'><i class='fa fa-phone'></i> Call</a></p>
+                                          <span class="font-12"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
+                                      </li>
+                                    </div>
+                                    <div class="col-2">
+                                        <li class="list-inline-item">
+                                            <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
+                                            <p class="mb-4"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
+                                            <span class="font-12">Booked {{ $order->updated_at->diffForHumans() }}</span>
+                                        </li>
+                                    </div>
+                                    <div class="col-2">
+                                      <li class="list-inline-item">
+                                          <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
+                                          <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
+                                          @if($order->pickup_reason==NULL)
+                                            @if($order->status==1)
+                                              <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Open</a>
+                                            @elseif($order->status==2)
+                                              <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Assigned</a>
+                                            @endif
+                                          @else
+                                            <a href="/home/{{ $order->id }}" class='btn btn-sm btn-warning'>Picked Up</a>
+                                          @endif
+                                      </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              @endforeach
+            </div>
           @endif
           <!-- End col -->
       </div>

@@ -9,6 +9,7 @@
           <div class="col-lg-12">
               <div class="card m-b-30">
                 <div class="card-header">
+                  @if(empty($enquiry))
                     <div class="widgetbar pull-right">
                       <form action='/enquiry' method='post'>
                         {{ csrf_field() }}
@@ -18,6 +19,7 @@
                         <button type='submit' name='filter' value='Others' class="btn btn-sm btn-success">Others</button>
                       </form>
                     </div>
+                  @endif
                     <h5 class="card-title">
                       @if(!empty($enquiry))
                           <h5 class="card-title">Enquiry for {{ $enquiry->model_name }}</h5>
