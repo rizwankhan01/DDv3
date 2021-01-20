@@ -26,6 +26,19 @@
 <link href="{{ asset('assets\plugins\pnotify\css\pnotify.custom.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets\plugins\sweet-alert2\sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
 <!-- End css -->
+
+<style>
+@media only screen and (max-width: 1026px) {
+    #bigimage {
+        display: none;
+    }
+}
+@media only screen and (min-width: 1026px) {
+    #smallimage {
+        display: none;
+    }
+}
+</style>
 </head>
 <body class="vertical-layout">
 <!-- Start Containerbar -->
