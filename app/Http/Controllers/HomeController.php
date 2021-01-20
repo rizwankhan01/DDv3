@@ -34,7 +34,7 @@ class HomeController extends Controller
     {
         $orders = orders::where('status',1)
                         ->orWhere('status',2)
-                        ->orderBy('created_at')
+                        ->orderBy('created_at','desc')
                         ->get();
         return view('admin.home', compact('orders'));
     }
