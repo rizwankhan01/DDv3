@@ -367,7 +367,7 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <center>
-                                          <img src="storage/{{ $image }}" class="img-fluid" alt="product" style="max-width:50%;height:auto;">
+                                          <img src="storage/{{ $image }}" class="img-fluid" alt="{{ $model }} - {{ $color }}" style="max-width:50%;height:auto;">
                                         </center>
                                     </div>
                                     <div class="col-4">
