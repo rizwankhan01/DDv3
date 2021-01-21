@@ -133,7 +133,7 @@
 <div class="row align-items-center">
 <div class="col-md-12">
     <div class="mobile-logobar">
-        <a href="/" class="mobile-logo"><img src="{{ asset('img/logo/logo-mail.png') }}" class="img-fluid" alt="logo"></a>
+        <a href="/home" class="mobile-logo"><img src="{{ asset('img/logo/logo-mail.png') }}" class="img-fluid" alt="logo"></a>
     </div>
     <div class="mobile-togglebar">
         <ul class="list-inline mb-0">
