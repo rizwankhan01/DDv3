@@ -62,7 +62,7 @@
                 {{ __('Remember Me') }}</label>
           </div>
       </div>
-      <div class="col-sm-6">
+      <!--<div class="col-sm-6">
         <div class="forgot-psw">
           @if (Route::has('password.request'))
               <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -70,7 +70,7 @@
               </a>
           @endif
         </div>
-      </div>
+      </div>-->
   </div>
 <button type="submit" class="btn btn-success btn-lg btn-block font-18">
     {{ __('Login') }}</button>
