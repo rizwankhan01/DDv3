@@ -290,7 +290,7 @@
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection
             <div class="col-lg-12">
-                <div class="card m-b-30">
+                <div class="card m-b-10">
                     <div class="card-header">
                         <div class="widgetbar pull-right" id="bigimage">
                             <button class="btn btn-sm btn-success">All</button>
@@ -313,7 +313,7 @@
                       ?>
                     @endif
                   @endforeach
-                <div class="card m-b-30">
+                <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;">
                     <div class="card-body">
                         <div class="best-product-slider">
                             <div class="best-product-slider-item">
@@ -326,8 +326,10 @@
                                     </div>
                                     <div class="col-8 col-md-4">
                                       <span class="font-12 text-uppercase">#{{ $order->id }}
-                                        @if(strpos($order->updated_at->diffForHumans(),'hours ago')!==false)
-                                          <span class='badge badge-pill badge-success'>New</span>
+                                        @if(strpos($order->updated_at->diffForHumans(),'hours ago')!==false
+                                          || strpos($order->updated_at->diffForHumans(),'minutes ago')!==false
+                                          || strpos($order->updated_at->diffForHumans(),'seconds ago')!==false)
+                                          <span class='badge badge-pill badge-danger'>New</span>
                                         @endif
                                       </span>
                                       <h5 class="mt-2 font-20">{{ $model }} - {{ $color }}</h5>
