@@ -326,7 +326,8 @@
                                     </div>
                                     <div class="col-8 col-md-4">
                                       <span class="font-12 text-uppercase">#{{ $order->id }}
-                                        @if(strpos($order->updated_at->diffForHumans(),'hours ago')!==false
+                                        @if(strpos($order->updated_at->diffForHumans(),'hour ago')!==false
+                                          || strpos($order->updated_at->diffForHumans(),'hours ago')!==false
                                           || strpos($order->updated_at->diffForHumans(),'minutes ago')!==false
                                           || strpos($order->updated_at->diffForHumans(),'seconds ago')!==false)
                                           <span class='badge badge-pill badge-danger'>New</span>
