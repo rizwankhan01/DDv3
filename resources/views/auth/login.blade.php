@@ -16,9 +16,9 @@
 <link href="assets\css\style.css" rel="stylesheet" type="text/css">
 <!-- End css -->
 </head>
-<body class="vertical-layout">
+<body class="vertical-layout" style="background:#FCC72D">
 <!-- Start Containerbar -->
-<div id="containerbar" class="containerbar authenticate-bg">
+<div id="containerbar" class="containerbar">
 <!-- Start Container -->
 <div class="container">
 <div class="auth-box login-box">
@@ -72,7 +72,7 @@
         </div>
       </div>-->
   </div>
-<button type="submit" class="btn btn-success btn-lg btn-block font-18">
+<button type="submit" class="btn btn-primary btn-lg btn-block font-18">
     {{ __('Login') }}</button>
 </form>
 <!--

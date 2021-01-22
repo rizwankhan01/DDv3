@@ -146,7 +146,7 @@
           <div class="col-lg-12">
               <div class="card m-b-30">
                   <div class="card-header">
-                      <div class="widgetbar pull-right">
+                      <div class="widgetbar pull-right" id="bigimage">
                           <button class="btn btn-sm btn-success">All</button>
                           <button class="btn btn-sm btn-primary">Today</button>
                           <button class="btn btn-sm btn-warning">Tomorrow</button>
