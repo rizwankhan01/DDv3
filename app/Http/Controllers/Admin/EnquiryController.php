@@ -72,7 +72,7 @@ class EnquiryController extends Controller
           $enquiry  = new enquiry;
           $enquiry->customer_id = $check->id;
           $enquiry->model_name  = $request->input('model_name');
-          $enquiry->city          = $request->input('city');
+          $enquiry->city        = $request->input('city');
         }
           $enquiry->save();
           //enquiry mail
@@ -128,10 +128,16 @@ class EnquiryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $enquiry  = enquiry::findOrFail($id);
-        $enquiry->fdate = $request->input('fdate');
-        $enquiry->status = $request->input('status');
+        $enquiry            = enquiry::findOrFail($id);
+        $enquiry->fdate     = $request->input('fdate');
+        $enquiry->status    = $request->input('status');
+        $enquiry->notes     = $request->input('notes');
+        $enquiry->city      = $request->input('locality');
         $enquiry->update();
+
+        $customer           = customers::findOrFail($request->input('customer_id'));
+        $customer_name      = $request->input('customer_name');
+        $customer->update();
 
         return redirect('/enquiry');
     }

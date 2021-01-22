@@ -22,7 +22,15 @@
                   @endif
                     <h5 class="card-title">
                       @if(!empty($enquiry))
-                          <h5 class="card-title">Enquiry for {{ $enquiry->model_name }}</h5>
+                          <h5 class="card-title">Enquiry for
+                            @if(empty($enquiry->url))
+                              {{ $enquiry->model_name }}
+                            @else
+                              <a href='/{{ $enquiry->url }}' target='_blank'>{{ $enquiry->model_name }}</a>
+                            @endif
+                            <br><br>
+                            Call: <a href='tel:{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
+                          </h5>
                       @else
                           <h5 class="card-title">All Enquiries</h5>
                       @endif
@@ -30,25 +38,37 @@
                 </div>
                   @if(!empty($enquiry))
                     <div class="card-body">
-                      <h6 class="card-subtitle">
-                        <b>Customer Name:</b> <a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
-                        <b>Phone Number:</b> <a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
-                      </h6>
                         <div class="table-responsive">
-                          <form action="/enquiry/{{ $enquiry->id }}" method="post">
+                          <form action="/enquiry/{{ $enquiry->id }}" method="post" class='row'>
                             {{ csrf_field() }}
                             {{ method_field('put') }}
-                            Follow Up Date:
-                            <input type="date" class="form-control" name="fdate" value="{{ $enquiry->fdate }}" min="{{ date('Y-m-d') }}"><br>
-                            <select class="form-control" name="status">
-                              <option value="">Select Reason</option>
-                              <option value="Call Back" @if($enquiry->status=='Call Back'){{ 'selected' }} @endif>Call Back</option>
-                              <option value="Duplicate" @if($enquiry->status=='Duplicate'){{ 'selected' }} @endif>Duplicate</option>
-                              <option value="Not Interested" @if($enquiry->status=='Not Interested'){{ 'selected' }} @endif>Not Interested</option>
-                              <option value="Converted" @if($enquiry->status=='Converted'){{ 'selected' }} @endif>Converted</option>
-                              <option value="Stock Unavailable" @if($enquiry->status=='Stock Unavailable'){{ 'selected' }} @endif>Stock Unavailable</option>
-                            </select><br>
-                            <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
+                            <div class='col-md-6'>
+                              <input type='text' class='form-control' name='customer_name' value='{{ $enquiry->customer->name }}' placeholder='Customer Name'><br>
+                            </div>
+                            <div class='col-md-6'>
+                            <input type='text' class='form-control' name='locality' value='{{ $enquiry->city }}' placeholder='Locality'><br>
+                            </div>
+                            <input type='hidden' name='customer_id' value='{{ $enquiry->customer->id }}'>
+                            <div class='col-md-6'>
+                              Follow Up Date:
+                              <input type="date" class="form-control" name="fdate" value="{{ $enquiry->fdate }}" min="{{ date('Y-m-d') }}"><br>
+                            </div>
+                            <div class='col-md-6'>
+                              <select class="form-control" name="status">
+                                <option value="">Select Reason</option>
+                                <option value="Call Back" @if($enquiry->status=='Call Back'){{ 'selected' }} @endif>Call Back</option>
+                                <option value="Duplicate" @if($enquiry->status=='Duplicate'){{ 'selected' }} @endif>Duplicate</option>
+                                <option value="Not Interested" @if($enquiry->status=='Not Interested'){{ 'selected' }} @endif>Not Interested</option>
+                                <option value="Converted" @if($enquiry->status=='Converted'){{ 'selected' }} @endif>Converted</option>
+                                <option value="Stock Unavailable" @if($enquiry->status=='Stock Unavailable'){{ 'selected' }} @endif>Stock Unavailable</option>
+                              </select><br>
+                            </div>
+                            <div class='col-md-12'>
+                              <textarea class='form-control' name='notes' placeholder='Notes'>{{ $enquiry->notes }}</textarea><br>
+                            </div>
+                            <div class='col-md-12'>
+                              <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
+                            </div>
                           </form>
                         </div>
                     </div>
@@ -67,7 +87,7 @@
                                   <th>ID</th>
                                   <th>Model Name</th>
                                   <th>Customer</th>
-                                  <th>City</th>
+                                  <th>Locality</th>
                                   <th>Follow back</th>
                                   <th>Created at</th>
                                   <th>Status</th>
@@ -77,7 +97,13 @@
                                 @foreach($enquiries as $enquiry)
                                   <tr>
                                     <td>{{ $enquiry->id }}</td>
-                                    <td>{{ $enquiry->model_name }}</td>
+                                    <td>
+                                      @if(empty($enquiry->url))
+                                        {{ $enquiry->model_name }}
+                                      @else
+                                        <a href='/{{ $enquiry->url}}' target='_blank'>{{ $enquiry->model_name }}</a>
+                                      @endif
+                                    </td>
                                     <td><a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
                                       <small><a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>

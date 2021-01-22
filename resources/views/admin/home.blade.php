@@ -331,7 +331,11 @@
                                         @endif
                                       </span>
                                       <h5 class="mt-2 font-20">{{ $model }} - {{ $color }}</h5>
-                                      <span class="font-12 mb-2 text-uppercase">{{ $type }}</span>
+                                      @if($type=='PREMIUM')
+                                        <span class="badge badge-primary-inverse mb-2 text-uppercase">{{ $type }}</span>
+                                      @else
+                                        <span class="badge badge-success-inverse mb-2 text-uppercase">{{ $type }}</span>
+                                      @endif
                                     </div>
                                     <div class="col-6 col-md-2">
                                       <li class="list-inline-item">

@@ -57,6 +57,7 @@ class CustomerController extends Controller
           $enquiry  = new enquiry;
           $enquiry->model_name  = $color->model->brand->name." ".$color->model->series." ".$model." ".$color->name;
           $enquiry->customer_id = $customer->id;
+          $enquiry->url       = "screen-repair-".$color->model->brand->name."-".$color->model->series."-".$model;
           $enquiry->save();
         }else{
           $cus_id   = $check->id;
@@ -64,6 +65,7 @@ class CustomerController extends Controller
           $enquiry  = new enquiry;
           $enquiry->model_name  = $color->model->brand->name." ".$color->model->series." ".$model." ".$color->name;
           $enquiry->customer_id = $cus_id;
+          $enquiry->url         = "screen-repair-".$color->model->brand->name."-".$color->model->series."-".$model;
           $enquiry->save();
         }
           Session::put('enq_id',$enquiry->id);
