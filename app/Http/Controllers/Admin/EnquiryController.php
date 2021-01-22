@@ -136,7 +136,7 @@ class EnquiryController extends Controller
         $enquiry->update();
 
         $customer           = customers::findOrFail($request->input('customer_id'));
-        $customer_name      = $request->input('customer_name');
+        $customer->name      = $request->input('customer_name');
         $customer->update();
 
         return redirect('/enquiry');
