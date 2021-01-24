@@ -208,8 +208,8 @@
                                       <br><small>{{ $user->fathers_name }}</small>
                                   </td>
                                   <td>
-                                      <small><a href='tel:{{ $user->primary_phone }}'>{{ $user->primary_phone }}</a><br>
-                                      <a href='tel:{{ $user->secondary_phone }}'>{{ $user->secondary_phone }}</a></small>
+                                      <small><a href='exotel_calls/{{ $user->primary_phone }}'>{{ $user->primary_phone }}</a><br>
+                                      <a href='exotel_calls/{{ $user->secondary_phone }}'>{{ $user->secondary_phone }}</a></small>
                                   </td>
                                   <td>{{ $user->email }}</td>
                                   <td>{{ $user->address }}, {{ $user->city }}</td>

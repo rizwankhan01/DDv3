@@ -19,7 +19,7 @@
                         <ul class="vertical-menu">
                           <li><a href='/home/{{ $order->id }}'><i class="fa fa-archive"></i> <span>Order ID: #{{ $order->id }} | {{ date('d-m-Y', strtotime($order->slot_date)) }} - {{ $order->slot_time }}</span></a></li>
                           <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $order->customer->name }}</span></a></li>
-                          <li><a href='tel:{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
+                          <li><a href='exotel_calls/{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
                           <li><a href='mailto:{{ $order->customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $order->customer->email }}</span></a></li>
                           <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}" target='_blank'><i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
                         </ul>
@@ -343,7 +343,7 @@
                                     <div class="col-6 col-md-2">
                                       <li class="list-inline-item">
                                           <h4 class="mb-2 font-16">{{ $order->customer->name }}</h4>
-                                          <p class="mb-2"><a href='{{ $order->customer->phone }}'><i class='fa fa-phone'></i> Call</a></p>
+                                          <p class="mb-2"><a href='exotel_calls/{{ $order->customer->phone_number }}'><i class='fa fa-phone'></i> Call</a></p>
                                           <span class="font-12 mb-2"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
                                       </li>
                                     </div>

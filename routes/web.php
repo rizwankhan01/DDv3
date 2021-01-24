@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/start_tracking/{id}','Serviceman\MyOrdersController@start_tracking');
     Route::put('/complete-order/{id}','Serviceman\MyOrdersController@completeorder');
     Route::put('/pickup/{id}','Serviceman\MyOrdersController@pickup');
+    Route::resource('/exotel_calls','Admin\ExotelCallsController');
   });
 
   Route::group(['middleware' =>'admin'], function(){
@@ -91,6 +92,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/dealer-profile','Admin\DealerProfileController');
     Route::resource('/serviceman-profile','Admin\ServicemanProfileController');
     Route::resource('/customer-profile','Admin\CustomerProfileController');
+    Route::resource('/exotel_calls','Admin\ExotelCallsController');
   });
 });
 

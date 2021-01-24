@@ -29,7 +29,7 @@
                               <a href='/{{ $enquiry->url }}' target='_blank'>{{ $enquiry->model_name }}</a>
                             @endif
                             <br><br>
-                            Call: <a href='tel:{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
+                            Call: <a href='exotel_calls/{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                           </h5>
                       @else
                           <h5 class="card-title">All Enquiries</h5>
@@ -105,7 +105,7 @@
                                       @endif
                                     </td>
                                     <td><a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
-                                      <small><a href='tel:{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
+                                      <small><a href='exotel_calls/{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>
                                     <td>{{ $enquiry->city }}</td>
                                     <td>

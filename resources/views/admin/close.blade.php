@@ -35,7 +35,7 @@
                                 <tr>
                                   <td>{{ $order->id }}</td>
                                   <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
-                                  <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
+                                  <td><a href='exotel_calls/{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
                                   <td>
                                   @if($order->slot_date == date('Y-m-d'))
                                     <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>

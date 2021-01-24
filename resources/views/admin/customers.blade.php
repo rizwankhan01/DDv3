@@ -13,7 +13,7 @@
                             <div class="col-md-10">
                             <ul class="vertical-menu">
                               <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $customer->name }}</span></a></li>
-                              <li><a href='tel:{{ $customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $customer->phone_number }}</span></a></li>
+                              <li><a href='exotel_calls/{{ $customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $customer->phone_number }}</span></a></li>
                               <li><a href='mailto:{{ $customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $customer->email }}</span></a></li>
                               @if(!empty($address->address))
                               <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}">
@@ -101,7 +101,7 @@
                                   <tr>
                                     <td>{{ $customer->id }}</td>
                                     <td><a href='/customer-profile/{{ $customer->id }}'>{{ $customer->name }}</a></td>
-                                    <td>{{ $customer->phone_number }}</td>
+                                    <td><a href='exotel_calls/{{ $customer->phone_number }}'>{{ $customer->phone_number }}</a></td>
                                     <td>{{ $customer->email }}</td>
                                     <td><a href="https://analytics.google.com/analytics/web/#/report/visitors-user-activity/a65390322w119310705p124818505/_r.userId={{ $customer->ga_id }}&_r.userListReportStates=&_r.userListReportId=visitors-legacy-user-id/" target="_blank">Open GA</a></td>
                                     <td><a href='/customers/{{ $customer->id}}' class='btn btn-sm btn-primary'>Expand</a></td>

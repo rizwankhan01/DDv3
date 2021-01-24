@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
           $close  = orders::where('status',3)->get(); $view->with('close',count($close));
           $cancel = orders::where('status',4)->get(); $view->with('cancel',count($cancel));
           $tickets= tickets::all(); $view->with('ticket', count($tickets));
-          $enquiry= enquiry::whereNull('status')->orWhere('status','!=','Duplicate')->orWhere('status','!=','Not Interested')->get();
+          $enquiry= enquiry::whereNull('status')->get();
           $view->with('enquiry',count($enquiry));
         });
     }

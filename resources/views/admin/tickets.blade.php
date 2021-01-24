@@ -79,7 +79,7 @@
                               <tr>
                                   <td><a href='/home/{{ $ticket->order_id }}'>#{{ $ticket->order_id }}</a></td>
                                   <td><a href='/customer-profile/{{ $ticket->order->customer->id }}'>{{ $ticket->order->customer->name }}</a><br>
-                                  <small><a href='tel:{{ $ticket->order->customer->phone_number }}'>{{ $ticket->order->customer->phone_number }}</a></small></td>
+                                  <small><a href='exotel_calls/{{ $ticket->order->customer->phone_number }}'>{{ $ticket->order->customer->phone_number }}</a></small></td>
                                   <td>
                                     @foreach($ticket->order->order_lists as $list)
                                       @if($list->prod_type!='ADDON' AND $list->prod_type!='COUPON')
@@ -88,7 +88,7 @@
                                     @endforeach
                                   </td>
                                   <td><a href='/dealer-profile/{{ $ticket->order->dealer->id }}'>{{ $ticket->order->dealer->dealer_name }}</a><br>
-                                  <small><a href='tel:{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
+                                  <small><a href='exotel_calls/{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
                                   <td>{{ $ticket->issue }}</td>
                                   <td>{{ $ticket->resolution }}</td>
                                   <td>{{ date('d-m-Y', strtotime($ticket->created_at)) }}</td>
