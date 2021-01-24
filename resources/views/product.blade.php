@@ -248,7 +248,7 @@
               @else
               <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
               @endif
-            <input type='hidden' name='price' id='price2' value='{{ $pricing->ord_selling_price }}'>
+            <input type='hidden' name='price' id='price2' value='{{ $pricing->org_selling_price }}'>
             <input type='hidden' name='prod_type' id='prod_type2' value='PREMIUM'>
             <input type='number' name='tg' value='0' hidden>
               <button type="submit" class="float-left brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">No</button>
