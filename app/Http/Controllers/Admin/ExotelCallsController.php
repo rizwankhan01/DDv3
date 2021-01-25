@@ -84,6 +84,9 @@ class ExotelCallsController extends Controller
       {
         $call_res  = $val->Sid.' ';
       }
+      if(empty($call_res)){
+        $call_res = '';
+      }
       $exocalls = new exotel_calls;
       $exocalls->customer_phone = $id;
       $exocalls->call_result    = $call_res;
