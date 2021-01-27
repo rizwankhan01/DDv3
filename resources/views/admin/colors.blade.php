@@ -112,8 +112,8 @@
                       <form action='/modelcolors/{{ $color->id }}' method='post' class="row">
                         {{ csrf_field() }}
                         {{ method_field('put') }}
-                        <input type="number" class="form-control col-md-6" placeholder="Ordinary Selling Price" value="{{ $pricing->ord_selling_price }}" name="ord_selling_price" required><br>
-                        <input type="number" class="form-control col-md-6" placeholder="Original Selling Price" value="{{ $pricing->org_selling_price }}" name="org_selling_price" required><br>
+                        <input type="number" class="form-control col-md-6" placeholder="Ordinary Selling Price" value="{{ $pricing->ord_selling_price ?? '' }}" name="ord_selling_price" required><br>
+                        <input type="number" class="form-control col-md-6" placeholder="Original Selling Price" value="{{ $pricing->org_selling_price ?? '' }}" name="org_selling_price" required><br>
                         <select class="form-control col-md-12" name="preferred_type" required>
                           <option value=''>Select Preferred Type</option>
                           <option value='BASIC' @if($pricing->preferred_type=='BASIC') {{ 'selected' }} @endif>BASIC</option>
