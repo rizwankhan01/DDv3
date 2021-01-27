@@ -116,18 +116,18 @@
                         <input type="number" class="form-control col-md-6" placeholder="Original Selling Price" value="{{ $pricing->org_selling_price ?? '' }}" name="org_selling_price" required><br>
                         <select class="form-control col-md-12" name="preferred_type" required>
                           <option value=''>Select Preferred Type</option>
-                          <option value='BASIC' @if($pricing->preferred_type=='BASIC' ?? '') {{ 'selected' }} @endif>BASIC</option>
-                          <option value='PREMIUM' @if($pricing->preferred_type=='PREMIUM' ?? ''){{ 'selected' }} @endif>PREMIUM</option>
+                          <option value='BASIC' @if(!empty($pricing->preferred_type) AND $pricing->preferred_type=='BASIC') {{ 'selected' }} @endif>BASIC</option>
+                          <option value='PREMIUM' @if(!empty($pricing->preferred_type) AND $pricing->preferred_type=='PREMIUM'){{ 'selected' }} @endif>PREMIUM</option>
                         </select><br>
                         <select class="form-control col-md-6" name="ord_stock_availablity" required>
                           <option value="">Ord Stock Available?</option>
-                          <option value="1" @if($pricing->ord_stock_availablity==1 ?? '') {{ 'selected' }} @endif>Yes</option>
-                          <option value="0" @if($pricing->ord_stock_availablity==0 ?? ''){{ 'selected' }} @endif>No</option>
+                          <option value="1" @if(!empty($pricing->ord_stock_availablity) AND $pricing->ord_stock_availablity==1) {{ 'selected' }} @endif>Yes</option>
+                          <option value="0" @if(!empty($pricing->ord_stock_availablity) AND $pricing->ord_stock_availablity==0){{ 'selected' }} @endif>No</option>
                         </select><br>
                         <select class="form-control col-md-6" name="org_stock_availablity" required>
                           <option value="">Org Stock Available?</option>
-                          <option value="1" @if($pricing->org_stock_availablity==1 ?? ''){{ 'selected' }} @endif>Yes</option>
-                          <option value="0" @if($pricing->org_stock_availablity==0 ?? ''){{ 'selected' }} @endif>No</option>
+                          <option value="1" @if(!empty($pricing->org_stock_availablity) AND $pricing->org_stock_availablity==1){{ 'selected' }} @endif>Yes</option>
+                          <option value="0" @if(!empty($pricing->org_stock_availablity) AND $pricing->org_stock_availablity==0){{ 'selected' }} @endif>No</option>
                         </select><br>
                         <input type="text" class="form-control col-md-6" name="ord_compare_description" value="{{ $pricing->ord_compare_description ?? '' }}" placeholder="Ordinary Compare Description" required><br>
                         <input type="text" class="form-control col-md-6" name="org_compare_description" value="{{ $pricing->org_compare_description ?? '' }}" placeholder="Original Compare Description" required><br>
