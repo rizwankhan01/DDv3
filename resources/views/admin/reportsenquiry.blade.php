@@ -89,11 +89,11 @@
                               </tbody>
                           </table><hr>
                           <div class='pull-right'>
-                            Converted: {{ $conv }} <br>
-                            Stock Unavailable: {{ $stock_unav }}<br>
-                            Not Interested: {{ $not_int }}<br>
-                            Call Back: {{ $call_back }}<br>
-                            Open: {{ $open }}
+                            <span class='btn btn-sm btn-success btn-rounded'>Converted: {{ $conv }}</span><br>
+                            <span class='btn btn-sm btn-danger btn-rounded'>Stock Unavailable: {{ $stock_unav }}</span><br>
+                            <span class='btn btn-sm btn-primary btn-rounded'>Not Interested: {{ $not_int }}</span><br>
+                            <span class='btn btn-sm btn-warning btn-rounded'>Call Back: {{ $call_back }}</span><br>
+                            <span class='btn btn-sm btn-danger btn-rounded'>Open: {{ $open }}</span>
                         </div>
                       </div>
                   </div>

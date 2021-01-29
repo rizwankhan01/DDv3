@@ -85,13 +85,13 @@
                           </table><hr>
                           <div class="pull-right">
                             @if($ts!=0)
-                              <button class="btn btn-warning btn-rounded">Total Stock: &#8377; {{ $ts }}</button><br>
+                              <button class="btn btn-sm btn-warning btn-rounded">Total Stock: &#8377; {{ $ts }}</button><br>
                             @endif
                             @if($tt!=0)
-                              <button class="btn btn-primary btn-rounded">Total Transaction: &#8377; {{ $tt }}</button><br>
+                              <button class="btn btn-sm btn-primary btn-rounded">Total Transaction: &#8377; {{ $tt }}</button><br>
                             @endif
                             @if($tp!=0)
-                              <button class="btn btn-success btn-rounded">Total Profit: &#8377; {{ $tp }}</button>
+                              <button class="btn btn-sm btn-success btn-rounded">Total Profit: &#8377; {{ $tp }}</button>
                             @endif
                           </div>
                       </div>
