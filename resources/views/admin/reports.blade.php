@@ -58,8 +58,20 @@
                                   <tr>
                                     <td>{{ date('d-m-Y', strtotime($order->slot_date)) }}</td>
                                     <td><a href='/home/{{ $order->id }}'>#{{ $order->id }}</a></td>
-                                    <td>&#8377; {{ $order->stock_price }}</td>
-                                    <td>&#8377; {{ $order->order_lists->sum('price') }}</td>
+                                    <td>
+                                    <?php
+                                      $s  = $order->stock_price;
+                                      $ts = $ts+$s;
+                                    ?>
+                                      &#8377; {{ $s }}
+                                    </td>
+                                    <td>
+                                    <?php
+                                      $t  = $order->order_lists->sum('price');
+                                      $tt = $tt+$t;
+                                    ?>
+                                      &#8377; {{ $t }}
+                                    </td>
                                     <td>
                                     <?php
                                       $p = $order->order_lists->sum('price')-$order->stock_price;
@@ -71,6 +83,12 @@
                                 @endforeach
                               </tbody>
                           </table><hr>
+                          @if($ts!=0)
+                            <button class="btn btn-warning btn-rounded pull-right">Total Stock: &nbsp; {{ $ts }}</button><br>
+                          @endif
+                          @if($tt!=0)
+                            <button class="btn btn-primary btn-rounded pull-right">Total Transaction: &nbsp; {{ $tt }}</button><br>
+                          @endif
                           @if($tp!=0)
                             <button class="btn btn-success btn-rounded pull-right">Total Profit: &#8377; {{ $tp }}</button>
                           @endif
