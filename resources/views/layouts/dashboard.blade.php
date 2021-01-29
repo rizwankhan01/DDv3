@@ -105,9 +105,14 @@
     <li><a href="/accounts">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>User Accounts</span>
     </a></li>
-    <li><a href="/reports">
-      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Reports</span>
-    </a></li>
+    <li><a href="javaScript:void();">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="orders"><span>Reports</span><i class="feather icon-chevron-right pull-right"></i>
+    </a>
+    <ul class="vertical-submenu">
+      <li><a href="/reports">Sales Reports</a></li>
+      <li><a href="/enquiryreports">Enquiry Reports</a></li>
+    </ul>
+    </li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
     </a></li>

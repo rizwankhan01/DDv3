@@ -80,8 +80,10 @@ Route::group(['middleware' => 'auth'], function(){
         return view('admin.dashboard');
     });
     Route::resource('/search','Admin\SearchController');
-    Route::resource('/reports','Admin\ReportsController');
     Route::resource('/invoice','Admin\InvoiceController');
+
+    Route::resource('/reports','Admin\ReportsController');
+    Route::resource('/enquiryreports','Admin\ReportsEnquiryController');
 
     Route::put('/ordercontrols/{id}','Admin\OrderControlsController@consultation');
     Route::put('/assign/{id}','Admin\OrderControlsController@assign');

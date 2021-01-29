@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title') Sales Report | Doctor Display Dashboard @endsection
+@section('title') Enquiry Report | Doctor Display Dashboard @endsection
 
 @section('contentbar')
   <div class="contentbar mt-100">
@@ -10,7 +10,7 @@
               <div class="card m-b-30">
                   <div class="card-header">
                     <div class="widgetbar pull-right">
-                      <form action="/reports" method="post" class="form-inline">
+                      <form action="/enquiryreports" method="post" class="form-inline">
                         {{ csrf_field() }}
                         {{ method_field('post') }}
                         <select class="form-control" name="month">
@@ -32,10 +32,10 @@
                         <button class="btn btn-sm btn-primary-rgba" type="submit">Filter</button>
                       </form>
                     </div>
-                    <b>Sales Report</b>
+                      <b>Enquiry Report</b>
                   </div>
                   <div class="card-body">
-                    <h6 class="card-subtitle">You can view monthly sales reports here.</h6>
+                    <h6 class="card-subtitle">You can view enquiry reports here.</h6>
                       <div class="table-responsive">
                         @if(session('status'))
                           <div class="alert alert-success" role="alert">
@@ -46,34 +46,48 @@
                               <thead>
                               <tr>
                                   <th>Date</th>
-                                  <th>Order ID</th>
-                                  <th>Stock Amount</th>
-                                  <th>Transaction</th>
-                                  <th>Profit</th>
+                                  <th>Model Name</th>
+                                  <th>Customer</th>
+                                  <th>Locality</th>
+                                  <th>Follow Up</th>
+                                  <th>Notes</th>
+                                  <th>Status</th>
                               </tr>
                               </thead>
                               <tbody>
-                                <?php $tp = 0;?>
-                                @foreach ($orders as $order)
+                                @foreach($enquiries as $enquiry)
                                   <tr>
-                                    <td>{{ date('d-m-Y', strtotime($order->slot_date)) }}</td>
-                                    <td><a href='/home/{{ $order->id }}'>#{{ $order->id }}</a></td>
-                                    <td>&#8377; {{ $order->stock_price }}</td>
-                                    <td>&#8377; {{ $order->order_lists->sum('price') }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($enquiry->created_at)) }}</td>
                                     <td>
-                                    <?php
-                                      $p = $order->order_lists->sum('price')-$order->stock_price;
-                                      $tp = $tp+$p;
-                                    ?>
-                                    &#8377; {{ $p }}
+                                      @if(empty($enquiry->url))
+                                        {{ $enquiry->model_name }}
+                                      @else
+                                        <a href='/{{ $enquiry->url}}' target='_blank'>{{ $enquiry->model_name }}</a>
+                                      @endif
+                                    </td>
+                                    <td><a href='/customer-profile/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
+                                      <small><a href='exotel_calls/{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
+                                    </td>
+                                    <td>{{ $enquiry->city }}</td>
+                                    <td>
+                                      @if(date('Y-m-d')==$enquiry->fdate)
+                                        <span class="btn btn-sm btn-success">{{ date('d-m-Y', strtotime($enquiry->fdate)) }}</span>
+                                      @elseif(!empty($enquiry->fdate))
+                                        {{ date('d-m-Y',strtotime($enquiry->fdate)) }}
+                                      @endif
+                                    </td>
+                                    <td>{{ $enquiry->notes }}</td>
+                                    <td>
+                                      @if(empty($enquiry->status))
+                                        <a href='/enquiry/{{ $enquiry->id }}' class='btn btn-sm btn-warning'>Update Status</a>
+                                      @else
+                                        <a href="/enquiry/{{ $enquiry->id }}" class="btn btn-sm btn-default">{{ $enquiry->status }}</a>
+                                      @endif
                                     </td>
                                   </tr>
                                 @endforeach
                               </tbody>
                           </table><hr>
-                          @if($tp!=0)
-                            <button class="btn btn-success btn-rounded pull-right">Total Profit: &#8377; {{ $tp }}</button>
-                          @endif
                       </div>
                   </div>
               </div>
