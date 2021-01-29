@@ -53,7 +53,7 @@
                               </tr>
                               </thead>
                               <tbody>
-                                <?php $tp = 0;?>
+                                <?php $ts = 0; $tt = 0; $tp = 0;?>
                                 @foreach ($orders as $order)
                                   <tr>
                                     <td>{{ date('d-m-Y', strtotime($order->slot_date)) }}</td>
