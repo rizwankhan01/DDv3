@@ -15,8 +15,13 @@ class ReportsEnquiryController extends Controller
      */
     public function index()
     {
+        $conv       = enquiry::where('created_at','LIKE', date('Y-m-')."%")->where('status','Converted')->count();
+        $stock_unav = enquiry::where('created_at','LIKE', date('Y-m-')."%")->where('status','Stock Unavailable')->count();
+        $not_int    = enquiry::where('created_at','LIKE', date('Y-m-')."%")->where('status','Not Interested')->count();
+        $call_back  = enquiry::where('created_at','LIKE', date('Y-m-')."%")->where('status','Call Back')->count();
+        $open  = enquiry::where('created_at','LIKE', date('Y-m-')."%")->whereNull('status')->count();
         $enquiries  = enquiry::where('created_at','LIKE', date('Y-m-')."%")->get();
-        return view('admin.reportsenquiry', compact('enquiries'));
+        return view('admin.reportsenquiry', compact('enquiries','conv','stock_unav','not_int','call_back','open'));
     }
 
     /**
@@ -40,8 +45,13 @@ class ReportsEnquiryController extends Controller
         $month  = $request->input('month');
         $year   = $request->input('year');
         $filter = $year.$month;
+        $conv       = enquiry::where('created_at','LIKE', $filter."%")->where('status','Converted')->count();
+        $stock_unav = enquiry::where('created_at','LIKE', $filter."%")->where('status','Stock Unavailable')->count();
+        $not_int    = enquiry::where('created_at','LIKE', $filter."%")->where('status','Not Interested')->count();
+        $call_back  = enquiry::where('created_at','LIKE', $filter."%")->where('status','Call Back')->count();
+        $open  = enquiry::where('created_at','LIKE', $filter."%")->whereNull('status')->count();
         $enquiries  = enquiry::where('created_at','LIKE', $filter."%")->get();
-        return view('admin.reportsenquiry', compact('enquiries'));
+        return view('admin.reportsenquiry', compact('enquiries','conv','stock_unav','not_int','call_back','open'));
     }
 
     /**

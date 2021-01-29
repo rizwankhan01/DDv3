@@ -88,6 +88,13 @@
                                 @endforeach
                               </tbody>
                           </table><hr>
+                          <div class='pull-right'>
+                            Converted: {{ $conv }} <br>
+                            Stock Unavailable: {{ $stock_unav }}<br>
+                            Not Interested: {{ $not_int }}<br>
+                            Call Back: {{ $call_back }}<br>
+                            Open: {{ $open }}
+                        </div>
                       </div>
                   </div>
               </div>
