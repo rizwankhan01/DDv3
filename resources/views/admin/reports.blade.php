@@ -83,15 +83,17 @@
                                 @endforeach
                               </tbody>
                           </table><hr>
-                          @if($ts!=0)
-                            <button class="btn btn-warning btn-rounded pull-right">Total Stock: &nbsp; {{ $ts }}</button><br>
-                          @endif
-                          @if($tt!=0)
-                            <button class="btn btn-primary btn-rounded pull-right">Total Transaction: &nbsp; {{ $tt }}</button><br>
-                          @endif
-                          @if($tp!=0)
-                            <button class="btn btn-success btn-rounded pull-right">Total Profit: &#8377; {{ $tp }}</button>
-                          @endif
+                          <div class="pull-right">
+                            @if($ts!=0)
+                              <button class="btn btn-warning btn-rounded">Total Stock: &#8377; {{ $ts }}</button><br>
+                            @endif
+                            @if($tt!=0)
+                              <button class="btn btn-primary btn-rounded">Total Transaction: &#8377; {{ $tt }}</button><br>
+                            @endif
+                            @if($tp!=0)
+                              <button class="btn btn-success btn-rounded">Total Profit: &#8377; {{ $tp }}</button>
+                            @endif
+                          </div>
                       </div>
                   </div>
               </div>
