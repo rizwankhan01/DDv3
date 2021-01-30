@@ -43,10 +43,10 @@
                             {{ csrf_field() }}
                             {{ method_field('put') }}
                             <div class='col-md-6'>
-                              <input type='text' class='form-control' name='customer_name' value='{{ $enquiry->customer->name }}' placeholder='Customer Name' required><br>
+                              <input type='text' class='form-control' name='customer_name' value='{{ $enquiry->customer->name }}' placeholder='Customer Name'><br>
                             </div>
                             <div class='col-md-6'>
-                            <input type='text' class='form-control' name='locality' value='{{ $enquiry->city }}' placeholder='Locality' required><br>
+                            <input type='text' class='form-control' name='locality' value='{{ $enquiry->city }}' placeholder='Locality'><br>
                             </div>
                             <input type='hidden' name='customer_id' value='{{ $enquiry->customer->id }}'>
                             <div class='col-md-6'>

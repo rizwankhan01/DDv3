@@ -93,6 +93,7 @@
                             <span class='btn btn-sm btn-danger btn-rounded'>Stock Unavailable: {{ $stock_unav }}</span><br>
                             <span class='btn btn-sm btn-primary btn-rounded'>Not Interested: {{ $not_int }}</span><br>
                             <span class='btn btn-sm btn-warning btn-rounded'>Call Back: {{ $call_back }}</span><br>
+                            <span class='btn btn-sm btn-default btn-rounded'>Duplicate: {{ $duplicate }}</span><br> 
                             <span class='btn btn-sm btn-danger btn-rounded'>Open: {{ $open }}</span>
                         </div>
                       </div>
