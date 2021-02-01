@@ -79,7 +79,7 @@
                                       <ul class="mainmenu">
                                           <li class="lavel-1"><a href="/"><span>Home</span></a></li>
                                           <li class="lavel-1"><a href="/our-story"><span>Our Story</span></a></li>
-                                          <li class="lavel-1"><a href="/blog"><span>Blog</span></a></li>
+                                          <!--<li class="lavel-1"><a href="/blog"><span>Blog</span></a></li>-->
                                           <li class="lavel-1"><a href="/contact"><span>Contact</span></a></li>
                                       </ul>
                                   </nav>
@@ -124,7 +124,7 @@
                       <li class="lavel-1"><a href="tel:04446270777"><span>04446270777</span></a></li>
                       <li class="lavel-1"><a href="/"><span>Home</span></a></li>
                       <li class="lavel-1"><a href="/our-story"><span>Our Story</span></a></li>
-                      <li class="lavel-1"><a href="/blog"><span>Blog</span></a></li>
+                      <!--<li class="lavel-1"><a href="/blog"><span>Blog</span></a></li>-->
                       <li class="lavel-1"><a href="/contact"><span>Contact</span></a></li>
                     </ul>
                 </div>
@@ -170,7 +170,7 @@
                                   <div class="col-6">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="/our-story">Our Story</a></li>
-                                    <li><a href="/blog">Blog</a></li>
+                                    <!--<li><a href="/blog">Blog</a></li>-->
                                     <li><a href="/contact">Contact</a></li>
                                   </div>
                                   <div class="col-6">
