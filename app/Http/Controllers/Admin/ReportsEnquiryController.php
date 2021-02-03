@@ -53,7 +53,11 @@ class ReportsEnquiryController extends Controller
         $open       = enquiry::where('created_at','LIKE', $filter."%")->whereNull('status')->count();
         $duplicate  = enquiry::where('created_at','LIKE', $filter."%")->where('status','Duplicate')->count();
         $enquiries  = enquiry::where('created_at','LIKE', $filter."%")->get();
-        return view('admin.reportsenquiry', compact('enquiries','conv','stock_unav','not_int','call_back','open','duplicate'));
+        //chart data
+        $c_open     = enquiry::where('created_at','LIKE', $filter."%")->whereNull('status')->groupby('created_at')->get();
+        //dd($c_open);
+
+        return view('admin.reportsenquiry', compact('enquiries','conv','stock_unav','not_int','call_back','open','duplicate','c_open'));
     }
 
     /**

@@ -61,7 +61,7 @@
                               <a href="#" data-toggle="modal" data-target="#exampleModal">
                                 <figure>
                                 <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->name}} image">
-                                <figcaption>{{$color->name}}</figcaption>
+                                <figcaption>{{ ucfirst($color->name) }}</figcaption>
                                 </figure>
                               </a>
                             </div>

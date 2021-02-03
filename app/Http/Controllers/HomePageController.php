@@ -56,6 +56,7 @@ class HomePageController extends Controller
       $url      = explode('-',$id);
       if(empty($url[4])){ return abort(404); }
       $models   = models::where('name', $url[4])->where('series',$url[3])->first();
+      if(empty($models->id)){ return abort(404); }
       $colors   = colors::where('model_id', $models->id)->get();
       if(!empty(Session::get('color_id'))){
       $color    = colors::findOrFail(Session::get('color_id'));
