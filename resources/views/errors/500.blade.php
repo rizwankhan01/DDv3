@@ -1,16 +1,16 @@
 @extends('layouts.master')
-@section('title') 505 Fatal Error | Doctor Display @endsection
+@section('title') 500 Internal Data Error | Doctor Display @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcaump-inner text-center">
-                    <h2 class="heading">505 Fatal Error</h2>
+                    <h2 class="heading">505 Internal Data Error</h2>
                     <div class="breadcrumb-insite">
                         <ul class="core-breadcaump">
                             <li><a href="/">Home</a></li>
-                            <li class="current">505 Fatal Error</li>
+                            <li class="current">505 Internal Data Error</li>
                         </ul>
                     </div>
                 </div>

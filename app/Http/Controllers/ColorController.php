@@ -49,7 +49,11 @@ class ColorController extends Controller
       $colors = colors::where('model_id',$id)->get();
       $color = colors::where('model_id',$id)->first();
       //$models = models::findOrFail($color->model_id);
-      return view('colors', compact('colors','color'));
+      if(empty($color->id)){
+        return abort(500);
+      }else{
+        return view('colors', compact('colors','color'));
+      }
     }
 
     /**
