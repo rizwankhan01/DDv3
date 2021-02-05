@@ -118,6 +118,7 @@
                                   <?php $selected_color = $color->name; ?>
                                   @foreach($colors as $color)
                                     @if($color->name==$selected_color)
+                                      <!-- Insert form like logout button here to change value-->
                                       <a href='/product/{{$models->id}}/{{$color->name}}' style="color:#FCC72D;"><u>{{ ucfirst($color->name) }}</u></a>&nbsp;&nbsp;&nbsp;
                                     @else
                                       <a href='/product/{{$models->id}}/{{$color->name}}'><u>{{ ucfirst($color->name) }}</u></a>&nbsp;&nbsp;&nbsp;

@@ -173,7 +173,6 @@
                                   <div class="col-6">
                                     <li><a href="/privacy">Privacy Policy</a></li>
                                     <li><a href="/report">Report an Issue</a></li>
-                                    <li><a href="http://jobs.doctordisplay.in/">Jobs</a></li>
                                     <li><a href="/repository">Repository</a></li>
                                   </div>
                                 </ul>
