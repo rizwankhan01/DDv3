@@ -48,6 +48,7 @@ class ProductController extends Controller
       //dd($name." ".$color_name." ".$models->id);
       $color  = colors::where('name', $color_name)->where('model_id',$models->id)->first();
       $pricing  = pricings::where('color_id', $color->id)->first();
+      if(empty($pricing->id)){ return abort(500); }
       $orders = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
       return view('product', compact('models','colors','color','pricing','orders'));
     }
