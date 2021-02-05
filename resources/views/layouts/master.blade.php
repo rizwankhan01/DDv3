@@ -10,6 +10,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ URL::asset('img/icon.png') }}">
+    <link rel="canonical" href="{{ url()->current() }}" />
 
 
     <!-- CSS
