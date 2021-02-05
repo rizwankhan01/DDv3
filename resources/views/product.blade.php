@@ -48,7 +48,7 @@
               <tr>
                 <th>Price</th>
                 <td>&#8377; {{ $pricing->ord_selling_price ?? '' }}</td>
-                <td>&#8377; {{ $pricing->org_selling_price }}</td>
+                <td>&#8377; {{ $pricing->org_selling_price ?? '' }}</td>
               </tr>
             </tbody>
           </table>
