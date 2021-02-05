@@ -32,7 +32,8 @@
                     <div class="classic-address text-center">
                         <div class="desc mt--15">
                             <p>
-                              Sorry, something went wrong. Why dont we go back <a href='/'>here</a>?</p>
+                              Sorry, something went wrong. Why dont we go back <a href='/'>here</a>?<br>
+                            Maybe Try clicking a different color or model or <a href='tel:04446270777'>call us here</a></p>
                         </div>
                     </div>
                 </div>
