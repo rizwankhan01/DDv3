@@ -5,54 +5,47 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title')</title>
     <meta name="description" content="@yield('metadesc')">
+    <meta name="keywords" content="mobile screen replacement chennai, doctor display, samsung s7 edge display price in chennai, mobile display change,
+    honor 7x screen replacement, mobile display change in chennai, doorstep mobile repair in chennai, doorstep Apple mobile phone screen replacement" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="canonical" href="{{ url()->current() }}" />
     <meta name="theme-color" content="#FCC72C" />
+
+    <!-- og tags -->
+    <meta property="og:title" content="@yield('title')" />
+    <meta property="og:description" content="@yield('metadesc')" />
+    <meta property="og:image" content="{{ URL::asset('img/logo/logo-mail.png') }}" />
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ URL::asset('img/icon.png') }}">
-    <link rel="canonical" href="{{ url()->current() }}" />
 
-
-    <!-- CSS
-	============================================ -->
-    <!-- Plugins -->
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/revoulation.css">
-    <link rel="stylesheet" href="css/plugins.css"> -->
-
-    <!-- Style Css -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
-
-    <!-- Custom Styles -->
-    <!-- <link rel="stylesheet" href="css/custom.css"> -->
-
-
-    <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/revoulation.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('css/plugins.min.css')}}">
     <link rel="stylesheet" href="{{ URL::asset('style.min.css')}}">
+    <meta name="robots" content="index, follow">
+
     <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-65390322-3', 'auto');
-    ga('send', 'pageview');
-    ga(function() {
-      var trackers = ga.getAll();
-      trackers.forEach(function(tracker) {
-        var clientId = tracker.get('clientId');
-        document.getElementById('ga_id').value = clientId;
-        document.getElementById('ga_id2').value = clientId;
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-65390322-3', 'auto');
+      ga('send', 'pageview');
+      ga(function() {
+        var trackers = ga.getAll();
+        trackers.forEach(function(tracker) {
+          var clientId = tracker.get('clientId');
+          document.getElementById('ga_id').value = clientId;
+          document.getElementById('ga_id2').value = clientId;
+        });
       });
-    });
     </script>
     <script async src='https://www.google-analytics.com/analytics.js'></script>
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5aff2d0e6d6a0b001193c222&product=sop' async='async'></script>
 </head>
 
 <body class="template-color-1 template-font-1">
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
 
     <!-- Wrapper -->
     <div id="wrapper" class="wrapper">
@@ -114,7 +107,7 @@
                 <div class="mobileheader">
                     <div class="logo">
                         <a href="/">
-                            <img src="{{ URL::asset('img/logo/logo-mail.png') }}" alt="Multipurpose">
+                            <img src="{{ URL::asset('img/logo/logo-mail.png') }}" alt="Doctor Display Logo">
                         </a>
                     </div>
                     <a class="mobile-close" href="#"></a>
