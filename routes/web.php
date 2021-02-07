@@ -101,3 +101,4 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 Route::get('/{id}','HomePageController@show');
+Route::post('/{id}','HomePageController@store');
