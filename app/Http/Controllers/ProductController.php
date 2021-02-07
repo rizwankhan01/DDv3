@@ -8,6 +8,7 @@ use App\Models\colors;
 use App\Models\models;
 use App\Models\model_resources;
 use App\Models\order_lists;
+use Session;
 
 class ProductController extends Controller
 {
@@ -39,7 +40,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->input('color_id'));
+        $color = colors::findOrFail($request->input('color_id'));
+        Session::put('color_id',$color->id);
+        $models = models::where('id',$color->model_id)->first();
+        $colors = colors::where('model_id',$models->id)->get();
+        $pricing  = pricings::where('color_id',$color->id)->first();
+        if(empty($pricing->id)){ return abort(500); }
+        $orders = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
+        return redirect('screen-repair-'.$models->brand->name."-".$models->series."-".$models->name)->with(compact('models','colors','color','pricing','orders'));
+        //return view('product',compact('models','colors','color','pricing','orders'));
     }
 
     public function getproduct($name, $color_name){

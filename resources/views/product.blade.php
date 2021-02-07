@@ -111,23 +111,36 @@
                                 &nbsp;&nbsp;5 (8 Reviews)
                             </ul>
                           </div><br><br>-->
-                              <span style="font-size:12px;">{{$models->description}}</span>
+                              <span style="font-size:12px;">{{ $models->description }}</span>
                         </div><br>
-                            <div class="price" style="margin-bottom:0px;">
+                            <div class="price row col-12" style="margin-bottom:0px;">
                                 <p class="theme-color">
                                   <?php $selected_color = $color->name; ?>
                                   @foreach($colors as $color)
                                     @if($color->name==$selected_color)
-                                      <!-- Insert form like logout button here to change value-->
-                                      <a href='/product/{{$models->id}}/{{$color->name}}' style="color:#FCC72D;"><u>{{ ucfirst($color->name) }}</u></a>&nbsp;&nbsp;&nbsp;
+                                      <a style="color:#FCC72D;float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
+                                        <u>{{ ucfirst($color->name) }}</u>
+                                      </a>&nbsp;&nbsp;&nbsp;
+                                      <form id="color{{ $color->id }}" action="product" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('post') }}
+                                        <input type='hidden' name='color_id' value='{{ $color->id }}'>
+                                      </form>
                                     @else
-                                      <a href='/product/{{$models->id}}/{{$color->name}}'><u>{{ ucfirst($color->name) }}</u></a>&nbsp;&nbsp;&nbsp;
+                                      <a style="float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
+                                        <u>{{ ucfirst($color->name) }}</u>
+                                      </a>&nbsp;&nbsp;&nbsp;
+                                      <form id="color{{ $color->id }}" action="product" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('post') }}
+                                        <input type='hidden' name='color_id' value='{{ $color->id }}'>
+                                      </form>
                                     @endif
                                   @endforeach
                                 </p>
-                                <p>Select Screen Quality:</p>
                             </div>
                             <div class="description">
+                              <p>Select Screen Quality:</p>
                               <div class="row">
                                     <ul class="nav nav-pills mb-3 col-md-12 col-xs-12" id="pills-tab" role="tablist">
                                       @if($pricing->ord_stock_availablity==1)
