@@ -32,7 +32,7 @@
                         <div class="brand__list brand-default brand-style--2">
                           @foreach($brands as $brand)
                           <div class="brand">
-                          <a href="/brand/{{$brand->name}}">
+                          <a href="{{$brand->name}}-screen-service-center">
                             <figure>
                             <img src="storage/{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
                             <figcaption>{{$brand->name}}</figcaption>

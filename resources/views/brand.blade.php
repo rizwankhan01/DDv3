@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title') {{ $brands->name }} Products | Doctor Display @endsection
+@section('title') {{ $brands->name }} Screen Repairs | Doctor Display @endsection
 @section('metadesc') If you are looking to fix your {{ $brands->name }} phones, we are there for your rescue. Our team of trained screen repair technicians will come to your doorstep and get your screens replaced whenever you want to fix it. @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
@@ -7,15 +7,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcaump-inner text-center">
-                    <h2 class="heading">
+                    <h1 class="heading">
                       {{ $brands->name }}
-                       Products</h2>
+                       Screen Repairs</h1>
                     <small>If you are looking to fix your {{ $brands->name }} phones, we are there for your rescue. Our team of trained screen repair technicians will come to your doorstep and get your screens replaced whenever you want to fix it.</small>
                     <div class="breadcrumb-insite">
                         <ul class="core-breadcaump">
                             <li><a href="/">Home</a></li>
                             <li><a href="/allbrands">All Brands</a></li>
-                            <li class="current">{{ $brands->name }} Products</li>
+                            <li class="current">{{ $brands->name }} Screen Repairs</li>
                         </ul>
                     </div>
                 </div>

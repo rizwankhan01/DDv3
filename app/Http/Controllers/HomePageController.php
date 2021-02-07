@@ -8,6 +8,7 @@ use App\Models\models;
 use App\Models\colors;
 use App\Models\pricings;
 use App\Models\order_lists;
+use App\Models\brands;
 use Session;
 
 class HomePageController extends Controller
@@ -60,16 +61,24 @@ class HomePageController extends Controller
      */
     public function show($id)
     {
-      $url      = explode('-',$id);
-      if(empty($url[4])){ return abort(404); }
-      $models   = models::where('name', $url[4])->where('series',$url[3])->first();
-      if(empty($models->id)){ return abort(500); }
-      $colors   = colors::where('model_id', $models->id)->get();
-      $color    = colors::where('model_id', $models->id)->first();
-      if(empty($color->id)){ return abort(500); }
-      $pricing  = pricings::where('color_id', $color->id)->first();
-      $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
-      return view('product', compact('models','colors','color','pricing','orders'));
+      if(strpos($id,'-screen-service-center') !== false){
+        $url    = explode('-',$id);
+        //dd($url);
+        $brands = brands::where('name', $url[0])->first();
+        $models = models::where('brand_id',$brands->id)->orderBy('id','desc')->get()->groupBy('series');
+        return view('brand', compact('brands','models'));
+      }else{
+        $url      = explode('-',$id);
+        if(empty($url[4])){ return abort(404); }
+        $models   = models::where('name', $url[4])->where('series',$url[3])->first();
+        if(empty($models->id)){ return abort(500); }
+        $colors   = colors::where('model_id', $models->id)->get();
+        $color    = colors::where('model_id', $models->id)->first();
+        if(empty($color->id)){ return abort(500); }
+        $pricing  = pricings::where('color_id', $color->id)->first();
+        $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
+        return view('product', compact('models','colors','color','pricing','orders'));
+      }
     }
 
     /**
