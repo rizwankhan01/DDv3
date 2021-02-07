@@ -121,7 +121,7 @@
                                       <a style="color:#FCC72D;float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
                                         <u>{{ ucfirst($color->name) }}</u>
                                       </a>&nbsp;&nbsp;&nbsp;
-                                      <form id="color{{ $color->id }}" action="product" method="POST">
+                                      <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}
                                         <input type='hidden' name='color_id' value='{{ $color->id }}'>
@@ -130,7 +130,7 @@
                                       <a style="float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
                                         <u>{{ ucfirst($color->name) }}</u>
                                       </a>&nbsp;&nbsp;&nbsp;
-                                      <form id="color{{ $color->id }}" action="product" method="POST">
+                                      <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('post') }}
                                         <input type='hidden' name='color_id' value='{{ $color->id }}'>
