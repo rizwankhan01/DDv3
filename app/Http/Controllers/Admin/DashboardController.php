@@ -17,11 +17,10 @@ class DashboardController extends Controller
     public function index()
     {
       $today  = date('Y-m-d');
-      $torders = orders::where('status',1)
-                      ->Where('status',2)
+      $torders = orders::WhereNotNull('status')
                       ->where('created_at','LIKE', $today."%")
                       ->count();
-      $tenquiry= enquiry::where('status','!=','Duplicate')->where('created_at','LIKE', $today."%")->count();
+      $tenquiry= enquiry::where('created_at','LIKE', $today."%")->count();
       return view('admin.dashboard', compact('torders','tenquiry'));
     }
 
