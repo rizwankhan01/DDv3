@@ -5,6 +5,42 @@
   <div class="contentbar">
       <!-- Start row -->
       <div class="row">
+        <!-- Start col -->
+        <div class="col-lg-12 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Today's Orders</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 pr-0">
+                            <h4 class="mb-3">{{ $torders }}</h4>
+                            <!--<p class="font-15 mb-0"><span class="badge badge-success"><i class="feather icon-arrow-up mr-1"></i>25%</span></p>-->
+                        </div>
+                        <div class="col-8">
+                            <div id="apex-hospital-expense-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Today's Enquiry</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-4 pr-0">
+                            <h4 class="mb-3">{{ $tenquiry }}</h4>
+                            <!--<p class="font-16 mb-0"><span class="badge badge-warning"><i class="feather icon-arrow-down mr-1"></i>12%</span></p>-->
+                        </div>
+                        <div class="col-8">
+                            <div id="apex-pharmacy-expense-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End col -->
           <!-- Start col -->
           <div class="col-lg-12 col-xl-6">
               <div class="card m-b-30">
@@ -63,42 +99,6 @@
                           </div>
                           <div class="col-6">
                               <p class="bg-icon"><i class="feather icon-calendar"></i></p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- End col -->
-          <!-- Start col -->
-          <div class="col-lg-12 col-xl-3">
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <h5 class="card-title mb-0">Hospital Expense</h5>
-                  </div>
-                  <div class="card-body">
-                      <div class="row align-items-center">
-                          <div class="col-4 pr-0">
-                              <h4 class="mb-3">$95</h4>
-                              <p class="font-15 mb-0"><span class="badge badge-success"><i class="feather icon-arrow-up mr-1"></i>25%</span></p>
-                          </div>
-                          <div class="col-8">
-                              <div id="apex-hospital-expense-chart"></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <h5 class="card-title mb-0">Pharmacy Expense</h5>
-                  </div>
-                  <div class="card-body">
-                      <div class="row align-items-center">
-                          <div class="col-4 pr-0">
-                              <h4 class="mb-3">$23</h4>
-                              <p class="font-16 mb-0"><span class="badge badge-warning"><i class="feather icon-arrow-down mr-1"></i>12%</span></p>
-                          </div>
-                          <div class="col-8">
-                              <div id="apex-pharmacy-expense-chart"></div>
                           </div>
                       </div>
                   </div>

@@ -78,9 +78,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/customers','Admin\CustomerController');
     Route::get('/getseries/{id}','Admin\ColorsController@getseries');
     Route::get('/getmodels/{id}','Admin\ColorsController@getmodels');
-    Route::get('/dashboard', function(){
-        return view('admin.dashboard');
-    });
+    Route::resource('/dashboard', 'Admin\DashboardController');
     Route::resource('/search','Admin\SearchController');
     Route::resource('/invoice','Admin\InvoiceController');
 
