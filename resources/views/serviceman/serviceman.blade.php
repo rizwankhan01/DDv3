@@ -19,7 +19,7 @@
                         <ul class="vertical-menu">
                           <li><a href='/home/{{ $order->id }}'><i class="fa fa-archive"></i> <span>Order ID: #{{ $order->id }} | {{ date('d-m-Y', strtotime($order->slot_date)) }} - {{ $order->slot_time }}</span></a></li>
                           <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $order->customer->name }}</span></a></li>
-                          <li><a href='exotel_calls/{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
+                          <li><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $order->customer->phone_number }}</span></a></li>
                           <li><a href='mailto:{{ $order->customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $order->customer->email }}</span></a></li>
                           <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}"><i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
                         </ul>
@@ -171,7 +171,7 @@
                               @foreach($orders as $order)
                                 <tr>
                                   <td><b>{{ $order->customer->name }}</b></td>
-                                  <td><a href='exotel_calls/{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
+                                  <td><a href='/exotel_calls/{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
                                   <td>
                                   @if($order->slot_date == date('Y-m-d'))
                                     <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
