@@ -65,4 +65,8 @@ Cheers!!!</p>
 <script src="{{ URL::asset('js/revolution.extension.min.js')}}"></script>
 <script src="{{ URL::asset('js/main.js')}}"></script>
 <script src="{{ URL::asset('js/revoulation.js')}}"></script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8346739.js"></script>
+<!-- End of HubSpot Embed Code -->
 @endsection
