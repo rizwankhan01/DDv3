@@ -356,17 +356,19 @@
                 <div class="brook-testimonial-area ptb-md--80">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12"><h4>Customers who replaced {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} screen said</h4></div>
+                            <div class="col-md-12"><h4>Customers who replaced screens with us said</h4></div>
 
-                            @foreach($orders as $olist)
-                            @if(!empty($olist->order->closedorder->feedback))
                             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="testimonial testimonial_style--1">
                                     <div class="content">
-                                        <p class="bk_pra">{{ $olist->order->closedorder->feedback }}</p>
+                                        <p class="bk_pra">Thanks for your prompt service,  All the vendors I contacted were providing
+                                          service at their centers with pick up and drop facility, you were the only one willing to do
+                                          service at door step, broken Motorola one fusion plus screen was fixed in less than 30 mins,
+                                          best part was no unnecessary conversation, safety protocol followed.
+                                          Happy to see talented young professionals offering quality service at door step. Keep it up</p>
                                         <div class="testimonial-info">
                                             <div class="clint-info">
-                                                <h6>{{ $olist->order->customer->name }}</h6>
+                                                <h6>Dee v</h6>
                                             </div>
                                         </div>
                                         <div class="testimonial-quote">
@@ -375,8 +377,94 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif
-                            @endforeach
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="testimonial testimonial_style--1">
+                                    <div class="content">
+                                        <p class="bk_pra">Fantastic job done.. I had changed display  twice within 2 months as I broke it twice..
+                                          Professional tools used and the service person is knowledgeable on his work and does it real quick.
+                                          Maximum time 30 mins if the display matches your phone without any other issues..
+                                          Price is slightly higher than market but worth it for the timely and error free service..
+                                          Most importantly zero data theft.. They do it in front of you at your place so no need to worry about backing
+                                          up the data or formatting the phone before you give it to them.. Great service.. Keep rocking Doctor Display.
+                                          100% Recommended for reliable, fast and timely service.</p>
+                                        <div class="testimonial-info">
+                                            <div class="clint-info">
+                                                <h6>Shobs</h6>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">
+                                            <span class="fa fa-quote-right"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="testimonial testimonial_style--1">
+                                    <div class="content">
+                                        <p class="bk_pra">Hands down, one of the best way to get your mobile fixed.
+                                          Hassle free experience the person attended was polite and we'll knowledge of what is required.
+                                          If your looking for a display to be replaced Doctor Display is the right guys to get it done</p>
+                                        <div class="testimonial-info">
+                                            <div class="clint-info">
+                                                <h6>Karthi Keyan</h6>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">
+                                            <span class="fa fa-quote-right"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="testimonial testimonial_style--1">
+                                    <div class="content">
+                                        <p class="bk_pra">Whenever my screen is broken I always search for doctor display. And Yasir (hope the spelling is correct)is the man.. always a smile on his face and clean in his work. He will take utmost care and tell you openly what all is wrong. The most important thing about them is they will do the repair in front of you so you need not be worried about you phone privacy. I had repaired my honor 8pro screen and now honor play. Special mention to Rizwan for arranging the screen and appointment before the new year. You guys rock please continue this good work. And yea the cost is very affordable. Thank you guys Happy New year 2021</p>
+                                        <div class="testimonial-info">
+                                            <div class="clint-info">
+                                                <h6>Jay Kumar</h6>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">
+                                            <span class="fa fa-quote-right"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="testimonial testimonial_style--1">
+                                    <div class="content">
+                                        <p class="bk_pra">Replaced my iPhone XR screen recently and Doctor Display did a commendable job. Best customer service, high quality display and cheap price. And all this at my doorstep. The technician who visited was very professional, followed all Covid-19 safety protocols and replaced the display in under 20 minutes. I highly recommend Doctor Display.</p>
+                                        <div class="testimonial-info">
+                                            <div class="clint-info">
+                                                <h6>Arun Raghupathy</h6>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">
+                                            <span class="fa fa-quote-right"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <div class="testimonial testimonial_style--1">
+                                    <div class="content">
+                                        <p class="bk_pra">Replaced  Xiaomi Note 5 Pro screen today with Doctor Display. Quick response to order. Got my order done on the same day! the service guy was very courteous and well behaved took his time to explain in detail the issues. did a neat service. my phone is good as new.  These guys really understood the urgency of the situation and responded real quick! Thank you Doctordisplay!</p>
+                                        <div class="testimonial-info">
+                                            <div class="clint-info">
+                                                <h6>Jai</h6>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">
+                                            <span class="fa fa-quote-right"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
