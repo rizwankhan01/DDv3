@@ -72,6 +72,7 @@
                                   <nav class="page_nav">
                                       <ul class="mainmenu">
                                           <li class="lavel-1"><a href="/"><span>Home</span></a></li>
+                                          <li class="lavel-1"><a href="/allbrands"><span>Select your Brand</span></a></li>
                                           <li class="lavel-1"><a href="/our-story"><span>Our Story</span></a></li>
                                           <li class="lavel-1"><a href="https://blog.doctordisplay.in"><span>Blog</span></a></li>
                                           <li class="lavel-1"><a href="/contact"><span>Contact</span></a></li>
@@ -167,6 +168,7 @@
                                     <li><a href="/contact">Contact</a></li>
                                   </div>
                                   <div class="col-6">
+                                    <li><a href="/allbrands">Select your Brand</a></li>
                                     <li><a href="/privacy">Privacy Policy</a></li>
                                     <li><a href="/report">Report an Issue</a></li>
                                     <li><a href="/repository">Repository</a></li>
