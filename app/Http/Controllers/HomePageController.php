@@ -65,7 +65,7 @@ class HomePageController extends Controller
         $url    = explode('-',$id);
         //dd($url);
         $brands = brands::where('name', $url[0])->first();
-        $models = models::where('brand_id',$brands->id)->orderBy('id','desc')->get()->groupBy('series');
+        $models = models::where('brand_id',$brands->id)->orderBy('id','asc')->get()->groupBy('series');
         return view('brand', compact('brands','models'));
       }else{
         $url      = explode('-',$id);
