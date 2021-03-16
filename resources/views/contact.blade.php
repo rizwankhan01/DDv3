@@ -90,7 +90,7 @@
                                 <div class="col-lg-12 mt--30">
                                   <?php $one = rand(0,20); $two = rand(0,20); $ans = $one + $two; ?>
                                   <input type="number" placeholder="What is {{ $one }} + {{ $two }} ?" name="captcha">
-                                  <input type="number" name="ans" value="{{ $ans }}">
+                                  <input type="hidden" name="ans" value="{{ $ans }}">
                                 </div>
                                 <div class="col-lg-12 mt--30">
                                   <input type="submit" value="Submit" class="btn btn-primary">
