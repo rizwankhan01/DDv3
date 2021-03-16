@@ -139,7 +139,7 @@ class InvoiceController extends Controller
       This is system generate invoice, Hence signature or stamp is not required.<br>
       All disputes are subjected to Tamil Nadu Jurisdiction.<br>
       Thanks for your business.<br>
-      From the date of order completion the product will have a replacement warranty for 90 days.<br><br><br><br><br>
+      From the date of order completion the product will have a replacement warranty for 90 days for premium and 30 days for basic screens.<br><br><br><br><br>
       <b>Declaration:</b>
       We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct!
       </p>
