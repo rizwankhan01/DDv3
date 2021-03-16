@@ -13,22 +13,8 @@
                       <form action="/reports" method="post" class="form-inline">
                         {{ csrf_field() }}
                         {{ method_field('post') }}
-                        <select class="form-control" name="month">
-                          <option value="">Select Month</option>
-                          <option value="-01-">January</option>
-                          <option value="-02-">Febuary</option>
-                          <option value="-03-">March</option>
-                          <option value="-04-">April</option>
-                          <option value="-05-">May</option>
-                          <option value="-06-">June</option>
-                          <option value="-07-">July</option>
-                          <option value="-08-">August</option>
-                          <option value="-09-">September</option>
-                          <option value="-10-">October</option>
-                          <option value="-11-">November</option>
-                          <option value="-12-">December</option>
-                        </select>
-                        <input type="number" class="form-control" name="year" style="width:100px;" placeholder="Year">
+                        From: <input type="date" name="from" class="form-control" @if(isset($from)) value="{{ $from }}" @else value="{{ date('Y-m-d') }}" @endif>
+                        To: <input type="date" name="to" class="form-control" @if(isset($to)) value="{{ $to }}" @else value="{{ date('Y-m-d') }}" @endif>
                         <button class="btn btn-sm btn-primary-rgba" type="submit">Filter</button>
                       </form>
                     </div>
@@ -50,6 +36,7 @@
                                   <th>Stock Amount</th>
                                   <th>Transaction</th>
                                   <th>Profit</th>
+                                  <th>Pay Type</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -79,6 +66,7 @@
                                     ?>
                                     &#8377; {{ $p }}
                                     </td>
+                                    <td>{{ $order->closedorder->payment_type }}</td>
                                   </tr>
                                 @endforeach
                               </tbody>

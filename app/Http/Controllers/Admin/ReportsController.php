@@ -15,7 +15,7 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $orders = orders::where('slot_date','LIKE', date('Y-m-')."%")->where('status','3')->get();
+        $orders = orders::where('slot_date',date('Y-m-d'))->where('status','3')->get();
         return view('admin.reports', compact('orders'));
     }
 
@@ -37,11 +37,10 @@ class ReportsController extends Controller
      */
     public function store(Request $request)
     {
-        $month  = $request->input('month');
-        $year   = $request->input('year');
-        $filter = $year.$month;
-        $orders = orders::where('slot_date','LIKE', $filter."%")->where('status','3')->get();
-        return view('admin.reports', compact('orders'));
+        $from   = $request->input('from');
+        $to     = $request->input('to');
+        $orders = orders::whereBetween('slot_date', [$from, $to])->where('status','3')->get();
+        return view('admin.reports', compact('orders', 'from', 'to'));
     }
 
     /**

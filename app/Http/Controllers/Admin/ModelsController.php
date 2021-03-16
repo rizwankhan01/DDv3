@@ -109,7 +109,7 @@ class ModelsController extends Controller
     public function destroy($id)
     {
       $models = models::findOrFail($id);
-      unlink('storage/'.$models->brand_logo);
+      unlink('storage/'.$models->image);
       $models->delete();
       return redirect('/models')->with('status','Deleted Successfully!');
     }

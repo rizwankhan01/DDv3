@@ -201,8 +201,10 @@
                                         See the difference between Basic and Premium Screens?</a></small></u>
                                     </span>
                               </div>
-                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
-                      <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
+                      @if($pricing->org_stock_availablity==1 || $pricing->ord_stock_availablity==1)
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
+                      @endif
 
 
                                     <br>
