@@ -1,5 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.master_noindex')
 @section('title') 500 Internal Data Error | Doctor Display @endsection
+
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">

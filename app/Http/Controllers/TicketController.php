@@ -37,14 +37,30 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $order_id = $request->input('order_id');
-        $order    = orders::where('id', $order_id)->where('status',3)->first();
-        $olist    = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->where('prod_type','!=','COUPON')->first();
+        if(!empty($request->input('order_id'))){
+          $order_id = $request->input('order_id');
+          $order    = orders::where('id', $order_id)->where('status',3)->first();
+          $olist    = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->where('prod_type','!=','COUPON')->first();
 
-        if(empty($order->id)){
-          return redirect('/report')->with('status','Unable to find such order. Would you like to try again?');
-        }else{
-          return view('/report', compact('order','olist'));
+          if(empty($order->id)){
+            return redirect('/report')->with('status','Unable to find such order. Would you like to try again?');
+          }else{
+            return view('/report', compact('order','olist'));
+          }
+        }else if(!empty($request->input('message'))){
+          $name     = $request->input('name');
+          $phone    = $request->input('phone');
+          $message  = $request->input('message');
+
+          $to       = "info.doctordisplay@gmail.com, samervj@gmail.com";
+          $subject  = "Contact Page Submission";
+          $txt      = "Name: ".$name." | Phone: ".$phone." Message: ".$message;
+          $headers  = "From: noreply@doctordisplay.in";
+          if(mail($to,$subject,$txt,$headers)){
+            return view('thankyou');
+          }else{
+            return abort(404);
+          }
         }
     }
 
