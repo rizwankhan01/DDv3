@@ -55,6 +55,9 @@
     <li><a href="/serviceman">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>My Orders</span>
     </a></li>
+    <li><a href="/closedorders">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="closed"><span>Closed Orders</span>
+    </a></li>
     <li><a href="/incentives">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Incentives</span>
     </a></li>
