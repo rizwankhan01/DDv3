@@ -51,13 +51,19 @@ class TicketController extends Controller
           $name     = $request->input('name');
           $phone    = $request->input('phone');
           $message  = $request->input('message');
+          $captcha  = $request->input('captcha');
+          $ans      = $request->input('ans');
 
           $to       = "info.doctordisplay@gmail.com, samervj@gmail.com";
           $subject  = "Contact Page Submission";
           $txt      = "Name: ".$name." | Phone: ".$phone." Message: ".$message;
           $headers  = "From: noreply@doctordisplay.in";
-          if(mail($to,$subject,$txt,$headers)){
-            return view('thankyou');
+          if($captcha == $ans){
+            if(mail($to,$subject,$txt,$headers)){
+              return view('thankyou');
+            }else{
+              return abort(404);
+            }
           }else{
             return abort(404);
           }
