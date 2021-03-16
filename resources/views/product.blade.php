@@ -20,7 +20,7 @@
             <tbody>
               <tr>
                 <th>Warranty</th>
-                <td>90 days</td>
+                <td>30 days</td>
                 <td>90 days</td>
               </tr>
               <tr>
@@ -314,7 +314,7 @@
                             </div>
                             <div class="content">
                                 <h5 class="heading heading-h5">90 Days Warranty</h5>
-                                <p class="bk_pra">Get your screens replaced with warranty for 3 months, No Questions asked.</p>
+                                <p class="bk_pra">Get your premium screens replaced with warranty for 3 months, No Questions asked.</p>
                             </div>
                         </div>
                     </div>
