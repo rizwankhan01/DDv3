@@ -60,7 +60,7 @@ class TicketController extends Controller
           $headers  = "From: noreply@doctordisplay.in";
           if($captcha == $ans){
             if(mail($to,$subject,$txt,$headers)){
-              return view('thankyou');
+              return redirect('/thankyou');
             }else{
               return abort(404);
             }
