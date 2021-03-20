@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\expenses;
+use App\User;
 
 class ExpensesController extends Controller
 {
@@ -14,7 +16,12 @@ class ExpensesController extends Controller
      */
     public function index()
     {
-        //
+        if(auth()->user()->user_type=='Admin'){
+          $expenses = expenses::all();
+        }else{
+          $expenses = expenses::where('postedby',auth()->user()->id)->get();
+        }
+        return view('admin.expenses', compact('expenses'));
     }
 
     /**
@@ -35,7 +42,25 @@ class ExpensesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      if(!empty($request->input('from'))){
+      $from = $request->input('from')." 00:00:00";
+      $to   = $request->input('to')." 00:00:00";
+      if(auth()->user()->user_type=='Admin'){
+        $expenses = expenses::whereBetween('created_at', [$from, $to])->get();
+      }else{
+        $expenses = expenses::where('postedby',auth()->user()->id)->whereBetween('created_at')->get();
+      }
+
+        return view('admin.expenses', compact('expenses'));
+      }else{
+        $expense  = new expenses;
+        $expense->reason = $request->input('reason');
+        $expense->expenses = "-".$request->input('amount');
+        $expense->postedby = auth()->user()->id;
+        $expense->save();
+
+        return redirect('/expenses')->with('status','New Expense added!');
+      }
     }
 
     /**
@@ -80,6 +105,8 @@ class ExpensesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $expense  = expenses::findorFail($id);
+        $expense->delete();
+        return redirect('/expenses')->with('status','Deleted Successfully!');
     }
 }

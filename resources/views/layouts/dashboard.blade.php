@@ -84,6 +84,9 @@
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="enquiry"><span>Enquiry</span>
     <span class='pull-right'>@if($enquiry!=0){{ $enquiry }} @endif</span>
     </a></li>
+    <li><a href="/expenses">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Expenses</span>
+    </a></li>
     <li><a href="/brands">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Brands</span>
     </a></li>
