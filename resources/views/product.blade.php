@@ -264,11 +264,7 @@
               {{ method_field('post') }}
               <input type='hidden' name='ga_id' id='ga_id2'>
               <input type='text' name='cus_id' value="{{ Session::get('cus_id') }}" hidden>
-              @if(empty(Session::get('color_id')))
               <input type='hidden' name='color_id' value='{{ $color->id }}'>
-              @else
-              <input type='text' name='color_id' value="{{ Session::get('color_id') }}" hidden>
-              @endif
             @if($pricing->preferred_type=='PREMIUM')
               <input type='hidden' name='price' id='price2' value='{{ $pricing->org_selling_price }}'>
               <input type='hidden' name='prod_type' id='prod_type2' value='PREMIUM'>
