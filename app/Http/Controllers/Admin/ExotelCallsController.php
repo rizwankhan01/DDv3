@@ -9,10 +9,13 @@ use App\User;
 
 class ExotelCallsController extends Controller
 {
-    public function incoming(){
-      if(!empty($_GET['CallFrom'])){
+    public function incoming()
+    {
+      if(!empty($_GET['CallFrom']))
+      {
           $check          =   exotel_calls::where('call_result', $_GET['CallSid'])->first();
-          if(empty($check->id)){
+          if(empty($check->id))
+          {
             $exocalls                 = new exotel_calls;
             $exocalls->customer_phone = ltrim($_GET['CallFrom'],'0');
             $exocalls->call_result    = $_GET['CallSid'];
