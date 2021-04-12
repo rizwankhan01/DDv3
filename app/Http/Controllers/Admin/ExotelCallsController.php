@@ -171,7 +171,7 @@ class ExotelCallsController extends Controller
     {
         //
     }
-    
+
     public function incoming()
     {
       if(!empty($_GET['CallFrom']))
@@ -220,7 +220,7 @@ class ExotelCallsController extends Controller
             $check->RecordingUrl   = $_GET['RecordingUrl'];
             $check->ExotelDateCreated  =  $_GET['DateCreated'];
             $check->ExotelDateUpdated  =  $_GET['DateUpdated'];
-            $check->update()
+            $check->update();
           }
         }
     }
