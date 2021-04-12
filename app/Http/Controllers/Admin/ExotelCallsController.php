@@ -84,13 +84,55 @@ class ExotelCallsController extends Controller
       foreach ($xml->Call as $val)
       {
         $call_res  = $val->Sid.' ';
+        $ParentCallSid  = $val->ParentCallSid.' ';
+        $AccountSid = $val->AccountSid.' ';
+        $From = $val->From.' ';
+        $PhoneNumberSid = $val->PhoneNumberSid.' ';
+        $Status = $val->Status.' ';
+        $StartTime  = $val->StartTime.' ';
+        $EndTime   =  $val->EndTime.' ';
+        $Duration = $val->Duration.' ';
+        $Price  = $val->Price.' ';
+        $Direction  = $val->Direction.' ';
+        $AnsweredBy = $val->AnsweredBy.' ';
+        $ForwardedFrom  = $val->ForwardedFrom.' ';
+        $CallerName = $val->CallerName.' ';
+        $Uri  = $val->Uri.' ';
+        $RecordingUrl = $val->RecordingUrl.' ';
+        $ExotelDateCreated  = $val->DateCreated.' ';
+        $ExotelDateUpdated  = $val->DateUpdated.' ';
       }
-      if(empty($call_res)){
-        $call_res = '';
-      }
-      $exocalls = new exotel_calls;
+      if(empty($call_res)){ $call_res = ''; } if(empty($ParentCallSid)){ $ParentCallSid = ''; }
+      if(empty($From)){ $From = ''; } if(empty($PhoneNumberSid)){ $PhoneNumberSid = ''; }
+      if(empty($Status)){ $Status = ''; } if(empty($StartTime)){ $StartTime = ''; }
+      if(empty($EndTime)){ $EndTime = ''; } if(empty($Duration)){ $Duration = ''; }
+      if(empty($Price)){ $Price = ''; } if(empty($Direction)){ $Direction = ''; }
+      if(empty($AnsweredBy)){ $AnsweredBy = ''; } if(empty($Uri)){ $Uri = ''; }
+      if(empty($CallerName)){ $CallerName = ''; } if(empty($ForwardedFrom)){ $ForwardedFrom = ''; }
+      if(empty($RecordingUrl)){ $RecordingUrl = ''; } if(empty($ExotelDateCreated)){ $ExotelDateCreated = ''; }
+      if(empty($ExotelDateUpdated)){ $ExotelDateUpdated = ''; } if(empty($AccountSid)){ $AccountSid = ''; }
+
+      $exocalls                 = new exotel_calls;
       $exocalls->customer_phone = $id;
       $exocalls->call_result    = $call_res;
+      $exocalls->ParentCallSid  = $ParentCallSid;
+      $exocalls->AccountSid     = $AccountSid;
+      $exocalls->From           = $From;
+      $exocalls->PhoneNumberSid = $PhoneNumberSid;
+      $exocalls->Status         = $Status;
+      $exocalls->StartTime      = $StartTime;
+      $exocalls->EndTime        = $EndTime;
+      $exocalls->Duration       = $Duration;
+      $exocalls->Price          = $Price;
+      $exocalls->Direction      = $Direction;
+      $exocalls->AnsweredBy     = $AnsweredBy;
+      $exocalls->ForwardedFrom  = $ForwardedFrom;
+      $exocalls->CallerName     = $CallerName;
+      $exocalls->Uri            = $Uri;
+      $exocalls->RecordingUrl   = $RecordingUrl;
+      $exocalls->ExotelDateCreated  =  $ExotelDateCreated;
+      $exocalls->ExotelDateUpdated  =  $ExotelDateUpdated;
+
       if($exocalls->save()){
         return redirect()->back();
       }
