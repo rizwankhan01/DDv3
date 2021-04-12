@@ -9,6 +9,55 @@ use App\User;
 
 class ExotelCallsController extends Controller
 {
+    public function incoming(){
+      if(!empty($_GET['CallFrom'])){
+          $check          =   exotel_calls::where('call_result', $_GET['CallSid'])->first();
+          if(empty($check->id)){
+            $exocalls                 = new exotel_calls;
+            $exocalls->customer_phone = ltrim($_GET['CallFrom'],'0');
+            $exocalls->call_result    = $_GET['CallSid'];
+            $exocalls->ParentCallSid  = $_GET['ParentCallSid'];
+            $exocalls->AccountSid     = $_GET['AccountSid'];
+            $exocalls->From           = ltrim($_GET['DialWhomNumber'],'0');
+            $exocalls->PhoneNumberSid = $_GET['PhoneNumberSid'];
+            $exocalls->Status         = $_GET['CallStatus'];
+            $exocalls->StartTime      = $_GET['StartTime'];
+            $exocalls->EndTime        = $_GET['EndTime'];
+            $exocalls->Duration       = $_GET['DialCallDuration'];;
+            $exocalls->Price          = $_GET['Price'];
+            $exocalls->Direction      = $_GET['Direction'];
+            $exocalls->AnsweredBy     = $_GET['AnsweredBy'];
+            $exocalls->ForwardedFrom  = $_GET['ForwardedFrom'];
+            $exocalls->CallerName     = $_GET['CallerName'];
+            $exocalls->Uri            = $_GET['Uri'];
+            $exocalls->RecordingUrl   = $_GET['RecordingUrl'];
+            $exocalls->ExotelDateCreated  =  $_GET['DateCreated'];
+            $exocalls->ExotelDateUpdated  =  $_GET['DateUpdated'];
+            $exocalls->save();
+          }else{
+            $check->customer_phone = ltrim($_GET['CallFrom'],'0');
+            $check->call_result    = $_GET['CallSid'];
+            $check->ParentCallSid  = $_GET['ParentCallSid'];
+            $check->AccountSid     = $_GET['AccountSid'];
+            $check->From           = ltrim($_GET['DialWhomNumber'],'0');
+            $check->PhoneNumberSid = $_GET['PhoneNumberSid'];
+            $check->Status         = $_GET['CallStatus'];
+            $check->StartTime      = $_GET['StartTime'];
+            $check->EndTime        = $_GET['EndTime'];
+            $check->Duration       = $_GET['DialCallDuration'];;
+            $check->Price          = $_GET['Price'];
+            $check->Direction      = $_GET['Direction'];
+            $check->AnsweredBy     = $_GET['AnsweredBy'];
+            $check->ForwardedFrom  = $_GET['ForwardedFrom'];
+            $check->CallerName     = $_GET['CallerName'];
+            $check->Uri            = $_GET['Uri'];
+            $check->RecordingUrl   = $_GET['RecordingUrl'];
+            $check->ExotelDateCreated  =  $_GET['DateCreated'];
+            $check->ExotelDateUpdated  =  $_GET['DateUpdated'];
+            $check->update()
+          }
+        }
+    }
     /**
      * Display a listing of the resource.
      *
