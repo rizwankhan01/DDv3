@@ -104,6 +104,11 @@ class ColorsController extends Controller
       $colors = colors::findOrFail($id);
       if(!empty($request->input('pricing'))){
         $pricing = pricings::where('color_id',$id)->first();
+        if(empty($pricing->id)){
+          $pricing = new pricings;
+          $pricing->color_id  = $id;
+          $pricing->save();
+        }
         $pricing->ord_selling_price       = $request->input('ord_selling_price');
         $pricing->org_selling_price       = $request->input('org_selling_price');
         $pricing->preferred_type          = $request->input('preferred_type');
