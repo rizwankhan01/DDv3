@@ -82,6 +82,7 @@ class ExotelCallsController extends Controller
       $xml = simplexml_load_string($http_result);
       foreach ($xml->Call as $val)
       {
+        dd($val);
         $call_res  = $val->Sid.' ';
       }
       if(empty($call_res)){

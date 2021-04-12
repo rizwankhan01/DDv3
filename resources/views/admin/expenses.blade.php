@@ -45,6 +45,15 @@
                             <label>Amount</label>
                             <input type="number" class="form-control" min=1 name="amount" placeholder="Amount" required>
                           </div>
+                          <div class="form-group">
+                            <label>Payment Type</label>
+                            <select class="form-control" name="pay_type">
+                              <option value="">Select</option>
+                              <option value="Cash">Cash</option>
+                              <option value="Card">Card</option>
+                              <option value="UPI">UPI</option>
+                            </select>
+                          </div>
                           </div>
                           <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -66,6 +75,7 @@
                                 <th>Reason</th>
                                 <th>Amount</th>
                                 <th>Posted By</th>
+                                <th>Pay Type</th>
                                 <th>Date</th>
                             </tr>
                             </thead>
@@ -75,6 +85,7 @@
                                   <td>{{ $expense->reason }}</td>
                                   <td>{{ $expense->expenses }} &#8377;</td>
                                   <td>{{ $expense->user->name }}</td>
+                                  <td>{{ $expense->pay_type }}</td>
                                   <td>{{ date('d-m-Y', strtotime($expense->created_at)) }}
                                     @if(date('d-m-Y',strtotime($expense->created_at))==date('d-m-Y'))
                                       <form action='/expenses/{{ $expense->id }}' method='post'>

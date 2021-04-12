@@ -56,6 +56,7 @@ class ExpensesController extends Controller
         $expense  = new expenses;
         $expense->reason = $request->input('reason');
         $expense->expenses = "-".$request->input('amount');
+        $expense->pay_type  = $request->input('pay_type');
         $expense->postedby = auth()->user()->id;
         $expense->save();
 
