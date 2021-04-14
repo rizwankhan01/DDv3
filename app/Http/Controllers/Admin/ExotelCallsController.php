@@ -133,9 +133,9 @@ class ExotelCallsController extends Controller
       $exocalls->ExotelDateCreated  =  $ExotelDateCreated;
       $exocalls->ExotelDateUpdated  =  $ExotelDateUpdated;
 
-      if($exocalls->save()){
+      //if($exocalls->save()){
         return redirect()->back();
-      }
+      //}
     }
 
     /**
@@ -199,7 +199,7 @@ class ExotelCallsController extends Controller
             $exocalls->RecordingUrl   = $_GET['RecordingUrl'];
             $exocalls->ExotelDateCreated  =  $_GET['DateCreated'];
             $exocalls->ExotelDateUpdated  =  $_GET['DateUpdated'];
-            $exocalls->save();
+            //$exocalls->save();
           }else{
             $check->customer_phone = ltrim($_GET['CallFrom'],'0');
             $check->call_result    = $_GET['CallSid'];
@@ -220,7 +220,7 @@ class ExotelCallsController extends Controller
             $check->RecordingUrl   = $_GET['RecordingUrl'];
             $check->ExotelDateCreated  =  $_GET['DateCreated'];
             $check->ExotelDateUpdated  =  $_GET['DateUpdated'];
-            $check->update();
+            //$check->update();
           }
         }
     }

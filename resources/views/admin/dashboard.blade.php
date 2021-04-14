@@ -42,65 +42,34 @@
         </div>
         <!-- End col -->
           <!-- Start col -->
-          <div class="col-lg-12 col-xl-6">
+          <div class="col-lg-12 col-xl-9">
               <div class="card m-b-30">
                   <div class="card-header">
                       <div class="row align-items-center">
-                          <div class="col-9">
-                              <h5 class="card-title mb-0">Patient Types</h5>
-                          </div>
-                          <div class="col-3">
-                              <div class="dropdown">
-                                  <button class="btn btn-link p-0 font-18 float-right" type="button" id="widgetPatientTypes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-horizontal-"></i></button>
-                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="widgetPatientTypes">
-                                      <a class="dropdown-item font-13" href="#">Refresh</a>
-                                      <a class="dropdown-item font-13" href="#">Export</a>
-                                  </div>
-                              </div>
+                          <div class="col-12">
+                              <h5 class="card-title mb-0">CRM Calls</h5>
                           </div>
                       </div>
                   </div>
-                  <div class="card-body py-0 pl-0 pr-2">
-                      <div id="apex-basic-column-chart"></div>
-                  </div>
-              </div>
-          </div>
-          <!-- End col -->
-          <!-- Start col -->
-          <div class="col-lg-12 col-xl-3">
-              <div class="card m-b-30">
-                  <div class="card-header">
-                      <div class="row align-items-center">
-                          <div class="col-9">
-                              <h5 class="card-title mb-0">Appointments</h5>
-                          </div>
-                          <div class="col-3">
-                              <div class="dropdown">
-                                  <button class="btn btn-link p-0 font-18 float-right" type="button" id="widgetAppointment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-horizontal-"></i></button>
-                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="widgetAppointment">
-                                      <a class="dropdown-item font-13" href="#">Refresh</a>
-                                      <a class="dropdown-item font-13" href="#">Export</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-body appointment-widget">
-                      <h3>235</h3>
-                      <p>Total This Week</p>
+                  <div class="card-body appointment-widget row">
+                    <div class="col-md-6">
+                      <h3>{{ round($exotel->sum('Duration')/60,2) }} min</h3>
+                      <p>Total Inbound Minutes (March)</p>
                       <ul class="list-unstyled py-3">
-                          <li><i class="mdi mdi-circle text-primary mr-2"></i> Website</li>
-                          <li><i class="mdi mdi-circle text-success mr-2"></i> Phone Call</li>
-                          <li><i class="mdi mdi-circle text-light mr-2"></i> App</li>
+                        @foreach($exotelbyusers as $users)
+                          <li><i class="mdi mdi-circle text-primary mr-2"></i> {{ round($users->t/60,2) }} min - {{ $users->AnsweredBy }}</li>
+                        @endforeach
                       </ul>
-                      <div class="row align-items-end">
-                          <div class="col-6">
-                              <button type="button" class="btn btn-primary">Export Report <i class="feather icon-file ml-2"></i></button>
-                          </div>
-                          <div class="col-6">
-                              <p class="bg-icon"><i class="feather icon-calendar"></i></p>
-                          </div>
-                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <h3>{{ $exoteltotcust->count('id') }}/ {{ $exotel->count('id') }}</h3>
+                      <p>Total Customers/ Inbound Calls (March)</p>
+                      <ul class="list-unstyled py-3">
+                        @foreach($exotelbycust as $users)
+                          <li><i class="mdi mdi-circle text-success mr-2"></i> {{ $users->t }} - {{ $users->AnsweredBy }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
                   </div>
               </div>
           </div>

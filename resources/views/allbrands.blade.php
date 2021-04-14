@@ -34,8 +34,8 @@
                           <div class="brand">
                           <a href="{{$brand->name}}-screen-service-center">
                             <figure>
-                            <img src="storage/{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
-                            <figcaption>{{$brand->name}}</figcaption>
+                              <img src="storage/{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} image">
+                              <figcaption>{{$brand->name}}</figcaption>
                             </figure>
                           </a>
                           </div>
