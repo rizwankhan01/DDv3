@@ -326,10 +326,10 @@
                                     </div>
                                     <div class="col-8 col-md-4">
                                       <span class="font-12 text-uppercase">#{{ $order->id }}
-                                        @if(strpos($order->updated_at->diffForHumans(),'hour ago')!==false
-                                          || strpos($order->updated_at->diffForHumans(),'hours ago')!==false
-                                          || strpos($order->updated_at->diffForHumans(),'minutes ago')!==false
-                                          || strpos($order->updated_at->diffForHumans(),'seconds ago')!==false)
+                                        @if(strpos($order->created_at->diffForHumans(),'hour ago')!==false
+                                          || strpos($order->created_at->diffForHumans(),'hours ago')!==false
+                                          || strpos($order->created_at->diffForHumans(),'minutes ago')!==false
+                                          || strpos($order->created_at->diffForHumans(),'seconds ago')!==false)
                                           <span class='badge badge-pill badge-danger'>New</span>
                                         @endif
                                       </span>
@@ -351,7 +351,7 @@
                                         <li class="list-inline-item">
                                             <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
                                             <p class="mb-2"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
-                                            <span class="font-12 mb-2">Booked {{ $order->updated_at->diffForHumans() }}</span>
+                                            <span class="font-12 mb-2">Booked {{ $order->created_at->diffForHumans() }}</span>
                                         </li>
                                     </div>
                                     <div class="col-12 col-md-2">
