@@ -151,7 +151,7 @@
                                 </a>
                             </div>
                             <div class="footer-inner">
-                                <span class="text-white">A startup which specialises in mobile screen repair services. It offers doorstep mobile screen replacement at an unbelievable pricing.</span>
+                                <span class="text-white">A startup that specialises in mobile screen repair services. We Offer doorstep mobile screen replacement at an unbelievable pricing.</span>
                             </div>
                         </div>
                     </div>

@@ -70,12 +70,13 @@ class OrderConfirmedController extends Controller
 
       mail($to,$subject,$message,$headers);
       //end of order confirmation mail
-
-      $enquiry  = enquiry::findOrFail(Session::get('enq_id'));
-      $enquiry->delete();
+      if(!empty(Session::get('enq_id'))){
+        $enquiry  = enquiry::findOrFail(Session::get('enq_id'));
+        $enquiry->delete();
+      }
       session()->flush();
 
-      return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address','response'));
+      return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address'));
     }
 
     /**

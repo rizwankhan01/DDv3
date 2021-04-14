@@ -50,17 +50,19 @@ class OrderController extends Controller
     {
         if(empty($request->input('cus_id'))){
         //creating new customer
-        $check = customers::where('phone_number',$request->input('phone'))->first();
-        if(empty($check->id)){ // checking if phone number already exists
+        //$check = customers::where('phone_number',$request->input('phone'))->first();
+        if(empty($request->input('phone'))){ // checking if phone number already exists
+          //dd('test');
           $customer = new customers;
           $customer->ga_id = $request->input('ga_id');
           $customer->save();
           $cus_id = $customer->id;
-        }else{
-          $cus_id = $check->id;
         }
-        Session::put('cus_id',$cus_id);
-        Session::put('color_id',$request->input('color_id'));
+        //else{
+          //$cus_id = $check->id;
+        //}
+        Session::put('cus_id', $cus_id);
+        Session::put('color_id', $request->input('color_id'));
         //creating new order
         $orders = new orders;
         $orders->customer_id  = $cus_id;
@@ -142,12 +144,12 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       if(!empty($request->input('coupon'))){
-        //dd($request->input('name'));
         $coupon = coupons::where('name',$request->input('coupon'))->where('status',1)->first();
-        $checkifexists = order_lists::where('prod_type','COUPON')->first();
+        $checkifexists = order_lists::where('order_id', $id)->where('prod_type','COUPON')->first();
         if(!empty($coupon->id)){
           if(!empty($checkifexists->id)){
             $olist  = order_lists::findOrFail($checkifexists->id);
+            //dd($olist);
             $olist->order_id  = $id;
             $olist->color_id  = $coupon->id;
             $olist->price     = "-".$coupon->amount;
@@ -163,8 +165,8 @@ class OrderController extends Controller
           }
 
           $order                = orders::findOrFail($id);
-          $check_address        = addresses::where('customer_id',$order->customer_id);
-          if(empty($check_address->id)){
+          $check_address        = addresses::where('customer_id', $order->customer_id);
+          if(empty($check_address->address) AND !empty($request->input('address'))){
             $address              = new addresses;
             $address->customer_id = $order->customer_id;
             $address->address     = $request->input('address');
@@ -173,27 +175,44 @@ class OrderController extends Controller
             $address->pincode     = $request->input('pincode');
             $address->save();
             $address_id           = $address->id;
-          }else{
-            $address_id           = $check_address->id;
           }
-            $order->address_id    = $address_id;
+          //else{
+            //$address_id           = $check_address->id;
+          //}
+            if(!empty($address_id)){
+              $order->address_id    = $address_id;
+            }
             if(!empty($request->input('time_slot'))){
               $order->slot_time     = $request->input('time_slot');
               $order->slot_date     = $request->input('date');
               $order->update();
             }
             if(!empty($request->input('name'))){
-              $customer             = customers::findOrFail($order->customer_id);
-              $customer->name       = $request->input('name');
-              $customer->email      = $request->input('email');
-              $customer->update();
+              $checkphone     = customers::where('phone_number',$request->input('phone'))->first();
+              if(empty($checkphone->id)){   //checking if phone number already does not exist
+                $customer               = customers::findOrFail($order->customer_id);
+                $customer->name         = $request->input('name');
+                $customer->phone_number = $request->input('phone');
+                $customer->email        = $request->input('email');
+                $customer->update();
+              }else{ // if phone number exists
+                $customer               = customers::findOrFail($checkphone->id);
+                $customer->name         = $request->input('name');
+                $customer->phone_number = $request->input('phone');
+                $customer->email        = $request->input('email');
+                $customer->update();
+
+                $order->customer_id = $checkphone->id;
+                $order->update();
+              }
             }
 
+            //dd($check_address);
           return redirect()->back()->with('success','Coupon Applied');
         }else{
           $order                = orders::findOrFail($id);
-          $check_address        = addresses::where('customer_id',$order->customer_id);
-          if(empty($check_address->id)){
+          $check_address        = addresses::where('customer_id', $order->customer_id)->first();
+          if(empty($check_address->id) AND !empty($request->input('address'))){
             $address              = new addresses;
             $address->customer_id = $order->customer_id;
             $address->address     = $request->input('address');
@@ -202,20 +221,36 @@ class OrderController extends Controller
             $address->pincode     = $request->input('pincode');
             $address->save();
             $address_id           = $address->id;
-          }else{
-            $address_id           = $check_address->id;
           }
+          //else{
+            //$address_id           = $check_address->id;
+          //}
+          if(!empty($address_id)){
             $order->address_id    = $address_id;
+          }
             if(!empty($request->input('time_slot'))){
               $order->slot_time     = $request->input('time_slot');
               $order->slot_date     = $request->input('date');
               $order->update();
             }
             if(!empty($request->input('name'))){
-              $customer             = customers::findOrFail($order->customer_id);
-              $customer->name       = $request->input('name');
-              $customer->email      = $request->input('email');
-              $customer->update();
+              $checkphone     = customers::where('phone_number',$request->input('phone'))->first();
+              if(empty($checkphone->id)){   //checking if phone number already does not exist
+                $customer               = customers::findOrFail($order->customer_id);
+                $customer->name         = $request->input('name');
+                $customer->phone_number = $request->input('phone');
+                $customer->email        = $request->input('email');
+                $customer->update();
+              }else{ // if phone number exists
+                $customer               = customers::findOrFail($checkphone->id);
+                $customer->name         = $request->input('name');
+                $customer->phone_number = $request->input('phone');
+                $customer->email        = $request->input('email');
+                $customer->update();
+
+                $order->customer_id = $checkphone->id;
+                $order->update();
+              }
             }
 
           return redirect()->back()->with('failure','This coupon is not applicable.');
@@ -239,12 +274,25 @@ class OrderController extends Controller
           $order->slot_time     = $request->input('time_slot');
           $order->slot_date     = $request->input('date');
           $order->status        = 1;
+          if(!empty($request->input('name'))){
+            $checkphone     = customers::where('phone_number',$request->input('phone'))->first();
+            if(empty($checkphone->id)){   //checking if phone number already does not exist
+              $customer               = customers::findOrFail($order->customer_id);
+              $customer->name         = $request->input('name');
+              $customer->phone_number = $request->input('phone');
+              $customer->email        = $request->input('email');
+              $customer->update();
+            }else{ // if phone number exists
+              $customer               = customers::findOrFail($checkphone->id);
+              $customer->name         = $request->input('name');
+              $customer->phone_number = $request->input('phone');
+              $customer->email        = $request->input('email');
+              $customer->update();
+
+              $order->customer_id = $checkphone->id;
+            }
+          }
           $order->update();
-          $customer             = customers::findOrFail($order->customer_id);
-          $customer->name       = $request->input('name');
-          $customer->phone_number= $request->input('phone');
-          $customer->email      = $request->input('email');
-          $customer->update();
           //order confirmation mail
 
         return redirect('/orderconfirmed');
