@@ -133,7 +133,7 @@
                                       <?php $image = $model->image; ?>
                                     @endif
                                   @endforeach
-                                  @if(!empty($image) AND file_exists(public_path().'/storage/{{ $image }}'))
+                                  @if(!empty($image) AND file_exists(public_path().'\storage\\'.$image))
                                     <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   @else
                                     <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->image }} image">
