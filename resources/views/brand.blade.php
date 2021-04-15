@@ -136,7 +136,7 @@
                                   @if(!empty($image) AND file_exists(public_path().'/storage/app/'.$image))
                                     <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   @else
-                                    {{ public_path().'/storage/app/'.$color->image }}
+                                    {{ public_path().'/storage/app/'.$image }}
                                     <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->image }} image">
                                   @endif
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
