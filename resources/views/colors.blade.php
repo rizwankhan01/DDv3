@@ -63,7 +63,7 @@
                                   @if(!empty($color->image) AND file_exists('https://doctordisplay.in/storage/'.$color->image))
                                     <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->name }} image">
                                   @else
-                                    {{ public_path().'\storage\\'.$color->image }}
+                                    {{ 'https://doctordisplay.in/storage/'.$color->image }}
                                     <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $color->name }} image">
                                   @endif
                                 <figcaption>{{ ucfirst($color->name) }}</figcaption>
