@@ -133,7 +133,7 @@
                                       <?php $image = $model->image; ?>
                                     @endif
                                   @endforeach
-                                  <?php $file = public_path('storage/app/'.$image) ?>
+                                  <?php $file = '/var/www/DDV2/storage/app/public/'.$image; ?>
                                   @if(!empty($image) AND file_exists($file))
                                     <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   @else
