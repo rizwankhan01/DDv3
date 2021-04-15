@@ -60,7 +60,8 @@
                             <div class="brand">
                               <a href="#" data-toggle="modal" data-target="#exampleModal">
                                 <figure>
-                                  @if(!empty($color->image) AND file_exists('../storage/'.$color->image))
+                                  <?php $file = "https://doctordisplay.in/storage/".$color->image; ?>
+                                  @if(!empty($color->image) AND file_exists($file))
                                     <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->name }} image">
                                   @else
                                     <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $color->name }} image">
