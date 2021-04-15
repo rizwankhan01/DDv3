@@ -159,7 +159,6 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
-                                  <th>ID</th>
                                   <th>Model</th>
                                   <th>Customer Name</th>
                                   <th>Phone</th>
@@ -172,7 +171,6 @@
                               <tbody>
                               @foreach($orders as $order)
                                 <tr>
-                                  <td><a href='/serviceman/{{ $order->id }}'>#{{ $order->id }}</a></td>
                                   <td>
                                   @foreach($order->order_lists as $list)
                                     @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')

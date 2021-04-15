@@ -108,30 +108,55 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                       </form><hr>
-                      <h5 class="card-title">Pricing Details</h5>
+                      <h5 class="card-title">Pricing Details</h5><br>
                       <form action='/modelcolors/{{ $color->id }}' method='post' class="row">
                         {{ csrf_field() }}
                         {{ method_field('put') }}
-                        <input type="number" class="form-control col-md-6" placeholder="Ordinary Selling Price" value="{{ $pricing->ord_selling_price ?? '' }}" name="ord_selling_price" required><br>
-                        <input type="number" class="form-control col-md-6" placeholder="Original Selling Price" value="{{ $pricing->org_selling_price ?? '' }}" name="org_selling_price" required><br>
-                        <select class="form-control col-md-12" name="preferred_type" required>
+                        <div class="col-md-6">
+                          Ordinary Selling Price:
+                          <input type="number" class="form-control" placeholder="Ordinary Selling Price" value="{{ $pricing->ord_selling_price ?? '' }}" name="ord_selling_price" required><br>
+                        </div>
+                        <div class="col-md-6">
+                          Original Selling Price:
+                          <input type="number" class="form-control" placeholder="Original Selling Price" value="{{ $pricing->org_selling_price ?? '' }}" name="org_selling_price" required><br>
+                        </div>
+                        <div class="col-md-12">
+                          Preferred Type
+                        <select class="form-control" name="preferred_type" required>
                           <option value=''>Select Preferred Type</option>
                           <option value='BASIC' @if(!empty($pricing->preferred_type) AND $pricing->preferred_type=='BASIC') {{ 'selected' }} @endif>BASIC</option>
                           <option value='PREMIUM' @if(!empty($pricing->preferred_type) AND $pricing->preferred_type=='PREMIUM'){{ 'selected' }} @endif>PREMIUM</option>
                         </select><br>
-                        <select class="form-control col-md-6" name="ord_stock_availablity" required>
+                        </div>
+                        <div class="col-md-6">
+                          Ord Stock Available?
+                        <select class="form-control" name="ord_stock_availablity" required>
                           <option value="">Ord Stock Available?</option>
                           <option value="1" @if(!empty($pricing->ord_stock_availablity) AND $pricing->ord_stock_availablity==1) {{ 'selected' }} @endif>Yes</option>
                           <option value="0" @if(!empty($pricing->ord_stock_availablity) AND $pricing->ord_stock_availablity==0){{ 'selected' }} @endif>No</option>
                         </select><br>
-                        <select class="form-control col-md-6" name="org_stock_availablity" required>
+                        </div>
+                        <div class="col-md-6">
+                          Org Stock Available?
+                        <select class="form-control" name="org_stock_availablity" required>
                           <option value="">Org Stock Available?</option>
                           <option value="1" @if(!empty($pricing->org_stock_availablity) AND $pricing->org_stock_availablity==1){{ 'selected' }} @endif>Yes</option>
                           <option value="0" @if(!empty($pricing->org_stock_availablity) AND $pricing->org_stock_availablity==0){{ 'selected' }} @endif>No</option>
                         </select><br>
-                        <input type="text" class="form-control col-md-6" name="ord_compare_description" value="{{ $pricing->ord_compare_description ?? '' }}" placeholder="Ordinary Compare Description" required><br>
-                        <input type="text" class="form-control col-md-6" name="org_compare_description" value="{{ $pricing->org_compare_description ?? '' }}" placeholder="Original Compare Description" required><br>
-                        <input type="submit" class="btn btn-primary" value="Update" name="pricing">
+                        </div>
+                        <div class="col-md-6">
+                          Ordinary Description:
+                          <input type="text" class="form-control" name="ord_compare_description" value="{{ $pricing->ord_compare_description ?? '' }}" placeholder="Ordinary Compare Description" required><br>
+                        </div>
+                        <div class="col-md-6">
+                          Original Description:
+                          <input type="text" class="form-control" name="org_compare_description" value="{{ $pricing->org_compare_description ?? '' }}" placeholder="Original Compare Description" required><br>
+                        </div>
+                        <div class="col-md-12">
+                          Glass Replacement Price:
+                          <input type="text" class="form-control" name="glass_price" value="{{ $pricing->glass_price ?? '' }}" placeholder="Glass Replacement Price"><br>
+                        </div>
+                        <div class="col-md-12"><input type="submit" class="btn btn-primary" value="Update" name="pricing"></div>
                       </form>
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete Colors Here.</h6>

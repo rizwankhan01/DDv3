@@ -33,6 +33,7 @@
                                 <thead>
                                 <tr>
                                   <th>Order ID</th>
+                                  <th>Model</th>
                                   <th>Slot Date</th>
                                   <th>Slot Time</th>
                                   <th>Area</th>
@@ -44,6 +45,13 @@
                                     <tr>
                                       <td>
                                           <a href='/home/{{ $order->id }}'>#{{ $order->id }}</a>
+                                      </td>
+                                      <td>
+                                        @foreach($order->order_lists as $list)
+                                          @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+                                            {{ $list->color->model->brand->name }} {{ $list->color->model->series}} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
+                                          @endif
+                                        @endforeach
                                       </td>
                                       <td>
                                       @if($order->slot_date == date('Y-m-d'))

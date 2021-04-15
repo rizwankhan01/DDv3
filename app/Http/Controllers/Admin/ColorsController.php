@@ -116,6 +116,7 @@ class ColorsController extends Controller
         $pricing->org_stock_availablity   = $request->input('org_stock_availablity');
         $pricing->ord_compare_description = $request->input('ord_compare_description');
         $pricing->org_compare_description = $request->input('org_compare_description');
+        $pricing->glass_price             = $request->input('glass_price');
         $pricing->update();
       }else{
         $colors->model_id = $request->input('model_id');

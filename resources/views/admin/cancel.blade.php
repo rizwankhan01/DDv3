@@ -25,7 +25,7 @@
                                   <th>Model</th>
                                   <th>Slot Date</th>
                                   <th>Slot Time</th>
-                                  <th>Amount</th>
+                                  <th>Reason</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
@@ -49,13 +49,7 @@
                                   @endif
                                   </td>
                                   <td>{{ $order->slot_time }}</td>
-                                  <td>
-                                    <?php
-                                      $t  = $order->order_lists->sum('price');
-                                      $tt = $tt+$t;
-                                    ?>
-                                    &#8377; {{ $t }}
-                                  </td>
+                                  <td>{{ $order->cancel_reason }}</td>
                                   <td>
                                       <a href='/home/{{ $order->id }}' class='btn btn-sm btn-danger'>Cancelled</a>
                                   </td>
