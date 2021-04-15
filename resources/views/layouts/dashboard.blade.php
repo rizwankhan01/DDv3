@@ -96,6 +96,9 @@
     <li><a href="/modelcolors">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Colors</span>
     </a></li>
+    <li><a href="/addon">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Addons</span>
+    </a></li>
     <li><a href="/coupons">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Coupons</span>
     </a></li>
