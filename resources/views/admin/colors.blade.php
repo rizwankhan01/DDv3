@@ -175,6 +175,7 @@
                                   <th>Screen Color</th>
                                   <th>Basic</th>
                                   <th>Premium</th>
+                                  <th>Glass</th>
                                   <th>Preferred</th>
                                   <th>Image</th>
                                   <th>Actions</th>
@@ -196,6 +197,9 @@
                                     @if(!empty($color->pricings->org_selling_price))
                                       &#8377; {{ $color->pricings->org_selling_price }}
                                     @endif
+                                  </td>
+                                  <td>
+                                    &#8377; {{ $color->pricings->glass_price ?? '' }}
                                   </td>
                                   <td>
                                     @if(!empty($color->pricings->preferred_type))
