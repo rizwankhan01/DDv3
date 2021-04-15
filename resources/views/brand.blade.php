@@ -133,7 +133,7 @@
                                       <?php $image = $model->image; ?>
                                     @endif
                                   @endforeach
-                                  <?php $file = "https://doctordisplay.in/storage/".$image; ?>
+                                  <?php $file = public_path('storage/app/'.$image) ?>
                                   @if(!empty($image) AND file_exists($file))
                                     <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   @else
