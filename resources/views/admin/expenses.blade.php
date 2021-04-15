@@ -16,13 +16,17 @@
                 <div class="card-header">
                     <div class="widgetbar pull-right">
                         <button class="btn btn-primary-rgba pull-right" data-toggle="modal" data-target="#CreateModal"><i class="feather icon-plus mr-2"></i>Create New</button><br><br>
-                        <!--<form action="/expenses" method="post" class="form-inline">
-                          @csrf
+                        @if(auth()->user()->user_type!='Admin')
+                        <form action="/myexpenses" method="post" class="form-inline">
+                        @else
+                        <form action="/expenses" method="post" class="form-inline">
+                        @endif
+                          {{ csrf_field() }}
                           {{ method_field('post') }}
-                          From:&nbsp;<input type="date" name="from" class="form-control">&nbsp;
-                          To:&nbsp;<input type="date" name="to" class="form-control">&nbsp;
-                          <input type="submit" name="filter" value="Filter" class="btn btn-primary">
-                        </form>-->
+                          From: <input type="date" name="from" class="form-control" required @if(isset($from)) value="{{ $from }}" @else value="{{ date('Y-m-d') }}" @endif>
+                          To: <input type="date" name="to" class="form-control" required @if(isset($to)) value="{{ $to }}" @else value="{{ date('Y-m-d') }}" @endif>
+                          <button class="btn btn-sm btn-primary-rgba" type="submit">Filter</button>
+                        </form>
                         <div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
                         v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
                         <div class="modal-dialog" role="document">
@@ -32,8 +36,11 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
-                        </div>
+                        </div>@if(auth()->user()->user_type!='Admin')
+                        <form action="/myexpenses" method="post">
+                        @else
                         <form action="/expenses" method="post">
+                        @endif
                           {{ csrf_field() }}
                           {{ method_field('post')}}
                           <div class="modal-body">
@@ -88,7 +95,11 @@
                                   <td>{{ $expense->pay_type }}</td>
                                   <td>{{ date('d-m-Y', strtotime($expense->created_at)) }}
                                     @if(date('d-m-Y',strtotime($expense->created_at))==date('d-m-Y'))
-                                      <form action='/expenses/{{ $expense->id }}' method='post'>
+                                    @if(auth()->user()->user_type!='Admin')
+                                      <form action="/myexpenses/{{ $expense->id }}" method="post">
+                                    @else
+                                      <form action="/expenses/{{ $expense->id }}" method="post">
+                                    @endif
                                         {{ csrf_field() }}
                                         {{ method_field('delete') }}
                                         <button type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');"><i class='fa fa-trash'></i></button>
@@ -100,7 +111,7 @@
                             </tbody>
                         </table><hr>
                         <div class="pull-right">
-
+                          <button class="btn btn-lg btn-success btn-rounded">Total: &#8377; {{ abs($expenses->sum('expenses')) }}
                         </div>
                     </div>
                   </div>

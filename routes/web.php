@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/serviceman','Serviceman\ServicemanController');
     Route::resource('/mytickets','Serviceman\MyTicketController');
     Route::resource('/closedorders','Serviceman\ClosedController');
+    Route::resource('/myexpenses','Admin\ExpensesController');
 
     Route::put('/cancelmyorder/{id}', 'Admin\OrderControlsController@cancelorder');
     Route::put('/upload-pre-image/{id}','Serviceman\MyOrdersController@preimage');

@@ -17,9 +17,11 @@ class ExpensesController extends Controller
     public function index()
     {
         if(auth()->user()->user_type=='Admin'){
-          $expenses = expenses::all();
+          $expenses = expenses::where('created_at','LIKE',date('Y-m-d').'%')->get();
         }else{
-          $expenses = expenses::where('postedby',auth()->user()->id)->get();
+          $expenses = expenses::where('postedby',auth()->user()->id)
+                              ->where('created_at','LIKE',date('Y-m-d').'%')
+                              ->get();
         }
         return view('admin.expenses', compact('expenses'));
     }
@@ -43,15 +45,17 @@ class ExpensesController extends Controller
     public function store(Request $request)
     {
       if(!empty($request->input('from'))){
-      $from = $request->input('from')." 00:00:00";
-      $to   = $request->input('to')." 00:00:00";
-      if(auth()->user()->user_type=='Admin'){
-        $expenses = expenses::whereBetween('created_at', [$from, $to])->get();
-      }else{
-        $expenses = expenses::where('postedby',auth()->user()->id)->whereBetween('created_at')->get();
-      }
-
-        return view('admin.expenses', compact('expenses'));
+        $from   = $request->input('from');
+        $to     = $request->input('to');
+        if(auth()->user()->user_type=='Admin'){
+          $expenses = expenses::whereBetween('created_at',[$from,$to])
+                              ->get();
+        }else{
+          $expenses = expenses::where('postedby',auth()->user()->id)
+                              ->whereBetween('created_at',[$from,$to])
+                              ->get();
+        }
+        return view('admin.expenses', compact('expenses','from','to'));
       }else{
         $expense  = new expenses;
         $expense->reason = $request->input('reason');
@@ -60,7 +64,7 @@ class ExpensesController extends Controller
         $expense->postedby = auth()->user()->id;
         $expense->save();
 
-        return redirect('/expenses')->with('status','New Expense added!');
+        return redirect()->back()->with('status','New Expense added!');
       }
     }
 
@@ -108,6 +112,6 @@ class ExpensesController extends Controller
     {
         $expense  = expenses::findorFail($id);
         $expense->delete();
-        return redirect('/expenses')->with('status','Deleted Successfully!');
+        return redirect()->back()->with('status','Deleted Successfully!');
     }
 }
