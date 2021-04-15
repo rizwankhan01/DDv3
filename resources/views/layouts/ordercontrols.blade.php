@@ -101,7 +101,7 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<h5 class="modal-title" id="CreateModalLabel">Assign Stock and Serviceman</h5>
+<h5 class="modal-title" id="CreateModalLabel">Update Stock and Serviceman</h5>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
@@ -115,18 +115,18 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
     <select class="form-control" name="serviceman" required>
       <option value="">Select</option>
       @foreach($smen as $sman)
-        <option value="{{ $sman->id }}">{{ $sman->name }}</option>
+        <option value="{{ $sman->id }}" @if($order->serviceman_id==$sman->id) selected @endif>{{ $sman->name }}</option>
       @endforeach
     </select><br>
     Dealer Name:
     <select class="form-control" name="dealer" required>
       <option value="">Select</option>
       @foreach($dealers as $dealer)
-        <option value="{{ $dealer->id }}">{{ $dealer->dealer_name }}</option>
+        <option value="{{ $dealer->id }}" @if($order->dealer_id==$dealer->id) selected @endif>{{ $dealer->dealer_name }}</option>
       @endforeach
     </select><br>
     Stock Price:
-    <input type="number" class="form-control" name="stock_price" placeholder="Stock Price" max="{{ $screen->price }}" required>
+    <input type="number" class="form-control" name="stock_price" value="{{ $order->stock_price }}" placeholder="Stock Price" max="{{ $screen->price }}" required>
   </div>
   </div>
   <div class="modal-footer">
@@ -196,6 +196,40 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
     <div class='row'>
       <input type="text" class="form-control" placeholder="Enter Coupon Code" name="coupon_code">
     </div>
+  </div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>
+</div>
+</div>
+</div>
+<!-- change order price -->
+<div class="modal fade changeprice" tabindex="-1" role="dialog" aria-hidden="true"
+v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="CreateModalLabel">Update Selling Price</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<form action="/changeprice/{{ $order->id }}" method="post" class="col-md-12">
+  {{ csrf_field() }}
+  {{ method_field('put')}}
+  <div class="modal-body">
+  <div class='row'>
+    Selling Price:
+    @foreach($order->order_lists as $list)
+      @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+        <?php $sprice = $list->price; ?>
+      @endif
+    @endforeach
+    <input type="number" class="form-control" name="selling_price" value="{{ $sprice }}"
+      placeholder="Selling Price" min="{{ $order->stock_price }}" required>
+  </div>
   </div>
   <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

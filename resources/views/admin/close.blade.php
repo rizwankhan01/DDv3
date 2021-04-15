@@ -22,20 +22,25 @@
                               <thead>
                               <tr>
                                   <th>ID</th>
-                                  <th>Customer Name</th>
-                                  <th>Phone</th>
+                                  <th>Model</th>
                                   <th>Slot Date</th>
                                   <th>Slot Time</th>
-                                  <th>Area</th>
+                                  <th>Amount</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
                               <tbody>
+                              <?php $ts = 0; $tt = 0; $tp = 0;?>
                               @foreach($orders as $order)
                                 <tr>
-                                  <td>{{ $order->id }}</td>
-                                  <td><b><a href='/customer-profile/{{ $order->customer->id }}'>{{ $order->customer->name }}</a></b></td>
-                                  <td><a href='exotel_calls/{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
+                                  <td><a href='/home/{{ $order->id }}'>#{{ $order->id }}</a></td>
+                                  <td>
+                                  @foreach($order->order_lists as $list)
+                                    @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+                                      {{ $list->color->model->brand->name }} {{ $list->color->model->series}} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
+                                    @endif
+                                  @endforeach
+                                  </td>
                                   <td>
                                   @if($order->slot_date == date('Y-m-d'))
                                     <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
@@ -44,7 +49,13 @@
                                   @endif
                                   </td>
                                   <td>{{ $order->slot_time }}</td>
-                                  <td>{{ $order->address->area }}</td>
+                                  <td>
+                                    <?php
+                                      $t  = $order->order_lists->sum('price');
+                                      $tt = $tt+$t;
+                                    ?>
+                                    &#8377; {{ $t }}
+                                  </td>
                                   <td>
                                       <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Completed</a>
                                       <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm btn-warning'>Invoice</a>

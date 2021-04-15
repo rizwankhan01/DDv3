@@ -57,7 +57,10 @@
              <div class="col-lg-6">
                <div class="card m-b-30">
                  <div class="card-header">
-                   <h5 class="card-title">Order Information</h5>
+                   <h5 class="card-title">Order Information
+                   @if($order->status!=3 AND $order->status!=4 AND !empty($order->stock_price))
+                     <a data-toggle="modal" data-target=".changeprice"><i class="fa fa-edit"></i></a>
+                   @endif</h5>
                  </div>
                <div class="card-body">
                    <div class="table-responsive">
@@ -107,7 +110,11 @@
              <div class="col-lg-6">
                <div class="card m-b-30">
                  <div class="card-header">
-                   <h5 class="card-title">Technical & Stock Information</h5>
+                   <h5 class="card-title">Technical & Stock Information
+                     @if($order->status!=3 AND $order->status!=4 AND !empty($order->stock_price))
+                       <a data-toggle="modal" data-target=".bd-example-modal-lg2"><i class="fa fa-edit"></i></a>
+                     @endif
+                   </h5>
                  </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -124,12 +131,12 @@
                           <tr>
                             <td><b>Service Man</b></td>
                             <td>
-                              <a href='/serviceman-profile/{{ $order->serviceman->id }}'>
                                 <figure>
                                 <img src="../storage/{{ $order->serviceman->profile_image }}" style="width:150px;height:auto;border-radius:25px;">
-                                <figcaption>{{ $order->serviceman->name }}</figcaption>
+                                  <figcaption>
+                                    <a href='/serviceman-profile/{{ $order->serviceman->id }}'>{{ $order->serviceman->name }}</a>
+                                  </figcaption>
                                 </figure>
-                              </a>
                             </td>
                             <td>
                               @if(!empty($corder->start_timestamp))
@@ -286,7 +293,7 @@
                  </div>
                </div>
              @endif
-             <div class="col-lg-12 m-b-30"><center><small>This order was placed on {{ date('d-m-Y H:i:s', strtotime($order->created_at)) }}.</small></center></div>
+             <div class="col-lg-12 m-b-30"><center><small>This order was placed {{ $order->created_at->diffForHumans() }}.</small></center></div>
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection
             <div class="col-lg-12">

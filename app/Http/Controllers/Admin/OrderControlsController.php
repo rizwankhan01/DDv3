@@ -79,6 +79,16 @@ class OrderControlsController extends Controller
       return redirect()->back();
     }
 
+    public function changeprice(Request $request, $id){
+      $olist  = order_lists::where('order_id',$id)
+                          ->where('prod_type','!=','COUPON')
+                          ->where('prod_type','!=','ADDON')->first();
+      $olist->price       = $request->input('selling_price');
+      $olist->update();
+
+      return redirect()->back();
+    }
+
     public function assign(Request $request, $id){
       $order              =   orders::findOrFail($id);
       $order->serviceman_id  =   $request->input('serviceman');

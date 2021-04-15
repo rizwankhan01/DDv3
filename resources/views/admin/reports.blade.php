@@ -33,6 +33,7 @@
                               <tr>
                                   <th>Date</th>
                                   <th>Order ID</th>
+                                  <th>Model</th>
                                   <th>Stock Amount</th>
                                   <th>Transaction</th>
                                   <th>Profit</th>
@@ -45,6 +46,13 @@
                                   <tr>
                                     <td>{{ date('d-m-Y', strtotime($order->slot_date)) }}</td>
                                     <td><a href='/home/{{ $order->id }}'>#{{ $order->id }}</a></td>
+                                    <td>
+                                    @foreach($order->order_lists as $list)
+                                      @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
+                                        {{ $list->color->model->brand->name }} {{ $list->color->model->series}} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
+                                      @endif
+                                    @endforeach
+                                    </td>
                                     <td>
                                     <?php
                                       $s  = $order->stock_price;
