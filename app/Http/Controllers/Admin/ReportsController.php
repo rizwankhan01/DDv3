@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\orders;
+use App\Models\expenses;
+use App\Models\tickets;
 
 class ReportsController extends Controller
 {
@@ -15,8 +17,11 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $orders = orders::where('slot_date',date('Y-m-d'))->where('status','3')->get();
-        return view('admin.reports', compact('orders'));
+        $orders   = orders::where('updated_at', 'LIKE', date('Y-m-d').'%')->where('status','3')->get();
+        $expenses = expenses::where('created_at','LIKE',date('Y-m-d').'%')->get();
+        $tickets  = tickets::where('date_close', date('Y-m-d'))->get();
+
+        return view('admin.reports', compact('orders','expenses','tickets'));
     }
 
     /**
@@ -39,8 +44,11 @@ class ReportsController extends Controller
     {
         $from   = $request->input('from');
         $to     = $request->input('to');
-        $orders = orders::whereBetween('slot_date', [$from, $to])->where('status','3')->get();
-        return view('admin.reports', compact('orders', 'from', 'to'));
+        $orders = orders::whereBetween('updated_at', [$from, $to])->where('status','3')->get();
+        $expenses = expenses::whereBetween('created_at',[$from, $to])->get();
+        $tickets  = tickets::whereBetween('date_close', [$from, $to])->get();
+
+        return view('admin.reports', compact('orders', 'from', 'to', 'expenses', 'tickets'));
     }
 
     /**

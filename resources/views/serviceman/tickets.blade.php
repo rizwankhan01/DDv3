@@ -59,9 +59,11 @@
                                   <td>{{ $ticket->order->dealer->dealer_name }}<br>
                                   <small><a href='tel:{{ $ticket->order->dealer->phone_number}}'>{{ $ticket->order->dealer->phone_number}}</a></small></td>
                                   <td>
-                                    @if($ticket->order->order_list->prod_type=='BASIC' || $ticket->order->order_list->prod_type=='PREMIUM')
-                                      {{ $ticket->order->order_list->color->model->name }} ({{ $ticket->order->order_list->color->name }}) - {{ $ticket->order->order_list->prod_type }}
-                                    @endif
+                                    @foreach($ticket->order->order_lists as $list)
+                                      @if($list->prod_type!='ADDON' AND $list->prod_type!='COUPON')
+                                        {{ $list->color->model->brand->name }} {{ $list->color->model->name }} - <small>{{ $list->color->name }}</small>
+                                      @endif
+                                    @endforeach
                                   </td>
                                   <td>{{ $ticket->issue }}</td>
                                   <td>{{ $ticket->resolution }}</td>
