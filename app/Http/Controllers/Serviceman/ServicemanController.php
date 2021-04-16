@@ -10,6 +10,7 @@ use App\Models\consultation;
 use App\Models\dealers;
 use App\Models\closedorder;
 use App\Models\addresses;
+use App\Models\addon_products;
 use App\user;
 use Auth;
 
@@ -24,7 +25,9 @@ class ServicemanController extends Controller
     {   $orders = orders::where('status',2)
                     ->where('serviceman_id',Auth::user()->id)
                     ->get();
-        return view('serviceman.serviceman', compact('orders'));
+        $addons     = addon_products::all();
+
+        return view('serviceman.serviceman', compact('orders','addons'));
     }
 
     /**
@@ -61,13 +64,15 @@ class ServicemanController extends Controller
                               ->where('prod_type','!=','ADDON')
                               ->where('prod_type','!=','COUPON')
                               ->first();
-        $olist = order_lists::where('order_id',$id)->get();
+        $olist    = order_lists::where('order_id',$id)->get();
         $consultation = consultation::where('order_id',$id)->first();
-        $smen  =  user::where('user_type','Service Man')->get();
+        $smen     =  user::where('user_type','Service Man')->get();
         $dealers  = dealers::all();
-        $corder = closedorder::where('order_id',$id)->first();
-        $address = addresses::where('customer_id',$order->customer_id)->first();
-        return view('serviceman.serviceman', compact('order','olist','screen','consultation','smen','dealers','corder','address'));
+        $corder   = closedorder::where('order_id',$id)->first();
+        $address  = addresses::where('customer_id',$order->customer_id)->first();
+        $addons   = addon_products::all();
+
+        return view('serviceman.serviceman', compact('order','olist','screen','consultation','smen','dealers','corder','address','addons'));
     }
 
     /**

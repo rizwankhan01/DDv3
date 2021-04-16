@@ -26,6 +26,38 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
 </div>
 </div>
 </div>
+<!-- Addon Products -->
+<div class="modal fade addonproduct" tabindex="-1" role="dialog" aria-hidden="true"
+v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="CreateModalLabel">Include Addon Products</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<form action="/addonproduct/{{ $order->id }}" method="post" class="col-md-12">
+  {{ csrf_field() }}
+  {{ method_field('put')}}
+  <div class="modal-body">
+    <div class='row'>
+      <select class="form-control" name="addonproduct" required>
+          <option value="">Select Addon Products</option>
+        @foreach($addons as $addon)
+          <option value="{{ $addon->id }}">{{ $addon->name }} - &#8377; {{ $addon->price }}</option>
+        @endforeach
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>
+</div>
+</div>
+</div>
 <!-- Start Tracking -->
 <div class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-hidden="true"
 v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">

@@ -38,6 +38,7 @@
                             @elseif(empty($corder->pre_image))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg1" class="btn btn-sm btn-warning pull-right col-md-12"><i class="fa fa-camera"></i> Pre - Image</button><br><hr>
                             @else
+                              <button data-toggle="modal" data-target=".addonproduct" class="btn btn-sm btn-warning pull-right col-md-12">Addon Products</button><br><br>
                               <button data-toggle="modal" data-target=".bd-example-modal-lg3" class="btn btn-sm btn-success pull-right col-md-12">Complete Order</button><br><br>
                               @if(empty($order->pickup_reason))
                               <button data-toggle="modal" data-target=".bd-example-modal-lg4" class="btn btn-sm btn-primary pull-right col-md-12">Pickup Phone</button><br><br>
@@ -70,7 +71,15 @@
                            @if($list->prod_type=='COUPON')
                                {{ $list->coupon->name }}
                            @elseif($list->prod_type=='ADDON')
-                               {{ $list->addonproduct->name }}
+                               <form action='/addonproduct/{{ $list->id }}' method='post'>
+                                 {{ $list->addonproduct->name }}
+                                 {{ csrf_field() }}
+                                 {{ method_field('put')}}
+                                 <input type="hidden" value="delete" name="del">
+                                 <button type='submit' onclick="return confirm('Are you sure you want to delete this?');">
+                                   <i class="fa fa-trash"></i>
+                                 </button>
+                               </form>
                            @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
                                <img src="../../storage/{{ $list->color->image }}" style="width:50px;height:50px;">
                                {{ $list->color->model->brand->name }} {{ $list->color->model->series }} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}

@@ -117,8 +117,8 @@
                                 @foreach($addons as $addon)
                                   <tr>
                                     <td>{{ $addon->name }}</td>
-                                    <td>{{ $addon->cost }}</td>
-                                    <td>{{ $addon->price }}</td>
+                                    <td>&#8377; {{ $addon->cost }}</td>
+                                    <td>&#8377; {{ $addon->price }}</td>
                                     <td>{{ $addon->description}}</td>
                                     <td><img src='storage/{{ $addon->image }}' alt="{{ $addon->image}}" style="width:50px;height:50px;"></td>
                                     <td>

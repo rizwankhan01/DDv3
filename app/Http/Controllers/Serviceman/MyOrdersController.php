@@ -8,6 +8,7 @@ use App\Models\closedorder;
 use App\Models\orders;
 use App\Models\addresses;
 use App\Models\order_lists;
+use App\Models\addon_products;
 use PDF;
 
 class MyOrdersController extends Controller
@@ -61,6 +62,30 @@ class MyOrdersController extends Controller
       mail($to,$subject,$message,$headers);
       //end of mail
 
+      return redirect()->back();
+    }
+
+    public function addonproduct(Request $request, $id)
+    {
+      if($request->input('del')=='delete'){
+        $addon = order_lists::findOrFail($id);
+        //dd($addon);
+        $addon->delete();
+      }else{
+        $getaddon=  addon_products::findOrFail($request->input('addonproduct'));
+        $check  = order_lists::where('order_id', $id)
+                              ->where('prod_type','ADDON')
+                              ->where('color_id', $request->input('addonproduct'))
+                              ->first();
+        if(empty($check->id)){
+          $addon            = new order_lists;
+          $addon->order_id  = $id;
+          $addon->color_id  = $request->input('addonproduct');
+          $addon->price     = $getaddon->price;
+          $addon->prod_type = 'ADDON';
+          $addon->save();
+        }
+      }
       return redirect()->back();
     }
 

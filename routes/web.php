@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/start_tracking/{id}','Serviceman\MyOrdersController@start_tracking');
     Route::put('/complete-order/{id}','Serviceman\MyOrdersController@completeorder');
     Route::put('/pickup/{id}','Serviceman\MyOrdersController@pickup');
+    Route::put('/addonproduct/{id}','Serviceman\MyOrdersController@addonproduct');
+
     Route::resource('/exotel_calls','Admin\ExotelCallsController');
   });
 
