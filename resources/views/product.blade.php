@@ -337,15 +337,15 @@
         </div>
     </div>
     <!-- Start Product Review -->
-    <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
+    <!--<div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="description_nav nav nav-tabs d-block" role="tablist">
                       <a class="active" id="nav-review" data-toggle="tab" href="#review" role="tab"
                         aria-controls="review" aria-selected="false">Reviews</a>
-                        <!--<a id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
-                            aria-controls="descrip" aria-selected="true">Description</a>-->
+                        <a id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
+                            aria-controls="descrip" aria-selected="true">Description</a>
                     </div>
                 </div>
             </div>
@@ -475,7 +475,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- End Product Review -->
 
 
