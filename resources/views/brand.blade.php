@@ -1,45 +1,45 @@
 @extends('layouts.master')
   @section('title')
     @if($brands->name == 'Apple')
-      Apple Mobile Screen Replacement in Chennai | Doorstep Service| Doctor Display
+      Apple Mobile Doorstep Screen Replacement in Chennai | Doorstep Service| Doctor Display
     @elseif($brands->name == 'Redmi')
-      Redmi Mi Screen Replacement service, Chennai | Doctor Display
+      Redmi Mi Mobile Doorstep Screen Replacement service, Chennai | Doctor Display
     @elseif($brands->name == 'One Plus')
-      One plus Mobile Screen Repair | Replacement at Your Doorstep
+      One plus Mobile Doorstep Screen Repair | Replacement at Your Doorstep
     @elseif($brands->name == 'Samsung')
-      Samsung Mobile Screen Repair Service, Chennai | Doorstep Service | Doctor Display
+      Samsung Mobile Doorstep Screen Repair Service, Chennai | Doorstep Service | Doctor Display
     @elseif($brands->name == 'Motorola')
-      Motorola Screen Replacement | Cracked Screen Repair Service| Doctor Display
+      Motorola Mobile Doorstep Screen Replacement | Cracked Screen Repair Service| Doctor Display
     @elseif($brands->name == 'Huawei')
-      Huawei Mobile Screen Replacement | Doorstep Mobile Repair | Doctor Display
+      Huawei Mobile Doorstep Screen Replacement | Doorstep Mobile Repair | Doctor Display
     @elseif($brands->name == 'Lenovo')
-      Lenovo Mobile Screen service in Chennai | Screen Replacement | Doctor Display
+      Lenovo Mobile Doorstep Screen service in Chennai | Screen Replacement | Doctor Display
     @elseif($brands->name == 'Asus')
-      Asus Mobile Screen Replacement | Screen Repair Service | Doctor Display
+      Asus Mobile Doorstep Screen Replacement | Screen Repair Service | Doctor Display
     @elseif($brands->name == 'Honor')
-      Honor Mobile Screen Replacement Service at Doorstep | Doctor Display | Book Now
+      Honor Mobile Doorstep Screen Replacement Service at Doorstep | Doctor Display | Book Now
     @elseif($brands->name == 'Nokia')
-      Nokia Mobile Screen Replacement | Mobile Screen Service | Doctor Display
+      Nokia Mobile Doorstep Screen Replacement | Mobile Screen Service | Doctor Display
     @elseif($brands->name == 'Oppo')
-      Oppo Mobile Screen Service | Screen Replacement | Doctor Display
+      Oppo Mobile Doorstep Screen Service | Screen Replacement | Doctor Display
     @elseif($brands->name == 'Realme')
-      Realme Mobile Screen Replacement, Chennai | Doctor Display
+      Realme Mobile Doorstep Screen Replacement, Chennai | Doctor Display
     @elseif($brands->name == 'Vivo')
-      Vivo Mobile Screen Replacement | Doctor Display at Your Doorstep
+      Vivo Mobile Doorstep Screen Replacement | Doctor Display at Your Doorstep
     @elseif($brands->name == 'Sony')
-      Sony Mobile Screen Replacement in Chennai | Doorstep Service | Doctor Display
+      Sony Mobile Doorstep Screen Replacement in Chennai | Doorstep Service | Doctor Display
     @elseif($brands->name == 'Leeco')
-      LeEco Mobile Screen Service | Replacement at your Doorstep | Doctor Display
+      LeEco Mobile Doorstep Screen Service | Replacement at your Doorstep | Doctor Display
     @elseif($brands->name == 'Gionee')
-      Gionee Screen Repair Replacement| Doctor Display | Doorstep Service
+      Gionee Mobile Screen Doorstep Repair Replacement| Doctor Display | Doorstep Service
     @elseif($brands->name == 'Coolpad')
-      Cool pad Mobile screen Service In Chennai | Doctor Display
+      Cool pad Mobile Doorstep screen Service In Chennai | Doctor Display
     @elseif($brands->name == 'Google')
-      Google pixel Screen Repair Service Online | Doctor Display
+      Google pixel Mobile Doorstep Screen Repair Service Online | Doctor Display
     @elseif($brands->name == 'HTC')
-      HTC Mobile Screen Service | Screen Replacement at Your Doorstep | Doctor Display
+      HTC Mobile Doorstep Screen Service | Screen Replacement at Your Doorstep | Doctor Display
     @elseif($brands->name == 'LG')
-      LG Mobile Screen Replacement in Chennai | Doctor Display
+      LG Mobile Doorstep Screen Replacement in Chennai | Doctor Display
     @endif
   @endsection
   @section('metadesc')
