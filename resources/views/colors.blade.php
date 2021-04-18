@@ -13,7 +13,7 @@
                         <ul class="core-breadcaump">
                             <li><a href="/">Home</a></li>
                             <li><a href="/allbrands">All Brands</a></li>
-                            <li><a href="/brand/{{ $color->model->brand->name }}">{{ $color->model->brand->name }} Screen Repairs</a></li>
+                            <li><a href="/{{ $color->model->brand->name }}-screen-service-center">{{ $color->model->brand->name }} Screen Repairs</a></li>
                             <li class="current">{{ $color->model->series}} {{ $color->model->name }}</li>
                         </ul>
                     </div>
