@@ -145,7 +145,9 @@ class ColorsController extends Controller
       }
       $colors->delete();
       $pricing = pricings::where('color_id',$id)->first();
-      $pricing->delete();
+      if(!empty($pricing->id)){
+        $pricing->delete();
+      }
       return redirect('/modelcolors')->with('status','Deleted Successfully!');
     }
 }
