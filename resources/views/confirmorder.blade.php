@@ -31,13 +31,13 @@
 @elseif($list->prod_type=='ADDON')
   <tr>
     <td class="pro-thumbnail"><a href="#">
-      <img src="{{ URL::asset('img/tg.jpg') }}" alt="Product"></a></td>
+      <img src="{{ URL::asset('img/tg.jpg') }}" alt="Addon Product"></a></td>
     <td class="pro-title"><a href="#">@if(!empty($list->addonproduct->name)){{ $list->addonproduct->name }}@endif</a></td>
     <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
   </tr>
 @elseif($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
   <tr>
-    <td class="pro-thumbnail"><a href="#"><img src="storage/{{ $list->color->image }}"></a></td>
+    <td class="pro-thumbnail"><a href="#"><img src="storage/{{ $list->color->image }}" alt="{{ $list->color->model->brand->name }} {{ $list->color->model->series }} {{ $list->color->model->name }} {{ $list->color->name }} image"></a></td>
     <td class="pro-title"><a href="#">{{ $list->color->model->brand->name }} {{ $list->color->model->series }} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}</a></td>
     <td class="pro-price"><span>&#8377; {{ $list->price }}</span></td>
   </tr>

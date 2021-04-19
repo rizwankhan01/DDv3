@@ -62,9 +62,9 @@
                                 <figure>
                                   <?php $file = '/var/www/DDV2/storage/app/public/'.$color->image; ?>
                                   @if(!empty($color->image) AND file_exists($file))
-                                    <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->name }} image">
+                                    <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
                                   @else
-                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $color->name }} image">
+                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
                                   @endif
                                 <figcaption>{{ ucfirst($color->name) }}</figcaption>
                                 </figure>

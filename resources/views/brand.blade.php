@@ -137,7 +137,7 @@
                                   @if(!empty($image) AND file_exists($file))
                                     <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
                                   @else
-                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->image }} image">
+                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->brand->name }} {{$model->series }} {{ $model->name }} image">
                                   @endif
                                   <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
                                 </figure>

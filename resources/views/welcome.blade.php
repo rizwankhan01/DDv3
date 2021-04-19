@@ -14,7 +14,7 @@
 <div class="row">
 <div class="col-md-6">
   <img src="img/revoulation/slider-home-start-ups-slide-01-image-01.png"
-      alt="" data-ww="['941px','536px','349px','349px']" data-hh="['830px','473px','308px','308px']"
+      alt="doctor display doorstep screen replacement" data-ww="['941px','536px','349px','349px']" data-hh="['830px','473px','308px','308px']"
       data-no-retina>
 </div>
   <div class="col-md-6"><br><br>
@@ -166,7 +166,7 @@
         <div class="col-lg-7 col-12">
             <div class="video-with-thumb text-center move-up wow">
                 <div class="thumb">
-                    <img src="img/revoulation/workmanship.png" alt="workmanship">
+                    <img src="img/revoulation/workmanship.png" alt="doctor display professional workmanship">
                 </div>
             </div>
         </div>

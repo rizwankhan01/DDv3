@@ -85,7 +85,7 @@
                     <div class="product__details__container">
                         <div class="tab_container big_img_container">
                             <div class="big_img tab-pane fade show active" id="img1" role="tabpanel">
-                                <img class="w-100" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
+                                <img class="w-100" src="../../storage/{{$color->image}}" alt="{{$models->brand->name}} {{ $models->series }} {{$models->name}} - {{$color->name}} image">
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                     <div class="product-details">
                         <div class="inner">
                             <div class="header">
-                                <img class="w-t float-left hidden-md" src="../../storage/{{$color->image}}" alt="{{$color->name}} image">
+                                <img class="w-t float-left hidden-md" src="../../storage/{{$color->image}}" alt="{{$models->brand->name}} {{ $models->series }} {{$models->name}} - {{$color->name}} image">
                                 <h1 class="heading heading-h4">{{$models->brand->name}} {{ $models->series }} {{$models->name}}</h1>&nbsp;&nbsp;
                                 <!--<div class="product-badges">
                                     <span>New</span>
