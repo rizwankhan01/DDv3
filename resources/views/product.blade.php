@@ -339,20 +339,20 @@
         </div>
     </div>
     <!-- Start Product Review -->
-    <!--<div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
+    <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="description_nav nav nav-tabs d-block" role="tablist">
-                      <a class="active" id="nav-review" data-toggle="tab" href="#review" role="tab"
-                        aria-controls="review" aria-selected="false">Reviews</a>
-                        <a id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
+                      <!--<a class="active" id="nav-review" data-toggle="tab" href="#review" role="tab"
+                        aria-controls="review" aria-selected="false">Reviews</a>-->
+                        <a class="active" id="descrip-tab" data-toggle="tab" href="#descrip" role="tab"
                             aria-controls="descrip" aria-selected="true">Description</a>
                     </div>
                 </div>
             </div>
             <div class="tab_container">
-              <div class="single_review_content tab-pane fade show active" id="review" role="tabpanel">
+              <div class="single_review_content tab-pane fade" id="review" role="tabpanel">
                 <div class="brook-testimonial-area ptb-md--80">
                     <div class="container">
                         <div class="row">
@@ -470,14 +470,14 @@
                     </div>
                 </div>
               </div>
-                <div class="single_review_content tab-pane fade" id="descrip" role="tabpanel">
+                <div class="single_review_content tab-pane fade show active" id="descrip" role="tabpanel">
                     <div class="content">
-                        <p>{{ $color->model->description }}</p>
+                        <?php echo $color->model->big_description; ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- End Product Review -->
 
 

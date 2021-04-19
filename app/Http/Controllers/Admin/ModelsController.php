@@ -46,6 +46,7 @@ class ModelsController extends Controller
       $model_image  = explode('/',$request->file('model_image')->store('public'));
       $models->image  = $model_image[1];
       $models->description = $request->input('description');
+      $models->big_description  = $request->input('big_description');
       $models->meta_title  = $request->input('meta_title');
       $models->meta_description = $request->input('meta_description');
       $models->save();
@@ -85,6 +86,7 @@ class ModelsController extends Controller
      */
     public function update(Request $request, $id)
     {
+      //dd($request->input('big_description'));
       $models = models::findOrFail($id);
       $models->brand_id = $request->input('brand_id');
       $models->series = $request->input('series');
@@ -94,6 +96,7 @@ class ModelsController extends Controller
         $models->image  = $model_image[1];
       }
       $models->description = $request->input('description');
+      $models->big_description  = $request->input('big_description');
       $models->meta_title  = $request->input('meta_title');
       $models->meta_description = $request->input('meta_description');
       $models->update();

@@ -21,6 +21,7 @@
     <h1 class="heading heading-h3 font-32 line-height-1-88" style="text-align:center;">Broken Screen?</h1>
     <p style="text-align:center;font-size:18px;"><span style='font-size:24px;'>Chill! We got your back.</span><br><br>Get your Phone Screen replaced at your doorstep in 30 minutes.</p><br>
     <center><a href="/allbrands" class="brook-btn bk-btn-white btn-sd-size btn-rounded space-between hidden-xs">Fix Now</a></center>
+    <center><a href="/allbrands" class="hidden-md"><b style="color:#ffc107;">Click here to book an appointment! -></b></a></center>
   </div>
 </div>
 <a href="/allbrands" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Fix Now</a>

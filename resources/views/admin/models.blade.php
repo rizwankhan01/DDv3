@@ -47,6 +47,10 @@
                               <input type="text" class="form-control" name="description" placeholder="Description" required>
                             </div>
                             <div class="form-group">
+                              <label>Big Description</label>
+                              <input type="text" id="summernote" name="big_description" required>
+                            </div>
+                            <div class="form-group">
                               <label>Meta Title</label>
                               <input type="text" class="form-control" name="meta_title" placeholder="Meta Title" required>
                             </div>
@@ -100,6 +104,10 @@
                         <div class="form-group">
                           <label>Description</label>
                           <input type="text" class="form-control" name="description" value="{{ $model->description }}" placeholder="Description" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Big Description</label>
+                          <textarea id="summernote2" name="big_description">{{ $model->big_description }}</textarea>
                         </div>
                         <div class="form-group">
                           <label>Meta Title</label>
@@ -178,6 +186,16 @@
 @endsection
 
 @section('scripts')
+  <script>
+      $('#summernote').summernote({
+        tabsize: 2,
+        height: 100
+      });
+      $('#summernote2').summernote({
+        tabsize: 2,
+        height: 100
+      });
+  </script>
   <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
   <script src="{{ asset('assets\js\popper.min.js') }}"></script>
   <script src="{{ asset('assets\js\bootstrap.min.js') }}"></script>
