@@ -89,6 +89,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/expenses','Admin\ExpensesController');
     Route::resource('/addon','Admin\AddonController');
 
+    Route::resource('/analytics','Admin\AnalyticsController');
+
     Route::resource('/reports','Admin\ReportsController');
     Route::resource('/enquiryreports','Admin\ReportsEnquiryController');
 

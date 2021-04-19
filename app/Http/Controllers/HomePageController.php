@@ -78,7 +78,7 @@ class HomePageController extends Controller
         $pricing  = pricings::where('color_id', $color->id)->first();
         $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
-        $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->limit(6)->get();
+        $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->limit(8)->get();
         return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels'));
       }
     }

@@ -121,6 +121,9 @@
       <li><a href="/enquiryreports">Enquiry Reports</a></li>
     </ul>
     </li>
+    <li><a href="/analytics">
+      <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Analytics</span>
+    </a></li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
     </a></li>
