@@ -481,7 +481,61 @@
     </div>
     @endif
     <!-- End Product Review -->
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="brand-wrapper">
+                <center><h5>Other {{ $models->brand->name }} Phone's we repair</h5></center>
+                <div class="brand__list brand-default brand-style--2">
+                  @foreach($othermodels  as  $model)
+                    <div class="brand">
+                      <a href="/colors/{{ $model->id }}">
+                        <figure>
+                          @foreach($model->colortypes as $colors)
+                            @if(!empty($colors->image))
+                              <?php $image = $colors->image; ?>
+                              @break
+                            @else
+                              <?php $image = $model->image; ?>
+                            @endif
+                          @endforeach
+                          <?php $file = '/var/www/DDV2/storage/app/public/'.$image; ?>
+                          @if(!empty($image) AND file_exists($file))
+                            <img src="../storage/{{$image}}" class="logo-thumbnail" alt="{{ $image }} image">
+                          @else
+                            <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{ $model->brand->name }} {{$model->series }} {{ $model->name }} image">
+                          @endif
+                          <figcaption>{{ $model->brand->name }} {{$model->series }} {{ $model->name }}</figcaption>
+                        </figure>
+                      </a>
+                    </div>
+                  @endforeach<br><br><br>
+                </div>
+              </div>
+            </div>
+        </div><br><br>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="brand-wrapper">
+                <center><h5>Other Brands we repair</h5></center>
+                <div class="brand__list brand-default brand-style--2">
+                  @foreach($otherbrands as $brand)
+                    <div class="brand">
+                      <a href="{{$brand->name}}-screen-service-center">
+                        <figure>
+                          <img src="storage/{{ $brand->brand_logo }}" class="logo-thumbnail" alt="{{$brand->name}} logo">
+                          <figcaption>{{$brand->name}}</figcaption>
+                        </figure>
+                      </a>
+                    </div>
+                  @endforeach
+                </div>
+              </div>
+            </div>
+        </div><br><br>
+      </div>
 
 </main>
 @endsection
