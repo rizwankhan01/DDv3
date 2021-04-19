@@ -339,6 +339,7 @@
         </div>
     </div>
     <!-- Start Product Review -->
+    @if(!empty($color->model->big_description))
     <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
         <div class="container">
             <div class="row">
@@ -478,6 +479,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- End Product Review -->
 
 
