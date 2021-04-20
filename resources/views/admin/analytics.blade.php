@@ -32,9 +32,7 @@
                                   <th>Impressions</th>
                                   <th>CTR</th>
                                   <th>Position</th>
-                                  <th>Enquiries</th>
                                   <th>Orders</th>
-                                  <th>Tickets</th>
                                   <th>Month</th>
                               </tr>
                               </thead>
@@ -46,8 +44,6 @@
                                     <td>{{ $anal->impressions }}</td>
                                     <td>{{ $anal->ctr }}</td>
                                     <td>{{ $anal->position }}</td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td>{{ $anal->month }}</td>
                                   </tr>

@@ -50,7 +50,9 @@ class HomePageController extends Controller
       $pricing  = pricings::where('color_id',$color->id)->first();
       if(empty($pricing->id)){ return abort(500); }
       $orders = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
-      return view('product', compact('models','colors','color','pricing','orders'));
+      $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
+      $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
+      return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels'));
     }
 
     /**
@@ -78,7 +80,7 @@ class HomePageController extends Controller
         $pricing  = pricings::where('color_id', $color->id)->first();
         $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
-        $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->limit(8)->get();
+        $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
         return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels'));
       }
     }

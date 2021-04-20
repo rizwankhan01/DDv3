@@ -15,4 +15,15 @@ class model_analytics extends Model
     'position',
     'month'
   ];
+
+  public function orders(){
+    return $this->hasMany(order_lists::class,'url','color_id')
+                ->where('prod_type','!=','ADDON')
+                ->where('prod_type','!=','COUPON');
+  }
+
+  public function models(){
+    return $this->belongsTo(models::class);
+  }
+
 }
