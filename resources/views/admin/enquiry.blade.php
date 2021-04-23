@@ -89,6 +89,7 @@
                                   <th>Customer</th>
                                   <th>Locality</th>
                                   <th>Follow back</th>
+                                  <th>Notes</th>
                                   <th>Created at</th>
                                   <th>Status</th>
                               </tr>
@@ -115,6 +116,7 @@
                                         {{ date('d-m-Y',strtotime($enquiry->fdate)) }}
                                       @endif
                                     </td>
+                                    <td>{{ $enquiry->notes }}</td>
                                     <td>{{ $enquiry->created_at->diffForHumans() }}</td>
                                     <td>
                                       @if(empty($enquiry->status))
