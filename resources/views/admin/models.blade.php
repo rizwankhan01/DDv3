@@ -21,7 +21,7 @@
                           <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form action="/models" method="post" enctype="multipart/form-data">
+                          <form action="/models" method="post" enctype="multipart/form-data" id="addmodel">
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <div class="modal-body">
@@ -65,7 +65,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" onclick="document.getElementById('addmodel').submit();" class="btn btn-primary">Save changes</button>
                             </div>
                           </form>
                           </div>
@@ -80,7 +80,7 @@
                   </div>
                   <div class="card-body">
                     @if(!empty($model))
-                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data">
+                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data" id="updatemodel">
                         {{ csrf_field() }}
                         {{ method_field('put')}}
                         <div class="modal-body">
@@ -125,7 +125,7 @@
                         </div>
                         <div class="modal-footer">
                           <a href="/models" class="btn btn-secondary">Back</a>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" onclick="document.getElementById('updatemodel').submit();" class="btn btn-primary">Save changes</button>
                         </div>
                       </form>
                     @else
