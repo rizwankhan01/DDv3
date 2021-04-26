@@ -181,6 +181,8 @@
                                       <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->ord_selling_price+300 }}</strike> <span class="green">&#8377; {{ $pricing->ord_selling_price }}</span></h4>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
                                       </div>
                                       @else
                                       <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basicnone" role="tabpanel"
@@ -192,6 +194,8 @@
                                       <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premium" role="tabpanel"
                                           aria-labelledby="premium-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->org_selling_price+250 }}</strike> <span class="green">&#8377; {{ $pricing->org_selling_price }}</span></h4>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
                                       </div>
                                       @else
                                       <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premiumnone" role="tabpanel"
@@ -203,12 +207,6 @@
                                         See the difference between Basic and Premium Screens?</a></small></u>
                                     </span>
                               </div>
-                      @if($pricing->org_stock_availablity==1 || $pricing->ord_stock_availablity==1)
-                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
-                        <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
-                      @endif
-
-
                                     <br>
 <p class="bk_pra">
 * Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
@@ -551,7 +549,4 @@
 <script src="{{ URL::asset('js/main.js')}}"></script>
 <script src="{{ URL::asset('js/revoulation.js')}}"></script>
 
-<!-- Start of HubSpot Embed Code -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8346739.js"></script>
-<!-- End of HubSpot Embed Code -->
 @endsection
