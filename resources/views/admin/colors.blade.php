@@ -185,7 +185,7 @@
                               @foreach($colors as $color)
                               <tr>
                                   <td>{{ $color->id }}</td>
-                                  <td>@if(empty($color->model_id))
+                                  <td>@if(empty($color->model->brand->name))
                                      N/A
                                     @else
                                       {{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }}
