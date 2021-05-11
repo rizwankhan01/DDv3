@@ -69,8 +69,10 @@ class AccountsController extends Controller
         $user = user::findOrFail($id);
         if($user->user_type=='Service Man'){
           $orders = orders::where('serviceman_id',$user->id)->get();
+          return view('admin.accounts', compact('user','orders'));
+        }else{
+          return view('admin.accounts',compact('user'));
         }
-        return view('admin.accounts', compact('user','orders'));
     }
 
     /**

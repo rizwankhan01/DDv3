@@ -217,7 +217,7 @@
                                       {{ csrf_field() }}
                                       {{ method_field('delete') }}
                                       <a href='/modelcolors/{{ $color->id }}' class='btn btn-sm btn-warning'>Edit</a>
-                                      <input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>
+                                      <!--<input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>-->
                                     </form>
                                   </td>
                               </tr>
