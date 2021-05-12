@@ -59,6 +59,28 @@ class TicketController extends Controller
           $txt      = "Name: ".$name." | Phone: ".$phone." Message: ".$message;
           $headers  = "From: noreply@doctordisplay.in";
           if($captcha == $ans){
+
+          //hubspot integration
+          $hubSpot = \HubSpot\Factory::createWithApiKey('aa4d45d3-7213-4287-b1cc-b0ed645e2500');
+          $contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
+          $contact_data = array(
+        		"firstname" => $name,
+        		"lname" => '',
+        		"email" => '',
+        		"phone" => $phone,
+        		"message" => $message,
+        		"code" => '',
+        		"city" => '',
+        		"radio1" => '',
+        		"address" => '',
+        		"totalsession" =>'',
+        		"company" => ''
+        	);
+          $contactInput->setProperties($contact_data);
+
+          $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
+
+
             if(mail($to,$subject,$txt,$headers)){
               return redirect('/thankyou');
             }else{
