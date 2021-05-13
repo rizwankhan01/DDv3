@@ -100,7 +100,7 @@ class TicketController extends Controller
             $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
             $contact_id = $contact['id'];
             //dd($contact_id); //test this
-          }else{
+          }
             // creating new deal
             $dealInput = new \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput();
             $deal_data = array(
@@ -129,7 +129,6 @@ class TicketController extends Controller
             //dd(curl_getinfo($ch, CURLINFO_HTTP_CODE));
             //dd(json_decode($response, true));
             curl_close($ch);
-          }
 
             if(mail($to,$subject,$txt,$headers)){
               return redirect('/thankyou');

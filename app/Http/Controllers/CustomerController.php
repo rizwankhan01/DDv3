@@ -39,10 +39,10 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-          $check    = customers::where('phone_number',$request->input('phone'))->first();
+          $check        = customers::where('phone_number',$request->input('phone'))->first();
 
-          $color_id = $request->input('color_id');
-          $color    = colors::findOrFail($color_id);
+          $color_id     = $request->input('color_id');
+          $color        = colors::findOrFail($color_id);
           $select_model = models::where('id',$color->model_id)->first();
           //dd($select_model);
           $model    = $select_model->name;
@@ -109,7 +109,7 @@ class CustomerController extends Controller
           $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
           $contact_id = $contact['id'];
           //dd($contact_id); //test this
-        }else{
+        }
           // creating new deal
           $dealInput = new \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput();
           $deal_data = array(
@@ -138,7 +138,7 @@ class CustomerController extends Controller
           //dd(curl_getinfo($ch, CURLINFO_HTTP_CODE));
           //dd(json_decode($response, true));
           curl_close($ch);
-        }
+
           Session::put('enq_id',$enquiry->id);
           Session::put('cus_id', $cus_id);
           Session::put('color_id',$color_id);
