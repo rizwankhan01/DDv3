@@ -176,6 +176,70 @@ class ExotelCallsController extends Controller
     {
       if(!empty($_GET['CallFrom']))
       {
+          //hubspot integration
+          $hs_api_key = 'aa4d45d3-7213-4287-b1cc-b0ed645e2500';
+          $hubSpot = \HubSpot\Factory::createWithApiKey($hs_api_key);
+
+          //search if contact exists
+          $filter = new \HubSpot\Client\Crm\Contacts\Model\Filter();
+          $filter
+              ->setOperator('EQ')
+              ->setPropertyName('phone')
+              ->setValue(ltrim($_GET['CallFrom'],'0'));
+
+          $filterGroup = new \HubSpot\Client\Crm\Contacts\Model\FilterGroup();
+          $filterGroup->setFilters([$filter]);
+
+          $searchRequest = new \HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest();
+          $searchRequest->setFilterGroups([$filterGroup]);
+
+          $contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
+          if(!empty($contactsPage['results'][0]['id'])){
+            $contact_id = $contactsPage['results'][0]['id'];
+          }
+          if(empty($contact_id)){ //if empty create new contact
+            $contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
+            $contact_data = array(
+              "firstname" => $_GET['AnsweredBy'],
+              "lname" => '',
+              "email" => '',
+              "phone" => ltrim($_GET['CallFrom'],'0'),
+              "message" => '',
+              "code" => '',
+              "city" => '',
+              "radio1" => '',
+              "address" => '',
+              "totalsession" =>'',
+              "company" => ''
+            );
+            $contactInput->setProperties($contact_data);
+            $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
+            $contact_id = $contact['id'];
+          }
+          $engagement_url = "https://api.hubapi.com/engagements/v1/engagements?hapikey=".$hs_api_key;
+          $data = array(
+            "engagement" => array(
+                "active": true,
+                "ownerId": 1,
+                "type": "NOTE"
+            ),
+            "associations" => array(
+              "contactIds" => [$contact_id]
+            ),
+            "metadata" => array(
+              "recordingUrl" => $_GET['RecordingUrl']
+            )
+          );
+          $ch = curl_init($engagement_url);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+          $response = curl_exec($ch);
+          //dd(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+          //dd(json_decode($response, true));
+          curl_close($ch);
+
           $check          =   exotel_calls::where('call_result', $_GET['CallSid'])->first();
           if(empty($check->id))
           {
