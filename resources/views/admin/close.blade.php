@@ -67,7 +67,10 @@
                                           <li class="list-inline-item">
                                               <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
                                               <p class="mb-2"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
-                                              <span class="font-12 mb-2">Completed by {{ $order->serviceman->name }}</span>
+                                              <span class="font-12 mb-2">
+                                                <a href='/serviceman-profile/{{ $order->serviceman->id }}'>
+                                                <img src="storage/{{ $order->serviceman->profile_image }}" style="width:35px;height:auto;border-radius:25px;">
+                                                &nbsp;&nbsp;{{ $order->serviceman->name }}</a></span>
                                           </li>
                                       </div>
                                       <div class="col-12 col-md-2">

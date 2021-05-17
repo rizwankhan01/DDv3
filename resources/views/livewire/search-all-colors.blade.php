@@ -2,6 +2,7 @@
   <h5 class="card-title">
     <input type="type" class="form-control col-md-4" placeholder="Search all colors here..." wire:model="searchTerm">
   </h5>
+  <div class="row">
   @foreach($colors as $color)
   <div class="card m-b-10 col-md-4" style="box-shadow: 3px 3px #e6ebf2;">
       <div class="card-body">
@@ -28,7 +29,7 @@
                       <a href="/modelcolors/{{ $color->id }}"><i class="fa fa-pencil"></i></span>
                     </div>
                     <div class="col-8 col-md-8">
-                      <a href='#' class="btn btn-sm btn-success col-md-12">Place Order</a>
+                      <a href='/screen-repair-{{ $color->model->brand->name }}-{{ $color->model->series }}-{{ $color->model->name }}' target='_blank' class="btn btn-sm btn-success col-md-12">Place Order</a>
                     </div>
                   </div>
               </div>
@@ -36,7 +37,10 @@
       </div>
   </div>
   @endforeach
+  <div class="col-12">
   @if($search==0)
     {{ $colors->links() }}
   @endif
+</div>
+</div>
 </div>
