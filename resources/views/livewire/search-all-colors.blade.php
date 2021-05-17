@@ -3,6 +3,7 @@
     <input type="type" class="form-control col-md-4" placeholder="Search all colors here..." wire:model="searchTerm">
   </h5>
   <div class="row">
+  <div class="col-12">
   @foreach($colors as $color)
   <div class="card m-b-10 col-md-4" style="box-shadow: 3px 3px #e6ebf2;">
       <div class="card-body">
@@ -38,9 +39,10 @@
   </div>
   @endforeach
   <div class="col-12">
-  @if($search==0)
-    {{ $colors->links() }}
-  @endif
+    @if($search==0)
+      {{ $colors->links() }}
+    @endif
+  </div>
 </div>
 </div>
 </div>

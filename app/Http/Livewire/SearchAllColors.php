@@ -23,6 +23,7 @@ class SearchAllColors extends Component
           $term = '%'.$this->searchTerm.'%';
           $colors = DB::select("SELECT * FROM colors WHERE name like '$term'
                                     OR model_id in (SELECT id FROM models WHERE name like '$term'
+                                    OR series like '$term'
                                     OR brand_id in (SELECT id FROM brands WHERE name like '$term'))");
           $searchResults = colors::hydrate($colors);
           $search = 1;
