@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class models extends Model
+class models extends Model implements Searchable
 {
     protected $table  = "models";
     protected $fillable = [
@@ -25,4 +27,17 @@ class models extends Model
     public function colortypes(){
       return $this->hasMany(colors::class,'model_id');
     }
+
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('models.show', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->name,
+            $this->series,
+            $url
+         );
+    }
+
 }

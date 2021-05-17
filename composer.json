@@ -18,6 +18,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-searchable": "^1.9",
         "spatie/laravel-sitemap": "^5.8"
     },
     "require-dev": {

@@ -16,7 +16,7 @@ class CancelledController extends Controller
     public function index()
     {
       $orders = orders::where('status',4)
-                      ->get();
+                      ->paginate(10);
       return view('admin.cancel', compact('orders'));
     }
 

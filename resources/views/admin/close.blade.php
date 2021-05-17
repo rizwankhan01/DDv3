@@ -6,68 +6,88 @@
           <!-- Start col -->
           @section('title') Closed Orders | Doctor Display Dashboard @endsection
           <div class="col-lg-12">
-              <div class="card m-b-30">
+              <div class="card m-b-10">
                   <div class="card-header">
-                      <div class="widgetbar pull-right">
+                      <div class="widgetbar pull-right" id="bigimage">
                           <button class="btn btn-sm btn-success">All</button>
                           <button class="btn btn-sm btn-primary">Today</button>
                           <button class="btn btn-sm btn-warning">Tomorrow</button>
                       </div>
                       <h5 class="card-title">Closed Orders</h5>
                   </div>
-                  <div class="card-body">
-                      <h6 class="card-subtitle">You can view here pending orders here.</h6>
-                      <div class="table-responsive">
-                          <table id="datatable-buttons" class="table table-striped table-bordered">
-                              <thead>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Model</th>
-                                  <th>Slot Date</th>
-                                  <th>Slot Time</th>
-                                  <th>Amount</th>
-                                  <th>Actions</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <?php $ts = 0; $tt = 0; $tp = 0;?>
-                              @foreach($orders as $order)
-                                <tr>
-                                  <td><a href='/home/{{ $order->id }}'>#{{ $order->id }}</a></td>
-                                  <td>
-                                  @foreach($order->order_lists as $list)
-                                    @if($list->prod_type!='COUPON' AND $list->prod_type!='ADDON')
-                                      {{ $list->color->model->brand->name }} {{ $list->color->model->series}} {{ $list->color->model->name }} ({{ $list->color->name }}) - {{ $list->prod_type }}
-                                    @endif
-                                  @endforeach
-                                  </td>
-                                  <td>
-                                  @if($order->slot_date == date('Y-m-d'))
-                                    <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
-                                  @else
-                                    {{ date('d-m-Y', strtotime($order->slot_date)) }}
-                                  @endif
-                                  </td>
-                                  <td>{{ $order->slot_time }}</td>
-                                  <td>
-                                    <?php
-                                      $t  = $order->order_lists->sum('price');
-                                      $tt = $tt+$t;
-                                    ?>
-                                    &#8377; {{ $t }}
-                                  </td>
-                                  <td>
-                                      <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Completed</a>
-                                      <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm btn-warning'>Invoice</a>
-                                  </td>
-                                </tr>
-                              @endforeach
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
               </div>
           </div>
+              <div class="col-lg-12">
+                @foreach($orders as $order)
+                    @foreach($order->order_lists as $list)
+                      @if($list->prod_type=='PREMIUM' || $list->prod_type=='BASIC')
+                        <?php
+                          $model = $list->color->model->brand->name." ".$list->color->model->series." ".$list->color->model->name;
+                          $color = $list->color->name;
+                          $type  = $list->prod_type;
+                          $image = $list->color->image;
+                        ?>
+                      @endif
+                    @endforeach
+                  <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;">
+                      <div class="card-body">
+                          <div class="best-product-slider">
+                              <div class="best-product-slider-item">
+                                  <div class="row">
+                                      <div class="col-4 col-md-2">
+                                          <center>
+                                              <img src="storage/{{ $image }}" class="img-fluid" id="bigimage" alt="{{ $model }} - {{ $color }}" style="max-width:50%;height:auto;">
+                                              <img src="storage/{{ $image }}" class="img-fluid" id="smallimage" alt="{{ $model }} - {{ $color }}">
+                                          </center>
+                                      </div>
+                                      <div class="col-8 col-md-4">
+                                        <span class="font-12 text-uppercase">#{{ $order->id }}
+                                          @if(strpos($order->created_at->diffForHumans(),'hour ago')!==false
+                                            || strpos($order->created_at->diffForHumans(),'hours ago')!==false
+                                            || strpos($order->created_at->diffForHumans(),'minutes ago')!==false
+                                            || strpos($order->created_at->diffForHumans(),'seconds ago')!==false)
+                                            <span class='badge badge-pill badge-danger'>New</span>
+                                          @endif
+                                        </span>
+                                        <h5 class="mt-2 font-20">{{ $model }} - {{ $color }}</h5>
+                                        @if($type=='PREMIUM')
+                                          <span class="badge badge-primary-inverse mb-2 text-uppercase">{{ $type }}</span>
+                                        @else
+                                          <span class="badge badge-success-inverse mb-2 text-uppercase">{{ $type }}</span>
+                                        @endif
+                                      </div>
+                                      <div class="col-6 col-md-2">
+                                        <li class="list-inline-item">
+                                            <h4 class="mb-2 font-16">{{ $order->customer->name }}</h4>
+                                            <p class="mb-2"><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class='fa fa-phone'></i> Call</a></p>
+                                            <span class="font-12 mb-2"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
+                                        </li>
+                                      </div>
+                                      <div class="col-6 col-md-2">
+                                          <li class="list-inline-item">
+                                              <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
+                                              <p class="mb-2"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
+                                              <span class="font-12 mb-2">Completed by {{ $order->serviceman->name }}</span>
+                                          </li>
+                                      </div>
+                                      <div class="col-12 col-md-2">
+                                        <li class="list-inline-item">
+                                            <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
+                                            <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
+                                            <a href='/home/{{ $order->id }}' class='btn btn-sm col-12 btn-success'>Completed</a><br>
+                                            <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm col-12 btn-warning'>Invoice</a>
+                                        </li>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                @endforeach
+              </div>
+              <div class="col-12">
+                {{ $orders->links() }}
+              </div>
           <!-- End col -->
       </div>
       <!-- End row -->

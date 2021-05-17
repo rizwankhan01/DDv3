@@ -7,7 +7,7 @@
       <div class="row">
           <!-- Start col -->
           <div class="col-lg-12">
-              <div class="card m-b-30">
+              <div class="card m-b-10">
                   <div class="card-header">
                       <div class="widgetbar pull-right">
                           <button class="btn btn-primary-rgba" data-toggle="modal" data-target="#CreateModal"><i class="feather icon-plus mr-2"></i>Create New</button>
@@ -74,8 +74,8 @@
                         <h5 class="card-title">All Colors</h5>
                       @endif
                   </div>
-                  <div class="card-body">
                     @if(!empty($color))
+                      <div class="card-body">
                       <form action="/modelcolors/{{ $color->id }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('put')}}
@@ -158,76 +158,11 @@
                         </div>
                         <div class="col-md-12"><input type="submit" class="btn btn-primary" value="Update" name="pricing"></div>
                       </form>
+                    </div>
                     @else
-                    <h6 class="card-subtitle">You can Create/ Edit/ Delete Colors Here.</h6>
-                      <div class="table-responsive">
-                        @if(session('status'))
-                          <div class="alert alert-success" role="alert">
-                              {{ session('status') }}
-                          </div>
-                        @endif
-                          <table id="datatable-buttons" class="table table-striped table-bordered">
-                              <thead>
-                              <tr>
-                                  <th>#</th>
-                                  <th>Model</th>
-                                  <th>Color Name</th>
-                                  <th>Screen Color</th>
-                                  <th>Basic</th>
-                                  <th>Premium</th>
-                                  <th>Glass</th>
-                                  <th>Preferred</th>
-                                  <th>Image</th>
-                                  <th>Actions</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              @foreach($colors as $color)
-                              <tr>
-                                  <td>{{ $color->id }}</td>
-                                  <td>@if(empty($color->model->brand->name))
-                                     N/A
-                                    @else
-                                      {{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }}
-                                    @endif
-                                  </td>
-                                  <td>{{ $color->name }}</td>
-                                  <td>{{ $color->screen_color }}</td>
-                                  <td>
-                                    @if(!empty($color->pricings->ord_selling_price))
-                                      &#8377; {{ $color->pricings->ord_selling_price }}
-                                    @endif
-                                  </td>
-                                  <td>
-                                    @if(!empty($color->pricings->org_selling_price))
-                                      &#8377; {{ $color->pricings->org_selling_price }}
-                                    @endif
-                                  </td>
-                                  <td>
-                                    &#8377; {{ $color->pricings->glass_price ?? '' }}
-                                  </td>
-                                  <td>
-                                    @if(!empty($color->pricings->preferred_type))
-                                      {{ $color->pricings->preferred_type }}
-                                    @endif
-                                  </td>
-                                  <td><img src='storage/{{ $color->image }}' style="width:50px;height:50px;"></td>
-                                  <td>
-                                    <form action='/modelcolors/{{ $color->id }}' method='post'>
-                                      {{ csrf_field() }}
-                                      {{ method_field('delete') }}
-                                      <a href='/modelcolors/{{ $color->id }}' class='btn btn-sm btn-warning'>Edit</a>
-                                      <!--<input type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');" value='Delete'>-->
-                                    </form>
-                                  </td>
-                              </tr>
-                              @endforeach
-                              </tbody>
-                          </table>
-                      </div>
-                    @endif
-                  </div>
               </div>
+              @livewire('search-all-colors')
+            @endif
           </div>
           <!-- End col -->
       </div>

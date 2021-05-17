@@ -16,7 +16,7 @@ class ClosedController extends Controller
     public function index()
     {
       $orders = orders::where('status',3)
-                      ->get();
+                      ->paginate(10);
       return view('admin.close', compact('orders'));
     }
 
