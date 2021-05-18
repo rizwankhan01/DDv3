@@ -14,10 +14,10 @@
                   <div class="row">
                       <div class="col-12 col-md-3">
                         <li class="media">
-                          @if(empty($customer->profile_picture))
-                            <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="{{ $customer->name }}">
+                          @if(!empty($customer->display_picture))
+                            <img class="mr-3 rounded-circle" src="{{ $customer->display_picture }}" style="width:20%;height:auto;" alt="{{ $customer->name }}">
                           @else
-                            <img class="mr-3 rounded-circle" src="{{ $customer->profile_picture }}" alt="{{ $customer->name }}">
+                            <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="{{ $customer->name }}">
                           @endif
                             <div class="media-body">
                             <h5 class="mt-0 mb-1 font-16"><a href='/customers/{{ $customer->id }}'>{{ $customer->name }}</a><span class="badge badge-warning-inverse float-right font-14">95</span></h5>
