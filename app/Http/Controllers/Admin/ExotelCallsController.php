@@ -219,9 +219,9 @@ class ExotelCallsController extends Controller
           $engagement_url = "https://api.hubapi.com/engagements/v1/engagements?hapikey=".$hs_api_key;
           $data = array(
             "engagement" => array(
-                "active": true,
-                "ownerId": 1,
-                "type": "NOTE"
+                "active" => true,
+                "ownerId"=> 1,
+                "type" => "NOTE"
             ),
             "associations" => array(
               "contactIds" => [$contact_id]

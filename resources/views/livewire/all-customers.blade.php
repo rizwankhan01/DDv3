@@ -12,7 +12,7 @@
           <div class="best-product-slider">
               <div class="best-product-slider-item">
                   <div class="row">
-                      <div class="col-3">
+                      <div class="col-12 col-md-3">
                         <li class="media">
                             <img class="mr-3 rounded-circle" src="../assets\images\users\men.svg" alt="Generic placeholder image">
                             <div class="media-body">
@@ -21,13 +21,13 @@
                             </div>
                         </li>
                       </div>
-                      <div class="col-3">
+                      <div class="col-12 col-md-3">
                           <b><a href='/exotel_calls/{{ $customer->phone_number }}'>{{ $customer->phone_number }}</a></b>
                       </div>
-                      <div class="col-3">
+                      <div class="col-12 col-md-3">
                             <b>Joined {{ $customer->created_at->diffForHumans() }}</b>
                       </div>
-                      <div class="col-3"><b>Web</b></div>
+                      <div class="col-12 col-md-3"><b>Web</b></div>
                   </div>
               </div>
           </div>

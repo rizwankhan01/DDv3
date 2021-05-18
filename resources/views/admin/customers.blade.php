@@ -53,7 +53,7 @@
                       <div class="card m-b-30">
                         <div class="card-body">
                           <div class="table-responsive">
-                            <table class="table table-borderless">
+                            <table id="datatable-buttons" class="table table-borderless">
                                 <thead>
                                 <tr>
                                   <th>ID</th>
@@ -81,7 +81,7 @@
                                       <td>
                                           <figure style="display:flex; align-items:center;">
                                             <img src="../storage/{{ $image }}" class="img-fluid" id="bigimage" alt="{{ $model }} - {{ $color }}" style="max-width:25%;height:auto;">
-                                            <img src="../storage/{{ $image }}" class="img-fluid" id="smallimage" alt="{{ $model }} - {{ $color }}">
+                                            <img src="../storage/{{ $image }}" class="img-fluid" id="smallimage" alt="{{ $model }} - {{ $color }}" style="display:none;max-width:70%;height:auto;">
                                             <figcaption>{{ $model." - ".$color }}<br>
                                               @if($type=='PREMIUM')
                                                 <span class="badge badge-primary-inverse mb-2 text-uppercase">{{ $type }}</span>
