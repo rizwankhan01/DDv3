@@ -13,7 +13,11 @@
                         <div class="card-body">
                             <div class="user-slider text-center">
                                 <div class="user-slider-item">
+                                  @if(!empty($customer->display_picture))
+                                    <img src="{{ $customer->display_picture }}" alt="avatar" style="width:25%;height:auto;" class="rounded-circle mt-3 mb-4">
+                                  @else
                                     <img src="../assets/images/users/men.svg" alt="avatar" style="width:25%;height:auto;" class="rounded-circle mt-3 mb-4">
+                                  @endif
                                     <h5>{{ $customer->title }}. {{ $customer->name }}</h5>
                                     <p>{{ $customer->profession }}</p>
                                     <p>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</p>

@@ -14,7 +14,11 @@
                   <div class="row">
                       <div class="col-12 col-md-3">
                         <li class="media">
-                            <img class="mr-3 rounded-circle" src="../assets\images\users\men.svg" alt="Generic placeholder image">
+                          @if(empty($customer->profile_picture))
+                            <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="{{ $customer->name }}">
+                          @else
+                            <img class="mr-3 rounded-circle" src="{{ $customer->profile_picture }}" alt="{{ $customer->name }}">
+                          @endif
                             <div class="media-body">
                             <h5 class="mt-0 mb-1 font-16"><a href='/customers/{{ $customer->id }}'>{{ $customer->name }}</a><span class="badge badge-warning-inverse float-right font-14">95</span></h5>
                             <p class="mb-0"><a href='mailto:{{ $customer->email }}'>{{ $customer->email }}</a></p>
