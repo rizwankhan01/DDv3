@@ -65,8 +65,23 @@
                                       </div>
                                       <div class="col-6 col-md-2">
                                           <li class="list-inline-item">
-                                              <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
-                                              <p class="mb-2"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
+                                            <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
+                                              <p class="mb-2">
+                                                <?php
+                                                $fdate = date('Y-m-d');
+                                                $tdate = $order->updated_at;
+                                                $datetime1 = new DateTime($fdate);
+                                                $datetime2 = new DateTime($tdate);
+                                                $interval = $datetime1->diff($datetime2);
+                                                $days = $interval->format('%a');
+                                                $warranty = 90-$days;
+                                                ?>
+                                                @if($warranty<=0)
+                                                  Warranty Expired
+                                                @else
+                                                  <b>{{ $warranty }} days</b> left for warranty
+                                                @endif
+                                              </p>
                                               <span class="font-12 mb-2">
                                                 <a href='/serviceman-profile/{{ $order->serviceman->id }}'>
                                                 <img src="storage/{{ $order->serviceman->profile_image }}" style="width:35px;height:auto;border-radius:25px;">
@@ -77,8 +92,12 @@
                                         <li class="list-inline-item">
                                             <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
                                             <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
-                                            <a href='/home/{{ $order->id }}' class='btn btn-sm col-12 btn-success'>Completed</a><br>
-                                            <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm col-12 btn-warning'>Invoice</a>
+                                            <div class="row">
+                                              <div class="col-12">
+                                                <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Completed</a>
+                                                <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm btn-warning'>Invoice</a>
+                                              </div>
+                                            </div>
                                         </li>
                                       </div>
                                   </div>
