@@ -39,7 +39,7 @@
         left: 0; width: 0;
     }
         .irs-bar-edge {
-            position: absolute; display: block;
+            position: absolute; display: none;
             top: 0; left: 0;
         }
 

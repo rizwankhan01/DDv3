@@ -12,10 +12,10 @@
           <div class="best-product-slider">
               <div class="best-product-slider-item">
                   <div class="row">
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-md-6">
                         <li class="media">
                           @if(!empty($customer->display_picture))
-                            <img class="mr-3 rounded-circle" src="{{ $customer->display_picture }}" style="width:20%;height:auto;" alt="{{ $customer->name }}">
+                            <img class="mr-3 rounded-circle" src="{{ $customer->display_picture }}" style="width:10%;height:auto;" alt="{{ $customer->name }}">
                           @else
                             <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="{{ $customer->name }}">
                           @endif
@@ -25,13 +25,13 @@
                             </div>
                         </li>
                       </div>
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-md-2">
                           <b><a href='/exotel_calls/{{ $customer->phone_number }}'>{{ $customer->phone_number }}</a></b>
                       </div>
-                      <div class="col-12 col-md-3">
+                      <div class="col-12 col-md-2">
                             <b>Joined {{ $customer->created_at->diffForHumans() }}</b>
                       </div>
-                      <div class="col-12 col-md-3"><b>Web</b></div>
+                      <div class="col-12 col-md-2"><b>Web</b></div>
                   </div>
               </div>
           </div>
@@ -39,6 +39,14 @@
   </div>
   @endforeach
   <div class="col-12">
-    {{ $customers->links() }}
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="{{$customers->previousPageUrl()}}">Previous</a></li>
+        @for($i=1;$i<=$customers->lastPage();$i++)
+          <li class="page-item"><a class="page-link" href="{{$customers->url($i)}}">{{$i}}</a></li>
+        @endfor
+        <li class="page-item"><a class="page-link" href="{{$customers->nextPageUrl()}}">Next</a></li>
+      </ul>
+    </nav>
   </div>
 </div>

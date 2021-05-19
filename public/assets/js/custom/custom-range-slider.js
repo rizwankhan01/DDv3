@@ -3,7 +3,7 @@
     : Custom - Range Slider js :
 ----------------------------------
 */
-$(function () {    
+$(function () {
     'use strict';
     /* -- Range Slider - Basic -- */
     $("#range-slider-basic").ionRangeSlider();
@@ -125,10 +125,10 @@ $(function () {
     /* -- Range Slider - Max Postfixes -- */
     $("#range-slider-max-postfixes").ionRangeSlider({
         grid: true,
-        min: 18,
-        max: 70,
-        from: 30,
-        prefix: "Age ",
+        min: 10,
+        max: 120,
+        from: 10,
+        postfix: " Minutes",
         max_postfix: "+"
     });
     /* -- Range Slider - Both Decoration -- */
@@ -219,5 +219,5 @@ $(function () {
         hide_min_max: true,
         hide_from_to: false,
         grid: false
-    });        
+    });
 });

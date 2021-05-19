@@ -17,7 +17,7 @@ class AllCustomers extends Component
         return view('livewire.all-customers',[
           'customers' => customers::where('name','like',$searchTerm)
                                   ->orWhere('phone_number','like',$searchTerm)
-                                  ->orWhere('email','like',$searchTerm)->paginate(10)
+                                  ->orWhere('email','like',$searchTerm)->orderby('created_at','desc')->paginate(10)
       ]);
     }
 }

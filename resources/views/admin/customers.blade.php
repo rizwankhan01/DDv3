@@ -1,6 +1,29 @@
 @extends('layouts.dashboard')
 @section('title') Customers | Doctor Display Dashboard @endsection
 @section('contentbar')
+  <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
+        <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
+          <h6>Notes</h6> <a href="javascript:void(0)" id="infobar-settings-close"><i class="feather icon-x"></i></a>
+        </div>
+        <div class="infobar-settings-sidebar-body">
+            <div class="custom-mode-setting">
+                <div class="row align-items-center pb-3">
+                    <div class="col-12">
+                      <form action="" method="post">
+                        <select class="select2-single form-control">
+                          <option value="">Select Type</option>
+                        </select><Br>
+                        <input type="text" id="summernote" name="note"><Br>
+                        Call back time:<Br>
+                        <input id="range-slider-max-postfixes"><br>
+                        <input type="submit" class="btn col-12 btn-lg btn-primary" value="Add">
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infobar-settings-sidebar-overlay"></div>
   <div class="contentbar mt-100">
       <!-- Start row -->
       <div class="row">
@@ -12,25 +35,54 @@
                       <div class="card m-b-30">
                         <div class="card-body">
                             <div class="user-slider text-center">
+                                <div class="button-list">
+                                    <a href="#" class="btn btn-sm btn-primary-rgba font-18"><i class="feather icon-facebook"></i></a>
+                                    <a href="#" class="btn btn-sm btn-info-rgba font-18"><i class="feather icon-twitter"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger-rgba font-18"><i class="feather icon-instagram"></i></a>
+                                </div>
                                 <div class="user-slider-item">
                                   @if(!empty($customer->display_picture))
                                     <img src="{{ $customer->display_picture }}" alt="avatar" style="width:25%;height:auto;" class="rounded-circle mt-3 mb-4">
                                   @else
                                     <img src="../assets/images/users/men.svg" alt="avatar" style="width:25%;height:auto;" class="rounded-circle mt-3 mb-4">
                                   @endif
-                                    <h5>{{ $customer->title }}. {{ $customer->name }}</h5>
-                                    <p>{{ $customer->profession }}</p>
-                                    <p>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</p>
+                                    <h5><a href='#' id="xeditable-title">{{ $customer->title }}</a>. <a href='#' id="xeditable-name">{{ $customer->name }}</a></h5>
+                                    <p><a href="#" id="xeditable-prof">{{ $customer->profession }}</a></p>
                                 </div>
                             </div>
                             <div class="button-list text-center">
                               <a href='/exotel_calls/{{ $customer->phone_number }}'><button type="button" class="btn btn-round btn-primary-rgba"><i class="feather icon-phone"></i></button></a>
                               <a href='mailto:{{ $customer->email }}'><button type="button" class="btn btn-round btn-secondary-rgba"><i class="feather icon-mail"></i></button></a>
-                              <button type="button" data-toggle="modal" data-target="#notesModal" class="btn btn-round btn-danger-rgba"><i class="feather icon-plus"></i></button>
+                              <button type="button" href="javascript:void(0)" id="infobar-settings-open" class="btn btn-round btn-danger-rgba"><i class="feather icon-plus"></i></button>
                               <button type="button" class="btn btn-round btn-warning-rgba"><i class="feather icon-message-square"></i></button>
                               <a target='_blank' href="https://api.whatsapp.com/send?phone=91{{ $customer->phone_number }}&text=Hello%2C%20{{ $customer->name}}! Hope you're doing good today."><button type="button" class="btn btn-round btn-success-rgba"><i class="fa fa-whatsapp"></i></button></a>
-                            </div><hr>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            </div>
+                            <hr>
+                            <table class="table table-bordered">
+                              <tr>
+                                <td><a href="#" id="xeditable-username">{{ $customer->email }}</a></td>
+                                <td><a href="#" id="xeditable-username2">{{ $customer->phone_number }}</a></td>
+                              </tr>
+                              <tr>
+                                <td><a href="#" id="xeditable-dob">{{ $customer->date_of_birth }}</a></td>
+                                <td><a href="#" id="xeditable-lang">{{ $customer->language }}</a></td>
+                              </tr>
+                            </table><hr>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="address-box">
+                                    <div class="card border m-b-30">
+                                        <div class="card-body">
+                                            <p>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="button-list">
+                                                <button type="button" class="btn btn-round btn-success-rgba mb-1"><i class="feather icon-edit-2"></i></button>
+                                                <button type="button" class="pull-right btn btn-rounded btn-primary-rgba font-16 mb-0"><i class="feather icon-home"></i> {{ $address->address_type }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                          </div>
                             <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -57,7 +109,7 @@
                       <div class="card m-b-30">
                         <div class="card-body">
                           <div class="table-responsive">
-                            <table id="datatable-buttons" class="table table-borderless">
+                            <table class="table table-borderless table-responsive">
                                 <thead>
                                 <tr>
                                   <th>ID</th>
@@ -117,59 +169,79 @@
                         </div>
                       </div>
                       <div class="card m-b-30">
-                          <div class="card-header">
-                              <div class="row align-items-center">
-                                  <div class="col-7">
-                                      <h5 class="card-title mb-0">Recent Activity</h5>
+                      <div class="card-body">
+                          <ul class="nav nav-tabs custom-tab-line mb-3" id="defaultTabLine" role="tablist">
+                              <li class="nav-item">
+                                  <a class="nav-link active" id="home-tab-line" data-toggle="tab" href="#home-line" role="tab" aria-controls="home-line" aria-selected="true"><i class="feather icon-home mr-2"></i>All</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="profile-tab-line" data-toggle="tab" href="#profile-line" role="tab" aria-controls="profile-line" aria-selected="false"><i class="feather icon-phone mr-2"></i>Calls</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="contact-tab-line" data-toggle="tab" href="#contact-line" role="tab" aria-controls="contact-line" aria-selected="false"><i class="feather icon-mail mr-2"></i>Emails</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="web-tab-line" data-toggle="tab" href="#web-line" role="tab" aria-controls="web-line" aria-selected="false"><i class="feather icon-globe mr-2"></i>Web Interaction</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" id="notes-tab-line" data-toggle="tab" href="#notes-line" role="tab" aria-controls="notes-line" aria-selected="false"><i class="feather icon-file mr-2"></i>Notes</a>
+                              </li>
+                          </ul>
+                          <div class="tab-content" id="defaultTabContentLine">
+                              <div class="tab-pane fade show active" id="home-line" role="tabpanel" aria-labelledby="home-tab-line">
+                                <div class="accordion accordion-light" id="accordionwithlight">
+                                  <div class="card">
+                                    <div class="card-header" id="headingOnelight">
+                                      <h3 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOnelight" aria-expanded="true" aria-controls="collapseOnelight"><i class="feather icon-circle mr-2"></i>First title goes here</button>
+                                      </h3>
+                                    </div>
+                                    <div id="collapseOnelight" class="collapse show" aria-labelledby="headingOnelight" data-parent="#accordionwithlight">
+                                      <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                      </div>
+                                    </div>
+                                    <small style="padding-left:35px;">Just Now by Sooraj</small>
                                   </div>
-                                  <div class="col-5">
-                                      <button class="btn btn-secondary-rgba float-right font-13">View All</button>
+                                  <div class="card">
+                                    <div class="card-header" id="headingTwolight">
+                                      <h3 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwolight" aria-expanded="false" aria-controls="collapseTwolight"><i class="feather icon-circle mr-2"></i>Second title goes here</button>
+                                      </h3>
+                                    </div>
+                                    <div id="collapseTwolight" class="collapse" aria-labelledby="headingTwolight" data-parent="#accordionwithlight">
+                                      <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                      </div>
+                                    </div>
+                                    <small style="padding-left:35px;">Just Now by Sooraj</small>
                                   </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingThreelight">
+                                      <h3 class="mb-0">
+                                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThreelight" aria-expanded="false" aria-controls="collapseThreelight"><i class="feather icon-circle mr-2"></i>Third title goes here</button>
+                                      </h3>
+                                    </div>
+                                    <div id="collapseThreelight" class="collapse" aria-labelledby="headingThreelight" data-parent="#accordionwithlight">
+                                      <div class="card-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                      </div>
+                                    </div>
+                                    <small style="padding-left:35px;">Just Now by Sooraj</small>
+                                  </div>
+                                </div>
                               </div>
-                          </div>
-                          <div class="card-body">
-                              <div class="activities-history">
-                                  <div class="activities-history-list">
-                                      <div class="activities-history-item">
-                                          <h6>Finished prototyping Project X.</h6>
-                                          <p class="mb-0">Just Now</p>
-                                      </div>
-                                  </div>
-                                  <div class="activities-history-list">
-                                      <div class="activities-history-item">
-                                          <h6>Received confirmation from marketing manager.</h6>
-                                          <p class="mb-0">11:00 AM - 3 Oct, 2019</p>
-                                      </div>
-                                  </div>
-                                  <div class="activities-history-list">
-                                      <div class="activities-history-item">
-                                          <h6>Zoe Updated quick start guide for development process.</h6>
-                                          <p class="mb-0">09:25 PM - 27 Sep, 2019</p>
-                                      </div>
-                                  </div>
+                              <div class="tab-pane fade" id="profile-line" role="tabpanel" aria-labelledby="profile-tab-line">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                              </div>
+                              <div class="tab-pane fade" id="contact-line" role="tabpanel" aria-labelledby="contact-tab-line">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                               </div>
                           </div>
                       </div>
+                      </div>
                   </div>
                   </div>
-                    <!--<div class="card m-b-30" style="background:#171C2A;">
-                        <div class="card-header row">
-                            <div class="col-md-10">
-                            <ul class="vertical-menu">
-                              <li><a href='#'><i class="fa fa-user-circle"></i> <span>{{ $customer->name }}</span></a></li>
-                              <li><a href='exotel_calls/{{ $customer->phone_number }}'><i class="fa fa-phone"></i> <span>{{ $customer->phone_number }}</span></a></li>
-                              <li><a href='mailto:{{ $customer->email }}'><i class="fa fa-envelope"></i> <span>{{ $customer->email }}</span></a></li>
-                              @if(!empty($address->address))
-                              <li><a href="https://maps.google.com/?q={{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}">
-                                <i class="fa fa-map-marker"></i>{{ $address->address }}, {{ $address->area }}, {{ $address->city }} - {{ $address->pincode }}</a></li>
-                              @endif
-                            </ul>
-                            </div>
-                            <div class="col-md-2">
-                              <span class="btn btn-lg btn-warning"><i class="fa fa-clock"></i> <h1 style="color:#fff;">{{ count($orders) }}</h1> Times Ordered</span>
-                            </div>
-                        </div>
-                      </div>-->
                   @else
                   @livewire('all-customers')
                 @endif
@@ -181,6 +253,12 @@
 @endsection
 
 @section('scripts')
+  <script>
+      $('#summernote').summernote({
+        tabsize: 2,
+        height: 100
+      });
+  </script>
   <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
   <script src="{{ asset('assets\js\popper.min.js') }}"></script>
   <script src="{{ asset('assets\js\bootstrap.min.js') }}"></script>
@@ -207,6 +285,13 @@
 
   <script src="{{ asset('assets\plugins\pnotify\js\pnotify.custom.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\sweet-alert2\sweetalert2.min.js') }}"></script>
+  <!-- Slider-->
+  <script src="{{ asset('assets\plugins\ion-rangeSlider\ion.rangeSlider.min.js') }}"></script>
+  <script src="{{ asset('assets\js\custom\custom-range-slider.js') }}"></script>
+  <!-- X-Editable -->
+  <script src="{{ asset('assets\plugins\bootstrap-xeditable\js\bootstrap-editable.min.js') }}"></script>
+  <script src="{{ asset('assets\js\custom\custom-form-xeditable.js') }}"></script>
+
   <!-- Core js -->
   <script src="{{ asset('assets\js\core.js') }}"></script>
 @endsection
