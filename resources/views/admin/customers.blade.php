@@ -172,7 +172,7 @@
                       <div class="card-body">
                           <ul class="nav nav-tabs custom-tab-line mb-3" id="defaultTabLine" role="tablist">
                               <li class="nav-item">
-                                  <a class="nav-link active" id="home-tab-line" data-toggle="tab" href="#home-line" role="tab" aria-controls="home-line" aria-selected="true"><i class="feather icon-home mr-2"></i>All</a>
+                                  <a class="nav-link" id="home-tab-line" data-toggle="tab" href="#home-line" role="tab" aria-controls="home-line" aria-selected="true"><i class="feather icon-home mr-2"></i>All</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" id="profile-tab-line" data-toggle="tab" href="#profile-line" role="tab" aria-controls="profile-line" aria-selected="false"><i class="feather icon-phone mr-2"></i>Calls</a>
@@ -181,14 +181,14 @@
                                   <a class="nav-link" id="contact-tab-line" data-toggle="tab" href="#contact-line" role="tab" aria-controls="contact-line" aria-selected="false"><i class="feather icon-mail mr-2"></i>Emails</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" id="web-tab-line" data-toggle="tab" href="#web-line" role="tab" aria-controls="web-line" aria-selected="false"><i class="feather icon-globe mr-2"></i>Web Interaction</a>
+                                  <a class="nav-link active" id="web-tab-line" data-toggle="tab" href="#web-line" role="tab" aria-controls="web-line" aria-selected="false"><i class="feather icon-globe mr-2"></i>Web Interaction</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" id="notes-tab-line" data-toggle="tab" href="#notes-line" role="tab" aria-controls="notes-line" aria-selected="false"><i class="feather icon-file mr-2"></i>Notes</a>
                               </li>
                           </ul>
                           <div class="tab-content" id="defaultTabContentLine">
-                              <div class="tab-pane fade show active" id="home-line" role="tabpanel" aria-labelledby="home-tab-line">
+                              <div class="tab-pane fade" id="home-line" role="tabpanel" aria-labelledby="home-tab-line">
                                 <div class="accordion accordion-light" id="accordionwithlight">
                                   <div class="card">
                                     <div class="card-header" id="headingOnelight">
@@ -236,6 +236,30 @@
                               </div>
                               <div class="tab-pane fade" id="contact-line" role="tabpanel" aria-labelledby="contact-tab-line">
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                              </div>
+                              <div class="tab-pane fade show active" id="web-line" role="tabpanel" aria-labelledby="web-line">
+                                <div class="activities-history">
+                                @foreach($enquiries as $enquiry)
+                                  <div class="activities-history-list">
+                                      <div class="activities-history-item">
+                                          <h6>
+                                            @if(empty($enquiry->url))
+                                              Enquired for <u>{{ $enquiry->model_name }}</u>
+                                            @else
+                                              Enquired for <u><a href='/{{ $enquiry->url }}' target='_blank'>{{ $enquiry->model_name }}</a></u>
+                                            @endif
+                                          </h6>
+                                          <p class="mb-0">
+                                              {{ $enquiry->created_at->diffForHumans() }}
+                                              @if(empty($enquiry->status))
+                                                <a href='/enquiry/{{ $enquiry->id }}' class='badge badge-warning'>Update Status</a>
+                                              @else
+                                                <a href="/enquiry/{{ $enquiry->id }}" class="badge badge-default">{{ $enquiry->status }}</a>
+                                              @endif
+                                      </div>
+                                  </div>
+                                @endforeach
+                              </div>
                               </div>
                           </div>
                       </div>

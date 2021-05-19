@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\customers;
 use App\Models\addresses;
 use App\Models\orders;
+use App\Models\enquiry;
 
 class CustomerController extends Controller
 {
@@ -53,7 +54,8 @@ class CustomerController extends Controller
         $customer   = customers::findOrFail($id);
         $address    = addresses::where('customer_id',$id)->first();
         $orders     = orders::where('customer_id',$id)->get();
-        return view('admin.customers',compact('customer','address','orders'));
+        $enquiries  = enquiry::where('customer_id',$id)->orderby('created_at','desc')->get();
+        return view('admin.customers',compact('customer','address','orders','enquiries'));
     }
 
     /**
