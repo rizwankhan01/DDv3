@@ -58,7 +58,7 @@
                                       </div>
                                       <div class="col-6 col-md-2">
                                         <li class="list-inline-item">
-                                            <h4 class="mb-2 font-16">{{ $order->customer->name }}</h4>
+                                            <h4 class="mb-2 font-16"><a href='/customers/{{ $order->customer_id }}'>{{ $order->customer->name }}</a></h4>
                                             <p class="mb-2"><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class='fa fa-phone'></i> Call</a></p>
                                             <span class="font-12 mb-2"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
                                         </li>

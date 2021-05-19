@@ -37,7 +37,7 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   <input type='text' class='form-control'  onkeypress="return isNumberKey(event)"
   minlength="6" maxlength="6" name='pincode' placeholder="Pincode" value="{{ $address->pincode }}"><br>
   Address Type:<br>
-  <select class='form-control' name='address_type'>
+  <select class='form-control' name='address_type' required>
   <option value=''>Select Address Type</option>
   <option value='Office' value='Office'>Office</option>
   <option value='Home' value='Home'>Home</option>

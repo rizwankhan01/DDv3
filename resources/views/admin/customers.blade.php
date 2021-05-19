@@ -68,6 +68,7 @@
                                 <td><a href="#" id="xeditable-lang">{{ $customer->language }}</a></td>
                               </tr>
                             </table><hr>
+                            @if(!empty($address->id))
                             <div class="col-lg-12 col-xl-6">
                                 <div class="address-box">
                                     <div class="card border m-b-30">
@@ -83,6 +84,7 @@
                                     </div>
                                 </div>
                             </div>
+                          @endif
                          </div>
                             <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">

@@ -7,7 +7,7 @@
     </div>
   </div>
   @foreach($customers as $customer)
-  <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;" onclick="window.location.replace('/customers/{{ $customer->id }}')">
+  <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;" onclick="window.open('/customers/{{ $customer->id }}','_self')">
       <div class="card-body">
           <div class="best-product-slider">
               <div class="best-product-slider-item">
