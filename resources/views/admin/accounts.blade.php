@@ -1,6 +1,5 @@
 @extends('layouts.dashboard')
 @section('title') Accounts | Doctor Display Dashboard @endsection
-
 @section('contentbar')
   <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
         <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
@@ -10,6 +9,7 @@
             <div class="custom-mode-setting">
                 <div class="row align-items-center pb-3">
                       <div class="col-md-12 col-lg-12 col-xl-12">
+                        @if(!empty($user->id))
                           <form action="/accounts/{{ $user->id }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             {{ method_field('put') }}
@@ -65,7 +65,9 @@
                             </div>
                             <div class="form-group">
                               <label>Profile Picture</label>
-                              <img src="../storage/{{ $user->profile_image }}" style="width:100px; height:auto;">
+                              <div class="circular">
+                                <img src="../storage/{{ $user->profile_image }}" style="width:100px; height:auto;">
+                              </div>
                               <input type='file' class='form-control' name='profile_picture' accept=".jpg, .jpeg, .png">
                             </div>
                             <div class="form-group">
@@ -81,6 +83,7 @@
                             <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                           </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -101,11 +104,13 @@
                                       <a href="javascript:void(0)" id="infobar-settings-open"><i class="fa fa-pencil"></i></a>
                                         <div class="row align-items-center">
                                             <div class="col-12 col-md-2">
+                                              <div class="circular">
                                               @if(!empty($user->profile_image))
-                                                <img src="storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
+                                                <img src="../storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
                                               @else
                                                 <img src="\assets\images\users\men.svg" class="img-fluid" style="width:50%;">
                                               @endif
+                                              </div>
                                             </div>
                                             <div class="col-12 col-md-10">
                                                 <h5 class="card-title mb-1">{{ $user->name }}</h5>

@@ -84,7 +84,9 @@
                                               </p>
                                               <span class="font-12 mb-2">
                                                 <a href='/serviceman-profile/{{ $order->serviceman->id }}'>
-                                                <img src="storage/{{ $order->serviceman->profile_image }}" style="width:35px;height:auto;border-radius:25px;">
+                                                <div class="circular2">
+                                                  <img src="storage/{{ $order->serviceman->profile_image }}" style="width:100%;height:auto">
+                                                </div>
                                                 &nbsp;&nbsp;{{ $order->serviceman->name }}</a></span>
                                           </li>
                                       </div>

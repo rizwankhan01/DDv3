@@ -98,11 +98,13 @@
                   <div class="parents-slider-item">
                       <div class="row align-items-center">
                           <div class="col-12 col-md-4">
-                            @if(!empty($user->profile_image))
-                              <img src="storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
-                            @else
-                              <img src="\assets\images\users\men.svg" class="img-fluid" style="width:100%;">
-                            @endif
+                            <div class="circular">
+                              @if(!empty($user->profile_image))
+                                <img src="storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
+                              @else
+                                <img src="\assets\images\users\men.svg" class="img-fluid" style="width:100%;">
+                              @endif
+                            </div>
                           </div>
                           <div class="col-12 col-md-8">
                               <h5 class="card-title mb-1">{{ $user->name }}</h5>
