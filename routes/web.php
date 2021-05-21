@@ -108,6 +108,11 @@ Route::group(['middleware' => 'auth'], function(){
   });
 });
 
+// New User Interfaces
+Route::get('/newenq', function(){ return view('admin.newenq'); });
+Route::get('/newjobs', function(){ return view('admin.newjobs'); });
+Route::get('/newallcandidates', function(){ return view('admin.newallcandidates'); });
+
 
 
 Route::get('/{id}','HomePageController@show');

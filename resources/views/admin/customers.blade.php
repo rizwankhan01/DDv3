@@ -78,7 +78,14 @@
                                         <div class="card-footer">
                                             <div class="button-list">
                                                 <button type="button" class="btn btn-round btn-success-rgba mb-1"><i class="feather icon-edit-2"></i></button>
-                                                <button type="button" class="pull-right btn btn-rounded btn-primary-rgba font-16 mb-0"><i class="feather icon-home"></i> {{ $address->address_type }}</button>
+                                                <button type="button" class="pull-right btn btn-rounded btn-primary-rgba font-16 mb-0">
+                                                  @if($address->address_type=='Office')
+                                                    <i class="feather icon-briefcase"></i>
+                                                  @else
+                                                    <i class="feather icon-home"></i>
+                                                  @endif
+                                                  {{ $address->address_type }}
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

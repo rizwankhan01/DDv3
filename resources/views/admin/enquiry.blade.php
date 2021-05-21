@@ -76,11 +76,6 @@
                   <div class="card-body">
                     <h6 class="card-subtitle">You can moderate Enquiries Here.</h6>
                       <div class="table-responsive">
-                        @if(session('status'))
-                          <div class="alert alert-success" role="alert">
-                              {{ session('status') }}
-                          </div>
-                        @endif
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
