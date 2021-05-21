@@ -123,7 +123,7 @@
                                                   </span>
                                                   <span class="pull-right">
                                                       <i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->city }}<br><br>
-                                                      Employee since <a href='#'>May 2019</a><br>
+                                                      Employee since <a href='#'>{{ date('F Y', strtotime($user->created_at)) }}</a><br>
                                                   </span>
                                                 </p>
                                             </div>

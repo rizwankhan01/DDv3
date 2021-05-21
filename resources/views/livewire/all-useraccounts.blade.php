@@ -100,7 +100,7 @@
                           <div class="col-12 col-md-4">
                             <div class="circular">
                               @if(!empty($user->profile_image))
-                                <img src="storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
+                                <img src="../storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
                               @else
                                 <img src="\assets\images\users\men.svg" class="img-fluid" style="width:100%;">
                               @endif
@@ -123,7 +123,7 @@
           <div class="card-footer">
             <div class="row">
               <div class="col-md-6 mb-0 font-14 font-italic">
-                Employee since <a href='#'>May 2019</a>
+                Employee since <a href='#'>{{ date('F Y', strtotime($user->created_at)) }}</a>
               </div>
               <div class="col-md-6">
                 <span class="pull-right"><a href='/accounts/{{ $user->id }}' class='btn btn-sm btn-secondary'>See All</a></span>
