@@ -34650,11 +34650,14 @@ table.focus-on tfoot tr.focused td {
 
 .appointment-widget .bg-icon {
   margin-bottom: 0;
-  text-align: right;
-  font-size: 80px;
-  line-height: 80px;
+  font-size: 30px;
   color: #0080ff;
   opacity: 0.2;
+}
+
+.text-inside-icon {
+  font-size:25px;
+  margin-top:10px;
 }
 
 .blog-slider i {

@@ -123,7 +123,7 @@
           <div class="card-footer">
             <div class="row">
               <div class="col-md-6 mb-0 font-14 font-italic">
-                Employee since <a href='#'>{{ date('F Y', strtotime($user->created_at)) }}</a>
+                Employee since <a href='#'>{{ date('F Y', strtotime($user->date_of_join)) }}</a>
               </div>
               <div class="col-md-6">
                 <span class="pull-right"><a href='/accounts/{{ $user->id }}' class='btn btn-sm btn-secondary'>See All</a></span>

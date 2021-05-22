@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.hr')
 @section('title') All Candidates for Lead Technician | Doctor Display Dashboard @endsection
 
 @section('contentbar')

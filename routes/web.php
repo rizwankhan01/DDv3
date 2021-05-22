@@ -112,6 +112,11 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('/newenq', function(){ return view('admin.newenq'); });
 Route::get('/newjobs', function(){ return view('admin.newjobs'); });
 Route::get('/newallcandidates', function(){ return view('admin.newallcandidates'); });
+Route::get('/newleaves', function(){ return view('admin.newleaves'); });
+Route::get('/newholiday', function(){ return view('admin.newholiday'); });
+Route::get('/newinterviews', function(){ return view('admin.newinterviews'); });
+Route::get('/newsalary', function(){ return view('admin.newsalary'); });
+Route::get('/newattendance', function(){ return view('admin.newattendance'); });
 
 
 
