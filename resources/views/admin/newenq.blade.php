@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.crm')
 @section('title') Enquiry | Doctor Display Dashboard @endsection
 
 @section('contentbar')

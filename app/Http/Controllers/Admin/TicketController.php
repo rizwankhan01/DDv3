@@ -87,6 +87,8 @@ class TicketController extends Controller
         $ticket->assigned_to  = $request->input('serviceman_id');
         $ticket->r_stock_dealer = $request->input('dealer_id');
         $ticket->r_stock_amount = $request->input('stock_amount');
+        $ticket->status       = $request->input('status');
+        $ticket->date_close = date('Y-m-d');
         $ticket->update();
 
         return redirect('/tickets');
