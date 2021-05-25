@@ -28,7 +28,7 @@ class TicketsView extends Component
       }else{
         $expandTicket = '';
       }
-        $tickets = tickets::all();
+        $tickets = tickets::orderby('id','desc')->get();
         $smen   = user::where('user_type','Service Man')->get();
         $dealers = dealers::all();
 

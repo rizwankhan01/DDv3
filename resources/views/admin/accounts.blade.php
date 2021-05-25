@@ -117,14 +117,14 @@
                                                 <p class="mb-0 font-14">{{ $user->user_type }}</p>
                                                 <p class="mb-4 badge badge-success">Operations</p>
                                                 <p>
-                                                  <span class="pull-left">
-                                                    <i class="feather icon-mail"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->email }}<br><br>
-                                                    <i class="feather icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->primary_phone }}<br>
-                                                  </span>
-                                                  <span class="pull-right">
-                                                      <i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->city }}<br><br>
-                                                      Employee since <a href='#'>{{ date('F Y', strtotime($user->date_of_join)) }}</a><br>
-                                                  </span>
+                                                  <div class="pull-left">
+                                                    <p><i class="feather icon-mail"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->email }}</p>
+                                                    <p><i class="feather icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->primary_phone }}</p>
+                                                  </div>
+                                                  <div class="pull-right">
+                                                      <p><i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->city }}</p>
+                                                      <p>Employee since <a href='#'>{{ date('F Y', strtotime($user->date_of_join)) }}</a></p>
+                                                  </div>
                                                 </p>
                                             </div>
                                         </div>
@@ -148,10 +148,94 @@
                                   <li class="nav-item">
                                       <a class="nav-link" id="documents-tab-line" data-toggle="tab" href="#documents-line" role="tab" aria-controls="documents-line" aria-selected="false"><i class="feather icon-file mr-2"></i>Documents</a>
                                   </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" id="bank-tab-line" data-toggle="tab" href="#bank-line" role="tab" aria-controls="bank-line" aria-selected="false"><i class="fa fa-bank mr-2"></i>Banking</a>
+                                  </li>
                               </ul>
                               <div class="tab-content" id="defaultTabContentLine">
                                   <div class="tab-pane fade show active" id="home-line" role="tabpanel" aria-labelledby="home-tab-line">
-                                  </div><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <h6 class="btn btn-info-rgba">Personal</h6>
+                                      <table class="table table-borderless table-responsive">
+                                        <tr>
+                                          <th>Gender</th>
+                                          <td>{{ $user->gender }}</td>
+                                          <th>DOB</th>
+                                          <td>{{ $user->date_of_birth }}</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Blood Group</th>
+                                          <td>O +ve</td>
+                                          <th>Nationality</th>
+                                          <td>Indian</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Mother Tongue</th>
+                                          <td>Urdu</td>
+                                          <th>Religion</th>
+                                          <td>Satanist</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Languages Known</th>
+                                          <td><span class="badge badge-primary">Urdu</span> <span class="badge badge-success">English</span> <span class="badge badge-secondary">Tamil</span></td>
+                                        </tr>
+                                      </table><hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <h6 class="btn btn-info-rgba">Contact</h6>
+                                      <table class="table table-borderless table-responsive">
+                                        <tr>
+                                          <th>Address</th>
+                                          <td>{{ $user->address }}</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Secondary Contact Number</th>
+                                          <td>{{ $user->secondary_phone }}</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Emergency Contact</th>
+                                          <td>Name (Relation) - 9874563210</td>
+                                        </tr>
+                                      </table><hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <h6 class="btn btn-info-rgba">Dependents</h6>
+                                      <table class="table table-borderless table-responsive">
+                                        <tr>
+                                          <th>Mother</th>
+                                          <td>Divya Chauhan</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Child</th>
+                                          <td>Raj Chauhan</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Spouse</th>
+                                          <td>Shreya Chauhan</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Nominee</th>
+                                          <td>Father</td>
+                                          <td>Father Chauhan</td>
+                                        </tr>
+                                      </table><hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <h6 class="btn btn-info-rgba">Education</h6>
+                                      <table class="table table-borderless table-responsive">
+                                        <tr>
+                                          <th>School</th>
+                                          <td>PSBB School</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Course</th>
+                                          <td>Engineering, Panimalar College</td>
+                                        </tr>
+                                      </table><hr>
+                                    </div>
+                                  </div>
+                                  </div>
                                   <div class="tab-pane fade" id="profile-line" role="tabpanel" aria-labelledby="profile-tab-line">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                   </div>
@@ -163,6 +247,34 @@
                                   </div>
                                   <div class="tab-pane fade" id="documents-line" role="tabpanel" aria-labelledby="documents-tab-line">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                  </div>
+                                  <div class="tab-pane fade" id="bank-line" role="tabpanel" aria-labelledby="bank-tab-line">
+                                    <div class="col-md-12 m-b-20">
+                                      <img src="https://www.unionbankofindia.co.in/UBI_IFRAME/image/new_bot/ubi_icon.png" style="width:6%;">
+                                      <h6>Union Bank of India</h6><span class="badge badge-success-inverse">Verified <i class="feather icon-check-circle"></i></span>
+                                      <table class="table table-borderless table-responsive">
+                                        <tr>
+                                          <th>IFSC</th>
+                                          <td>UBOIB79000555</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Name</th>
+                                          <td>Abhimanyu Rana</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Acc. No.</th>
+                                          <td>05879654202xxxx</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Branch</th>
+                                          <td>Sector 40, Gurgram</td>
+                                        </tr>
+                                        <tr>
+                                          <th>Pan Number</th>
+                                          <td>CBXM9909X</td>
+                                        </tr>
+                                      </table>
+                                    </div>
                                   </div>
                               </div>
                             </div>
