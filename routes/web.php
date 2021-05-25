@@ -120,6 +120,8 @@ Route::get('/newattendance', function(){ return view('admin.newattendance'); });
 //CRM Users
 Route::get('/newenq', function(){ return view('admin.newenq'); });
 Route::get('/newmail', function(){ return view('admin.newmail'); });
+//WAREHOUSE Users
+Route::get('/newstockrequest', function(){ return view('admin.newstockrequest'); });
 
 
 Route::get('/{id}','HomePageController@show');

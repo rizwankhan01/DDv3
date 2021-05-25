@@ -40,7 +40,7 @@
                           <span class="badge badge-warning-inverse mb-2 text-uppercase">Order ID: #{{ $ticket->order_id }}</span><br>
                           <small>Created {{ $ticket->created_at->diffForHumans() }}</small>
                         </div>
-                        <div class="col-6 col-md-3">
+                        <div class="col-6 col-md-2">
                           <span class="font-12">
                               <span><i class='fa fa-map-marker'></i> {{ $ticket->order->address->area }}</span>
                           </span>
@@ -48,7 +48,7 @@
                           <a href='/exotel_calls/{{ $ticket->order->customer->phone_number }}' class="badge badge-success mb-2"><i class='fa fa-phone'></i> Call</a><br>
                           <small>Stock From: <a href='/dealer-profile/{{ $ticket->order->dealer->id }}'>{{ $ticket->order->dealer->dealer_name }}</a></small>
                         </div>
-                        <div class="col-6 col-md-2">
+                        <div class="col-6 col-md-3">
                           <span class="font-12">
                               <span><i class="feather icon-calendar"></i> {{ date('d M, Y', strtotime($ticket->order->slot_date)) }}</span>
                           </span><br>
