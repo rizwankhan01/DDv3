@@ -67,11 +67,17 @@
     <li><a href="/customers">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Customers</span>
     </a></li>
-    <li><a href="#">
+    <li><a href="/home">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>My Orders</span>
     </a></li>
-    <li><a href="#">
+    <li><a href="/neworder">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>New Order</span>
+    </a></li>
+    <li><a href="/modelcolors">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Stocks & Colors</span>
+    </a></li>
+    <li><a href="/coupons">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid"><span>Coupons</span>
     </a></li>
     <li><a href="#">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Calendar View</span>

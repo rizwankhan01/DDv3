@@ -9,11 +9,17 @@
           <div class="chat-list">
               <div class="chat-search">
                   <form class="row">
-                      <div class="input-group col-md-8">
+                      <div class="input-group col-md-4">
                         <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon3">
                         <div class="input-group-append">
                           <button class="btn" type="submit" id="button-addon3"><i class="feather icon-search"></i></button>
                         </div>
+                      </div>
+                      <div class="input-group col-md-4">
+                        <select class="select2-single form-control">
+                          <option value="">Chennai</option>
+                          <option value="">Bangalore</option>
+                        </select>
                       </div>
                       <div class="input-group col-md-4">
                       <select class="select2-single form-control">
@@ -69,7 +75,7 @@
                               <a href='/exotel_calls/9876543210'><i class="feather icon-phone"></i> 9874563210</a><br>
                               <a href='#'><i class="feather icon-map-pin"></i> Chennai</a>
                             </div>
-                            <h5 class="font-18">Amy Adams <span class="badge badge-success">75</span></h5>
+                            <h5 class="font-18"><a href='#'>Amy Adams</a> <span class="badge badge-success">75</span></h5>
                             <div class="stars stars-example-fontawesome">
                                     <select id="rating-fontawesome" name="rating" autocomplete="off">
                                         <option value="1">1</option>
@@ -109,37 +115,64 @@
                   <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
                 </div>
               </form>
-              <form action="/enquiry/" method="post" class='row' id="enq">
-                <p class="m-b-20 col-12">Model enquired: Apple iPhone 6</p>
-                {{ csrf_field() }}
-                {{ method_field('put') }}
-                <div class='col-md-6'>
-                  <input type='text' class='form-control' name='customer_name' value='' placeholder='Customer Name'><br>
-                </div>
-                <div class='col-md-6'>
-                <input type='text' class='form-control' name='locality' value='' placeholder='Locality'><br>
-                </div>
-                <input type='hidden' name='customer_id' value=''>
-                <div class='col-md-6'>
-                  Follow Up Date:
-                  <input type="date" class="form-control" name="fdate" value="" min="{{ date('Y-m-d') }}"><br>
-                </div>
-                <div class='col-md-6'>
-                  <select class="form-control" name="status">
-                    <option value="">Select Reason</option>
-                    <option value="Call Back">Call Back</option>
-                    <option value="Duplicate">Duplicate</option>
-                    <option value="Not Interested">Not Interested</option>
-                    <option value="Converted">Converted</option>
-                    <option value="Stock Unavailable">Stock Unavailable</option>
-                  </select><br>
-                </div>
-                <div class='col-md-12'>
-                  <textarea class='form-control' name='notes' placeholder='Notes'></textarea><br>
-                </div>
-                <div class='col-md-12'>
-                  <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
-                </div>
+                  <a href="" class="btn btn-sm btn-success-rgba pull-right"><i class="fa fa-whatsapp"></i> Send Link</a>
+                  <div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
+                  v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
+                  <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="CreateModalLabel">Price History of Apple iPhone 6 - Black</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="chart"></div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                <p class="m-b-20 col-12"><b>Model enquired:</b> <br><a class="m-b-20" href='#'>Apple iPhone 6 - Black</a><br>
+                <span class="badge badge-success-inverse">Basic - &#8377; 1500</span>
+                <span class="badge badge-primary-inverse">Premium - &#8377; 4500</span>
+                <span class="badge badge-warning-inverse">Glass - &#8377; 1000</span>
+                <a href="" class="badge badge-secondary-inverse pull-right" data-toggle="modal" data-target="#CreateModal">See Price History</a>
+                </p>
+                <form action="/enquiry/" method="post" id="enq">
+                  {{ csrf_field() }}
+                  {{ method_field('put') }}
+                  <div class="row">
+                    <div class='col-md-6'>
+                      <input type='text' class='form-control' name='customer_name' value='' placeholder='Customer Name'><br>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="number" class="form-control" name="phone_number" value='' placeholder="Phone Number"><br>
+                    </div>
+                    <div class='col-md-6'>
+                      <input type='text' class='form-control' name='locality' value='' placeholder='Locality'><br>
+                    </div>
+                    <input type='hidden' name='customer_id' value=''>
+                    <div class='col-md-6'>
+                      Follow Up Date:
+                      <input type="date" class="form-control" name="fdate" value="" min="{{ date('Y-m-d') }}"><br>
+                    </div>
+                    <div class='col-md-12'>
+                      <select class="form-control" name="status">
+                        <option value="">Select Reason</option>
+                        <option value="Call Back">Call Back</option>
+                        <option value="Duplicate">Duplicate</option>
+                        <option value="Not Interested">Not Interested</option>
+                        <option value="Converted">Converted</option>
+                        <option value="Stock Unavailable">Stock Unavailable</option>
+                      </select><br>
+                    </div>
+                    <div class='col-md-12'>
+                      <textarea class='form-control' name='notes' placeholder='Notes'></textarea><br>
+                    </div>
+                    <div class='col-md-12'>
+                      <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
+                    </div>
+                  </div>
               </form>
             </div>
         </div>
@@ -163,6 +196,44 @@
       }
   }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+  var options = {
+          series: [{
+            name: "Price",
+            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Price History of Asus Zenfone Max Pro - Black',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+  </script>
   <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
   <script src="{{ asset('assets\js\popper.min.js') }}"></script>
   <script src="{{ asset('assets\js\bootstrap.min.js') }}"></script>
@@ -172,20 +243,6 @@
   <script src="{{ asset('assets\js\vertical-menu.js') }}"></script>
   <!-- Switchery js -->
   <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
-  <!-- Datatable js -->
-  <script src="{{ asset('assets\plugins\datatables\jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\dataTables.buttons.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\buttons.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\jszip.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\pdfmake.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\vfs_fonts.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\buttons.html5.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\buttons.print.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\buttons.colVis.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('assets\plugins\datatables\responsive.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('assets\js\custom\custom-table-datatable.js') }}"></script>
 
   <script src="{{ asset('assets\plugins\pnotify\js\pnotify.custom.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\sweet-alert2\sweetalert2.min.js') }}"></script>
