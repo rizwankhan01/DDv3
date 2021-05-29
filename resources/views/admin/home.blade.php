@@ -1,11 +1,7 @@
 @extends('layouts.dashboard')
 @section('contentbar')
-  <div class="col-lg-12">
-    <video width="320" height="240">
-      <source src="{{ asset("assets/media/Clock.mp4") }}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-      <!--<div class="modal fade" id="onboardingScreens" tabindex="-1" role="dialog" aria-hidden="true">
+  <!--<div class="col-lg-12">
+      <div class="modal fade" id="onboardingScreens" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                   <div class="modal-header bg-white border-0">
@@ -31,11 +27,7 @@
                               <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                           </div>
                           <div class="onboard-screen-list">
-                              <video width="320" height="240">
-                                <source src="{{ URL::asset("/media/Clock.mp4") }}" type="video/mp4">
-                                <source src="{{ URL::asset("/media/Clock.mp4") }}" type="video/ogg">
-                                Your browser does not support the video tag.
-                              </video>
+                              <iframe width="560" height="315" src="https://www.youtube.com/embed/B2eK3R1blQI?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                               <h5 class="card-title my-4">Unique Widgets</h5>
                               <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                           </div>
@@ -43,8 +35,8 @@
                   </div>
               </div>
           </div>
-      </div>-->
-  </div>
+      </div>
+  </div>-->
   <div class="contentbar mt-100">
       <!-- Start row -->
       <div class="row">

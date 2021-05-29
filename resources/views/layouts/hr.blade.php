@@ -13,6 +13,8 @@
 <!-- Start css -->
 <!-- Switchery css -->
 <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
+<!-- Select2 css -->
+<link href="{{ asset('assets\plugins\select2\select2.min.css') }}" rel="stylesheet" type="text/css">
 <!-- DataTables css -->
 <link href="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets\plugins\datatables\buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
@@ -27,6 +29,8 @@
 <link href="{{ asset('assets\plugins\sweet-alert2\sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <link href="{{ asset('assets\plugins\summernote\summernote-bs4.css') }}" rel="stylesheet">
+<!-- Datepicker css -->
+<link href="{{ asset('assets\plugins\datepicker\datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 <!-- End css -->
 </head>

@@ -2,6 +2,50 @@
 @section('title') All Candidates for Lead Technician | Doctor Display Dashboard @endsection
 
 @section('contentbar')
+  <div class="modal fade show" id="scheduleinterview" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
+  v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+  <div class="modal-header">
+  <h5 class="modal-title" id="CreateModalLabel">Schedule Interview</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  <div class="modal-body">
+  <form action='' method='post'>
+    <div class="form-group">
+      <label>Candidate Name</label>
+      <input type='text' class='form-control' value='Sameer' disabled>
+    </div>
+    <div class="form-group">
+      <label>Role</label>
+      <input type='text' class='form-control' value='Service Man' disabled>
+    </div>
+    <div class="form-group">
+      <label>Interview taken by</label>
+      <select class="select2-multi-select form-control" name="states[]" multiple="multiple">
+              <option value="AK">Rizwan</option>
+              <option value="HI">Sheik</option>
+              <option value="CA">Yasir</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type='date' class='form-control'>
+    </div>
+    <div class="form-group">
+      <label>Time</label>
+      <input type='time' class='form-control'>
+    </div>
+    <div class='form-group'>
+      <input type='submit' class='btn btn-primary pull-right' value='Schedule'>
+    </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
   <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
         <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
           <h6>Candidate Information</h6> <a href="javascript:void(0)" id="infobar-settings-close"><i class="feather icon-x"></i></a>
@@ -16,7 +60,9 @@
                                   <li class="media">
                                       <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="placeholder">
                                       <div class="media-body">
-                                      <h5 class="mt-0 mb-1 font-16">Candidate Name<span class="badge badge-warning-inverse float-right font-14">95</span></h5>
+                                      <h5 class="mt-0 mb-1 font-16">Candidate Name
+                                        <span class="btn btn-sm btn-warning float-right font-14" data-toggle="modal" data-target="#scheduleinterview"><i class="feather icon-calendar"></i> Schedule Interview</span>
+                                      </h5>
                                       <p class="mb-0"><a href='#'>candidate@email.com</a> | <a href='#'>9874563210</a></p>
                                       </div>
                                   </li>
@@ -31,7 +77,7 @@
                                         <a class="nav-link" id="profile-tab-line" data-toggle="tab" href="#profile-line" role="tab" aria-controls="profile-line" aria-selected="false"><i class="feather icon-user mr-2"></i>Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab-line" data-toggle="tab" href="#contact-line" role="tab" aria-controls="contact-line" aria-selected="false"><i class="feather icon-phone mr-2"></i>Contact</a>
+                                        <a class="nav-link" id="contact-tab-line" data-toggle="tab" href="#contact-line" role="tab" aria-controls="contact-line" aria-selected="false"><i class="feather icon-file-text mr-2"></i>Resume</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="defaultTabContentLine">
@@ -52,7 +98,8 @@
                                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                     </div>
                                     <div class="tab-pane fade" id="contact-line" role="tabpanel" aria-labelledby="contact-tab-line">
-                                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                      <iframe src="{{ asset('assets/media/RESUME.pdf') }}" frameborder="0" width=100%; height=500></iframe><br>
+                                      <a href='{{ asset('assets/media/RESUME.pdf') }}' target='_blank'><i class="feather icon-external-link"></i> Open in new tab</a>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +158,9 @@
                               <li class="media">
                                   <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="placeholder">
                                   <div class="media-body">
-                                  <h5 class="mt-0 mb-1 font-16">Candidate Name<span class="badge badge-warning-inverse float-right font-14">95</span></h5>
+                                  <h5 class="mt-0 mb-1 font-16">Candidate Name
+                                    <span class="badge badge-warning-inverse float-right font-14">95</span>
+                                  </h5>
                                   <p class="mb-0"><a href='#'>candidate@email.com</a></p>
                                   </div>
                               </li>
@@ -221,6 +270,8 @@
   <script src="{{ asset('assets\js\vertical-menu.js') }}"></script>
   <!-- Switchery js -->
   <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
+  <!-- Select2 js -->
+  <script src="{{ asset('assets\plugins\select2\select2.min.js') }}"></script>
   <!-- Datatable js -->
   <script src="{{ asset('assets\plugins\datatables\jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.js') }}"></script>

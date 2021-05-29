@@ -109,6 +109,8 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 // New User Interfaces
+//User Leave Requests
+Route::get('/newleavereq', function(){ return view('admin.newleavereq'); });
 //HR Users
 Route::get('/newjobs', function(){ return view('admin.newjobs'); });
 Route::get('/newallcandidates', function(){ return view('admin.newallcandidates'); });
