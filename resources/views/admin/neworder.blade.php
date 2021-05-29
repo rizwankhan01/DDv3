@@ -121,7 +121,14 @@
                     <h3>#2 Customer Details</h3>
                     <section>
                         <div class="row">
-                        <div class="col-md-4 col-12 mb--20">
+                        <div class="col-md-1">
+                          <label>Title</label>
+                          <select class='form-control'>
+                            <option value=''>Mr</option>
+                            <option value=''>Mrs</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3 col-12 mb--20">
                           <label>Full Name*</label>
                           <input class="form-control" type="text" placeholder="Full Name" name="name" value="" required><br>
                         </div>
@@ -141,23 +148,31 @@
                           <option value='Home' value='Home'>Home</option>
                           </select><br>
                         </div>
-                        <div class="col-md-4 col-12 mb--20">
+                        <div class="col-md-8 col-12 mb--20">
+                        <label>Address*</label>
+                          <input class="form-control" type="text" placeholder="Address" name='address' required value=""><br>
+                        </div>
+                        <div class="col-md-3 col-12 mb--20">
                         <label>Town/City*</label>
                           <input class="form-control" type="text" placeholder="Town/City" name='city' value='' required><br>
                         </div>
-                        <div class="col-md-4 col-12 mb--20">
+                        <div class="col-md-3 col-12 mb--20">
                         <label>Area*</label>
                           <select class="form-control" class="nice-select" name='area' required>
                             <option value=''>Select Area</option>
                           </select><br>
                         </div>
-                        <div class="col-md-4 col-12 mb--20">
-                        <label>Address*</label>
-                          <input class="form-control" type="text" placeholder="Address" name='address' required value=""><br>
-                        </div>
-                        <div class="col-md-4 col-12 mb--20">
+                        <div class="col-md-3 col-12 mb--20">
                         <label>Pin Code*</label>
                           <input class="form-control" type="text" placeholder="Pin Code" minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' value='' required><br>
+                        </div>
+                        <div class="col-md-3 col-12 mb--20">
+                        <label>Preferred Language</label>
+                          <select class="form-control">
+                            <option value=''>English</option>
+                            <option value=''>Tamil</option>
+                            <option value=''>Hindi</option>
+                          </select>
                         </div>
                       </div>
                     </section>

@@ -2,10 +2,162 @@
 @section('title') Enquiry | Doctor Display Dashboard @endsection
 
 @section('contentbar')
+  <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
+        <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
+          <h6>New Enquiry</h6> <a href="javascript:void(0)" id="infobar-settings-close"><i class="feather icon-x"></i></a>
+        </div>
+        <div class="infobar-settings-sidebar-body">
+            <div class="custom-mode-setting">
+                <div class="row align-items-center pb-3">
+                      <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="chat-detail">
+                            <div class="chat-head">
+                                <ul class="list-unstyled mb-0">
+                                    <li class="media">
+                                        <img class="align-self-center mr-3 rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
+                                        <div class="media-body"><br>
+                                            <div class="pull-right" style="text-align:right">
+                                              <a href='/exotel_calls/9876543210'><i class="feather icon-phone"></i> 9874563210</a><br>
+                                              <a href='#'><i class="feather icon-map-pin"></i> Chennai</a>
+                                            </div>
+                                            <h5 class="font-18"><a href='#'>Amy Adams</a> <span class="badge badge-success">75</span></h5>
+                                            <div class="stars stars-example-fontawesome">
+                                                    <select id="rating-fontawesome" name="rating" autocomplete="off">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chat-body">
+                              <form action='' class="row" method=''>
+                                <span class="pull-right">12:53 20-05-2021</span>
+                                Attended By: Sooraj | <span class="badge badge-success">Incoming Call</span><br><br>
+                                <div class="col-md-12">
+                                <audio class="col-12" controls>
+                                    <source src="horse.ogg" type="audio/ogg">
+                                    <source src="horse.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio><br><br>
+                              </div>
+                                <div class="col-md-6">
+                                  <input type="text" class='form-control' placeholder='Model Enquired'><br>
+                                </div>
+                                <div class="col-md-6">
+                                  <select class="form-control">
+                                    <option value=''>Select City</option>
+                                  </select><br>
+                                </div>
+                                <div class="col-md-12">
+                                  <textarea class='form-control' placeholder='Notes'></textarea><br>
+                                </div>
+                                <div class="col-md-12">
+                                  <select class="select2 form-control">
+                                    <option value=''>Urgency</option>
+                                    <option value=''>Low</option>
+                                    <option value=''>Medium</option>
+                                    <option value=''>High</option>
+                                  </select>
+                                </div>
+                                <div class='col-md-12'>
+                                  <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
+                                </div>
+                              </form>
+                                  <a href="" class="btn btn-sm btn-success-rgba pull-right"><i class="fa fa-whatsapp"></i> Send Link</a>
+                                  <div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
+                                  v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
+                                  <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="CreateModalLabel">Price History of Apple iPhone 6 - Black</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div id="chart"></div>
+                                  </div>
+                                  </div>
+                                  </div>
+                                  </div>
+                                <p class="m-b-20 col-12"><b>Model enquired:</b> <br><a class="m-b-20" href='#'>Apple iPhone 6 - Black</a><br>
+                                <span class="badge badge-success-inverse">Basic - &#8377; 1500</span>
+                                <span class="badge badge-primary-inverse">Premium - &#8377; 4500</span>
+                                <span class="badge badge-warning-inverse">Glass - &#8377; 1000</span>
+                                <a href="" class="badge badge-secondary-inverse pull-right" data-toggle="modal" data-target="#CreateModal">See Price History</a>
+                                </p>
+                                <form action="/enquiry/" method="post" id="enq">
+                                  {{ csrf_field() }}
+                                  {{ method_field('put') }}
+                                  <div class="row">
+                                    <div class='col-md-1'>
+                                      <label>Title</label>
+                                      <select class='form-control'>
+                                        <option value=''>Select Title</option>
+                                        <option value=''>Mr</option>
+                                        <option value=''>Mrs</option>
+                                      </select><br>
+                                    </div>
+                                    <div class='col-md-5'>
+                                      <label>Customer Name</label>
+                                      <input type='text' class='form-control' name='customer_name' value='' placeholder='Customer Name'><br>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label>Phone Number</label>
+                                      <input type="number" class="form-control" name="phone_number" value='' placeholder="Phone Number"><br>
+                                    </div>
+                                    <div class='col-md-6'>
+                                      <label>Locality</label>
+                                      <input type='text' class='form-control' name='locality' value='' placeholder='Locality'><br>
+                                    </div>
+                                    <input type='hidden' name='customer_id' value=''>
+                                    <div class='col-md-6'>
+                                      Follow Up Date:
+                                      <input type="date" class="form-control" name="fdate" value="" min="{{ date('Y-m-d') }}"><br>
+                                    </div>
+                                    <div class='col-md-12'>
+                                      <select class="form-control" name="status">
+                                        <option value="">Select Reason</option>
+                                        <option value="Call Back">Call Back</option>
+                                        <option value="Duplicate">Duplicate</option>
+                                        <option value="Not Interested">Not Interested</option>
+                                        <option value="Converted">Converted</option>
+                                        <option value="Stock Unavailable">Stock Unavailable</option>
+                                      </select><br>
+                                    </div>
+                                    <div class='col-md-12'>
+                                      <textarea class='form-control' name='notes' placeholder='Notes'></textarea><br>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <select class="select2 form-control">
+                                        <option value=''>Urgency</option>
+                                        <option value=''>Low</option>
+                                        <option value=''>Medium</option>
+                                        <option value=''>High</option>
+                                      </select>
+                                    </div>
+                                    <div class='col-md-12'>
+                                      <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
+                                    </div>
+                                  </div>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="infobar-settings-sidebar-overlay"></div>
   <div class="contentbar mt-100">
       <!-- Start row -->
       <div class="row">
-        <div class="col-lg-6 col-xl-6">
+        <div class="col-lg-12 col-xl-12">
           <div class="chat-list">
               <div class="chat-search">
                   <form class="row">
@@ -35,7 +187,7 @@
               </div>
               <div class="chat-user-list">
                   <ul class="list-unstyled mb-0">
-                      <li class="media" onclick="switchVisible();">
+                      <li class="media" href="javascript:void(0)" id="infobar-settings-open">
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="emailCheck2">
                           <label class="custom-control-label psn-abs" for="emailCheck2"></label>
@@ -48,7 +200,7 @@
                       </li>
                   </ul>
                   <ul class="list-unstyled mb-0">
-                      <li class="media" onclick="switchVisible();">
+                      <li class="media" href="javascript:void(0)" id="infobar-settings-open">
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="emailCheck3">
                           <label class="custom-control-label psn-abs" for="emailCheck3"></label>
@@ -64,119 +216,6 @@
               </div>
           </div>
       </div>
-      <div class="col-lg-6 col-xl-6">
-        <div class="chat-detail">
-            <div class="chat-head">
-                <ul class="list-unstyled mb-0">
-                    <li class="media">
-                        <img class="align-self-center mr-3 rounded-circle" src="assets/images/users/girl.svg" alt="Generic placeholder image">
-                        <div class="media-body"><br>
-                            <div class="pull-right" style="text-align:right">
-                              <a href='/exotel_calls/9876543210'><i class="feather icon-phone"></i> 9874563210</a><br>
-                              <a href='#'><i class="feather icon-map-pin"></i> Chennai</a>
-                            </div>
-                            <h5 class="font-18"><a href='#'>Amy Adams</a> <span class="badge badge-success">75</span></h5>
-                            <div class="stars stars-example-fontawesome">
-                                    <select id="rating-fontawesome" name="rating" autocomplete="off">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="chat-body">
-              <form action='' class="row" method='' id="call" style="display:none;">
-                <span class="pull-right">12:53 20-05-2021</span>
-                Attended By: Sooraj | <span class="badge badge-success">Incoming Call</span><br><br>
-                <div class="col-md-12">
-                <audio class="col-12" controls>
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio><br><br>
-              </div>
-                <div class="col-md-6">
-                  <input type="text" class='form-control' placeholder='Model Enquired'><br>
-                </div>
-                <div class="col-md-6">
-                  <select class="form-control">
-                    <option value=''>Select City</option>
-                  </select><br>
-                </div>
-                <div class="col-md-12">
-                  <textarea class='form-control' placeholder='Notes'></textarea><br>
-                </div>
-                <div class='col-md-12'>
-                  <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
-                </div>
-              </form>
-                  <a href="" class="btn btn-sm btn-success-rgba pull-right"><i class="fa fa-whatsapp"></i> Send Link</a>
-                  <div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
-                  v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
-                  <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="CreateModalLabel">Price History of Apple iPhone 6 - Black</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div id="chart"></div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                <p class="m-b-20 col-12"><b>Model enquired:</b> <br><a class="m-b-20" href='#'>Apple iPhone 6 - Black</a><br>
-                <span class="badge badge-success-inverse">Basic - &#8377; 1500</span>
-                <span class="badge badge-primary-inverse">Premium - &#8377; 4500</span>
-                <span class="badge badge-warning-inverse">Glass - &#8377; 1000</span>
-                <a href="" class="badge badge-secondary-inverse pull-right" data-toggle="modal" data-target="#CreateModal">See Price History</a>
-                </p>
-                <form action="/enquiry/" method="post" id="enq">
-                  {{ csrf_field() }}
-                  {{ method_field('put') }}
-                  <div class="row">
-                    <div class='col-md-6'>
-                      <input type='text' class='form-control' name='customer_name' value='' placeholder='Customer Name'><br>
-                    </div>
-                    <div class="col-md-6">
-                      <input type="number" class="form-control" name="phone_number" value='' placeholder="Phone Number"><br>
-                    </div>
-                    <div class='col-md-6'>
-                      <input type='text' class='form-control' name='locality' value='' placeholder='Locality'><br>
-                    </div>
-                    <input type='hidden' name='customer_id' value=''>
-                    <div class='col-md-6'>
-                      Follow Up Date:
-                      <input type="date" class="form-control" name="fdate" value="" min="{{ date('Y-m-d') }}"><br>
-                    </div>
-                    <div class='col-md-12'>
-                      <select class="form-control" name="status">
-                        <option value="">Select Reason</option>
-                        <option value="Call Back">Call Back</option>
-                        <option value="Duplicate">Duplicate</option>
-                        <option value="Not Interested">Not Interested</option>
-                        <option value="Converted">Converted</option>
-                        <option value="Stock Unavailable">Stock Unavailable</option>
-                      </select><br>
-                    </div>
-                    <div class='col-md-12'>
-                      <textarea class='form-control' name='notes' placeholder='Notes'></textarea><br>
-                    </div>
-                    <div class='col-md-12'>
-                      <input type="submit" class="btn btn-sm btn-primary pull-right" value="Update">
-                    </div>
-                  </div>
-              </form>
-            </div>
-        </div>
-    </div>
       </div>
       <!-- End row -->
   </div>

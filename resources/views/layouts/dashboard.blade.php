@@ -13,6 +13,9 @@
 <!-- Start css -->
 <!-- Switchery css -->
 <link href="{{ asset('assets\plugins\switchery\switchery.min.css') }}" rel="stylesheet">
+<!-- Slick -->
+<link href="{{ asset('assets\plugins\slick\slick.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets\plugins\slick\slick-theme.css') }}" rel="stylesheet" type="text/css">
 <!-- DataTables css -->
 <link href="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets\plugins\datatables\buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">

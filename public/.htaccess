@@ -2,6 +2,8 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www.doctordisplay.in$ [NC]
 RewriteRule ^(.*)$ https://doctordisplay.in/$1 [R=301,L]
 
+AddType video/mp4 .mp4
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

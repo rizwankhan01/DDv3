@@ -1,9 +1,53 @@
 @extends('layouts.dashboard')
 @section('contentbar')
+  <div class="col-lg-12">
+    <video width="320" height="240">
+      <source src="{{ asset("assets/media/Clock.mp4") }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+      <!--<div class="modal fade" id="onboardingScreens" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-header bg-white border-0">
+                      <button type="button" class="close text-muted" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body border-0">
+                      <div id="onboard-screen" class="onboard-screen">
+                          <div class="onboard-screen-list">
+                              <img src="assets/images/ui-onboard/responsive.svg" class="img-fluid" alt="onboard">
+                              <h5 class="card-title my-4">Highly Responsive</h5>
+                              <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                          </div>
+                          <div class="onboard-screen-list">
+                              <img src="assets/images/ui-onboard/customisable.svg" class="img-fluid" alt="onboard">
+                              <h5 class="card-title my-4">Customisable</h5>
+                              <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                          </div>
+                          <div class="onboard-screen-list">
+                              <img src="assets/images/ui-onboard/easily-editable-code.svg" class="img-fluid" alt="onboard">
+                              <h5 class="card-title my-4">Easily Editable Code</h5>
+                              <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                          </div>
+                          <div class="onboard-screen-list">
+                              <video width="320" height="240">
+                                <source src="{{ URL::asset("/media/Clock.mp4") }}" type="video/mp4">
+                                <source src="{{ URL::asset("/media/Clock.mp4") }}" type="video/ogg">
+                                Your browser does not support the video tag.
+                              </video>
+                              <h5 class="card-title my-4">Unique Widgets</h5>
+                              <p class="text-muted">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>-->
+  </div>
   <div class="contentbar mt-100">
       <!-- Start row -->
       <div class="row">
-          <!-- Start col -->
           @if(!empty($order))
             @section('title') Order ID: #{{ $order->id }} | Doctor Display Dashboard @endsection
             @extends('layouts.ordercontrols')
@@ -740,6 +784,10 @@
 <script src="{{ asset('assets\js\vertical-menu.js') }}"></script>
 <!-- Switchery js -->
 <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
+<!-- Slick js -->
+<script src="{{ asset('assets\plugins\slick\slick.min.js') }}"></script>
+<!-- Onboarding Screen -->
+<script src="{{ asset('assets\js\custom\custom-onboarding-screens.js') }}"></script>
 <!-- Datatable js -->
 <script src="{{ asset('assets\plugins\datatables\jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.js') }}"></script>
