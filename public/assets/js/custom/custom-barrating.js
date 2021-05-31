@@ -4,7 +4,7 @@
 ----------------------------------
 */
 "use strict";
-$(document).ready(function() {    
+$(document).ready(function() {
     function ratingEnable() {
         /* -- Rating 1 to 10 -- */
         $('#rating-1to10').barrating('show', {
@@ -47,6 +47,46 @@ $(document).ready(function() {
         });
         /* -- Rating Font Awesome -- */
         $('#rating-fontawesome').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome2').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome3').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome4').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome5').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome6').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome7').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome8').barrating({
+            theme: 'fontawesome-stars',
+            showSelectedRating: false
+        });
+        /* -- Rating Font Awesome -- */
+        $('#rating-fontawesome9').barrating({
             theme: 'fontawesome-stars',
             showSelectedRating: false
         });

@@ -126,6 +126,9 @@ Route::get('/neworder', function(){ return view('admin.neworder'); });
 //WAREHOUSE Users
 Route::get('/newstockrequest', function(){ return view('admin.newstockrequest'); });
 
+//JOBS PAGE
+Route::get('/jobs', function(){ return view('alljobs'); });
+
 
 Route::get('/{id}','HomePageController@show');
 Route::post('/{id}','HomePageController@store');

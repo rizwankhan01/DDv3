@@ -60,10 +60,10 @@
                                   <li class="media">
                                       <img class="mr-3 rounded-circle" src="..\assets\images\users\men.svg" alt="placeholder">
                                       <div class="media-body">
-                                      <h5 class="mt-0 mb-1 font-16">Candidate Name
+                                      <h5 class="mt-0 mb-1 font-16">Candidate Name <span class="badge badge-danger">Unemployed</span>
                                         <span class="btn btn-sm btn-warning float-right font-14" data-toggle="modal" data-target="#scheduleinterview"><i class="feather icon-calendar"></i> Schedule Interview</span>
                                       </h5>
-                                      <p class="mb-0"><a href='#'>candidate@email.com</a> | <a href='#'>9874563210</a></p>
+                                      <p class="mb-0"><a href='#'>candidate@email.com</a> | <a href='#'>9874563210</a><br><small>Applied two days ago</small></p>
                                       </div>
                                   </li>
                                 </h5>
@@ -71,10 +71,7 @@
                             <div class="card-body">
                                 <ul class="nav nav-tabs custom-tab-line mb-3" id="defaultTabLine" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab-line" data-toggle="tab" href="#home-line" role="tab" aria-controls="home-line" aria-selected="true"><i class="feather icon-home mr-2"></i>Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab-line" data-toggle="tab" href="#profile-line" role="tab" aria-controls="profile-line" aria-selected="false"><i class="feather icon-user mr-2"></i>Profile</a>
+                                        <a class="nav-link active" id="home-tab-line" data-toggle="tab" href="#home-line" role="tab" aria-controls="home-line" aria-selected="true"><i class="feather icon-info mr-2"></i>Info</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="contact-tab-line" data-toggle="tab" href="#contact-line" role="tab" aria-controls="contact-line" aria-selected="false"><i class="feather icon-file-text mr-2"></i>Resume</a>
@@ -82,20 +79,140 @@
                                 </ul>
                                 <div class="tab-content" id="defaultTabContentLine">
                                     <div class="tab-pane fade show active" id="home-line" role="tabpanel" aria-labelledby="home-tab-line">
-                                          <div class="card m-b-30 col-6">
-                                              <div class="card-body">
-                                                  <div class="media">
-                                                      <span class="mr-3 rounded-circle"><i class="fa fa-2x fa-home"></i></span>
-                                                      <div class="media-body">
-                                                          <h5 class="mb-2">Experience</h5>
-                                                          <p class="mb-0">2 Years</p>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="profile-line" role="tabpanel" aria-labelledby="profile-tab-line">
-                                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                      <div class="row">
+                                        <div class="m-b-30 col-md-6">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <span class="mr-3 rounded-circle"><i class="fa fa-2x fa-rupee"></i></span>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-2">Current Salary</h5>
+                                                        <p class="mb-0">20000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-b-30 col-md-6">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <span class="mr-3 rounded-circle"><i class="fa fa-2x fa-certificate"></i></span>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-2">Experience</h5>
+                                                        <p class="mb-0">2 Years</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-b-30 col-md-6">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <span class="mr-3 rounded-circle"><i class="fa fa-2x fa-building-o"></i></span>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-2">Prev. Company</h5>
+                                                        <p class="mb-0">Cashify</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-b-30 col-md-6">
+                                            <div class="card-body">
+                                                <div class="media">
+                                                    <span class="mr-3 rounded-circle"><i class="fa fa-2x fa-graduation-cap"></i></span>
+                                                    <div class="media-body">
+                                                        <h5 class="mb-2">Education</h5>
+                                                        <p class="mb-0">Bsc. @ Anna University</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <p>
+                                        <div class="row">
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>Age</label>
+                                                <input type="number" class="form-control" placeholder="Age" name="age"><br>
+                                            </div>
+
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>Gender</label>
+                                                <select class="form-control" name="gender">
+                                                  <option value="">Select Gender</option>
+                                                  <option value="Male">Male</option>
+                                                  <option value="Female">Female</option>
+                                                </select><br>
+                                            </div>
+
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>Marital Status</label>
+                                                <select class="form-control" name="marital">
+                                                  <option value="Single">Single</option>
+                                                  <option value="Married">Married</option>
+                                                </select><br>
+                                            </div>
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Nationality</label>
+                                                <input type="text" class="form-control" placeholder="Nationality" name="nation"><br>
+                                            </div>
+
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Mother Tongue</label>
+                                                <input type="text" class="form-control" placeholder="Mother Tongue" name="language"><br>
+                                            </div>
+
+                                            <div class="col-12 mb--20">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Address line 1" name="address_line_1"><br>
+                                                <input type="text" class="form-control" placeholder="Address line 2" name="address_line_2"><br>
+                                            </div>
+
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>Town/City</label>
+                                                <input type="text" class="form-control" placeholder="Town/City" name="city"><br>
+                                            </div>
+
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>State</label>
+                                                <input type="text" class="form-control" placeholder="State" name="state"><br>
+                                            </div>
+
+                                            <div class="col-md-4 col-12 mb--20">
+                                                <label>Pin Code</label>
+                                                <input type="number" class="form-control" placeholder="Pin Code" name="pincode"><br>
+                                            </div>
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Father's Name</label>
+                                                <input type="text" class="form-control" placeholder="Father Name" name="father_name"><br>
+                                            </div>
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Father's Occupation</label>
+                                                <input type="text" class="form-control" placeholder="Father Occupation" name="father_occu"><br>
+                                            </div>
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Driving License</label>
+                                                <select class="form-control">
+                                                  <option value="">Yes</option>
+                                                  <option value="">No</option>
+                                                </select><br>
+                                            </div>
+
+                                            <div class="col-md-6 col-12 mb--20">
+                                                <label>Do you own a Bike?</label>
+                                                <select class="form-control">
+                                                  <option value="">Yes</option>
+                                                  <option value="">No</option>
+                                                </select><br>
+                                            </div>
+
+                                            <div class="col-md-12 col-12 mb--20">
+                                              <label>About Yourself</label>
+                                              <textarea rows=4 name="about" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                      </p>
                                     </div>
                                     <div class="tab-pane fade" id="contact-line" role="tabpanel" aria-labelledby="contact-tab-line">
                                       <iframe src="{{ asset('assets/media/RESUME.pdf') }}" frameborder="0" width=100%; height=500></iframe><br>

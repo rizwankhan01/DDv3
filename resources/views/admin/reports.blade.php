@@ -80,15 +80,10 @@
                               </tbody>
                           </table><hr>
                           <div class="pull-right">
-                            @if($ts!=0)
-                              <button class="btn btn-sm btn-warning btn-rounded">Total Stock: &#8377; {{ $ts }}</button><br>
-                            @endif
-                            @if($tt!=0)
-                              <button class="btn btn-sm btn-primary btn-rounded">Total Transaction: &#8377; {{ $tt }}</button><br>
-                            @endif
-                            @if($tp!=0)
-                              <button class="btn btn-sm btn-success btn-rounded">Gross Profit: &#8377; {{ $tp }}</button>
-                            @endif
+                            @if(!empty($orders->count('id'))) <button class="btn btn-sm btn-secondary btn-rounded pull-right">Total Orders: {{ $orders->count('id') }}</button><br> @endif
+                            @if($ts!=0) <button class="btn btn-sm btn-warning btn-rounded pull-right">Total Stock: &#8377; {{ $ts }}</button><br> @endif
+                            @if($tt!=0) <button class="btn btn-sm btn-primary btn-rounded pull-right">Total Transaction: &#8377; {{ $tt }}</button><br> @endif
+                            @if($tp!=0) <button class="btn btn-sm btn-success btn-rounded pull-right">Gross Profit: &#8377; {{ $tp }}</button> @endif
                             <br><br>
                           </div>
                           <table class="table table-striped table-bordered">
@@ -123,7 +118,7 @@
                             </table>
                             <div class="pull-right">
                               @if($tickets->sum('r_stock_amount')!=0)
-                                <button class="btn btn-sm btn-danger btn-rounded">Total Ticket Amount: &#8377; {{ $tickets->sum('r_stock_amount') }}</button><br>
+                                <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Ticket Amount: &#8377; {{ $tickets->sum('r_stock_amount') }}</button><br>
                               @endif
                               <br><br>
                             </div>
@@ -149,9 +144,9 @@
                               </table>
                               <div class="pull-right">
                                 @if($expenses->sum('expenses')!=0)
-                                  <button class="btn btn-sm btn-danger btn-rounded">Total Expenses: &#8377; {{ abs($expenses->sum('expenses')) }}</button><br>
+                                  <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Expenses: &#8377; {{ abs($expenses->sum('expenses')) }}</button><br>
                                 @endif
-                                <button class="btn btn-lg btn-rounded btn-success">Net Profit: &#8377; {{ $tp-$tickets->sum('r_stock_amount')-abs($expenses->sum('expenses')) }}</button>
+                                <button class="btn btn-lg btn-rounded btn-success pull-right">Net Profit: &#8377; {{ $tp-$tickets->sum('r_stock_amount')-abs($expenses->sum('expenses')) }}</button>
                                 <br><br>
                               </div>
                       </div>
