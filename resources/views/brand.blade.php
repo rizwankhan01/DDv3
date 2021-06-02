@@ -122,6 +122,7 @@
                         <center><h3>{{ $serie }} Series</h3></center>
                         <div class="brand__list brand-default brand-style--2">
                           @foreach($models  as  $model)
+                            @if($model->colortypes!='[]')
                             <div class="brand">
                               <a href="/colors/{{ $model->id }}">
                                 <figure>
@@ -143,6 +144,7 @@
                                 </figure>
                               </a>
                             </div>
+                          @endif
                           @endforeach<br><br><br>
                         </div><br><br>
                         @endforeach

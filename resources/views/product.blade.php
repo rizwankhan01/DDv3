@@ -119,24 +119,26 @@
                                 <p class="theme-color">
                                   <?php $selected_color = $color->name; ?>
                                   @foreach($colors as $color)
-                                    @if($color->name==$selected_color)
-                                      <a style="color:#FCC72D;float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
-                                        <u>{{ ucfirst($color->name) }}</u>
-                                      </a>&nbsp;&nbsp;&nbsp;
-                                      <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('post') }}
-                                        <input type='hidden' name='color_id' value='{{ $color->id }}'>
-                                      </form>
-                                    @else
-                                      <a style="float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
-                                        <u>{{ ucfirst($color->name) }}</u>
-                                      </a>&nbsp;&nbsp;&nbsp;
-                                      <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('post') }}
-                                        <input type='hidden' name='color_id' value='{{ $color->id }}'>
-                                      </form>
+                                    @if(!empty($color->pricings->ord_selling_price) || !empty($color->pricings->org_selling_price))
+                                      @if($color->name==$selected_color)
+                                        <a style="color:#FCC72D;float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
+                                          <u>{{ ucfirst($color->name) }}</u>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
+                                          {{ csrf_field() }}
+                                          {{ method_field('post') }}
+                                          <input type='hidden' name='color_id' value='{{ $color->id }}'>
+                                        </form>
+                                      @else
+                                        <a style="float:left;cursor:pointer;" onclick="event.preventDefault();document.getElementById('color{{ $color->id }}').submit();">
+                                          <u>{{ ucfirst($color->name) }}</u>
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <form id="color{{ $color->id }}" action="screen-repair-{{ $models->brand->name }}-{{ $models->series }}-{{ $models->name }}" method="POST">
+                                          {{ csrf_field() }}
+                                          {{ method_field('post') }}
+                                          <input type='hidden' name='color_id' value='{{ $color->id }}'>
+                                        </form>
+                                      @endif
                                     @endif
                                   @endforeach
                                 </p>
@@ -490,6 +492,7 @@
                 <center><h5>Other {{ $models->brand->name }} Phone's we repair</h5></center>
                 <div class="brand__list brand-default brand-style--2">
                   @foreach($othermodels  as  $model)
+                    @if($model->colortypes!='[]')
                     <div class="brand">
                       <a href="/colors/{{ $model->id }}">
                         <figure>
@@ -511,6 +514,7 @@
                         </figure>
                       </a>
                     </div>
+                    @endif
                   @endforeach<br><br><br>
                 </div>
               </div>

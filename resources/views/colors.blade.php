@@ -62,19 +62,21 @@
                     <div class="brand-wrapper">
                         <div class="brand__list brand-default brand-style--3">
                             @foreach($colors as $color)
-                            <div class="brand">
-                              <a href="#" data-toggle="modal" data-target="#exampleModal" onclick="change({{ $color->id }})">
-                                <figure>
-                                  <?php $file = '/var/www/DDV2/storage/app/public/'.$color->image; ?>
-                                  @if(!empty($color->image) AND file_exists($file))
-                                    <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
-                                  @else
-                                    <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
-                                  @endif
-                                <figcaption>{{ ucfirst($color->name) }}</figcaption>
-                                </figure>
-                              </a>
-                            </div>
+                              @if(!empty($color->pricings->ord_selling_price) || !empty($color->pricings->org_selling_price))
+                                <div class="brand">
+                                  <a href="#" data-toggle="modal" data-target="#exampleModal" onclick="change({{ $color->id }})">
+                                    <figure>
+                                      <?php $file = '/var/www/DDV2/storage/app/public/'.$color->image; ?>
+                                      @if(!empty($color->image) AND file_exists($file))
+                                        <img src="../storage/{{$color->image}}" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
+                                      @else
+                                        <img src="../storage/placeholder.png" class="logo-thumbnail" alt="{{$color->model->brand->name}} {{ $color->model->series }} {{ $color->model->name }} image">
+                                      @endif
+                                    <figcaption>{{ ucfirst($color->name) }}</figcaption>
+                                    </figure>
+                                  </a>
+                                </div>
+                              @endif
                             @endforeach
                         </div>
                     </div>

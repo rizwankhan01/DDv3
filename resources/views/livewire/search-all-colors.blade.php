@@ -17,7 +17,7 @@
                           </center>
                       </div>
                       <div class="col-8 col-md-8">
-                        <h5 class="mt-2 font-20">{{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }} - {{ $color->name }}</h5>
+                        <h5 class="mt-2 font-20"><img src="../storage/{{ $color->model->brand->brand_logo }}" style="width:25px;height:25px;"> {{ $color->model->series }} {{ $color->model->name }} - {{ $color->name }}</h5>
                           <div class="row">
                           <div class="col-12"><span class="badge badge-success-inverse mb-2 text-uppercase">Basic</span> <span class="mb-2 font-16 pull-right" style="font-weight:bold;">&#8377; {{ $color->pricings->ord_selling_price ?? '' }}</span></div>
                           <div class="col-12"><span class="badge badge-primary-inverse mb-2 text-uppercase">Premium</span> <span class="mb-2 font-16 pull-right" style="font-weight:bold;">&#8377; {{ $color->pricings->org_selling_price ?? '' }}</span></div>
