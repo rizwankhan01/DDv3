@@ -176,9 +176,6 @@ class OrderController extends Controller
             $address->save();
             $address_id           = $address->id;
           }
-          //else{
-            //$address_id           = $check_address->id;
-          //}
             if(!empty($address_id)){
               $order->address_id    = $address_id;
             }
@@ -206,8 +203,6 @@ class OrderController extends Controller
                 $order->update();
               }
             }
-
-            //dd($check_address);
           return redirect()->back()->with('success','Coupon Applied');
         }else{
           $order                = orders::findOrFail($id);
@@ -222,9 +217,6 @@ class OrderController extends Controller
             $address->save();
             $address_id           = $address->id;
           }
-          //else{
-            //$address_id           = $check_address->id;
-          //}
           if(!empty($address_id)){
             $order->address_id    = $address_id;
           }
@@ -255,7 +247,7 @@ class OrderController extends Controller
 
           return redirect()->back()->with('failure','This coupon is not applicable.');
         }
-      }else if(!empty($request->input('name'))){
+      }else if(!empty($request->input('name')) AND empty($request->input('coupon'))){
         $order                = orders::findOrFail($id);
         $check_address        = addresses::where('customer_id',$order->customer_id);
         if(empty($check_address->id)){

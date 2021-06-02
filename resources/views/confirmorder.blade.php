@@ -202,6 +202,7 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
 </div>
 </div>
 </div>
+@livewire('apply-coupon')
 </main>
 @endsection
 @section('scripts')

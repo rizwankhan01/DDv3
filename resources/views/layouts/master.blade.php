@@ -51,6 +51,7 @@
         })(document);
         smartlook('init', 'f4431a6483fc6cf08b1860bb2637f9ea1fb68c96');
     </script>-->
+    @livewireStyles
 </head>
 
 <body class="template-color-1 template-font-1">
@@ -228,6 +229,7 @@
     <!--// Footer -->
 
     @yield('scripts')
+    @livewireScripts
 </body>
 
 </html>
