@@ -33,16 +33,21 @@
           <center>
             <h5 class="modal-title" id="exampleModalLabel">How do we reach you?</h5>
           </center><br>
+          <script>
+            function change(colorid){
+              document.getElementById("color_id").value = colorid;
+            }
+          </script>
           <form action="/customer" method="post">
             {{ csrf_field() }}
             {{ method_field('post') }}
-          <center>
-            <input type="number" name="color_id" value="{{$color->id}}" hidden>
-            <input type="hidden" name="ga_id" id="ga_id">
-            <input type="text" placeholder="Enter Phone Number"  onkeypress="return isNumberKey(event)"
-            minlength="10" maxlength="10" required name="phone">
-            <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Next</button>
-          </center>
+            <center>
+              <input type="hidden" id="color_id" name="color_id">
+              <input type="hidden" name="ga_id" id="ga_id">
+              <input type="text" placeholder="Enter Phone Number"  onkeypress="return isNumberKey(event)"
+              minlength="10" maxlength="10" required name="phone">
+              <button type="submit" class="brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Next</button>
+            </center>
           </form>
           <center><small>We'll never spam you.</small></center>
         </div>
@@ -58,7 +63,7 @@
                         <div class="brand__list brand-default brand-style--3">
                             @foreach($colors as $color)
                             <div class="brand">
-                              <a href="#" data-toggle="modal" data-target="#exampleModal">
+                              <a href="#" data-toggle="modal" data-target="#exampleModal" onclick="change({{ $color->id }})">
                                 <figure>
                                   <?php $file = '/var/www/DDV2/storage/app/public/'.$color->image; ?>
                                   @if(!empty($color->image) AND file_exists($file))

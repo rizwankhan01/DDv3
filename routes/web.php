@@ -45,6 +45,8 @@ Route::get('/thankyou', function(){
     return view('thankyou');
 });
 
+
+
 //////////////////////////dashboard///////////////////////////
 Route::get('/getcallsfromexotelapi','Admin\ExotelCalls@incoming');
 Auth::routes();
@@ -128,6 +130,7 @@ Route::get('/newstockrequest', function(){ return view('admin.newstockrequest');
 
 //JOBS PAGE
 Route::get('/jobs', function(){ return view('alljobs'); });
+
 
 
 Route::get('/{id}','HomePageController@show');

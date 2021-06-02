@@ -71,11 +71,13 @@ class HomePageController extends Controller
         return view('brand', compact('brands','models'));
       }else{
         $url      = explode('-',$id);
+        //dd($url);
         if(empty($url[4])){ return abort(404); }
         $models   = models::where('name', $url[4])->where('series',$url[3])->first();
         if(empty($models->id)){ return abort(500); }
         $colors   = colors::where('model_id', $models->id)->get();
-        $color    = colors::where('model_id', $models->id)->first();
+        $color    = colors::where('id', session::get('color_id'))->first();
+        //$color    = colors::where('model_id', $models->id)->first();
         if(empty($color->id)){ return abort(500); }
         $pricing  = pricings::where('color_id', $color->id)->first();
         $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
