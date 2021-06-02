@@ -176,16 +176,16 @@ class OrderController extends Controller
             $address->save();
             $address_id           = $address->id;
           }
+            //dd($address_id);
             if(!empty($address_id)){
               $order->address_id    = $address_id;
             }
             if(!empty($request->input('time_slot'))){
               $order->slot_time     = $request->input('time_slot');
               $order->slot_date     = $request->input('date');
-              $order->update();
             }
             if(!empty($request->input('name'))){
-              $checkphone     = customers::where('phone_number',$request->input('phone'))->first();
+              $checkphone     = customers::where('id', Session::get('cus_id'))->first(); //customer id got from session
               if(empty($checkphone->id)){   //checking if phone number already does not exist
                 $customer               = customers::findOrFail($order->customer_id);
                 $customer->name         = $request->input('name');
@@ -200,9 +200,9 @@ class OrderController extends Controller
                 $customer->update();
 
                 $order->customer_id = $checkphone->id;
-                $order->update();
               }
             }
+            $order->update();
           return redirect()->back()->with('success','Coupon Applied');
         }else{
           $order                = orders::findOrFail($id);
@@ -223,7 +223,6 @@ class OrderController extends Controller
             if(!empty($request->input('time_slot'))){
               $order->slot_time     = $request->input('time_slot');
               $order->slot_date     = $request->input('date');
-              $order->update();
             }
             if(!empty($request->input('name'))){
               $checkphone     = customers::where('phone_number',$request->input('phone'))->first();
@@ -241,9 +240,9 @@ class OrderController extends Controller
                 $customer->update();
 
                 $order->customer_id = $checkphone->id;
-                $order->update();
               }
             }
+            $order->update();
 
           return redirect()->back()->with('failure','This coupon is not applicable.');
         }

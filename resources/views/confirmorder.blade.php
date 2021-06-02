@@ -73,7 +73,7 @@
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
 <input type="text" placeholder="Phone number"  onkeypress="return isNumberKey(event)"
-minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}" required>
+minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}" onkeyup='swap_phone(this.value)' required>
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
@@ -187,6 +187,7 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
   {{ method_field('put') }}
   <input type="hidden" name="name" id="name">
   <input type="hidden" name="email" id="email">
+  <input type="hidden" name="phone" id="phone">
   <input type="hidden" name="address" id="address">
   <input type="hidden" name="area" id="area">
   <input type="hidden" name="pincode" id="pincode">
@@ -208,6 +209,7 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
   <script>
   function swap_name(val){ var input = document.getElementById("name"); input.value = val; }
   function swap_email(val){ var input = document.getElementById("email"); input.value = val; }
+  function swap_phone(val){ var input = document.getElementById("phone"); input.value = val; }
   function swap_address(val){ var input = document.getElementById("address"); input.value = val; }
   function swap_area(val){ var input = document.getElementById("area"); input.value = val; }
   function swap_pincode(val){ var input = document.getElementById("pincode"); input.value = val; }

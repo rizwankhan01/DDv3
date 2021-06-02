@@ -119,7 +119,7 @@
                       <?php $series = $models; ?>
                       <div class="brand-wrapper">
                         @foreach($series as $serie => $models)
-                        <center><h3>{{ $serie }}</h3></center>
+                        <center><h3>{{ $serie }} Series</h3></center>
                         <div class="brand__list brand-default brand-style--2">
                           @foreach($models  as  $model)
                             <div class="brand">
