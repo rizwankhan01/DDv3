@@ -183,10 +183,10 @@
                             <h2 class="widgettitle">Contact</h2>
                             <div class="footer-address">
                                 <div class="bk-hover">
-                                    <p>Modern Tower, no.23, F6 ,First floor, Westcott Rd, <br>
-                                      Royapettah, Chennai, Tamil Nadu 600014</p>
                                     <p><a href="mailto:order@doctordisplay.in">order@doctordisplay.in</a></p>
                                     <p><a href="tel:04446270777">04446270777</a></p>
+                                    <p><b>Chennai:</b> Modern Tower, no.23, F6 ,First floor, Westcott Rd, Royapettah, Chennai, Tamil Nadu 600014</p>
+                                    <p><b>Bangalore:</b>  No.18 /386, second floor S.N. Arcade, mahalingeshwara layout, Adugodi, Bangalore, Karnataka 560005</p>
                                 </div>
                                 <div class="social-share social--transparent text-white">
                                     <a href="https://www.facebook.com/displaydoctors"><i class="fab fa-facebook"></i></a>

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\brands;
 use Session;
 
-class AllBrandsController extends Controller
+class SelectCityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class AllBrandsController extends Controller
      */
     public function index()
     {
-      $brands = brands::all();
-      //session()->flush();
-      return view('/allbrands')->with('brands',$brands);
+        //
     }
 
     /**
@@ -49,7 +46,8 @@ class AllBrandsController extends Controller
      */
     public function show($id)
     {
-        //
+      Session::put('city', $id);
+      return redirect()->back();
     }
 
     /**

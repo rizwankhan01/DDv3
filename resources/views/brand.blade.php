@@ -1,19 +1,19 @@
 @extends('layouts.master')
   @section('title')
     @if($brands->name == 'Apple')
-      Apple Mobile Doorstep Screen Replacement in Chennai | Doorstep Service| Doctor Display
+      Apple Mobile Doorstep Screen Replacement in Chennai, Bangalore | Doorstep Service| Doctor Display
     @elseif($brands->name == 'Redmi')
-      Redmi Mi Mobile Doorstep Screen Replacement service, Chennai | Doctor Display
+      Redmi Mi Mobile Doorstep Screen Replacement service, Chennai, Bangalore | Doctor Display
     @elseif($brands->name == 'One Plus')
       One plus Mobile Doorstep Screen Repair | Replacement at Your Doorstep
     @elseif($brands->name == 'Samsung')
-      Samsung Mobile Doorstep Screen Repair Service, Chennai | Doorstep Service | Doctor Display
+      Samsung Mobile Doorstep Screen Repair Service, Chennai, Bangalore | Doorstep Service | Doctor Display
     @elseif($brands->name == 'Motorola')
       Motorola Mobile Doorstep Screen Replacement | Cracked Screen Repair Service| Doctor Display
     @elseif($brands->name == 'Huawei')
       Huawei Mobile Doorstep Screen Replacement | Doorstep Mobile Repair | Doctor Display
     @elseif($brands->name == 'Lenovo')
-      Lenovo Mobile Doorstep Screen service in Chennai | Screen Replacement | Doctor Display
+      Lenovo Mobile Doorstep Screen service in Chennai, Bangalore | Screen Replacement | Doctor Display
     @elseif($brands->name == 'Asus')
       Asus Mobile Doorstep Screen Replacement | Screen Repair Service | Doctor Display
     @elseif($brands->name == 'Honor')
@@ -23,23 +23,23 @@
     @elseif($brands->name == 'Oppo')
       Oppo Mobile Doorstep Screen Service | Screen Replacement | Doctor Display
     @elseif($brands->name == 'Realme')
-      Realme Mobile Doorstep Screen Replacement, Chennai | Doctor Display
+      Realme Mobile Doorstep Screen Replacement, Chennai, Bangalore | Doctor Display
     @elseif($brands->name == 'Vivo')
       Vivo Mobile Doorstep Screen Replacement | Doctor Display at Your Doorstep
     @elseif($brands->name == 'Sony')
-      Sony Mobile Doorstep Screen Replacement in Chennai | Doorstep Service | Doctor Display
+      Sony Mobile Doorstep Screen Replacement in Chennai, Bangalore | Doorstep Service | Doctor Display
     @elseif($brands->name == 'Leeco')
       LeEco Mobile Doorstep Screen Service | Replacement at your Doorstep | Doctor Display
     @elseif($brands->name == 'Gionee')
       Gionee Mobile Screen Doorstep Repair Replacement| Doctor Display | Doorstep Service
     @elseif($brands->name == 'Coolpad')
-      Cool pad Mobile Doorstep screen Service In Chennai | Doctor Display
+      Cool pad Mobile Doorstep screen Service In Chennai, Bangalore | Doctor Display
     @elseif($brands->name == 'Google')
       Google pixel Mobile Doorstep Screen Repair Service Online | Doctor Display
     @elseif($brands->name == 'HTC')
       HTC Mobile Doorstep Screen Service | Screen Replacement at Your Doorstep | Doctor Display
     @elseif($brands->name == 'LG')
-      LG Mobile Doorstep Screen Replacement in Chennai | Doctor Display
+      LG Mobile Doorstep Screen Replacement in Chennai, Bangalore | Doctor Display
     @endif
   @endsection
   @section('metadesc')
@@ -52,17 +52,17 @@
     @elseif($brands->name == 'Samsung')
       Doctor Display provides a reliable Samsung Mobile Screen Replacement service at best costs. Book now and get the service delivered at your door step.
     @elseif($brands->name == 'Motorola')
-      Motorola mobile screen repairs anywhere in Chennai, Now enjoy mobile phone Screen replacements at your home or office by our expert technicians with Doctor Display.
+      Motorola mobile screen repairs anywhere in Chennai, Bangalore, Now enjoy mobile phone Screen replacements at your home or office by our expert technicians with Doctor Display.
     @elseif($brands->name == 'Huawei')
-      Doctor Display offers the Chennai’s leading Huawei mobile screen replacement service; submit the form and our experienced technicians will reach you at your door step.
+      Doctor Display offers the Chennai, Bangalore’s leading Huawei mobile screen replacement service; submit the form and our experienced technicians will reach you at your door step.
     @elseif($brands->name == 'Lenovo')
       Replace your old damaged Mobile screen in to new, Doctor Display we use genuine parts for Lenovo mobile screen replacement, book now our experienced technicians will reach you at your door step.
     @elseif($brands->name == 'Asus')
-      Looking for a reliable service to repair your mobile screen, Doctor Display is the Leading Asus mobile screen replacement service in Chennai offering door step service at best rates.
+      Looking for a reliable service to repair your mobile screen, Doctor Display is the Leading Asus mobile screen replacement service in Chennai, Bangalore offering door step service at best rates.
     @elseif($brands->name == 'Honor')
-      Doctor Display is the leading honor Mobile screens Repair & services in Chennai, Get your Online Mobile screen Repair Services at your doorstep.
+      Doctor Display is the leading honor Mobile screens Repair & services in Chennai, Bangalore, Get your Online Mobile screen Repair Services at your doorstep.
     @elseif($brands->name == 'Nokia')
-      Get your Nokia mobile screen replacement service at your doorstep, Doctor Display is Chennai’s leading Smartphone screen repair destination for millions of people.
+      Get your Nokia mobile screen replacement service at your doorstep, Doctor Display is Chennai, Bangalore’s leading Smartphone screen repair destination for millions of people.
     @elseif($brands->name == 'Oppo')
       Doctor Display, All your OPPO phone Screen repairs can be done at your doorstep, get the best mobile screen replacement at an affordable price..
     @elseif($brands->name == 'Realme')
@@ -72,9 +72,9 @@
     @elseif($brands->name == 'Sony')
       Doctor Display offers the best Sony mobile screen service, at your home or workplace. Save your Xperia Phone with Professional Sony screen repair service with us.
     @elseif($brands->name == 'Leeco')
-      Get your LeEco le 1 screen replaced at your doorstep in Chennai at affordable rates. Book appointment now.
+      Get your LeEco le 1 screen replaced at your doorstep in Chennai, Bangalore at affordable rates. Book appointment now.
     @elseif($brands->name == 'Gionee')
-      Best Gionee Mobile screen repair services in Chennai, Enquire now and get our technician at your doorstep, your mobile screen will be replaced with in a day.
+      Best Gionee Mobile screen repair services in Chennai, Bangalore, Enquire now and get our technician at your doorstep, your mobile screen will be replaced with in a day.
     @elseif($brands->name == 'Coolpad')
       We provide the same high-quality cool pad mobile screen replacement at your doorstep; get your mobile screen service at doctor display, book now.
     @elseif($brands->name == 'Google')
@@ -82,7 +82,7 @@
     @elseif($brands->name == 'HTC')
       HTC mobile screen repair services at your doorstep. One stop solution for your entire mobile screen repair. Call us today!
     @elseif($brands->name == 'LG')
-      Doctor Display, Chennai's first choice for LG mobile phone screen repair service at best costs in your doorstep. Request a Repair for LG mobile screen service.
+      Doctor Display, Chennai, Bangalore's first choice for LG mobile phone screen repair service at best costs in your doorstep. Request a Repair for LG mobile screen service.
     @endif
   @endsection
 @section('breadcrumb')

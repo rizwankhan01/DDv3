@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('404', ['as' => '404', 'uses' => 'ErrorController@notfound']);
 Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
 
+Route::resource('/select-city','SelectCityController');
 Route::get('/','HomePageController@index');
 Route::resource('/allbrands', 'AllBrandsController');
 Route::resource('/brand', 'BrandController');

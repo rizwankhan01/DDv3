@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title')Doorstep Mobile Screen Repair in Chennai | Doctor Display @endsection
+@section('title')Doorstep Mobile Screen Repair in Chennai, Bangalore | Doctor Display @endsection
 @section('metadesc') Fixing broken phone screens have always been a pain, right? What if we say we would come to your doorstep and replace
   your phone screen right in front of your eyes, Crazy right! thats our pitch.The only transperant portal for changing broken mobile screens @endsection
 @section('breadcrumb')
@@ -124,7 +124,7 @@
             <div class="brook-section-title wow move-up">
                 <h5 class="heading heading-h5 yellow-color-2">Why Choose Doctor Display?</h5>
                 <div class="bkseparator--30"></div>
-                <h3 class="heading heading-h3 line-height-1-42">Trustable <br> Screen Replacement service in Chennai</h3>
+                <h3 class="heading heading-h3 line-height-1-42">Trustable <br> Screen Replacement service in Chennai, Bangalore</h3>
             </div>
         </div>
     </div>

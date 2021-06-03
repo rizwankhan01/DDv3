@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title') Contact | Doctor Display @endsection
-@section('metadesc') Modern Tower, no.23, F6 ,First floor, Westcott Rd, Royapettah, Chennai, Tamil Nadu 600014 @endsection
+@section('metadesc') Got any queries? Hit us up at 04446270777! We are fixing broken phone screens at your doorstep under 30 minutes in Bangalore and Chennai. @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--125 pt_lg--300 pt_md--250 pt_sm--100 pb--25 bg_image--8 breadcaump-title-bar breadcaump-title-white">
     <div class="container">
@@ -33,8 +33,8 @@
                     <div class="classic-address text-center">
                         <h4 class="heading heading-h4">Visit our Office at</h4>
                         <div class="desc mt--15">
-                            <p class="bk_pra line-height-2-22">Modern Tower, no.23, F6 ,First floor, Westcott Rd, <br>
-                              Royapettah, Chennai, Tamil Nadu 600014</p>
+                            <p class="bk_pra line-height-2-22"><b>Chennai:</b> Modern Tower, no.23, F6 ,First floor, Westcott Rd, Royapettah, Chennai, Tamil Nadu 600014</p><br>
+                            <p class="bk_pra line-height-2-22"><b>Bangalore:</b> No.18 /386, second floor S.N. Arcade, mahalingeshwara layout, Adugodi, Bangalore, Karnataka 560005</p>
                         </div>
                     </div>
                 </div>

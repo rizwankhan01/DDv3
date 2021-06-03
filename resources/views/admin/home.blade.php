@@ -689,12 +689,13 @@
                       <?php
                         $model = $list->color->model->brand->name." ".$list->color->model->series." ".$list->color->model->name;
                         $color = $list->color->name;
+                        $screen_color = $list->color->screen_color;
                         $type  = $list->prod_type;
                         $image = $list->color->image;
                       ?>
                     @endif
                   @endforeach
-                <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;">
+                <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2; @if(!empty($screen_color)) border-left: 5px solid {{ $screen_color }};  @else border-left: 5px solid #FCC72D; @endif">
                     <div class="card-body">
                         <div class="best-product-slider">
                             <div class="best-product-slider-item">

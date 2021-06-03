@@ -80,7 +80,7 @@ minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}"
 <input type="text" placeholder="Address" name='address' onkeyup="swap_address(this.value)" required value="@if(!empty($address->address)){{ $address->address }}@endif">
 </div>
 <div class="col-md-4 col-12 mb--20">
-<label>Area*</label>
+<label>Area* </label>
 <select class="nice-select" name='area' required onchange='swap_area(this.value)'>
 <option value=''>Select Area</option>
 @foreach($areas as $area)
@@ -95,8 +95,21 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
 </div>
 
 <div class="col-md-4 col-12 mb--20">
-<label>Town/City*</label>
-<input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value='@if(!empty($address->city)){{ $address->city }}@endif' required>
+<label>Town/City* <small><a href='#' data-toggle="modal" data-target="#changeCity">Change City</a></small></label>
+<input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value="@if(!empty(Session::get('city'))) {{ Session::get('city')}} @else @if(!empty($address->city)){{ $address->city }}@endif @endif" required>
+</div>
+<div class="modal fade" id="changeCity" tabindex="-1" role="dialog" aria-labelledby="changeCityLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <center>
+          <h5 class="modal-title" id="exampleModalLabel">Select Your City</h5><br>
+          <a class="brook-btn bk-btn-theme-border btn-sd-size btn-rounded space-between" href="select-city/Chennai">Chennai</a>
+          <a class="brook-btn bk-btn-theme-border btn-sd-size btn-rounded space-between" href="select-city/Bangalore">Bangalore</a>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Date*</label>

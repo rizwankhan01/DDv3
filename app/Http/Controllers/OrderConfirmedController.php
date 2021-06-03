@@ -26,7 +26,7 @@ class OrderConfirmedController extends Controller
       $address      = addresses::where('customer_id',$customer->id)->first();
       $order_id     = Session::get('order_id');
       $order        = orders::findOrFail($order_id);
-      $areas        = city_areas::all();
+      $areas        = city_areas::where('city',Session::get('city'))->get();
       $olist        = order_lists::where('order_id', $order_id)->get();
       $model_ord    = order_lists::where('order_id',$order_id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
       $tempered     = order_lists::where('order_id',$order_id)->where('prod_type','ADDON')->first();
