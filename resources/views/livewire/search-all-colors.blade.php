@@ -5,7 +5,7 @@
   <div class="row">
   @foreach($colors as $color)
   <div class="col-md-4">
-  <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2;">
+  <div class="card m-b-10" style="box-shadow: 3px 3px #e6ebf2; @if(!empty($color->screen_color)) border-left: 5px solid {{ $color->screen_color }}; @else border-left: 5px solid #FCC72D; @endif">
       <div class="card-body">
           <div class="best-product-slider">
               <div class="best-product-slider-item">
@@ -17,7 +17,7 @@
                           </center>
                       </div>
                       <div class="col-8 col-md-8">
-                        <h5 class="mt-2 font-20"><img src="../storage/{{ $color->model->brand->brand_logo }}" style="width:25px;height:25px;"> {{ $color->model->series }} {{ $color->model->name }} - {{ $color->name }}</h5>
+                        <h5 class="mt-2 font-20"><img src="../storage/{{ $color->model->brand->brand_logo }}" style="width:50px;height:auto;"> {{ $color->model->series }} {{ $color->model->name }} <small>{{ $color->name }}</small></h5>
                           <div class="row">
                           <div class="col-12"><span class="badge badge-success-inverse mb-2 text-uppercase">Basic</span> <span class="mb-2 font-16 pull-right" style="font-weight:bold;">&#8377; {{ $color->pricings->ord_selling_price ?? '' }}</span></div>
                           <div class="col-12"><span class="badge badge-primary-inverse mb-2 text-uppercase">Premium</span> <span class="mb-2 font-16 pull-right" style="font-weight:bold;">&#8377; {{ $color->pricings->org_selling_price ?? '' }}</span></div>
