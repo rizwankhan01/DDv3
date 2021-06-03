@@ -76,11 +76,16 @@ class HomePageController extends Controller
         $models   = models::where('name', $url[4])->where('series',$url[3])->first();
         if(empty($models->id)){ return abort(500); }
         $colors   = colors::where('model_id', $models->id)->get();
-        if(empty(session::get('color_id'))){
+        if(empty(auth()->user()->id)){
+          if(empty(session::get('color_id'))){
+            $color    = colors::where('model_id', $models->id)->first();
+            Session::put('color_id', $color->id);
+          }else{
+            $color    = colors::where('id', session::get('color_id'))->first();
+          }
+        }else{
           $color    = colors::where('model_id', $models->id)->first();
           Session::put('color_id', $color->id);
-        }else{
-          $color    = colors::where('id', session::get('color_id'))->first();
         }
         if(empty($color->id)){ return abort(500); }
         $pricing  = pricings::where('color_id', $color->id)->first();

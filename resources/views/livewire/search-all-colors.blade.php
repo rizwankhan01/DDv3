@@ -27,7 +27,7 @@
                   </div>
                   <div class="row">
                     <div class="col-4 col-md-4">
-                      <a href="/modelcolors/{{ $color->id }}"><i class="fa fa-pencil"></i></span>
+                      <a href="/modelcolors/{{ $color->id }}"><i class="fa fa-pencil"></i></a>
                     </div>
                     <div class="col-8 col-md-8">
                       <a href='/screen-repair-{{ $color->model->brand->name }}-{{ $color->model->series }}-{{ $color->model->name }}' target='_blank' class="btn btn-sm btn-success col-md-12">Place Order</a>
