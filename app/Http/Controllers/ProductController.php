@@ -54,6 +54,7 @@ class ProductController extends Controller
 
     public function getproduct($name, $color_name){
       $models = models::where('id',$name)->first();
+      if(empty($models->id)){ return abort(404); }
       $colors = colors::where('model_id', $models->id)->get();
       //dd($name." ".$color_name." ".$models->id);
       $color  = colors::where('name', $color_name)->where('model_id',$models->id)->first();

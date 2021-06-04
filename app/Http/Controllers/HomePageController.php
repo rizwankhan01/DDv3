@@ -67,6 +67,7 @@ class HomePageController extends Controller
         $url    = explode('-',$id);
         //dd($url);
         $brands = brands::where('name', $url[0])->first();
+        if(empty($brands->id)){ return abort(404); }
         $models = models::where('brand_id',$brands->id)->orderBy('id','asc')->get()->groupBy('series');
         return view('brand', compact('brands','models'));
       }else{
@@ -74,7 +75,7 @@ class HomePageController extends Controller
         //dd($url);
         if(empty($url[4])){ return abort(404); }
         $models   = models::where('name', $url[4])->where('series',$url[3])->first();
-        if(empty($models->id)){ return abort(500); }
+        if(empty($models->id)){ return abort(404); }
         $colors   = colors::where('model_id', $models->id)->get();
         if(empty(auth()->user()->id)){
           if(empty(session::get('color_id'))){
