@@ -70,7 +70,7 @@ class HomePageController extends Controller
         if(empty($brands->id)){ return abort(404); }
         $models = models::where('brand_id',$brands->id)->orderBy('id','asc')->get()->groupBy('series');
         return view('brand', compact('brands','models'));
-      }else{
+      }else if(strpos($id,'screen-repair-')!== false){
         $url      = explode('-',$id);
         //dd($url);
         if(empty($url[4])){ return abort(404); }
@@ -94,6 +94,8 @@ class HomePageController extends Controller
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
         $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
         return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels'));
+      }else{
+        return abort(404);
       }
     }
 
