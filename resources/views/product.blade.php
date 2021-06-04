@@ -491,6 +491,7 @@
               <div class="brand-wrapper">
                 <center><h5>Other {{ $models->brand->name }} Phone's we repair</h5></center>
                 <div class="brand__list brand-default brand-style--2">
+                  @if(!empty($othermodels))
                   @foreach($othermodels  as  $model)
                     @if($model->colortypes!='[]')
                     <div class="brand">
@@ -516,6 +517,7 @@
                     </div>
                     @endif
                   @endforeach<br><br><br>
+                @endif
                 </div>
               </div>
             </div>
