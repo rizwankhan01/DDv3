@@ -32,7 +32,18 @@
                             Call: <a href='exotel_calls/{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                           </h5>
                       @else
-                          <h5 class="card-title">All Enquiries</h5>
+                          <h5 class="card-title">
+                            <form action="/enquiry" method="post" class="form-inline">
+                              {{ csrf_field() }}
+                              {{ method_field('post') }}
+                              <select class="form-control" name="city">
+                                <option value="All">All</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Bangalore">Bangalore</option>
+                              </select>&nbsp;&nbsp;
+                              <input type="submit" class="btn btn-primary" value="Filter" name="filter">
+                            </form>
+                        </h5>
                       @endif
                     </h5>
                 </div>
@@ -74,7 +85,6 @@
                     </div>
                   @else
                   <div class="card-body">
-                    <h6 class="card-subtitle">You can moderate Enquiries Here.</h6>
                       <div class="table-responsive">
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>

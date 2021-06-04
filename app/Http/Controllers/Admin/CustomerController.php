@@ -53,7 +53,7 @@ class CustomerController extends Controller
     {
         $customer   = customers::findOrFail($id);
         $address    = addresses::where('customer_id',$id)->first();
-        $orders     = orders::where('customer_id',$id)->get();
+        $orders     = orders::where('customer_id',$id)->whereNotNull('status')->get();
         $enquiries  = enquiry::where('customer_id',$id)->orderby('created_at','desc')->get();
         return view('admin.customers',compact('customer','address','orders','enquiries'));
     }

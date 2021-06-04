@@ -99,7 +99,7 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
 <input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value="@if(!empty(Session::get('city'))) {{ Session::get('city')}} @else @if(!empty($address->city)){{ $address->city }}@endif @endif" required>
 </div>
 <div class="modal fade" id="changeCity" tabindex="-1" role="dialog" aria-labelledby="changeCityLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="top:-75px;">
     <div class="modal-content">
       <div class="modal-body">
         <center>

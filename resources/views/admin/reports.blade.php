@@ -28,7 +28,7 @@
                               {{ session('status') }}
                           </div>
                         @endif
-                          <table class="table table-striped table-bordered">
+                          <table class="table table-striped table-bordered" id="datatable-buttons">
                               <thead>
                               <tr>
                                   <th>Date</th>
@@ -38,6 +38,7 @@
                                   <th>Transaction</th>
                                   <th>Profit</th>
                                   <th>Pay Type</th>
+                                  <th>City</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -75,6 +76,7 @@
                                     &#8377; {{ $p }}
                                     </td>
                                     <td>{{ $order->closedorder->payment_type }}</td>
+                                    <td>{{ $order->customer->address->city }}</td>
                                   </tr>
                                 @endforeach
                               </tbody>
@@ -83,72 +85,16 @@
                             @if(!empty($orders->count('id'))) <button class="btn btn-sm btn-secondary btn-rounded pull-right">Total Orders: {{ $orders->count('id') }}</button><br> @endif
                             @if($ts!=0) <button class="btn btn-sm btn-warning btn-rounded pull-right">Total Stock: &#8377; {{ $ts }}</button><br> @endif
                             @if($tt!=0) <button class="btn btn-sm btn-primary btn-rounded pull-right">Total Transaction: &#8377; {{ $tt }}</button><br> @endif
-                            @if($tp!=0) <button class="btn btn-sm btn-success btn-rounded pull-right">Gross Profit: &#8377; {{ $tp }}</button> @endif
+                            @if($tp!=0) <button class="btn btn-sm btn-success btn-rounded pull-right">Gross Profit: &#8377; {{ $tp }}</button><br> @endif
+                            @if($tickets->sum('r_stock_amount')!=0)
+                              <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Ticket Amount: &#8377; {{ $tickets->sum('r_stock_amount') }}</button><br>
+                            @endif
+                            @if($expenses->sum('expenses')!=0)
+                              <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Expenses: &#8377; {{ abs($expenses->sum('expenses')) }}</button><br>
+                            @endif
+                            <button class="btn btn-lg btn-rounded btn-success pull-right">Net Profit: &#8377; {{ $tp-$tickets->sum('r_stock_amount')-abs($expenses->sum('expenses')) }}</button>
                             <br><br>
                           </div>
-                          <table class="table table-striped table-bordered">
-                              <thead>
-                              <tr>
-                                <th>Ticket Close</th>
-                                <th>Ticket Open</th>
-                                <th>Ticket ID</th>
-                                <th>Order ID</th>
-                                <th>Model</th>
-                                <th>Amount</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                                @foreach($tickets as $ticket)
-                                  <tr>
-                                    <td>{{ date('d-m-Y',strtotime($ticket->date_close)) }}</td>
-                                    <td>{{ date('d-m-Y',strtotime($ticket->date_open)) }}</td>
-                                    <td><a href='/tickets/{{ $ticket->id }}'>#{{ $ticket->id }}</a></td>
-                                    <td><a href='/home/{{ $ticket->order_id }}'>#{{ $ticket->order_id }}</a></td>
-                                    <td>
-                                      @foreach($ticket->order->order_lists as $list)
-                                        @if($list->prod_type!='ADDON' AND $list->prod_type!='COUPON')
-                                          {{ $list->color->model->brand->name }} {{ $list->color->model->name }} - <small>{{ $list->color->name }}</small>
-                                        @endif
-                                      @endforeach
-                                    </td>
-                                    <td>&#8377; {{ $ticket->r_stock_amount }}</td>
-                                  </tr>
-                                @endforeach
-                              </tbody>
-                            </table>
-                            <div class="pull-right">
-                              @if($tickets->sum('r_stock_amount')!=0)
-                                <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Ticket Amount: &#8377; {{ $tickets->sum('r_stock_amount') }}</button><br>
-                              @endif
-                              <br><br>
-                            </div>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                  <th>Date</th>
-                                  <th>Reason</th>
-                                  <th>Posted by</th>
-                                  <th>Expense</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                  @foreach($expenses as $expense)
-                                    <tr>
-                                      <td>{{ date('d-m-Y',strtotime($expense->created_at)) }}</td>
-                                      <td>{{ $expense->reason }}</td>
-                                      <td>{{ $expense->user->name }}</td>
-                                      <td>&#8377; {{ abs($expense->expenses) }}</td>
-                                    </tr>
-                                  @endforeach
-                                </tbody>
-                              </table>
-                              <div class="pull-right">
-                                @if($expenses->sum('expenses')!=0)
-                                  <button class="btn btn-sm btn-danger btn-rounded pull-right">Total Expenses: &#8377; {{ abs($expenses->sum('expenses')) }}</button><br>
-                                @endif
-                                <button class="btn btn-lg btn-rounded btn-success pull-right">Net Profit: &#8377; {{ $tp-$tickets->sum('r_stock_amount')-abs($expenses->sum('expenses')) }}</button>
-                                <br><br>
-                              </div>
                       </div>
                   </div>
               </div>

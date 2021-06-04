@@ -42,18 +42,31 @@ class EnquiryController extends Controller
     public function store(Request $request)
     {
         if(!empty($request->input('filter'))){
-          $status = $request->input('filter');
-          $callback   = enquiry::where('status','Call Back')->count();
-          $open       = enquiry::whereNull('status')->count();
-          if($status=='open'){
-            $enquiries  = enquiry::whereNull('status')->get();
-            return view('admin.enquiry', compact('enquiries','callback','open'));
-          }else if($status=='Call Back'){
-            $enquiries  = enquiry::where('status','Call Back')->get();
+          if(!empty($request->input('city'))){
+            if($request->input('city')=='All'){
+              $enquiries = enquiry::whereNull('status')->get();
+              $open     = enquiry::whereNull('status')->count();
+              $callback = enquiry::where('status','Call Back')->count();
+            }else{
+              $enquiries = enquiry::where('city',$request->input('city'))->get();
+              $open       = enquiry::whereNull('status')->where('city',$request->input('city'))->count();
+              $callback   = enquiry::where('status','Call Back')->where('city',$request->input('city'))->count();
+            }
             return view('admin.enquiry', compact('enquiries','callback','open'));
           }else{
-            $enquiries  = enquiry::whereNotNull('status')->where('status','!=','Call Back')->get();
-            return view('admin.enquiry', compact('enquiries','callback','open'));
+            $status = $request->input('filter');
+            $callback   = enquiry::where('status','Call Back')->count();
+            $open       = enquiry::whereNull('status')->count();
+            if($status=='open'){
+              $enquiries  = enquiry::whereNull('status')->get();
+              return view('admin.enquiry', compact('enquiries','callback','open'));
+            }else if($status=='Call Back'){
+              $enquiries  = enquiry::where('status','Call Back')->get();
+              return view('admin.enquiry', compact('enquiries','callback','open'));
+            }else{
+              $enquiries  = enquiry::whereNotNull('status')->where('status','!=','Call Back')->get();
+              return view('admin.enquiry', compact('enquiries','callback','open'));
+            }
           }
         }else{
         $check    = customers::where('phone_number', $request->input('phone_number'))->first();
