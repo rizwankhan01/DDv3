@@ -529,6 +529,7 @@
               <div class="brand-wrapper">
                 <center><h5>Other Brands we repair</h5></center>
                 <div class="brand__list brand-default brand-style--2">
+                  @if(!empty($otherbrands))
                   @foreach($otherbrands as $brand)
                     <div class="brand">
                       <a href="{{$brand->name}}-screen-service-center">
@@ -539,6 +540,7 @@
                       </a>
                     </div>
                   @endforeach
+                  @endif
                 </div>
               </div>
             </div>
