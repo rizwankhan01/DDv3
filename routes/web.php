@@ -112,6 +112,8 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 // New User Interfaces
+// New Model Create
+Route::get('/newmodel', function(){ return view('admin.newmodel'); });
 //User Leave Requests
 Route::get('/newleavereq', function(){ return view('admin.newleavereq'); });
 //HR Users
@@ -128,7 +130,6 @@ Route::get('/newmail', function(){ return view('admin.newmail'); });
 Route::get('/neworder', function(){ return view('admin.neworder'); });
 //WAREHOUSE Users
 Route::get('/newstockrequest', function(){ return view('admin.newstockrequest'); });
-
 //JOBS PAGE
 Route::get('/jobs', function(){ return view('alljobs'); });
 

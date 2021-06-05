@@ -48,7 +48,7 @@ class EnquiryController extends Controller
               $open     = enquiry::whereNull('status')->count();
               $callback = enquiry::where('status','Call Back')->count();
             }else{
-              $enquiries = enquiry::where('city',$request->input('city'))->get();
+              $enquiries = enquiry::where('city',$request->input('city'))->whereNull('status')->get();
               $open       = enquiry::whereNull('status')->where('city',$request->input('city'))->count();
               $callback   = enquiry::where('status','Call Back')->where('city',$request->input('city'))->count();
             }
@@ -104,76 +104,6 @@ class EnquiryController extends Controller
           ";
           mail($to,$subject,$message,$headers);
           //end enquiry mail
-
-          //hubspot integration
-          $hs_api_key = 'aa4d45d3-7213-4287-b1cc-b0ed645e2500';
-          $hubSpot = \HubSpot\Factory::createWithApiKey($hs_api_key);
-
-          //search if contact exists
-          $filter = new \HubSpot\Client\Crm\Contacts\Model\Filter();
-          $filter
-              ->setOperator('EQ')
-              ->setPropertyName('phone')
-              ->setValue($request->input('phone_number'));
-
-          $filterGroup = new \HubSpot\Client\Crm\Contacts\Model\FilterGroup();
-          $filterGroup->setFilters([$filter]);
-
-          $searchRequest = new \HubSpot\Client\Crm\Contacts\Model\PublicObjectSearchRequest();
-          $searchRequest->setFilterGroups([$filterGroup]);
-
-          $contactsPage = $hubSpot->crm()->contacts()->searchApi()->doSearch($searchRequest);
-          if(!empty($contactsPage['results'][0]['id'])){
-            $contact_id = $contactsPage['results'][0]['id'];
-          }
-          if(empty($contact_id)){ //if empty create new contact
-            $contactInput = new \HubSpot\Client\Crm\Contacts\Model\SimplePublicObjectInput();
-            $contact_data = array(
-          		"firstname" => $request->input('customer_name'),
-          		"lname" => '',
-          		"email" => '',
-          		"phone" => $request->input('phone_number'),
-          		"message" => '',
-          		"code" => '',
-          		"city" => $request->input('city'),
-          		"radio1" => '',
-          		"address" => '',
-          		"totalsession" =>'',
-          		"company" => ''
-          	);
-            $contactInput->setProperties($contact_data);
-            $contact = $hubSpot->crm()->contacts()->basicApi()->create($contactInput);
-            $contact_id = $contact['id'];
-            //dd($contact_id); //test this
-          }
-            // creating new deal
-            $dealInput = new \HubSpot\Client\Crm\Deals\Model\SimplePublicObjectInput();
-            $deal_data = array(
-              "dealname" => $request->input('model_name'),
-              "pipeline" => 'default',
-              "dealstage" => 'appointmentscheduled',
-            );
-            $dealInput->setProperties($deal_data);
-            $deal   = $hubSpot->crm()->deals()->basicApi()->create($dealInput);
-
-            //creating association between contact and deal
-            //$association_url = "https://api.hubapi.com/crm-associations/v1/associations?hapikey=".$hs_api_key;
-            $association_url = "https://api.hubapi.com/crm/v3/objects/deals/".$deal['id']."/associations/Contacts/".$contact_id."/3?hapikey=".$hs_api_key;
-            $association_data = array(
-              "fromObjectId" => $deal['id'],
-              "toObjectId" => $contact_id,
-              "category" => "HUBSPOT_DEFINED",
-              "definitionId" => 3
-            );
-            $ch = curl_init($association_url);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $association_data);
-            $response = curl_exec($ch);
-            //dd(curl_getinfo($ch, CURLINFO_HTTP_CODE));
-            //dd(json_decode($response, true));
-            curl_close($ch);
 
 
         return redirect('/thankyou');
