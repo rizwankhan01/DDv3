@@ -22,6 +22,7 @@ class OrderConfirmedController extends Controller
      */
     public function index()
     {
+      //dd(explode('/', url()->current()));
       $customer     = customers::findOrFail(Session::get('cus_id'));
       $address      = addresses::where('customer_id',$customer->id)->first();
       $order_id     = Session::get('order_id');
