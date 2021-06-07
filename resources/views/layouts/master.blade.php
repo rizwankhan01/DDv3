@@ -48,7 +48,7 @@
 
 <body class="template-color-1 template-font-1">
   <?php $url = explode('/', url()->current()); ?>
-  @if(empty(Session::get('city')) AND $url[3]!='orderconfirmed')
+  @if(empty(Session::get('city')))
   <div class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display:block;top:100px;">
     <div class="modal-dialog modal-dialog-centered" role="document" style="top:-75px;">
       <div class="modal-content">
