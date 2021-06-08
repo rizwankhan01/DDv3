@@ -64,8 +64,7 @@ class HomeController extends Controller
       $location = $request->input('filter');
       $address  = addresses::where('city', $location)->pluck('id');
       $orders = orders::whereIn('address_id', $address)
-                      ->where('status',1)
-                      ->orWhere('status',2)
+                      ->whereIn('status', [1, 2])
                       ->orderBy('created_at','desc')->paginate(10);
 
       #select * from `orders` where `address_id` in (select * from `addresses` where `city` = Bangalore)
