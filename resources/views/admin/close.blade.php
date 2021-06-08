@@ -8,12 +8,16 @@
           <div class="col-lg-12">
               <div class="card m-b-10">
                   <div class="card-header">
-                      <div class="widgetbar pull-right" id="bigimage">
-                          <button class="btn btn-sm btn-success">All</button>
-                          <button class="btn btn-sm btn-primary">Today</button>
-                          <button class="btn btn-sm btn-warning">Tomorrow</button>
+                      <div class="widgetbar pull-right">
+                        <form action='/close' method='post'>
+                          {{ csrf_field() }}
+                          {{ method_field('post') }}
+                          <a href='/close' class="btn btn-sm btn-success">All</a>
+                          <button name='filter' value='Chennai' class="btn btn-sm btn-primary">Chennai</button>
+                          <button name='filter' value='Bangalore' class="btn btn-sm btn-warning">Bangalore</button>
+                        </form>
                       </div>
-                      <h5 class="card-title">Closed Orders</h5>
+                      <h5 class="card-title" id="bigimage">Closed Orders</h5>
                   </div>
               </div>
           </div>

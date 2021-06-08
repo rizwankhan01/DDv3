@@ -9,11 +9,15 @@
               <div class="card m-b-10">
                   <div class="card-header">
                       <div class="widgetbar pull-right">
-                          <button class="btn btn-sm btn-success">All</button>
-                          <button class="btn btn-sm btn-primary">Today</button>
-                          <button class="btn btn-sm btn-warning">Tomorrow</button>
+                        <form action='/cancel' method='post'>
+                          {{ csrf_field() }}
+                          {{ method_field('post') }}
+                          <a href='/cancel' class="btn btn-sm btn-success">All</a>
+                          <button name='filter' value='Chennai' class="btn btn-sm btn-primary">Chennai</button>
+                          <button name='filter' value='Bangalore' class="btn btn-sm btn-warning">Bangalore</button>
+                        </form>
                       </div>
-                      <h5 class="card-title">Cancelled Orders</h5>
+                      <h5 class="card-title" id="bigimage">Cancelled Orders</h5>
                   </div>
               </div>
           </div>

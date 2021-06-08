@@ -47,12 +47,13 @@
                               </select>
                             </div>
                             <div class="form-group">
-                              <label>Name</label>
-                              <input type="text" class="form-control" name="name" placeholder="Name" required>
+                              <label>Color Name</label>
+                              <input type="text" class="form-control" name="name" placeholder="Color Name" required>
                             </div>
                             <div class="form-group">
                               <label>Screen Color</label>
-                              <input type="text" class="form-control" name="screen_color" placeholder="Screen Color" required>
+                              <input type="color" id="favcolor" name="screen_color" value="#FCC72D" class="form-control">
+                              <!--<input type="text" class="form-control" name="screen_color" placeholder="Screen Color" required>-->
                             </div>
                             <div class="form-group">
                               <label>Image</label>
@@ -95,7 +96,8 @@
                         </div>
                         <div class="form-group">
                           <label>Screen Color</label>
-                          <input type="text" class="form-control" name="screen_color" value="{{ $color->screen_color }}" placeholder="Screen Color" required>
+                          <input type="color" id="favcolor" name="screen_color" value="{{ $color->screen_color }}" class="col-md-2 form-control" required>
+                          <!--<input type="text" class="form-control" name="screen_color" value="" placeholder="Screen Color" required>-->
                         </div>
                         <div class="form-group">
                           <label>Image</label>

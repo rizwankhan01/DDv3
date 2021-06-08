@@ -13,12 +13,12 @@ class ColorsController extends Controller
 {
 
     public function getseries($id){
-      $series = models::where('brand_id',$id)->pluck('series','series');
+      $series = models::where('brand_id',$id)->orderBy('name')->pluck('series','series');
       return json_encode($series);
     }
 
     public function getmodels($id){
-      $models = models::where('series',$id)->pluck('name','id');
+      $models = models::where('series',$id)->orderBy('name')->pluck('name','id');
       return json_encode($models);
     }
 

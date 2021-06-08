@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\orders;
+use App\Models\addresses;
 
 class CancelledController extends Controller
 {
@@ -39,7 +40,13 @@ class CancelledController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $location = $request->input('filter');
+      $address  = addresses::where('city', $location)->pluck('id');
+      $orders = orders::whereIn('address_id', $address)
+                      ->where('status',4)
+                      ->orderby('id','desc')
+                      ->paginate(10);
+      return view('admin.cancel', compact('orders'));
     }
 
     /**
