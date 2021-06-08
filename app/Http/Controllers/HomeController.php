@@ -36,8 +36,19 @@ class HomeController extends Controller
         $orders = orders::where('status',1)
                         ->orWhere('status',2)
                         ->orderBy('created_at','desc')
-                        ->paginate(10);
-        return view('admin.home', compact('orders'));
+                        ->get();
+        //chennai count
+        $chennai  = addresses::where('city', 'Chennai')->pluck('id');
+        $chn_count = orders::whereIn('address_id', $chennai)
+                        ->whereIn('status', [1, 2])
+                        ->orderBy('created_at','desc')->count();
+        //bangalore count
+        $bangalore  = addresses::where('city', 'Bangalore')->pluck('id');
+        $bgl_count = orders::whereIn('address_id', $bangalore)
+                        ->whereIn('status', [1, 2])
+                        ->orderBy('created_at','desc')->count();
+
+        return view('admin.home', compact('orders','chn_count','bgl_count'));
     }
 
     public function show($id)
@@ -65,30 +76,18 @@ class HomeController extends Controller
       $address  = addresses::where('city', $location)->pluck('id');
       $orders = orders::whereIn('address_id', $address)
                       ->whereIn('status', [1, 2])
-                      ->orderBy('created_at','desc')->paginate(10);
+                      ->orderBy('created_at','desc')->get();
+      //chennai count
+      $chennai  = addresses::where('city', 'Chennai')->pluck('id');
+      $chn_count = orders::whereIn('address_id', $chennai)
+                      ->whereIn('status', [1, 2])
+                      ->orderBy('created_at','desc')->count();
+      //bangalore count
+      $bangalore  = addresses::where('city', 'Bangalore')->pluck('id');
+      $bgl_count = orders::whereIn('address_id', $bangalore)
+                      ->whereIn('status', [1, 2])
+                      ->orderBy('created_at','desc')->count();
 
-      #select * from `orders` where `address_id` in (select * from `addresses` where `city` = Bangalore)
-      //$orders = DB::select("select * from `orders` where `address_id` in (select `id` from `addresses` where `city` = '".$location."')");
-      /*$orders = DB::table('orders')
-                ->selectRaw('*')
-                ->where('address_id', "(select `id` from `addresses` where `city` = '".$location."')")
-                ->get();
-      //dd($orders);
-      /*$orders = DB::table('orders')
-                ->selectRaw('SELECT *')
-                ->whereRaw("address_id in (select id from addresses where city='".$location."')")
-                ->paginate(10);
-      //$orders = orders::whereIn('address_id', addresses::where('city','Bangalore'))->get();
-      //dd($request->input('filter'));
-      /*
-      $orders = orders::with(['city' => function($query) use ($location) {
-          $query->where('address_id', '=', $location);
-        }])->get();
-      $orders = orders::where('status',1)
-                      ->orWhere('status',2)
-                      ->orderBy('created_at','desc')
-                      ->paginate(10);
-                      */
-      return view('admin.home', compact('orders'));
+      return view('admin.home', compact('orders','chn_count','bgl_count'));
     }
 }

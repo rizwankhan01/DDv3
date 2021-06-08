@@ -96,16 +96,10 @@
                                           </li>
                                       </div>
                                       <div class="col-12 col-md-2">
-                                        <li class="list-inline-item">
-                                            <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
+                                            <h4 class="mb-2 font-16 pull-right">&#8377; {{ $order->order_lists->sum('price') }}</h4>
                                             <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
-                                            <div class="row">
-                                              <div class="col-12">
-                                                <a href='/home/{{ $order->id }}' class='btn btn-sm btn-success'>Completed</a>
-                                                <a href='/invoice/{{ $order->id }}' target='_blank' class='btn btn-sm btn-warning'>Invoice</a>
-                                              </div>
-                                            </div>
-                                        </li>
+                                            <a href='/home/{{ $order->id }}' class='btn col-12 btn-sm btn-success'>Completed</a>
+                                            <a href='/invoice/{{ $order->id }}' target='_blank' class='col-12 btn btn-sm btn-warning'>Invoice</a>
                                       </div>
                                   </div>
                               </div>

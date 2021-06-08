@@ -76,11 +76,10 @@
                                       </li>
                                   </div>
                                   <div class="col-12 col-md-2">
-                                    <li class="list-inline-item">
-                                        <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
+                                        <h4 class="mb-2 font-16 pull-right">&#8377; {{ $order->order_lists->sum('price') }}</h4>
                                         <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
-                                        <a href='/home/{{ $order->id }}' class='btn btn-sm btn-danger'>Cancelled</a>
-                                    </li>
+                                        <a href='/home/{{ $order->id }}' class='btn btn-sm col-12 btn-danger'>Cancelled</a>
+                                        <a href='/cancel/{{ $order->id }}' class='btn btn-sm col-12 btn-success'>Reopen</a>
                                   </div>
                               </div>
                           </div>

@@ -677,9 +677,9 @@
                           <form action='/home' method='post'>
                             {{ csrf_field() }}
                             {{ method_field('post') }}
-                            <a href='/home' class="btn btn-sm btn-success">All</a>
-                            <button name='filter' value='Chennai' class="btn btn-sm btn-primary">Chennai</button>
-                            <button name='filter' value='Bangalore' class="btn btn-sm btn-warning">Bangalore</button>
+                            <a href='/home' class="btn btn-sm btn-success">All <span class="badge badge-light">{{ count($orders) }}</span></a>
+                            <button name='filter' value='Chennai' class="btn btn-sm btn-primary">Chennai <span class="badge badge-light">{{ $chn_count }}</span></button>
+                            <button name='filter' value='Bangalore' class="btn btn-sm btn-warning">Bangalore <span class="badge badge-light">{{ $bgl_count }}</span></button>
                           </form>
                         </div>
                         <h5 class="card-title" id="bigimage">Orders</h5>
@@ -741,8 +741,7 @@
                                         </li>
                                     </div>
                                     <div class="col-12 col-md-2">
-                                      <li class="list-inline-item">
-                                          <h4 class="mb-2 font-16">&#8377; {{ $order->order_lists->sum('price') }}</h4>
+                                          <h4 class="mb-2 font-16 pull-right">&#8377; {{ $order->order_lists->sum('price') }}</h4>
                                           <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
                                           @if($order->pickup_reason==NULL)
                                             @if($order->status==1)
@@ -753,7 +752,6 @@
                                           @else
                                             <a href="/home/{{ $order->id }}" class='btn btn-sm col-12 btn-warning'>Picked Up</a>
                                           @endif
-                                      </li>
                                     </div>
                                 </div>
                             </div>
@@ -761,9 +759,6 @@
                     </div>
                 </div>
               @endforeach
-            </div>
-            <div class="col-12">
-              {{ $orders->links() }}
             </div>
           @endif
           <!-- End col -->

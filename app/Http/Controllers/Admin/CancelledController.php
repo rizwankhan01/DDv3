@@ -40,13 +40,14 @@ class CancelledController extends Controller
      */
     public function store(Request $request)
     {
-      $location = $request->input('filter');
-      $address  = addresses::where('city', $location)->pluck('id');
-      $orders = orders::whereIn('address_id', $address)
-                      ->where('status',4)
-                      ->orderby('id','desc')
-                      ->paginate(10);
-      return view('admin.cancel', compact('orders'));
+
+        $location = $request->input('filter');
+        $address  = addresses::where('city', $location)->pluck('id');
+        $orders = orders::whereIn('address_id', $address)
+                        ->where('status',4)
+                        ->orderby('id','desc')
+                        ->paginate(10);
+        return view('admin.cancel', compact('orders'));
     }
 
     /**
@@ -57,7 +58,10 @@ class CancelledController extends Controller
      */
     public function show($id)
     {
-        //
+          $orders = orders::findOrFail($id);
+          $orders->status = 1;
+          $orders->update();
+          return redirect('home/'.$orders->id);
     }
 
     /**
