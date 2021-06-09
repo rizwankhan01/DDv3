@@ -372,29 +372,29 @@
                               {"breakpoint":481, "settings": {"slidesToShow": 1}}
                           ]'>
                       @foreach($reviews as $review)
-                      <!-- Start Single Testimonial -->
-                      <div class="testimonial testimonial_style--1 hover-transparent space-large--topbottom bg-dark">
-                          <div class="content">
-                              <p class="bk_pra">“{{ $review->feedback }}”</p>
-                              <div class="testimonial-info">
-                                  <div class="post-thumbnail">
-                                      @if(!empty($review->customer->display_picture))
-                                        <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}">
-                                      @else
-                                        <img src="assets\images\users\men.svg" alt="{{ $review->customer->name }}">
-                                      @endif
-                                      <img src="/storage/{{ $review->customer->image }}" alt="{{ $review->customer->name }}">
+                        @if(!empty($review->customer->name))
+                          <div class="testimonial testimonial_style--1 hover-transparent space-large--topbottom bg-dark">
+                              <div class="content">
+                                  <p class="bk_pra">“{{ $review->feedback }}”</p>
+                                  <div class="testimonial-info">
+                                      <div class="post-thumbnail">
+                                          @if(!empty($review->customer->display_picture))
+                                            <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}">
+                                          @else
+                                            <img src="assets\images\users\men.svg" alt="{{ $review->customer->name }}">
+                                          @endif
+                                      </div>
+                                      <div class="clint-info">
+                                          <h6>{{ $review->customer->name }}</h6>
+                                          <span>{{ $review->model->brand->name }} {{ $review->model->series }} {{ $review->model->name }}</span>
+                                      </div>
                                   </div>
-                                  <div class="clint-info">
-                                      <h6>{{ $review->customer->name }}</h6>
-                                      <span>{{ $review->model->name }}</span>
+                                  <div class="testimonial-quote">
+                                      <span class="fa fa-quote-right"></span>
                                   </div>
-                              </div>
-                              <div class="testimonial-quote">
-                                  <span class="fa fa-quote-right"></span>
                               </div>
                           </div>
-                      </div>
+                        @endif
                       @endforeach
                       <!-- End Single Testimonial -->
                   </div>
