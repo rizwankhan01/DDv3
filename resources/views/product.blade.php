@@ -347,13 +347,13 @@
     @if(empty($reviews)===false)
       <div class="brook-testimonial-area bg_color--7">
           <div class="row row--0 align-items-center">
-              <div class="col-lg-3 col-xl-6 text-center ptb-md--80 ptb-sm--80">
+              <div class="col-md-4 text-center ptb-md--80 ptb-sm--80">
                   <div class="brook-section-title text-left title-max-width plr_sm--30 plr_md--40">
-                      <h3 class="heading heading-h3 text-white">What <br>people say<br> about us</h3>
+                      <h3 class="heading heading-h3 text-white">What <br>our customers<br> say about us</h3>
                   </div>
               </div>
 
-              <div class="col-lg-9 col-xl-6">
+              <div class="col-md-8">
                   <div class="brook-element-carousel slick-arrow-center slick-arrow-triggle slick-arrow-trigglestyle-2 testimonial-space-right testimonial-color-variation"
                       data-slick-options='{
                               "spaceBetween": 0,
@@ -378,7 +378,12 @@
                               <p class="bk_pra">“{{ $review->feedback }}”</p>
                               <div class="testimonial-info">
                                   <div class="post-thumbnail">
-                                      <img src="/storage/{{ $review->model->image }}" alt="{{ $review->model->name }}">
+                                      @if(!empty($review->customer->display_picture))
+                                        <img src="{{ $review->customer->display_picture }}" alt="{{ $customer->name }}">
+                                      @else
+                                        <img src="assets\images\users\men.svg" alt="{{ $customer->name }}">
+                                      @endif
+                                      <img src="/storage/{{ $review->customer->image }}" alt="{{ $review->customer->name }}">
                                   </div>
                                   <div class="clint-info">
                                       <h6>{{ $review->customer->name }}</h6>
