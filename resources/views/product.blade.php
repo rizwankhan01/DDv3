@@ -379,9 +379,9 @@
                               <div class="testimonial-info">
                                   <div class="post-thumbnail">
                                       @if(!empty($review->customer->display_picture))
-                                        <img src="{{ $review->customer->display_picture }}" alt="{{ $customer->name }}">
+                                        <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}">
                                       @else
-                                        <img src="assets\images\users\men.svg" alt="{{ $customer->name }}">
+                                        <img src="assets\images\users\men.svg" alt="{{ $review->customer->name }}">
                                       @endif
                                       <img src="/storage/{{ $review->customer->image }}" alt="{{ $review->customer->name }}">
                                   </div>
