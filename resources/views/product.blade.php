@@ -183,8 +183,8 @@
                                       <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basic" role="tabpanel"
                                           aria-labelledby="basic-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->ord_selling_price+300 }}</strike> <span class="green">&#8377; {{ $pricing->ord_selling_price }}</span></h4>
-                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
-                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Book now & Pay Later!</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Book now & Pay Later!</button>
                                       </div>
                                       @else
                                       <div class="tab-pane fade @if($pricing->preferred_type=='BASIC') show active  @endif" id="basicnone" role="tabpanel"
@@ -196,8 +196,8 @@
                                       <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premium" role="tabpanel"
                                           aria-labelledby="premium-tab">
                                           <h4>Price: <strike class="red">&#8377; {{ $pricing->org_selling_price+250 }}</strike> <span class="green">&#8377; {{ $pricing->org_selling_price }}</span></h4>
-                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Proceed</button>
-                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Proceed</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="hidden-xs col-md-12 brook-btn bk-btn-theme btn-xs-size btn-rounded space-between">Book now & Pay Later!</button>
+                                          <button type="button" data-toggle="modal" data-target="#exampleModal" class="stick2foot hidden-md col-md-12 brook-btn bk-btn-theme btn-lg-size">Book now & Pay Later!</button>
                                       </div>
                                       @else
                                       <div class="tab-pane fade @if($pricing->preferred_type=='PREMIUM') show active  @endif" id="premiumnone" role="tabpanel"
@@ -211,6 +211,8 @@
                               </div>
                                     <br>
 <p class="bk_pra">
+* We accept payments by Card, Cash and UPI only after you're happy with the replaced screens.<br>
+* You can cancel your appointment anytime if you change your mind.<br>
 * Extra charges might be applicable if the Service location is more than 20 kms from our operation radius.</p>
 <br><br>
                             </div>
@@ -342,6 +344,59 @@
             </div>
         </div>
     </div>
+    @if(empty($reviews)===false)
+      <div class="brook-testimonial-area bg_color--7">
+          <div class="row row--0 align-items-center">
+              <div class="col-lg-3 col-xl-6 text-center ptb-md--80 ptb-sm--80">
+                  <div class="brook-section-title text-left title-max-width plr_sm--30 plr_md--40">
+                      <h3 class="heading heading-h3 text-white">What <br>people say<br> about us</h3>
+                  </div>
+              </div>
+
+              <div class="col-lg-9 col-xl-6">
+                  <div class="brook-element-carousel slick-arrow-center slick-arrow-triggle slick-arrow-trigglestyle-2 testimonial-space-right testimonial-color-variation"
+                      data-slick-options='{
+                              "spaceBetween": 0,
+                              "slidesToShow": 2,
+                              "slidesToScroll": 1,
+                              "arrows": true,
+                              "infinite": true,
+                              "centerMode":true,
+                              "dots": false,
+                              "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fas fa-angle-left" },
+                              "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fas fa-angle-right" }
+                          }'
+                      data-slick-responsive='[
+                              {"breakpoint":768, "settings": {"slidesToShow": 3}},
+                              {"breakpoint":577, "settings": {"slidesToShow": 1}},
+                              {"breakpoint":481, "settings": {"slidesToShow": 1}}
+                          ]'>
+                      @foreach($reviews as $review)
+                      <!-- Start Single Testimonial -->
+                      <div class="testimonial testimonial_style--1 hover-transparent space-large--topbottom bg-dark">
+                          <div class="content">
+                              <p class="bk_pra">“{{ $review->feedback }}”</p>
+                              <div class="testimonial-info">
+                                  <div class="post-thumbnail">
+                                      <img src="/storage/{{ $review->model->image }}" alt="{{ $review->model->name }}">
+                                  </div>
+                                  <div class="clint-info">
+                                      <h6>{{ $review->customer->name }}</h6>
+                                      <span>{{ $review->model->name }}</span>
+                                  </div>
+                              </div>
+                              <div class="testimonial-quote">
+                                  <span class="fa fa-quote-right"></span>
+                              </div>
+                          </div>
+                      </div>
+                      @endforeach
+                      <!-- End Single Testimonial -->
+                  </div>
+              </div>
+          </div>
+      </div>
+    @endif
     <!-- Start Product Review -->
     @if(!empty($color->model->big_description))
     <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
@@ -485,7 +540,7 @@
     </div>
     @endif
     <!-- End Product Review -->
-    <div class="container">
+    <div class="container" style="padding-top:50px;">
         <div class="row">
             <div class="col-lg-12">
               <div class="brand-wrapper">

@@ -9,6 +9,7 @@ use App\Models\colors;
 use App\Models\pricings;
 use App\Models\order_lists;
 use App\Models\brands;
+use App\Models\old_feedbacks;
 use Session;
 
 class HomePageController extends Controller
@@ -93,7 +94,9 @@ class HomePageController extends Controller
         $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
         $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
-        return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels'));
+        $reviews  = old_feedbacks::paginate(10);
+
+        return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels','reviews'));
       }else{
         return abort(404);
       }
