@@ -7,6 +7,7 @@ use App\Models\customers;
 use App\Models\colors;
 use App\Models\enquiry;
 use App\Models\models;
+use Spatie\Referer\Referer;
 use Session;
 
 class CustomerController extends Controller
@@ -51,6 +52,7 @@ class CustomerController extends Controller
           $customer->phone_number = $request->input('phone');
           $customer->ga_id        = $request->input('ga_id');
           $customer->otp          = rand(1111,9999);
+          $customer->referer      = app(Referer::class)->get();
           $customer->save();
           $cus_id   = $customer->id;
 

@@ -21,6 +21,7 @@ class HomePageController extends Controller
      */
     public function index()
     {
+        //dd(app(Referer::class)->get());
         $feedbacks = closedorder::whereNotNull('feedback')->get();
         $models    = models::inRandomOrder()->limit(10)->get();
         return view('welcome', compact('feedbacks','models'));
