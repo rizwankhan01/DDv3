@@ -19,8 +19,9 @@ class HomePageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //dd($request->visitor()->languages());
         //dd(app(Referer::class)->get());
         $feedbacks = closedorder::whereNotNull('feedback')->get();
         $models    = models::inRandomOrder()->limit(10)->get();

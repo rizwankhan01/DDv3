@@ -31,7 +31,7 @@
                       <div class="col-12 col-md-2">
                             <b>Joined {{ $customer->created_at->diffForHumans() }}</b>
                       </div>
-                      <div class="col-12 col-md-2"><b>Web</b></div>
+                      <div class="col-12 col-md-2"><b> @if(!empty($customer->referer)) {{ $customer->referer  }} @else Direct @endif</b></div>
                   </div>
               </div>
           </div>

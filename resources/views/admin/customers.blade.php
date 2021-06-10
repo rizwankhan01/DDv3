@@ -67,6 +67,10 @@
                                 <td><a href="#" id="xeditable-dob">{{ $customer->date_of_birth }}</a></td>
                                 <td><a href="#" id="xeditable-lang">{{ $customer->language }}</a></td>
                               </tr>
+                              <tr>
+                                <td><b>Referer</b></td>
+                                <td>{{ $customer->referer }}</td>
+                              </tr>
                             </table><hr>
                             @if(!empty($address->id))
                             <div class="col-lg-12 col-xl-6">
@@ -273,6 +277,13 @@
                           </div>
                       </div>
                       </div>
+                  </div>
+                  <div class="col-md-12 text-center p-b-20">
+                    @if(!empty($customer->device)) <badge class='badge badge-secondary'>Device: {{ $customer->device }} </badge> @endif
+                    @if(!empty($customer->platform))<badge class='badge badge-secondary'>Platform: {{ $customer->platform }}</badge> @endif
+                    @if(!empty($customer->browser))<badge class='badge badge-secondary'>Browser: {{ $customer->browser }}</badge> @endif
+                    @if(!empty($customer->languages))<badge class='badge badge-secondary'>Languages: {{ $customer->languages }}</badge> @endif
+                    @if(!empty($customer->ip))<badge class='badge badge-secondary'>IP Address: {{ $customer->ip }}</badge> @endif
                   </div>
                   </div>
                   @else

@@ -53,6 +53,12 @@ class CustomerController extends Controller
           $customer->ga_id        = $request->input('ga_id');
           $customer->otp          = rand(1111,9999);
           $customer->referer      = app(Referer::class)->get();
+          //$customer->referer      = $request->visitor()->referer();
+          $customer->device       = $request->visitor()->device();
+          $customer->platform     = $request->visitor()->platform();
+          $customer->browser      = $request->visitor()->browser();
+          $customer->languages    = implode(', ', $request->visitor()->languages());
+          $customer->ip           = $request->visitor()->ip();
           $customer->save();
           $cus_id   = $customer->id;
 
