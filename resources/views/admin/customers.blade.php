@@ -69,7 +69,7 @@
                               </tr>
                               <tr>
                                 <td><b>Referer</b></td>
-                                <td>{{ $customer->referer }}</td>
+                                <td>@if(!empty($customer->referer)) {{ $customer->referer  }} @else Direct @endif</td>
                               </tr>
                             </table><hr>
                             @if(!empty($address->id))
