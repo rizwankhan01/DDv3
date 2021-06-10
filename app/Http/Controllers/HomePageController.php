@@ -65,19 +65,19 @@ class HomePageController extends Controller
     public function show($id)
     {
       if(strpos($id,'-screen-service-center') !== false){
-        $url    = explode('-',$id);
+        $url          = explode('-',$id);
         //dd($url);
-        $brands = brands::where('name', $url[0])->first();
+        $brands       = brands::where('name', $url[0])->first();
         if(empty($brands->id)){ return abort(404); }
-        $models = models::where('brand_id',$brands->id)->orderBy('id','asc')->get()->groupBy('series');
+        $models       = models::where('brand_id',$brands->id)->orderBy('id','asc')->get()->groupBy('series');
         return view('brand', compact('brands','models'));
       }else if(strpos($id,'screen-repair-')!== false){
-        $url      = explode('-',$id);
+        $url          = explode('-',$id);
         //dd($url);
         if(empty($url[4])){ return abort(404); }
-        $models   = models::where('name', $url[4])->where('series',$url[3])->first();
+        $models       = models::where('name', $url[4])->where('series',$url[3])->first();
         if(empty($models->id)){ return abort(404); }
-        $colors   = colors::where('model_id', $models->id)->get();
+        $colors       = colors::where('model_id', $models->id)->get();
         if(empty(auth()->user()->id)){
           if(empty(session::get('color_id'))){
             $color    = colors::where('model_id', $models->id)->first();
@@ -86,15 +86,15 @@ class HomePageController extends Controller
             $color    = colors::where('id', session::get('color_id'))->first();
           }
         }else{
-          $color    = colors::where('model_id', $models->id)->first();
+          $color      = colors::where('model_id', $models->id)->first();
           Session::put('color_id', $color->id);
         }
         if(empty($color->id)){ return abort(500); }
-        $pricing  = pricings::where('color_id', $color->id)->first();
-        $orders   = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
+        $pricing      = pricings::where('color_id', $color->id)->first();
+        $orders       = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
         $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
-        $reviews  = old_feedbacks::inRandomOrder()->limit(20)->get();
+        $reviews      = old_feedbacks::where('brand_id', $models->brand->id)->inRandomOrder()->limit(20)->get();
 
         return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels','reviews'));
       }else{

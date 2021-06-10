@@ -344,11 +344,11 @@
             </div>
         </div>
     </div>
-    @if(empty($reviews)===false)
+    @if(empty($reviews)==false)
       <div class="brook-testimonial-area bg_color--7">
           <div class="row row--0 align-items-center">
               <div class="col-md-4 text-center ptb-md--80 ptb-sm--80">
-                  <div class="brook-section-title text-left title-max-width plr_sm--30 plr_md--40">
+                  <div class="brook-section-title text-left title-max-width pl_lg--30 pl_sm--30">
                       <h3 class="heading heading-h3 text-white">What <br>our customers<br> say about us</h3>
                   </div>
               </div>
@@ -372,7 +372,7 @@
                               {"breakpoint":481, "settings": {"slidesToShow": 1}}
                           ]'>
                       @foreach($reviews as $review)
-                        @if(!empty($review->customer->name))
+                        @if(!empty($review->customer->name) AND !empty($review->model->name))
                           <div class="testimonial testimonial_style--1 hover-transparent space-large--topbottom bg-dark">
                               <div class="content">
                                   <p class="bk_pra">“{{ $review->feedback }}”</p>
@@ -404,7 +404,7 @@
     @endif
     <!-- Start Product Review -->
     @if(!empty($color->model->big_description))
-    <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:0px;">
+    <div class="product_review pb--100 pb_md--80 pb_sm--60" style="padding-top:50px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
