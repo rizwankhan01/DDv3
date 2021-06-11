@@ -44,7 +44,7 @@
                           <span class="font-12">
                               <span><i class='fa fa-map-marker'></i> {{ $ticket->order->address->area }}</span>
                           </span>
-                          <h5 class="mt-2 font-20"><a href='/customers/#'>{{ $ticket->order->customer->name }}</a></h5>
+                          <h5 class="mt-2 font-20"><a href='/customers/{{ $ticket->order->customer->id }}'>{{ $ticket->order->customer->name }}</a></h5>
                           <a href='/exotel_calls/{{ $ticket->order->customer->phone_number }}' class="badge badge-success mb-2"><i class='fa fa-phone'></i> Call</a><br>
                           <small>Stock From: <a href='/dealer-profile/{{ $ticket->order->dealer->id }}'>{{ $ticket->order->dealer->dealer_name }}</a></small>
                         </div>
