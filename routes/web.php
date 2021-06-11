@@ -47,7 +47,6 @@ Route::get('/thankyou', function(){
 });
 
 
-
 //////////////////////////dashboard///////////////////////////
 Route::get('/getcallsfromexotelapi','Admin\ExotelCalls@incoming');
 Auth::routes();
