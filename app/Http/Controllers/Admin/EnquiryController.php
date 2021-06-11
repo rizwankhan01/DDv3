@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\enquiry;
 use App\Models\customers;
+use Spatie\Referer\Referer;
+use Session;
 
 class EnquiryController extends Controller
 {
@@ -75,17 +77,26 @@ class EnquiryController extends Controller
           $customer->name = $request->input('customer_name');
           $customer->phone_number = $request->input('phone_number');
           $customer->ga_id        = $request->input('ga_id');
+          $customer->referer      = app(Referer::class)->get();
+          //$customer->referer      = $request->visitor()->referer();
+          $customer->device       = $request->visitor()->device();
+          $customer->platform     = $request->visitor()->platform();
+          $customer->browser      = $request->visitor()->browser();
+          $customer->languages    = implode(', ', $request->visitor()->languages());
+          $customer->ip           = $request->visitor()->ip();
           $customer->save();
 
           $enquiry  = new enquiry;
           $enquiry->model_name  = $request->input('model_name');
           $enquiry->customer_id = $customer->id;
-          $enquiry->city        = $request->input('city');
+          $enquiry->city        = Session::get('city');
+          $enquiry->referer   = app(Referer::class)->get();
         }else{
           $enquiry  = new enquiry;
           $enquiry->customer_id = $check->id;
           $enquiry->model_name  = $request->input('model_name');
-          $enquiry->city        = $request->input('city');
+          $enquiry->city        = Session::get('city');
+          $enquiry->referer   = app(Referer::class)->get();
         }
           $enquiry->save();
           //enquiry mail

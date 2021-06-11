@@ -71,6 +71,7 @@ class CustomerController extends Controller
             $enquiry->customer_id = $customer->id;
             $enquiry->url       = "screen-repair-".$color->model->brand->name."-".$color->model->series."-".$model;
             $enquiry->city      = Session::get('city');
+            $enquiry->referer   = app(Referer::class)->get();
             $enquiry->save();
           }
         }else{
@@ -84,6 +85,7 @@ class CustomerController extends Controller
             $enquiry->customer_id = $cus_id;
             $enquiry->url         = "screen-repair-".$color->model->brand->name."-".$color->model->series."-".$model;
             $enquiry->city      = Session::get('city');
+            $enquiry->referer   = app(Referer::class)->get();
             $enquiry->save();
           }
         }

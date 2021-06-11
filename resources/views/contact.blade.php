@@ -74,18 +74,18 @@
                   <div class="classic-address text-center">
                       <h4 class="heading heading-h4">Got any queries? Hit us up!</h4>
                       <div class="desc mt--15">
-                        <form action="/report" method="post">
+                        <form action="/enquire" method="post">
                           {{ csrf_field() }}
                           {{ method_field('post') }}
                             <div class="row">
                                 <div class="col-lg-12">
-                                  <input name="name" type="text" class="form-control" placeholder="Name" required>
+                                  <input name="customer_name" type="text" class="form-control" placeholder="Your Name" required>
                                 </div>
                                 <div class="col-lg-12 mt--30">
-                                    <input name="phone" type="number" class="form-control" placeholder="Phone Number" required>
+                                    <input name="phone_number" type="number" class="form-control" placeholder="Your Phone" required>
                                 </div>
                                 <div class="col-lg-12 mt--30">
-                                    <textarea name="message" rows=3 class="form-control" placeholder="Type your message" required></textarea>
+                                    <textarea name="model_name" rows=3 class="form-control" placeholder="Type your message" required></textarea>
                                 </div>
                                 <div class="col-lg-12 mt--30">
                                   <?php $one = rand(0,20); $two = rand(0,20); $ans = $one + $two; ?>
@@ -93,7 +93,7 @@
                                   <input type="hidden" name="ans" value="{{ $ans }}">
                                 </div>
                                 <div class="col-lg-12 mt--30">
-                                  <input type="submit" value="Submit" class="btn btn-primary">
+                                  <input type="submit" name="enquire" value="Submit" class="btn btn-primary">
                                 </div>
                             </div>
                         </form>
