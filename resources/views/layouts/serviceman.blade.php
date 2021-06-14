@@ -67,6 +67,9 @@
     <li><a href="/mytickets">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Tickets</span>
     </a></li>
+    <li><a href="/modelcolors">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Model Colors</span>
+    </a></li>
     <li><a href="/settings">
       <img src="{{ asset('assets\images\svg-icon\basic.svg') }}" class="img-fluid" alt="basic"><span>Settings</span>
     </a></li>

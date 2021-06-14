@@ -8,6 +8,7 @@ use App\Models\colors;
 use App\Models\models;
 use App\Models\brands;
 use App\Models\pricings;
+use Auth;
 
 class ColorsController extends Controller
 {
@@ -53,6 +54,7 @@ class ColorsController extends Controller
      */
     public function store(Request $request)
     {
+      if(auth::user()->user_type=='Service Man'){ return redirect()->back(); }
       $colors = new colors;
       $colors->model_id = $request->input('model_id');
       $colors->name = $request->input('name');
@@ -101,6 +103,7 @@ class ColorsController extends Controller
      */
     public function update(Request $request, $id)
     {
+      if(auth::user()->user_type=='Service Man'){ return redirect()->back(); }
       $colors = colors::findOrFail($id);
       if(!empty($request->input('pricing'))){
         $pricing = pricings::where('color_id',$id)->first();
@@ -139,6 +142,7 @@ class ColorsController extends Controller
      */
     public function destroy($id)
     {
+      if(auth::user()->user_type=='Service Man'){ return redirect()->back(); }
       $colors = colors::findOrFail($id);
       if(file_exists('storage/'.$colors->image)){
         unlink('storage/'.$colors->image);

@@ -53,6 +53,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 
   Route::resource('/settings','Admin\SettingsController');
+  //model colors route for admin and serviceman
+  Route::resource('/modelcolors','Admin\ColorsController');
+  Route::get('/getseries/{id}','Admin\ColorsController@getseries');
+  Route::get('/getmodels/{id}','Admin\ColorsController@getmodels');
 
   Route::group(['middleware' => 'serviceman'], function(){
     Route::resource('/serviceman','Serviceman\ServicemanController');
@@ -76,15 +80,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/cancel','Admin\CancelledController');
     Route::resource('/brands','Admin\BrandsController');
     Route::resource('/models','Admin\ModelsController');
-    Route::resource('/modelcolors','Admin\ColorsController');
     Route::resource('/coupons','Admin\CouponsController');
     Route::resource('/dealers','Admin\DealersController');
     Route::resource('/accounts','Admin\AccountsController');
     Route::resource('/tickets','Admin\TicketController');
     Route::resource('/enquiry','Admin\EnquiryController');
     Route::resource('/customers','Admin\CustomerController');
-    Route::get('/getseries/{id}','Admin\ColorsController@getseries');
-    Route::get('/getmodels/{id}','Admin\ColorsController@getmodels');
     Route::resource('/dashboard', 'Admin\DashboardController');
     Route::resource('/search','Admin\SearchController');
     Route::resource('/invoice','Admin\InvoiceController');

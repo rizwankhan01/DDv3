@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends(Auth::user()->user_type === 'Admin' ? 'layouts.dashboard' : 'layouts.serviceman')
 @section('title') Colors | Doctor Display Dashboard @endsection
 
 @section('contentbar')
