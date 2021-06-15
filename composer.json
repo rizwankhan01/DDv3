@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "livewire/livewire": "^2.4",
+        "qoraiche/laravel-mail-editor": "^2.2",
         "sentry/sentry-laravel": "^2.6",
         "shetabit/visitor": "^3.1",
         "spatie/laravel-referer": "^1.7",
