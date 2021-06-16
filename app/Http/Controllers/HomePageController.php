@@ -12,9 +12,6 @@ use App\Models\brands;
 use App\Models\old_feedbacks;
 use Session;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Testmail;
-
 class HomePageController extends Controller
 {
     /**
@@ -28,7 +25,6 @@ class HomePageController extends Controller
         //dd(app(Referer::class)->get());
         $feedbacks = closedorder::whereNotNull('feedback')->get();
         $models    = models::inRandomOrder()->limit(10)->get();
-        //Mail::to("samervj@gmail.com")->send(new Testmail()); #Test Mail with mailtrap
         return view('welcome', compact('feedbacks','models'));
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce7ae10eafdbe0bd47655eeb8982e382",
+    "content-hash": "a1a50369f8fe6074c25b90cfbe82259d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3709,76 +3709,6 @@
             "time": "2021-04-10T16:23:39+00:00"
         },
         {
-            "name": "qoraiche/laravel-mail-editor",
-            "version": "v2.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Qoraiche/laravel-mail-editor.git",
-                "reference": "a98d0fee2360f6a4cc947ffa5fd04b350cd48efc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Qoraiche/laravel-mail-editor/zipball/a98d0fee2360f6a4cc947ffa5fd04b350cd48efc",
-                "reference": "a98d0fee2360f6a4cc947ffa5fd04b350cd48efc",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5.6|^6.0|^7.0",
-                "reecem/mocker": "1.1.*"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.2",
-                "orchestra/testbench": "^3.0|^4.0",
-                "phpunit/phpunit": "^7.0|^8.0",
-                "sempro/phpunit-pretty-print": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Qoraiche\\MailEclipse\\MailEclipseServiceProvider"
-                    ],
-                    "aliases": {
-                        "MailEclipse": "Qoraiche\\MailEclipse\\Facades\\MailEclipse"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Qoraiche\\MailEclipse\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "yassine qoraiche",
-                    "email": "qoraicheofficiel@hotmail.com",
-                    "homepage": "https://github.com/qoraiche"
-                }
-            ],
-            "description": "Laravel Mailable Editor",
-            "homepage": "https://github.com/Qoraiche/laravel-mail-editor",
-            "keywords": [
-                "laravel",
-                "laravel-mail",
-                "laravel-mailable",
-                "mailEclipse",
-                "mailable",
-                "mailable-editor",
-                "markdown"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/streamaps",
-                    "type": "custom"
-                }
-            ],
-            "time": "2020-12-10T22:04:35+00:00"
-        },
-        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -3977,67 +3907,6 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
-        },
-        {
-            "name": "reecem/mocker",
-            "version": "v1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ReeceM/mocker.git",
-                "reference": "7cf5c04e87933629a5a3160f7064ef27f119452f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ReeceM/mocker/zipball/7cf5c04e87933629a5a3160f7064ef27f119452f",
-                "reference": "7cf5c04e87933629a5a3160f7064ef27f119452f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/filesystem": "^5.6|^6.0|^7.0|^8.0",
-                "illuminate/support": "^5.6|^6.0|^7.0|^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.5|^4.0",
-                "phpunit/phpunit": "^7.5|^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ReeceM\\Mocker\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ReeceM",
-                    "email": "zsh.rce@gmail.com",
-                    "homepage": "https://githib.com/reecem"
-                }
-            ],
-            "description": "Mock class constructor args based on the reflection class",
-            "homepage": "https://github.com/reecem/mocker",
-            "keywords": [
-                "helper",
-                "laravel",
-                "mocker",
-                "mockery",
-                "reecem",
-                "testing"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/iexistin3d",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://ko-fi.com/reecem",
-                    "type": "ko_fi"
-                }
-            ],
-            "time": "2020-09-10T13:19:53+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",
@@ -5500,16 +5369,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.3.0",
+            "version": "v5.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6"
+                "reference": "0d639a0943822626290d169965804f79400e6a04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
-                "reference": "0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/0d639a0943822626290d169965804f79400e6a04",
+                "reference": "0d639a0943822626290d169965804f79400e6a04",
                 "shasum": ""
             },
             "require": {
@@ -5554,7 +5423,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T12:52:38+00:00"
+            "time": "2021-02-15T18:55:04+00:00"
         },
         {
             "name": "symfony/http-client",
