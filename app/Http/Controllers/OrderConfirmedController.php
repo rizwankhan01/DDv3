@@ -71,7 +71,7 @@ class OrderConfirmedController extends Controller
       Regards,<br>
       Doctor Display";
 
-      mail($to,$subject,$message,$headers);
+      //mail($to,$subject,$message,$headers);
       Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
       //end of order confirmation mail
