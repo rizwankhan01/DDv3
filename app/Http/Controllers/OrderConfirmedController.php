@@ -11,6 +11,8 @@ use App\Models\customers;
 use App\Models\city_areas;
 use App\Models\addresses;
 use App\Models\enquiry;
+use Mail;
+use App\Mail\OrderConfirmationMail;
 use Session;
 
 class OrderConfirmedController extends Controller
@@ -70,6 +72,8 @@ class OrderConfirmedController extends Controller
       Doctor Display";
 
       mail($to,$subject,$message,$headers);
+      Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
+
       //end of order confirmation mail
       if(!empty(Session::get('enq_id'))){
         $enquiry  = enquiry::findOrFail(Session::get('enq_id'));
