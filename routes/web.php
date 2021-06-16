@@ -52,10 +52,8 @@ Route::get('/getcallsfromexotelapi','Admin\ExotelCalls@incoming');
 Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 
-  //admin and serviceman
-  //settings
   Route::resource('/settings','Admin\SettingsController');
-  //colors
+  //model colors route for admin and serviceman
   Route::resource('/modelcolors','Admin\ColorsController');
   Route::get('/getseries/{id}','Admin\ColorsController@getseries');
   Route::get('/getmodels/{id}','Admin\ColorsController@getmodels');
