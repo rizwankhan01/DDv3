@@ -109,6 +109,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/serviceman-profile','Admin\ServicemanProfileController');
     Route::resource('/customer-profile','Admin\CustomerProfileController');
     Route::resource('/exotel_calls','Admin\ExotelCallsController');
+
+    //Mail Controller
+    Route::resource('/send-mail','Admin\MailController');
   });
 });
 

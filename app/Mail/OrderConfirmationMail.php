@@ -30,6 +30,7 @@ class OrderConfirmationMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.orders.confirmation')
+                    ->subject('Order Confirmation Mail - Order ID: #'.$this->order->id.' | Doctor Display')
                     ->with([
                       'order' => $this->order,
                     ]);

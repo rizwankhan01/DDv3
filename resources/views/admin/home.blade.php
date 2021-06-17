@@ -667,6 +667,18 @@
                  </div>
                </div>
              @endif
+             <div class="col-lg-12">
+               <div class="card m-b-30">
+                 <div class="card-header">
+                   <h5 class="card-title">Mailables</h5>
+                 </div>
+                 <div class="card-body">
+                   <div class="table-responsive">
+                       <a href='/send-mail/{{ $order->id }}' class="badge badge-secondary">Resend Order Confirmation Mail <i class="feather icon-external-link"></i></a>
+                     </div>
+                   </div>
+                 </div>
+               </div>
              <div class="col-lg-12 m-b-30"><center><small>This order was placed {{ $order->created_at->diffForHumans() }}.</small></center></div>
           @else
           @section('title') Open Orders | Doctor Display Dashboard @endsection
