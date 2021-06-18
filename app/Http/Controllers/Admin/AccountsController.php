@@ -42,7 +42,7 @@ class AccountsController extends Controller
         $user = new user;
         $user->name           = $request->input('name');
         $user->email          = $request->input('email');
-        $user->password       = Hash::make('123456');
+        $user->password       = Hash::make('12345678');
         $user->gender         = $request->input('gender');
         $user->primary_phone  = $request->input('primary_phone');
         $user->secondary_phone= $request->input('secondary_phone');

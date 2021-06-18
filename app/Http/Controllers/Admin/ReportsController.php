@@ -42,8 +42,8 @@ class ReportsController extends Controller
      */
     public function store(Request $request)
     {
-        $from   = $request->input('from');
-        $to     = $request->input('to');
+        $from   = $request->input('from')." 00:00:00";
+        $to     = $request->input('to')." 23:59:59";
         $orders = orders::whereBetween('updated_at', [$from, $to])->where('status','3')->get();
         $expenses = expenses::whereBetween('created_at',[$from, $to])->get();
         $tickets  = tickets::whereBetween('date_close', [$from, $to])->get();
