@@ -33,6 +33,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        //dd(Notification::send(null,new SendPushNotification("Testing","Hello world",$fcmTokens)));
         $orders = orders::where('status',1)
                         ->orWhere('status',2)
                         ->orderBy('created_at','desc')
@@ -90,4 +92,5 @@ class HomeController extends Controller
 
       return view('admin.home', compact('orders','chn_count','bgl_count'));
     }
+
 }
