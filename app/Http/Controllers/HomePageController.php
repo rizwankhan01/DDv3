@@ -96,7 +96,7 @@ class HomePageController extends Controller
         $orders       = order_lists::where('color_id', $color->id)->where('prod_type','BASIC')->orWhere('prod_type','PREMIUM')->get();
         $otherbrands  = brands::where('name','!=', $models->brand->name)->get();
         $othermodels  = models::where('id','!=',$models->id)->where('brand_id',$models->brand_id)->inRandomOrder()->limit(8)->get();
-        $reviews      = old_feedbacks::where('model_id', $models->id)->inRandomOrder()->limit(20)->get();
+        $reviews      = old_feedbacks::where('brand_id', $models->brand->id)->inRandomOrder()->limit(20)->get();
 
         return view('product', compact('models','colors','color','pricing','orders','otherbrands','othermodels','reviews'));
       }else{
