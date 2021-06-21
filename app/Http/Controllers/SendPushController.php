@@ -24,30 +24,39 @@ class SendPushController extends Controller
     }
   }
 
-    public function notification(){
-      try{
-          $fcmTokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
+    public function notification(Request $request){
 
-          //Notification::send(null,new SendPushNotification($request->title,$request->message,$fcmTokens));
+      $title = $request->input('title');
+      $message = $request->input('message');
+      $fcmTokens = User::whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
 
-          /* or */
+      $SERVER_API_KEY = 'AAAAtUdBMyQ:APA91bFOqBh8BffVbwSGwBHhXphnVm7KlSn1-BwNYbjfNAV7_4a5jZSvSHe9rjTq_hDy54nCxrAh20fKq3m2ftlBX0FUKWz8OKNR1FkVX1VW4rXIY2zbkxFIrWb8za86ehYu4zcjmhtd';
 
-          //auth()->user()->notify(new SendPushNotification($title,$message,$fcmTokens));
+        $data = [
+            "registration_ids" => $fcmTokens,
+            "notification" => [
+                "title" => $title,
+                "body" => $message,
+            ]
+        ];
+        $dataString = json_encode($data);
 
-          /* or */
+        $headers = [
+            'Authorization: key=' . $SERVER_API_KEY,
+            'Content-Type: application/json',
+        ];
 
-          Larafirebase::withTitle("Test")
-              ->withBody("Hello World!")
-              ->sendMessage($fcmTokens);
+        $ch = curl_init();
 
-          dd('success','Notification Sent Successfully!!');
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
 
-      }catch(\Exception $e){
-          report($e);
-          dd('error','Something goes wrong while sending notification.');
-      }
+        $response = curl_exec($ch);
 
-
-      //Notification::send(null,new SendPushNotification("Testing","Hello world", $fcmTokens));
+        dd($response);
     }
 }

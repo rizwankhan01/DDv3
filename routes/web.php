@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/home', 'HomeController');
     //notification
     Route::patch('/fcm-Token', 'SendPushController@updateToken')->name('fcmToken');
-    Route::get('/sendpush','SendPushController@notification');
+    Route::post('/send-notification','SendPushController@notification')->name('notification');
 
     Route::resource('/close','Admin\ClosedController');
     Route::resource('/cancel','Admin\CancelledController');

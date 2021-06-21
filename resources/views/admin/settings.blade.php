@@ -109,6 +109,15 @@
                   </div>
               </div>
           </div>
+          <div class="col-6">
+                <form action='{{ route('notification') }}' method='post'>
+                  {{ csrf_field() }}
+                  {{ method_field('post') }}
+                  <input type='text' class='form-control' name='title'>
+                  <input type='text' class='form-control' name='message'>
+                  <input type='submit' name='push'>
+                </form>
+          </div>
           <!-- End col -->
       </div>
       <!-- End row -->
