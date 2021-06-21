@@ -120,8 +120,11 @@
                   {{ method_field('post') }}
                   <input type='text' class='form-control' name='title' placeholder="Title"><br>
                   <input type='text' class='form-control' name='message' placeholder="Message"><br>
-                  <input type='submit' name='push' class="btn btn-primary btn-sm" value="Send Push">
+                  <input type='submit' class="btn btn-primary btn-sm" value="Send Push">
                 </form>
+                @if(session('success'))
+                  {{ session('success') }}
+                @endif
               </div>
               </div>
           </div>

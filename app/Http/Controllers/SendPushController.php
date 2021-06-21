@@ -58,6 +58,6 @@ class SendPushController extends Controller
 
         $response = curl_exec($ch);
 
-        dd($response);
+        return redirect()->back()->with('success','Push sent successfully!');
     }
 }
