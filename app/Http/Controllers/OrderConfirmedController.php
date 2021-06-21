@@ -14,6 +14,7 @@ use App\Models\enquiry;
 use Mail;
 use App\Mail\OrderConfirmationMail;
 use Session;
+use App\User;
 
 class OrderConfirmedController extends Controller
 {
@@ -80,6 +81,38 @@ class OrderConfirmedController extends Controller
         $enquiry->delete();
       }
       session()->flush();
+
+      $title = "New Order Alert";
+      $message = "Login your dashboard to know more.";
+      $fcmTokens = User::where('user_type','!=','Service Man')->whereNotNull('fcm_token')->pluck('fcm_token')->toArray();
+
+      $SERVER_API_KEY = 'AAAAtUdBMyQ:APA91bFOqBh8BffVbwSGwBHhXphnVm7KlSn1-BwNYbjfNAV7_4a5jZSvSHe9rjTq_hDy54nCxrAh20fKq3m2ftlBX0FUKWz8OKNR1FkVX1VW4rXIY2zbkxFIrWb8za86ehYu4zcjmhtd';
+
+        $data = [
+            "registration_ids" => $fcmTokens,
+            "notification" => [
+                "title" => $title,
+                "body" => $message,
+                "priority" => 'high',
+            ]
+        ];
+        $dataString = json_encode($data);
+
+        $headers = [
+            'Authorization: key=' . $SERVER_API_KEY,
+            'Content-Type: application/json',
+        ];
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
+        $response = curl_exec($ch);
 
       return view('/orderconfirmed', compact('order','olist','pricefortax','customer','areas', 'address'));
     }

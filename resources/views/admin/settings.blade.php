@@ -110,13 +110,20 @@
               </div>
           </div>
           <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                Global Push Message
+              </div>
+              <div class="card-body">
                 <form action='{{ route('notification') }}' method='post'>
                   {{ csrf_field() }}
                   {{ method_field('post') }}
-                  <input type='text' class='form-control' name='title'>
-                  <input type='text' class='form-control' name='message'>
-                  <input type='submit' name='push'>
+                  <input type='text' class='form-control' name='title' placeholder="Title"><br>
+                  <input type='text' class='form-control' name='message' placeholder="Message"><br>
+                  <input type='submit' name='push' class="btn btn-primary btn-sm" value="Send Push">
                 </form>
+              </div>
+              </div>
           </div>
           <!-- End col -->
       </div>
