@@ -37,6 +37,7 @@ class SendPushController extends Controller
             "notification" => [
                 "title" => $title,
                 "body" => $message,
+                "priority" => 'high',
             ]
         ];
         $dataString = json_encode($data);
