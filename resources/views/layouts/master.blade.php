@@ -182,6 +182,7 @@
                                     <li><a href="/our-story">Our Story</a></li>
                                     <li><a href="https://blog.doctordisplay.in">Blog</a></li>
                                     <li><a href="/contact">Contact</a></li>
+                                    <li><a href="/track-your-order">Track your order</a></li>
                                   </div>
                                   <div class="col-6">
                                     <li><a href="/allbrands">Select your Brand</a></li>

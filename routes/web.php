@@ -29,6 +29,7 @@ Route::resource('/report', 'TicketController');
 Route::post('/enquire','Admin\EnquiryController@store');
 Route::resource('/feedback','FeedbackController');
 Route::resource('/repository','LegendsController');
+Route::resource('/track-your-order','TrackOrderController');
 
 Route::get('/blog', function(){
   return abort(404);
@@ -41,6 +42,9 @@ Route::get('/our-story', function(){
 });
 Route::get('/privacy', function(){
     return view('privacy');
+});
+Route::get('/refund-policy', function(){
+    return view('refund');
 });
 Route::get('/thankyou', function(){
     return view('thankyou');
