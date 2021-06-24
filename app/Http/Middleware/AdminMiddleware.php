@@ -16,7 +16,9 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
       if(auth()->check()){
-        if(auth()->user()->user_type=='Service Man'){
+        if(auth()->user()->user_type=='Investor'){
+          return redirect('/investor');
+        }else if(auth()->user()->user_type=='Service Man'){
           return redirect('/serviceman');
         }else if(auth()->user()->user_type!='Admin'){
           return redirect(403);

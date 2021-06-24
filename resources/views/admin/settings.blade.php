@@ -1,4 +1,10 @@
-@extends(Auth::user()->user_type === 'Admin' ? 'layouts.dashboard' : 'layouts.serviceman')
+@if(Auth::user()->user_type=='Admin')
+  @extends('layouts.dashboard')
+@elseif(Auth::user()->user_type=='Service Man')
+  @extends('layouts.serviceman')
+@elseif(Auth::user()->user_type=='Investor')
+  @extends('layouts.investor')
+@endif
 @section('title') Settings | Doctor Display Dashboard @endsection
 
 @section('contentbar')

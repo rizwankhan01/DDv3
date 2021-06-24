@@ -74,6 +74,7 @@
                               <label>User Type</label>
                               <select class="form-control" name="user_type">
                                 <option value="">Select Option</option>
+                                <option value="Investor" @if($user->user_type=='Investor'){{ 'selected' }} @endif>Investor</option>
                                 <option value="Service Man" @if($user->user_type=='Service Man'){{ 'selected' }} @endif>Service Man</option>
                                 <option value="Admin" @if($user->user_type=='Admin'){{ 'selected'}} @endif>Admin</option>
                               </select>

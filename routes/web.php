@@ -63,6 +63,12 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/getseries/{id}','Admin\ColorsController@getseries');
   Route::get('/getmodels/{id}','Admin\ColorsController@getmodels');
 
+  //investor routes
+  Route::group(['middleware' => 'investor'], function(){
+    Route::resource('/investor','Investor\HomeController');
+  });
+
+  //Service man routes
   Route::group(['middleware' => 'serviceman'], function(){
     Route::resource('/serviceman','Serviceman\ServicemanController');
     Route::resource('/mytickets','Serviceman\MyTicketController');
@@ -79,6 +85,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/exotel_calls','Admin\ExotelCallsController');
   });
 
+  //
   Route::group(['middleware' =>'admin'], function(){
     Route::resource('/home', 'HomeController');
     //notification

@@ -70,6 +70,7 @@
                   <label>User Type</label>
                   <select class="form-control" name="user_type">
                     <option value="">Select Option</option>
+                    <option value="Investor">Investor</option>
                     <option value="Service Man">Service Man</option>
                     <option value="Admin">Admin</option>
                   </select>
