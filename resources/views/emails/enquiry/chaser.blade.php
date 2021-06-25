@@ -103,7 +103,7 @@
                                                       <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                          <tr style="border-collapse:collapse">
                                                             <td align="center" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="https://doctordisplay.in/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#1376C8;font-size:16px">
-                                                            <img class="adapt-img" src="{{ $model_image }}" alt="{{ $model_name }}" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Product Name" width="261" height="386"></a></td>
+                                                            <img class="adapt-img" src="{{ $model_image }}" alt="{{ $model_name }}" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" title="Product Name" style="width:auto;height:350px;"></a></td>
                                                          </tr>
                                                       </table>
                                                    </td>
