@@ -34,7 +34,7 @@ class EnquiryChaserMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.enquiry.chaser')
-                    ->subject('Still looking to replace your '.$model->brand->name.' '.$model->series.''.$model->name.'\'s Screen? | Doctor Display')
+                    ->subject('Still looking to replace your '.$this->model->brand->name.' '.$this->model->series.' '.$this->model->name.'\'s Screen? | Doctor Display')
                     ->with([
                       'model' => $this->model,
                       'feedbacks' => $this->feedbacks,
