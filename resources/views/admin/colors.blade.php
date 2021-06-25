@@ -1,12 +1,12 @@
-@if(Auth::user()->user_type=='Admin')
-  @extends('layouts.dashboard')
-@elseif(Auth::user()->user_type=='Service Man')
-  @extends('layouts.serviceman')
-@elseif(Auth::user()->user_type=='Investor')
-  @extends('layouts.investor')
+@if(Auth()->user()->user_type=='Admin')
+  <?php $layout = 'dashboard'; ?>
+@elseif(Auth()->user()->user_type=='Service Man')
+  <?php $layout = 'serviceman'; ?>
+@elseif(Auth()->user()->user_type=='Investor')
+  <?php $layout = 'investor'; ?>
 @endif
+@extends('layouts.'.$layout)
 @section('title') Colors | Doctor Display Dashboard @endsection
-
 @section('contentbar')
   <div class="contentbar mt-100">
       <!-- Start row -->

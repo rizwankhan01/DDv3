@@ -30,7 +30,7 @@ class OrderConfirmedController extends Controller
       $order        = orders::findOrFail($order_id);
       $customer     = customers::findOrFail($order->customer_id);
       $address      = addresses::where('customer_id',$order->customer_id)->first();
-      $areas        = city_areas::where('city',Session::get('city'))->get();
+      $areas        = city_areas::where('city', Session::get('city'))->get();
       $olist        = order_lists::where('order_id', $order_id)->get();
       $model_ord    = order_lists::where('order_id',$order_id)->where('prod_type','!=','COUPON')->where('prod_type','!=','ADDON')->first();
       $tempered     = order_lists::where('order_id',$order_id)->where('prod_type','ADDON')->first();
@@ -38,41 +38,7 @@ class OrderConfirmedController extends Controller
       $ord          = colors::findOrFail($model_ord->color_id);
       $pricefortax  = order_lists::where('order_id', $order_id)->where('prod_type','!=','ADDON')->first();
 
-      //order confirmation mail
-      $to        = $customer->email.", order@doctordisplay.in";
-      $subject      = "Order Confirmation Mail | Doctor Display";
-      $headers = "MIME-Version: 1.0" . "\r\n";
-      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-      $headers .= 'From: <order@doctordisplay.in>' . "\r\n";
 
-      $message  = "<img src='http://doctordisplay.in/img/logo/logo-mail.png'><BR><br>
-      <p>Hi ".$customer->name.",<br>
-      Thanks for choosing Doctor Display, India's Leading Mobile Repair Service. You order is confirmed.<br><br>
-      You have scheduled a ".$model_ord->prod_type." screen repair for your ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name." (".$model_ord->color->name.")  between
-      ".$order->slot_time." on ".$order->slot_date.". Our service technician will reach out to you an hour before the scheduled time.<br><br>
-      The details for your order are bellow:<br>
-      <table style='border:1px solid #eee;width:100%;'>
-      <tr><td style='border:1px solid #eee;'>Order ID</td><td style='border:1px solid #eee;'>".$order->id."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Display for ".$model_ord->color->model->brand->name." ".$model_ord->color->model->series." ".$model_ord->color->model->name." (".$model_ord->color->name.")</td><td style='border:1px solid #eee;'>".$model_ord->price." INR</td></tr>";
-      if(!empty($tempered->id)){
-      $message.="<tr><td style='border:1px solid #eee;'>Tempered Glass</td><td style='border:1px solid #eee;'>99 INR</td></tr>";
-      }
-      if(!empty($coupon->id)){
-      $message.="<tr><td style='border:1px solid #eee;'>Coupon Discount</td><td style='border:1px solid #eee;'>".$coupon->price." INR</td></tr>";
-      }
-      $message.="<tr><td style='border:1px solid #eee;'>Total Amount</td><td style='border:1px solid #eee;'>".$olist->sum('price')." INR</td></tr>
-      <tr><td style='border:1px solid #eee;'>Name</td><td style='border:1px solid #eee;'>".$customer->name."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Phone Number</td><td style='border:1px solid #eee;'>".$customer->phone_number."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Email address</td><td style='border:1px solid #eee;'>".$customer->email."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Address</td><td style='border:1px solid #eee;'>".$address->address.", ".$address->area.", ".$address->city." - ".$address->pincode."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Appointment Date</td><td style='border:1px solid #eee;'>".$order->slot_date."</td></tr>
-      <tr><td style='border:1px solid #eee;'>Appointment Time</td><td style='border:1px solid #eee;'>".$order->slot_time."</td></tr>
-      </table><br><br>
-      Thank you for choosing Doctor Display!<br><br>
-      Regards,<br>
-      Doctor Display";
-
-      //mail($to,$subject,$message,$headers);
       Mail::to($order->customer->email)->send(new OrderConfirmationMail($order));
 
       //end of order confirmation mail

@@ -17,7 +17,7 @@ class InvestorMiddleware
     {
         if(auth()->check()){
           if(auth()->user()->user_type!='Investor'){
-            dd('test');
+            //dd('test');
             return redirect(403);
           }
             return $next($request);

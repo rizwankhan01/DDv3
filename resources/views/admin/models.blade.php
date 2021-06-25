@@ -127,6 +127,13 @@
                           <a href="/models" class="btn btn-secondary">Back</a>
                         <button type="submit" onclick="document.getElementById('updatemodel').submit();" class="btn btn-primary">Save changes</button>
                         </div>
+                      </form><hr>
+                      <form action="/models/{{ $model->id }}" method="post" class="col-md-6">
+                        <h6>Send Enquiry Mail to customers</h6><br>
+                        {{ csrf_field() }}
+                        {{ method_field('put')}}
+                        <input type="email" class="form-control" name="email" placeholder="Email address" required><Br>
+                        <input type="submit" class="btn btn-primary" value="Send Chaser Mail" name="chaser">
                       </form>
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete Models Here.</h6>

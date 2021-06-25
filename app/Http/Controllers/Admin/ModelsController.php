@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\models;
 use App\Models\brands;
+use App\Models\old_feedbacks;
+use App\Mail\EnquiryChaserMail;
+use Mail;
 
 class ModelsController extends Controller
 {
@@ -39,18 +42,18 @@ class ModelsController extends Controller
      */
     public function store(Request $request)
     {
-      $models = new models;
-      $models->brand_id = $request->input('brand_id');
-      $models->series = $request->input('series');
-      $models->name = $request->input('name');
-      $model_image  = explode('/',$request->file('model_image')->store('public'));
-      $models->image  = $model_image[1];
-      $models->description = $request->input('description');
-      $models->big_description  = $request->input('big_description');
-      $models->meta_title  = $request->input('meta_title');
-      $models->meta_description = $request->input('meta_description');
-      $models->save();
-      return redirect('/models')->with('status','New Model Created Successfully!');
+        $models = new models;
+        $models->brand_id = $request->input('brand_id');
+        $models->series = $request->input('series');
+        $models->name = $request->input('name');
+        $model_image  = explode('/',$request->file('model_image')->store('public'));
+        $models->image  = $model_image[1];
+        $models->description = $request->input('description');
+        $models->big_description  = $request->input('big_description');
+        $models->meta_title  = $request->input('meta_title');
+        $models->meta_description = $request->input('meta_description');
+        $models->save();
+        return redirect('/models')->with('status','New Model Created Successfully!');
     }
 
     /**
@@ -86,21 +89,30 @@ class ModelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      //dd($request->input('big_description'));
-      $models = models::findOrFail($id);
-      $models->brand_id = $request->input('brand_id');
-      $models->series = $request->input('series');
-      $models->name = $request->input('name');
-      if($request->hasFile('model_image')){
-        $model_image  = explode('/',$request->file('model_image')->store('public'));
-        $models->image  = $model_image[1];
+      if(!empty($request->input('email'))){
+        
+        $model     = Models::where('id',$id)->first();
+        $feedbacks = old_feedbacks::inRandomOrder()->limit(2)->get();
+        Mail::to($request->input('email'))->send(new EnquiryChaserMail($model,$feedbacks));
+
+        return redirect('/models')->with('status','Mail sent successully!');
+      }else{
+        //dd($request->input('big_description'));
+        $models = models::findOrFail($id);
+        $models->brand_id = $request->input('brand_id');
+        $models->series = $request->input('series');
+        $models->name = $request->input('name');
+        if($request->hasFile('model_image')){
+          $model_image  = explode('/',$request->file('model_image')->store('public'));
+          $models->image  = $model_image[1];
+        }
+        $models->description = $request->input('description');
+        $models->big_description  = $request->input('big_description');
+        $models->meta_title  = $request->input('meta_title');
+        $models->meta_description = $request->input('meta_description');
+        $models->update();
+        return redirect('/models')->with('status','Model Edited Successfully!');
       }
-      $models->description = $request->input('description');
-      $models->big_description  = $request->input('big_description');
-      $models->meta_title  = $request->input('meta_title');
-      $models->meta_description = $request->input('meta_description');
-      $models->update();
-      return redirect('/models')->with('status','Model Edited Successfully!');
     }
 
     /**
