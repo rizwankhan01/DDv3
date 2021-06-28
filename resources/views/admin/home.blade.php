@@ -674,7 +674,8 @@
                  </div>
                  <div class="card-body">
                    <div class="table-responsive">
-                       <a href='/send-mail/{{ $order->id }}' class="badge badge-secondary">Resend Order Confirmation Mail <i class="feather icon-external-link"></i></a>
+                       <a href='/send-mail/confirm-{{ $order->id }}' class="badge badge-secondary">Resend Order Confirmation Mail <i class="feather icon-external-link"></i></a>
+                       <a href='/send-mail/complete-{{ $order->id }}' class="badge badge-secondary">Resend Order Completed Mail <i class="feather icon-external-link"></i></a>
                      </div>
                    </div>
                  </div>

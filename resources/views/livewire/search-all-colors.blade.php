@@ -39,9 +39,9 @@
   </div>
 </div>
   @endforeach
-  <div class="col-12">
+  <div>
     @if($search==0)
-      {{ $colors->links() }}
+      {{ $colors->links('pagination::bootstrap-4') }}
     @endif
   </div>
 </div>
