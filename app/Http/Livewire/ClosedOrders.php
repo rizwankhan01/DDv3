@@ -29,7 +29,7 @@ class ClosedOrders extends Component
       }else{
         $orders = orders::where('status',3)
                         ->orderBy('id','desc')
-                        ->paginate(1);
+                        ->paginate(15);
         $search = 0;
       }
         return view('livewire.closed-orders', compact('orders','search'));
