@@ -24,6 +24,8 @@ class model_resources extends Model
       'display_size',
       'display_resolution',
       'display_protection',
-      'colors'
+      'colors',
+      'fingerprint',
+      'indisplay_fingerprint'
     ];
 }

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\models;
 use App\Models\brands;
 use App\Models\old_feedbacks;
+use App\Models\model_resources;
+
 use App\Mail\EnquiryChaserMail;
 use Mail;
 
@@ -89,8 +92,54 @@ class ModelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      if(!empty($request->input('email'))){
-        
+      if(!empty($request->input('update_resources'))){
+        $model_resources = model_resources::where('model_id',$id)->first();
+        if(!empty($model_resources->id)){
+          $model_resources->model_id           = $id;
+          $model_resources->screen_type        = $request->input('screen_type');
+          $model_resources->screen_size        = $request->input('screen_size');
+          $model_resources->screen_resolution  = $request->input('screen_resolution');
+          $model_resources->screen_protection  = $request->input('screen_protection');
+          $model_resources->fix_type           = $request->input('fix_type');
+          $model_resources->screen_fixtype     = $request->input('screen_fixtype');
+          $model_resources->release_date       = $request->input('release_date');
+          $model_resources->production_status  = $request->input('production_status');
+          $model_resources->tut_link           = $request->input('tut_link');
+          $model_resources->buy_link           = $request->input('buy_link');
+          $model_resources->phone_price        = $request->input('phone_price');
+          $model_resources->display_type       = $request->input('display_type');
+          $model_resources->display_size       = $request->input('display_size');
+          $model_resources->display_resolution = $request->input('display_resolution');
+          $model_resources->display_protection = $request->input('display_protection');
+          $model_resources->colors             = $request->input('colors');
+          $model_resources->fingerprint        = $request->input('fingerprint');
+          $model_resources->indisplay_fingerprint  = $request->input('indisplay_fingerprint');
+          $model_resources->update();
+        }else{
+          $model_resources  = new model_resources;
+          $model_resources->model_id           = $id;
+          $model_resources->screen_type        = $request->input('screen_type');
+          $model_resources->screen_size        = $request->input('screen_size');
+          $model_resources->screen_resolution  = $request->input('screen_resolution');
+          $model_resources->screen_protection  = $request->input('screen_protection');
+          $model_resources->fix_type           = $request->input('fix_type');
+          $model_resources->screen_fixtype     = $request->input('screen_fixtype');
+          $model_resources->release_date       = $request->input('release_date');
+          $model_resources->production_status  = $request->input('production_status');
+          $model_resources->tut_link           = $request->input('tut_link');
+          $model_resources->buy_link           = $request->input('buy_link');
+          $model_resources->phone_price        = $request->input('phone_price');
+          $model_resources->display_type       = $request->input('display_type');
+          $model_resources->display_size       = $request->input('display_size');
+          $model_resources->display_resolution = $request->input('display_resolution');
+          $model_resources->display_protection = $request->input('display_protection');
+          $model_resources->colors             = $request->input('colors');
+          $model_resources->fingerprint        = $request->input('fingerprint');
+          $model_resources->indisplay_fingerprint  = $request->input('indisplay_fingerprint');
+          $model_resources->save();
+        }
+        return redirect('/models')->with('status','Model Resource Updated Succesfully!');
+      }else if(!empty($request->input('email'))){
         $model     = Models::where('id',$id)->first();
         $feedbacks = old_feedbacks::inRandomOrder()->limit(2)->get();
         Mail::to($request->input('email'))->send(new EnquiryChaserMail($model,$feedbacks));

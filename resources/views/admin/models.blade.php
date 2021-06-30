@@ -73,16 +73,18 @@
                           </div>
                       </div>
                       @if(!empty($model))
-                        <h5 class="card-title">{{ $model->name }}</h5>
+                        <h5 class="card-title">Update {{ $model->name }}'s details</h5>
                       @else
                         <h5 class="card-title">All Models</h5>
                       @endif
                   </div>
                   <div class="card-body">
                     @if(!empty($model))
-                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data" id="updatemodel">
+                      <div class="row">
+                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data" id="updatemodel" class="col-md-6">
                         {{ csrf_field() }}
                         {{ method_field('put')}}
+                        <h6>Model Information</h6><br>
                         <div class="modal-body">
                         <div class="form-group">
                           <label>Brand Name</label>
@@ -127,7 +129,100 @@
                           <a href="/models" class="btn btn-secondary">Back</a>
                         <button type="submit" onclick="document.getElementById('updatemodel').submit();" class="btn btn-primary">Save changes</button>
                         </div>
-                      </form><hr>
+                      </form>
+                      <form action="/models/{{ $model->id }}" method="post"  class="col-md-6">
+                        {{ csrf_field() }}
+                        {{ method_field('put')}}
+                        <h6>Model Resources</h6><br>
+                        <div class="modal-body row">
+                        <div class="form-group col-md-6">
+                          <label>Screen Type</label>
+                          <input type="text" class="form-control" name="screen_type" placeholder="Eg. TFT, 90Hz" value="{{ $model->resource->screen_type ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Screen Size</label>
+                          <input type="text" class="form-control" name="screen_size" placeholder="Eg. 6.6 inches" value="{{ $model->resource->screen_size ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Screen Resolution</label>
+                          <input type="text" class="form-control" name="screen_resolution" placeholder="Eg. 1080 x 2400" value="{{ $model->resource->screen_resolution ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Screen Protection</label>
+                          <input type="text" class="form-control" name="screen_protection" placeholder="Eg. Protection" value="{{ $model->resource->screen_protection ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Fix Type</label>
+                          <input type="text" class="form-control" name="fix_type" placeholder="Eg. Fix Type" value="{{ $model->resource->fix_type ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Screen Fix Type</label>
+                          <input type="text" class="form-control" name="screen_fixtype" placeholder="Eg. Screen Fix Type" value="{{ $model->resource->screen_fixtype ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Release Date</label>
+                          <input type="date" class="form-control" name="release_date" value="{{ $model->resource->release_date ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Production Status</label>
+                          <input type="text" class="form-control" name="production_status" placeholder="Eg. Production Status" value="{{ $model->resource->production_status ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Tutorial Link</label>
+                          <input type="text" class="form-control" name="tut_link" placeholder="Eg. Youtube Tutorial Link" value="{{ $model->resource->tut_link ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Buy Link</label>
+                          <input type="text" class="form-control" name="buy_link" placeholder="Eg. Flipkart/ Amazon buy link" value="{{ $model->resource->buy_link ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Phone Price</label>
+                          <input type="number" class="form-control" name="phone_price" placeholder="Eg. 50000" value="{{ $model->resource->phone_price ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Display Type</label>
+                          <input type="text" class="form-control" name="display_type" placeholder="Eg. Display Type" value="{{ $model->resource->display_type ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Display Size</label>
+                          <input type="text" class="form-control" name="display_size" placeholder="Eg. Display Size" value="{{ $model->resource->display_size ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Display Resolution</label>
+                          <input type="text" class="form-control" name="display_resolution" placeholder="Eg. Display Resolution" value="{{ $model->resource->display_resolution ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Display Protection</label>
+                          <input type="text" class="form-control" name="display_protection" placeholder="Eg. Display Protection" value="{{ $model->resource->display_protection ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Colors</label>
+                          <input type="text" class="form-control" name="colors" placeholder="Eg. Gray, White, Mint, Violet" value="{{ $model->resource->colors ?? ''}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Fingerprint</label>
+                          <select class="form-control" name="fingerprint">
+                            <option value="">Select</option>
+                            <option value="1" @if(!empty($model->resource->fingerprint) AND $model->resource->fingerprint=='Yes') selected @endif>Yes</option>
+                            <option value="0" @if(!empty($model->resource->fingerprint) AND $model->resource->fingerprint=='No') selected @endif>No</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>In Display Fingerprint</label>
+                          <select class="form-control" name="indisplay_fingerprint">
+                            <option value="">Select</option>
+                            <option value="1" @if(!empty($model->resource->indisplay_fingerprint) AND $model->resource->indisplay_fingerprint) selected @endif>Yes</option>
+                            <option value="0" @if(!empty($model->resource->indisplay_fingerprint) AND $model->resource->indisplay_fingerprint) selected @endif>No</option>
+                          </select>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="/models" class="btn btn-secondary">Back</a>
+                          <input type="submit" class="btn btn-primary" name="update_resources" value="Save Changes">
+                        </div>
+                      </form>
+                    </div>
+                      <hr>
                       <form action="/models/{{ $model->id }}" method="post" class="col-md-6">
                         <h6>Send Enquiry Mail to customers</h6><br>
                         {{ csrf_field() }}

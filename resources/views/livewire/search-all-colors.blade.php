@@ -15,6 +15,7 @@
                               <img src="storage/{{ $color->image }}" class="img-fluid" id="bigimage" alt="{{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }} - {{ $color->name }}">
                               <img src="storage/{{ $color->image }}" class="img-fluid" id="smallimage" alt="{{ $color->model->brand->name }} {{ $color->model->series }} {{ $color->model->name }} - {{ $color->name }}">
                           </center>
+                          @if($color->model->resource->indisplay_fingerprint==1)<center><i class="fas fa-fingerprint" style="background: -webkit-radial-gradient(#B675FB, #008577);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i><br><small>In Display</small></center>@endif
                       </div>
                       <div class="col-8 col-md-8">
                         <h5 class="mt-2 font-20"><img src="../storage/{{ $color->model->brand->brand_logo }}" style="width:50px;height:auto;"> {{ $color->model->series }} {{ $color->model->name }} <small>{{ $color->name }}</small></h5>
@@ -27,7 +28,7 @@
                   </div>
                   <div class="row">
                     <div class="col-4 col-md-4">
-                      <a href="/modelcolors/{{ $color->id }}"><i class="fa fa-pencil"></i></a>
+                      <a href="/modelcolors/{{ $color->id }}"><i class="fas fa-pencil-alt"></i></a>
                     </div>
                     <div class="col-8 col-md-8">
                       <a href='/screen-repair-{{ $color->model->brand->name }}-{{ $color->model->series }}-{{ $color->model->name }}' target='_blank' class="btn btn-sm btn-success col-md-12">Place Order</a>

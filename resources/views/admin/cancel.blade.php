@@ -60,6 +60,9 @@
                                     @else
                                       <span class="badge badge-success-inverse mb-2 text-uppercase">{{ $type }}</span>
                                     @endif
+                                    @if(!empty($list->color->model->resource->indisplay_fingerprint) AND $list->color->model->resource->indisplay_fingerprint==1)
+                                      <small><i class="fas fa-fingerprint" style="background: -webkit-radial-gradient(#B675FB, #008577);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i> In Display</small>
+                                    @endif
                                   </div>
                                   <div class="col-6 col-md-2">
                                     <li class="list-inline-item">

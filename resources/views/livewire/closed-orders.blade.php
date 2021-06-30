@@ -55,12 +55,15 @@
                             @else
                               <span class="badge badge-success-inverse mb-2 text-uppercase">{{ $type }}</span>
                             @endif
+                            @if(!empty($list->color->model->resource->indisplay_fingerprint) AND $list->color->model->resource->indisplay_fingerprint==1)
+                              <small><i class="fas fa-fingerprint" style="background: -webkit-radial-gradient(#B675FB, #008577);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i> In Display</small>
+                            @endif
                           </div>
                           <div class="col-6 col-md-2">
                             <li class="list-inline-item">
                                 <h4 class="mb-2 font-16"><a href='/customers/{{ $order->customer_id }}'>{{ $order->customer->name }}</a></h4>
-                                <p class="mb-2"><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class='fa fa-phone'></i> Call</a></p>
-                                <span class="font-12 mb-2"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
+                                <p class="mb-2"><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class='fas fa-phone'></i> Call</a></p>
+                                <span class="font-12 mb-2"><i class='fas fa-map-marker'></i> {{ $order->address->area }}</span>
                             </li>
                           </div>
                           <div class="col-6 col-md-2">
@@ -92,7 +95,7 @@
                           </div>
                           <div class="col-12 col-md-2">
                                 <h4 class="mb-2 font-16 pull-right">&#8377; {{ $order->order_lists->sum('price') }}</h4>
-                                <!--<p class="mb-4"><i class='fa fa-credit-card-alt'></i> Card</p>-->
+                                <!--<p class="mb-4"><i class='fas fa-credit-card-alt'></i> Card</p>-->
                                 <a href='/home/{{ $order->id }}' class='btn col-12 btn-sm btn-success'>Completed</a>
                                 <a href='/invoice/{{ $order->id }}' target='_blank' class='col-12 btn btn-sm btn-warning'>Invoice</a>
                           </div>

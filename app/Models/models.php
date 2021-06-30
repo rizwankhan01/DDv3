@@ -24,6 +24,10 @@ class models extends Model implements Searchable
       return $this->belongsTo(brands::class);
     }
 
+    public function resource(){
+      return $this->hasOne(model_resources::class,'model_id');
+    }
+
     public function colortypes(){
       return $this->hasMany(colors::class,'model_id');
     }
