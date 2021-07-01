@@ -134,5 +134,10 @@
       </div>
   </div>
 @endforeach
+<div>
+  @if($search==0)
+    {{ $users->links('pagination::bootstrap-4') }}
+  @endif
+</div>
 </div>
 </div>

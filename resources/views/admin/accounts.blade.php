@@ -8,21 +8,20 @@
         <div class="infobar-settings-sidebar-body">
             <div class="custom-mode-setting">
                 <div class="row align-items-center pb-3">
-                      <div class="col-md-12 col-lg-12 col-xl-12">
                         @if(!empty($user->id))
-                          <form action="/accounts/{{ $user->id }}" method="post" enctype="multipart/form-data">
+                          <form action="/accounts/{{ $user->id }}" method="post" enctype="multipart/form-data" class="col-md-12">
                             {{ csrf_field() }}
                             {{ method_field('put') }}
-                            <div class="modal-body">
-                            <div class="form-group">
+                            <div class="row">
+                            <div class="form-group col-md-6">
                               <label>Name</label>
                               <input type="text" class="form-control" name="name" placeholder="Name" value="{{ $user->name }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Father's Name</label>
                               <input type="text" class="form-control" name="father_name" placeholder="Father's Name" value="{{ $user->fathers_name }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Gender</label>
                               <select class='form-control' name='gender' required>
                                 <option value=''>Select Option</option>
@@ -31,53 +30,93 @@
                                 <option value='Other' @if($user->gender=='Other'){{ 'selected' }} @endif>Other</option>
                               </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Date of Birth</label>
                               <input type='date' class='form-control' name='dob' placeholder="Date of Birth" value="{{ $user->date_of_birth }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Primary Phone</label>
                               <input type="number" class="form-control" name="primary_phone" placeholder="Primary Phone" value="{{ $user->primary_phone }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Secondary Phone</label>
                               <input type="number" class="form-control" name="secondary_phone" placeholder="Secondary Phone" value="{{ $user->secondary_phone }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Email</label>
                               <input type="email" class="form-control" name="email" placeholder="Email Address" value="{{ $user->email }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Reset Password</label>
                               <input type="password" class="form-control" name="password" placeholder="Password">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Address</label>
                               <input type="text" class="form-control" name="address" placeholder="Address" value="{{ $user->address }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>City</label>
                               <input type="text" class="form-control" name="city" placeholder="City" value="{{ $user->city }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Date of Joining</label>
                               <input type='date' class='form-control' name='doj' placeholder="Date of Joining" value="{{ $user->date_of_join }}" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>Profile Picture</label>
-                              <div class="circular">
                                 <img src="../storage/{{ $user->profile_image }}" style="width:100px; height:auto;">
-                              </div>
                               <input type='file' class='form-control' name='profile_picture' accept=".jpg, .jpeg, .png">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-md-6">
                               <label>User Type</label>
-                              <select class="form-control" name="user_type">
+                              <select class="form-control" name="user_type" required>
                                 <option value="">Select Option</option>
                                 <option value="Investor" @if($user->user_type=='Investor'){{ 'selected' }} @endif>Investor</option>
                                 <option value="Service Man" @if($user->user_type=='Service Man'){{ 'selected' }} @endif>Service Man</option>
                                 <option value="Admin" @if($user->user_type=='Admin'){{ 'selected'}} @endif>Admin</option>
                               </select>
+                            </div>
+                            <div class="form-group col-md-12"><hr><h6>Personal Information</h6></div>
+                            <div class="form-group col-md-6">
+                              <label>Blood Group</label>
+                              <input type="text" class="form-control" name="blood_group" value="{{ $user->blood_group }}" placeholder="Blood Group">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Mother Tongue</label>
+                              <input type="text" class="form-control" name="mother_tongue" value="{{ $user->mother_tongue }}" placeholder="Mother Tongue">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Nationality</label>
+                              <input type="text" class="form-control" name="nationality" value="{{ $user->nationality }}" placeholder="Nationality">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Religion</label>
+                              <input type="text" class="form-control" name="religion" value="{{ $user->religion }}" placeholder="Religion">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Languages Known</label>
+                              <input type="text" class="form-control" name="languages_known" value="{{ $user->languages_known }}" placeholder="Tamil, English, Hindi">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Emergency Contact Name</label>
+                              <input type="text" class="form-control" name="emergency_contact_name" value="{{ $user->emergency_contact_name }}" placeholder="Emergency Contact Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Emergency Contact Relation</label>
+                              <input type="text" class="form-control" name="emergency_contact_relation" value="{{ $user->emergency_contact_relation }}" placeholder="Emergency Contact Relation">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Emergency Contact Phone</label>
+                              <input type="number" class="form-control" name="emergency_contact_phone" value="{{ $user->emergency_contact_phone }}" placeholder="Emergency Contact Phone">
+                            </div>
+                            <div class="form-group col-md-12"><hr><h6>Education Information</h6></div>
+                            <div class="form-group col-md-6">
+                              <label>School</label>
+                              <input type="text" class="form-control" name="school" value="{{ $user->school }}" placeholder="School, Class">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Course</label>
+                              <input type="text" class="form-control" name="course" value="{{ $user->course }}" placeholder="Course, College">
                             </div>
                             </div>
                             <div class="modal-footer">
@@ -85,7 +124,6 @@
                             </div>
                           </form>
                         @endif
-                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +140,7 @@
                             <div class="card-body">
                                 <div class="parents-slider">
                                     <div class="parents-slider-item">
-                                      <a href="javascript:void(0)" id="infobar-settings-open"><i class="fa fa-pencil"></i></a>
+                                      <a href="javascript:void(0)" id="infobar-settings-open"><i class="fa fa-edit"></i></a>
                                         <div class="row align-items-center">
                                             <div class="col-12 col-md-2">
                                               <div class="circular">
@@ -167,19 +205,19 @@
                                         </tr>
                                         <tr>
                                           <th>Blood Group</th>
-                                          <td>O +ve</td>
+                                          <td>{{ $user->blood_group }}</td>
                                           <th>Nationality</th>
-                                          <td>Indian</td>
+                                          <td>{{ $user->nationality }}</td>
                                         </tr>
                                         <tr>
                                           <th>Mother Tongue</th>
-                                          <td>Urdu</td>
+                                          <td>{{ $user->mother_tongue }}</td>
                                           <th>Religion</th>
-                                          <td>Satanist</td>
+                                          <td>{{ $user->religion }}</td>
                                         </tr>
                                         <tr>
                                           <th>Languages Known</th>
-                                          <td><span class="badge badge-primary">Urdu</span> <span class="badge badge-success">English</span> <span class="badge badge-secondary">Tamil</span></td>
+                                          <td>{{ $user->languages_known }}</td>
                                         </tr>
                                       </table><hr>
                                     </div>
@@ -196,42 +234,42 @@
                                         </tr>
                                         <tr>
                                           <th>Emergency Contact</th>
-                                          <td>Name (Relation) - 9874563210</td>
+                                          <td>{{ $user->emergency_contact_name }} ({{ $user->emergency_contact_relation }}) - {{ $user->emergency_contact_phone }}</td>
                                         </tr>
                                       </table><hr>
                                     </div>
-                                    <div class="col-md-6">
+                                    <!--<div class="col-md-6">
                                       <h6 class="btn btn-info-rgba">Dependents</h6>
                                       <table class="table table-borderless table-responsive">
                                         <tr>
                                           <th>Mother</th>
-                                          <td>Divya Chauhan</td>
+                                          <td>{Divya Chauhan}</td>
                                         </tr>
                                         <tr>
                                           <th>Child</th>
-                                          <td>Raj Chauhan</td>
+                                          <td>{Raj Chauhan}</td>
                                         </tr>
                                         <tr>
                                           <th>Spouse</th>
-                                          <td>Shreya Chauhan</td>
+                                          <td>{Shreya Chauhan}</td>
                                         </tr>
                                         <tr>
                                           <th>Nominee</th>
                                           <td>Father</td>
-                                          <td>Father Chauhan</td>
+                                          <td>{Father Chauhan}</td>
                                         </tr>
                                       </table><hr>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-6">
                                       <h6 class="btn btn-info-rgba">Education</h6>
                                       <table class="table table-borderless table-responsive">
                                         <tr>
                                           <th>School</th>
-                                          <td>PSBB School</td>
+                                          <td>{{ $user->school }}</td>
                                         </tr>
                                         <tr>
                                           <th>Course</th>
-                                          <td>Engineering, Panimalar College</td>
+                                          <td>{{ $user->course }}</td>
                                         </tr>
                                       </table><hr>
                                     </div>

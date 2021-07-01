@@ -13,10 +13,15 @@ class AllUseraccounts extends Component
 
     public function render()
     {
-        $searchTerm = '%'.$this->searchTerm.'%';
-        return view('livewire.all-useraccounts',[
-          'users' => user::where('name','like',$searchTerm)
-                        ->orWhere('primary_phone','like',$searchTerm)->paginate(10)
-        ]);
+        if(empty($this->searchTerm)){
+          $search = 0;
+          $users = user::paginate(10);
+        }else{
+          $searchTerm = '%'.$this->searchTerm.'%';
+          $search = 1;
+          $users = user::where('name','like',$searchTerm)
+                        ->orWhere('primary_phone','like',$searchTerm)->paginate(10);
+        }
+        return view('livewire.all-useraccounts',compact('search','users'));
     }
 }

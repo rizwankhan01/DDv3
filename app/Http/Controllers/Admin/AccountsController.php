@@ -54,6 +54,16 @@ class AccountsController extends Controller
         $user->user_type      = $request->input('user_type');
         $image                = explode('/',$request->file('profile_picture')->store('public'));
         $user->profile_image  = $image[1];
+        $user->blood_group      = $request->input('blood_group');
+        $user->mother_tongue    = $request->input('mother_tongue');
+        $user->languages_known  = $request->input('languages_known');
+        $user->nationality      = $request->input('nationality');
+        $user->religion         = $request->input('religion');
+        $user->school           = $request->input('school');
+        $user->course           = $request->input('course');
+        $user->emergency_contact_name = $request->input('emergency_contact_name');
+        $user->emergency_contact_relation = $request->input('emergency_contact_relation');
+        $user->emergency_contact_phone  = $request->input('emergency_contact_phone');
         $user->save();
         return redirect('/accounts')->with('status','New User Created Successfully!');
     }
@@ -116,6 +126,17 @@ class AccountsController extends Controller
         $image  = explode('/',$request->file('profile_picture')->store('public'));
         $user->profile_image  = $image[1];
       }
+      $user->blood_group      = $request->input('blood_group');
+      $user->mother_tongue    = $request->input('mother_tongue');
+      $user->languages_known  = $request->input('languages_known');
+      $user->nationality      = $request->input('nationality');
+      $user->religion         = $request->input('religion');
+      $user->school           = $request->input('school');
+      $user->course           = $request->input('course');
+      $user->emergency_contact_name = $request->input('emergency_contact_name');
+      $user->emergency_contact_relation = $request->input('emergency_contact_relation');
+      $user->emergency_contact_phone  = $request->input('emergency_contact_phone');
+
       $user->update();
       return redirect()->back()->with('status','User Accounts Updated Successfully!');
     }
