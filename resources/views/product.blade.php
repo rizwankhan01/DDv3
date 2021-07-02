@@ -28,7 +28,7 @@
               <tr>
                 <th>Stock</th>
                 <td>Third Party</td>
-                <td>OEM</td>
+                <td>Premium Third Party</td>
               </tr>
               <tr>
                 <th>Quality</th>
