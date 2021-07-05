@@ -11,10 +11,10 @@ use App\Models\customers;
 use App\Models\city_areas;
 use App\Models\addresses;
 use App\Models\enquiry;
-use Mail;
 use App\Mail\OrderConfirmationMail;
-use Session;
 use App\User;
+use Mail;
+use Session;
 
 class OrderConfirmedController extends Controller
 {

@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
 use App\Models\orders;
+use App\User;
 use Hash;
+use PDF;
 
 class AccountsController extends Controller
 {
@@ -77,12 +78,53 @@ class AccountsController extends Controller
     public function show($id)
     {
         $user = user::findOrFail($id);
+
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper(array(0,0,225,345));
+        $output = "
+        <html>
+          <head>
+            <title>ID Card</title>
+            <style>
+              @page{ margin: 0; }
+
+            </style>
+          </head>
+          <body style='background-image:url(img/idcard/id_card_front.png);
+                       background-repeat: no-repeat;
+                       background-size: 100% 100%;
+                       font-family: 'Verdana';'>
+            <div style='width: 130px;
+                        height: 130px;
+                        border-radius: 150%;
+                        position: relative;
+                        overflow: hidden;
+                        margin-left:85px;
+                        margin-top:82px;'>
+              <img src='storage/".$user->profile_image."'
+                                  style='border-radius:150%; width:130px; height:auto;'>
+            </div>
+            <center><h2>".$user->name."</h2><small>".$user->user_type."</small></center>
+            <table style='margin-left:50px;'>
+            <tr><td>Emp. ID: </td><td>EMP000".$user->id."</td></tr>
+            <tr><td>Contact: </td><td>".$user->primary_phone."</td></tr>
+            <tr><td>Father's Name: </td><td>".$user->fathers_name."</td></tr>
+            <tr><td>DOB: </td><td>".date('d-m-Y', strtotime($user->date_of_birth))."</td></tr>
+            <tr><td>Valid Upto: </td><td>30-12-2021</td></tr>
+            </table>
+          </body>
+        </html>
+        ";
+        $pdf->loadHTML($output);
+        return $pdf->stream();
+        /*
         if($user->user_type=='Service Man'){
           $orders = orders::where('serviceman_id',$user->id)->get();
           return view('admin.accounts', compact('user','orders'));
         }else{
           return view('admin.accounts',compact('user'));
         }
+        */
     }
 
     /**

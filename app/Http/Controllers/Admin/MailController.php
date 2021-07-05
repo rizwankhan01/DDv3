@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\orders;
 use App\Models\order_lists;
+use App\Mail\OrderConfirmationMail;
 use PDF;
 use Mail;
-use App\Mail\OrderConfirmationMail;
 
 class MailController extends Controller
 {
