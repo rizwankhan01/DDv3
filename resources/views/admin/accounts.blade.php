@@ -118,6 +118,36 @@
                               <label>Course</label>
                               <input type="text" class="form-control" name="course" value="{{ $user->course }}" placeholder="Course, College">
                             </div>
+                            <div class="form-group col-md-12"><hr><h6>Banking Information</h6></div>
+                            <div class="form-group col-md-6">
+                              <label>Bank Name</label>
+                              <input type="text" class="form-control" name="bank_name" value="{{ $user->bank_name }}" placeholder="Bank Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Bank IFSC</label>
+                              <input type="text" class="form-control" name="bank_ifsc" value="{{ $user->bank_ifsc }}" placeholder="Bank IFSC">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Account Name</label>
+                              <input type="text" class="form-control" name="account_name" value="{{ $user->account_name }}" placeholder="Account Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Account Number</label>
+                              <input type="text" class="form-control" name="account_number" value="{{ $user->account_number }}" placeholder="Account Number">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Branch Name</label>
+                              <input type="text" class="form-control" name="account_branch" value="{{ $user->account_branch }}" placeholder="Account Branch">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Pan Number</label>
+                              <input type="text" class="form-control" name="pan_number" value="{{ $user->pan_number }}" placeholder="Pan Number">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Bank Logo</label>
+                              <img src="../storage/{{ $user->bank_logo }}" style="width:100px; height:auto;">
+                              <input type='file' class='form-control' name='bank_logo' accept=".jpg, .jpeg, .png">
+                            </div>
                             </div>
                             <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -285,32 +315,36 @@
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                   </div>
                                   <div class="tab-pane fade" id="documents-line" role="tabpanel" aria-labelledby="documents-tab-line">
-                                    <a href=''>View ID Card</a>
+                                    <a href='#'>View ID Card</a>
+                                    <ul>
+                                      <li><a href='/viewidcard/front.{{ $user->id }}' target='_blank'>Front</a></li>
+                                      <li><a href='/viewidcard/back.{{ $user->id }}' target='_blank'>Back</a></li>
+                                    </ul>
                                   </div>
                                   <div class="tab-pane fade" id="bank-line" role="tabpanel" aria-labelledby="bank-tab-line">
                                     <div class="col-md-12 m-b-20">
-                                      <img src="https://www.unionbankofindia.co.in/UBI_IFRAME/image/new_bot/ubi_icon.png" style="width:6%;">
-                                      <h6>Union Bank of India</h6><span class="badge badge-success-inverse">Verified <i class="feather icon-check-circle"></i></span>
+                                      <img src="../storage/{{ $user->bank_logo }}" style="width:6%;">
+                                      <h6>{{ $user->bank_name }}</h6><span class="badge badge-success-inverse">Verified <i class="feather icon-check-circle"></i></span>
                                       <table class="table table-borderless table-responsive">
                                         <tr>
                                           <th>IFSC</th>
-                                          <td>UBOIB79000555</td>
+                                          <td>{{ $user->bank_ifsc }}</td>
                                         </tr>
                                         <tr>
                                           <th>Name</th>
-                                          <td>Abhimanyu Rana</td>
+                                          <td>{{ $user->account_name }}</td>
                                         </tr>
                                         <tr>
                                           <th>Acc. No.</th>
-                                          <td>05879654202xxxx</td>
+                                          <td>{{ $user->account_number }}</td>
                                         </tr>
                                         <tr>
                                           <th>Branch</th>
-                                          <td>Sector 40, Gurgram</td>
+                                          <td>{{ $user->account_branch }}</td>
                                         </tr>
                                         <tr>
                                           <th>Pan Number</th>
-                                          <td>CBXM9909X</td>
+                                          <td>{{ $user->pan_number }}</td>
                                         </tr>
                                       </table>
                                     </div>

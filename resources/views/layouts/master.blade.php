@@ -214,7 +214,11 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-md-12 ptb--50 text-var-2 text-white">
+                      <small>* All product names, logos, brands are property of the respective owners. All company, product and service names used here are for identification purposes only.
+                        Use of these names, logos, brands does not imply endorsements.
+                      </small>
+                    </div>
                 </div>
             </div>
         </div>

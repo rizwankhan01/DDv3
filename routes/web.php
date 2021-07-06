@@ -87,6 +87,9 @@ Route::group(['middleware' => 'auth'], function(){
 
   //
   Route::group(['middleware' =>'admin'], function(){
+    //view ID Card
+    Route::resource('/viewidcard','Admin\IDCardController');
+
     Route::resource('/home', 'HomeController');
     //notification
     Route::patch('/fcm-Token', 'SendPushController@updateToken')->name('fcmToken');
