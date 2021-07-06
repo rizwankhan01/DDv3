@@ -86,7 +86,7 @@ class AccountsController extends Controller
     public function show($id)
     {
         $user = user::findOrFail($id);
-        
+
         if($user->user_type=='Service Man'){
           $orders = orders::where('serviceman_id',$user->id)->get();
           return view('admin.accounts', compact('user','orders'));
@@ -153,8 +153,10 @@ class AccountsController extends Controller
       $user->account_number   = $request->input('account_number');
       $user->account_branch   = $request->input('account_branch');
       $user->pan_number       = $request->input('pan_number');
-      $bank_logo              = explode('/', $request->file('bank_logo')->store('public'));
-      $user->bank_logo        = $bank_logo[1];
+      if($request->hasFile('bank_logo')){
+        $image  = explode('/',$request->file('bank_logo')->store('public'));
+        $user->bank_logo  = $image[1];
+      }
       $user->update();
       return redirect()->back()->with('status','User Accounts Updated Successfully!');
     }
