@@ -73,6 +73,16 @@ class AccountsController extends Controller
         $user->pan_number       = $request->input('pan_number');
         $bank_logo              = explode('/', $request->file('bank_logo')->store('public'));
         $user->bank_logo        = $bank_logo[1];
+        //documents
+        $driving_license          = explode('/', $request->file('driving_license')->store('public'));
+        $user->driving_license    = $driving_license[1];
+        $aadhar_card              = explode('/', $request->file('aadhar_card')->store('public'));
+        $user->aadhar_card        = $aadhar_card[1];
+        $pan_card                 = explode('/', $request->file('pan_card')->store('public'));
+        $user->pan_card           = $pan_card[1];
+        $school_certificate       = explode('/', $request->file('school_certificate')->store('public'));
+        $user->school_certificate = $school_certificate[1];
+
         $user->save();
         return redirect('/accounts')->with('status','New User Created Successfully!');
     }
@@ -156,6 +166,23 @@ class AccountsController extends Controller
       if($request->hasFile('bank_logo')){
         $image  = explode('/',$request->file('bank_logo')->store('public'));
         $user->bank_logo  = $image[1];
+      }
+      //Documents
+      if($request->hasFile('driving_license')){
+        $image  = explode('/',$request->file('driving_license')->store('public'));
+        $user->driving_license  = $image[1];
+      }
+      if($request->hasFile('aadhar_card')){
+        $image  = explode('/',$request->file('aadhar_card')->store('public'));
+        $user->aadhar_card  = $image[1];
+      }
+      if($request->hasFile('pan_card')){
+        $image  = explode('/',$request->file('pan_card')->store('public'));
+        $user->pan_card  = $image[1];
+      }
+      if($request->hasFile('school_certificate')){
+        $image  = explode('/',$request->file('school_certificate')->store('public'));
+        $user->school_certificate  = $image[1];
       }
       $user->update();
       return redirect()->back()->with('status','User Accounts Updated Successfully!');

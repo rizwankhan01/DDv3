@@ -148,6 +148,23 @@
                               <img src="../storage/{{ $user->bank_logo }}" style="width:100px; height:auto;">
                               <input type='file' class='form-control' name='bank_logo' accept=".jpg, .jpeg, .png">
                             </div>
+                            <div class="form-group col-md-12"><hr><h6>Documents</h6></div>
+                            <div class="form-group col-md-6">
+                              <label>Driving License @if(!empty($user->driving_license)) <a href='/storage/{{ $user->driving_license }}' target='_blank'><i class='fa fa-link'></i></a> @endif</label>
+                              <input type='file' class='form-control' name='driving_license' accept=".jpg, .jpeg, .png, .pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Aadhar Card @if(!empty($user->aadhar_card))<a href='/storage/{{ $user->aadhar_card }}' target='_blank'><i class='fa fa-link'></i></a>@endif</label>
+                              <input type='file' class='form-control' name='aadhar_card' accept=".jpg, .jpeg, .png, .pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>Pan Card  @if(!empty($user->pan_card))<a href='/storage/{{ $user->pan_card }}' target='_blank'><i class='fa fa-link'></i></a>@endif</label>
+                              <input type='file' class='form-control' name='pan_card' accept=".jpg, .jpeg, .png, .pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label>School/ College/ Course Certificate  @if(!empty($user->school_certificate))<a href='/storage/{{ $user->school_certificate }}' target='_blank'><i class='fa fa-link'></i></a>@endif</label>
+                              <input type='file' class='form-control' name='school_certificate' accept=".jpg, .jpeg, .png, .pdf">
+                            </div>
                             </div>
                             <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -315,11 +332,21 @@
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                   </div>
                                   <div class="tab-pane fade" id="documents-line" role="tabpanel" aria-labelledby="documents-tab-line">
-                                    <a href='#'>View ID Card</a>
-                                    <ul>
-                                      <li><a href='/viewidcard/front.{{ $user->id }}' target='_blank'>Front</a></li>
-                                      <li><a href='/viewidcard/back.{{ $user->id }}' target='_blank'>Back</a></li>
-                                    </ul>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <a href='#'>View ID Card</a>
+                                        <ul>
+                                          <li><a href='/viewidcard/front.{{ $user->id }}' target='_blank'>Front</a></li>
+                                          <li><a href='/viewidcard/back.{{ $user->id }}' target='_blank'>Back</a></li>
+                                        </ul>
+                                      </div>
+                                      <div class="col-md-6">
+                                        @if(!empty($user->driving_license)) <a href='/storage/{{ $user->driving_license }}' target='_blank'>Driving License <i class='fa fa-link'></i></a><br> @endif
+                                        @if(!empty($user->aadhar_card))<a href='/storage/{{ $user->aadhar_card }}' target='_blank'>Aadhar Card <i class='fa fa-link'></i></a><br>@endif
+                                        @if(!empty($user->pan_card))<a href='/storage/{{ $user->pan_card }}' target='_blank'>Pan Card <i class='fa fa-link'></i></a><br>@endif
+                                        @if(!empty($user->school_certificate))<a href='/storage/{{ $user->school_certificate }}' target='_blank'>School/ College/ Course Certificate<i class='fa fa-link'></i></a><br>@endif
+                                      </div>
+                                    </div>
                                   </div>
                                   <div class="tab-pane fade" id="bank-line" role="tabpanel" aria-labelledby="bank-tab-line">
                                     <div class="col-md-12 m-b-20">
