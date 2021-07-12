@@ -53,7 +53,7 @@
 <div class="row">
 <div class="col-12">
 <!-- Checkout Form s-->
-<form action="/confirmorder/{{ $order->id }}" method="post" class="checkout-form">
+<form method="post" action="/confirmorder/{{ $order->id }}" class="checkout-form">
   {{ csrf_field() }}
   {{ method_field('put') }}
 <div class="row">
@@ -68,20 +68,20 @@
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Email Address*</label>
-<input type="email" placeholder="Email Address" name="email" value="{{ $customer->email }}" onkeyup='swap_email(this.value)' required>
+<input type="email" autocomplete="chrome-off" placeholder="Email Address" name="email" value="{{ $customer->email }}" onkeyup='swap_email(this.value)' required>
 </div>
 <div class="col-md-6 col-12 mb--20">
 <label>Phone no*</label>
-<input type="text" placeholder="Phone number"  onkeypress="return isNumberKey(event)"
+<input type="text" autocomplete="chrome-off" placeholder="Phone number"  onkeypress="return isNumberKey(event)"
 minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}" onkeyup='swap_phone(this.value)' required>
 </div>
 <div class="col-12 mb--20">
 <label>Address*</label>
-<input type="text" placeholder="Address" name='address' onkeyup="swap_address(this.value)" required value="@if(!empty($address->address)){{ $address->address }}@endif">
+<input type="text" autocomplete="chrome-off" placeholder="Address" name='address' onkeyup="swap_address(this.value)" required value="@if(!empty($address->address)){{ $address->address }}@endif">
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Area* </label>
-<select class="nice-select" name='area' required onchange='swap_area(this.value)'>
+<select autocomplete="chrome-off" class="nice-select" name='area' required onchange='swap_area(this.value)'>
 <option value=''>Select Area</option>
 @foreach($areas as $area)
 <option value='{{$area->area}}' @if(!empty($address->area) && $address->area==$area->area){{ 'selected' }} @endif>{{$area->area}}</option>
@@ -90,13 +90,19 @@ minlength="10" maxlength="10" name="phone" value="{{ $customer->phone_number }}"
 </div>
 <div class="col-md-4 col-12 mb--20">
 <label>Pin Code*</label>
-<input type="text" placeholder="Pin Code"  onkeypress="return isNumberKey(event)"
+<input type="text" placeholder="Pin Code" autocomplete="chrome-off" onkeypress="return isNumberKey(event)"
 minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' value='@if(!empty($address->pincode)){{ $address->pincode }}@endif' required>
 </div>
 
 <div class="col-md-4 col-12 mb--20">
 <label>Town/City* <small><a href='#' data-toggle="modal" data-target="#changeCity">Change City</a></small></label>
-<input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value="@if(!empty(Session::get('city'))) {{ Session::get('city')}} @else @if(!empty($address->city)){{ $address->city }}@endif @endif" required>
+<select name="city" class="nice-select" onchange="swap_city(this.value)" autocomplete="chrome-off" required>
+  <option value="">Select City</option>
+  <option value="Chennai" @if(!empty(Session::get('city'))) selected @endif>Chennai</option>
+  <option value="Bangalore" @if(!empty(Session::get('city'))) selected @endif>Bangalore</option>
+  <option value="Other">Other</option>
+</select>
+<!--<input type="text" placeholder="Town/City" name='city' onkeyup='swap_city(this.value)' value="@if(!empty(Session::get('city'))) {{ Session::get('city')}} @else @if(!empty($address->city)){{ $address->city }}@endif @endif" required>-->
 </div>
 <div class="modal fade" id="changeCity" tabindex="-1" role="dialog" aria-labelledby="changeCityLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" style="top:-75px;">
@@ -113,11 +119,11 @@ minlength="6" maxlength="6" onkeyup='swap_pincode(this.value)' name='pincode' va
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Date*</label>
-<input type="date" name="date" min="{{ date('Y-m-d',strtotime('now')) }}" onchange='swap_date(this.value)' value="{{ $order->slot_date }}" max="{{ date('Y-m-d',strtotime('+1 week')) }}" required>
+<input type="date" autocomplete="chrome-off" name="date" min="{{ date('Y-m-d',strtotime('now')) }}" onchange='swap_date(this.value)' value="{{ $order->slot_date }}" max="{{ date('Y-m-d',strtotime('+1 week')) }}" required>
 </div>
 <div class="col-md-6 col-6 mb--20">
 <label>Time Slot*</label>
-<select name="time_slot" class="nice-select" onchange='swap_time_slot(this.value)' required>
+<select autocomplete="chrome-off" name="time_slot" class="nice-select" onchange='swap_time_slot(this.value)' required>
   <option value="">Select Slot</option>
   <option value='10:00AM to 11:30AM' @if($order->slot_time=='10:00AM to 11:30AM'){{ 'selected' }} @endif>10:00AM to 11:30AM</option>
   <option value='11:30AM to 01:00PM' @if($order->slot_time=='11:30AM to 01:00PM'){{ 'selected' }} @endif>11:30AM to 01:00PM</option>

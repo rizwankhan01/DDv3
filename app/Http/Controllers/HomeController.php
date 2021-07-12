@@ -49,8 +49,9 @@ class HomeController extends Controller
         $bgl_count = orders::whereIn('address_id', $bangalore)
                         ->whereIn('status', [1, 2])
                         ->orderBy('created_at','desc')->count();
-
-        return view('admin.home', compact('orders','chn_count','bgl_count'));
+        $allorders = orders::whereIn('status', [1, 2])
+                           ->orderBy('created_at','desc')->get();
+        return view('admin.home', compact('orders','chn_count','bgl_count','allorders'));
     }
 
     public function show($id)
@@ -67,7 +68,7 @@ class HomeController extends Controller
       $smen  =  user::where('user_type','Service Man')->get();
       $dealers  = dealers::all();
       $corder = closedorder::where('order_id',$id)->first();
-      $address = addresses::where('customer_id',$order->customer_id)->first();
+      $address = addresses::where('id',$order->address_id)->first();
       $ticket = tickets::where('order_id',$id)->first();
       return view('admin.home', compact('order','olist','screen','consultation','smen','dealers','corder','address','allcolors','color','ticket'));
     }
@@ -76,6 +77,9 @@ class HomeController extends Controller
     {
       $location = $request->input('filter');
       $address  = addresses::where('city', $location)->pluck('id');
+      $allorders = orders::whereIn('status', [1, 2])
+                         ->orderBy('created_at','desc')->get();
+
       $orders = orders::whereIn('address_id', $address)
                       ->whereIn('status', [1, 2])
                       ->orderBy('created_at','desc')->get();
@@ -90,7 +94,7 @@ class HomeController extends Controller
                       ->whereIn('status', [1, 2])
                       ->orderBy('created_at','desc')->count();
 
-      return view('admin.home', compact('orders','chn_count','bgl_count'));
+      return view('admin.home', compact('allorders','orders','chn_count','bgl_count'));
     }
 
 }

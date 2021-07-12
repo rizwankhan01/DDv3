@@ -690,7 +690,7 @@
                           <form action='/home' method='post'>
                             {{ csrf_field() }}
                             {{ method_field('post') }}
-                            <a href='/home' class="btn btn-sm btn-success">All <span class="badge badge-light">{{ count($orders) }}</span></a>
+                            <a href='/home' class="btn btn-sm btn-success">All <span class="badge badge-light">{{ count($allorders) }}</span></a>
                             <button name='filter' value='Chennai' class="btn btn-sm btn-primary">Chennai <span class="badge badge-light">{{ $chn_count }}</span></button>
                             <button name='filter' value='Bangalore' class="btn btn-sm btn-warning">Bangalore <span class="badge badge-light">{{ $bgl_count }}</span></button>
                           </form>
@@ -745,7 +745,9 @@
                                     <div class="col-6 col-md-2">
                                       <li class="list-inline-item">
                                           <h4 class="mb-2 font-16"><a href='/customers/{{ $order->customer_id }}'>{{ $order->customer->name }}</a></h4>
-                                          <p class="mb-2"><a href='/exotel_calls/{{ $order->customer->phone_number }}'><i class='fa fa-phone'></i> Call</a></p>
+                                          <p class="mb-2">
+                                          <a href='/exotel_calls/{{ $order->customer->phone_number }}'><span class="badge badge-primary-inverse"><i class='fa fa-phone'></i> Call</span></a>
+                                          <a href='https://wa.me/91{{ $order->customer->phone_number }}'><span class="badge badge-success-inverse"><i class='fa fa-comment-dots'></i> Whatsapp</span></a></p>
                                           <span class="font-12 mb-2"><i class='fa fa-map-marker'></i> {{ $order->address->area }}</span>
                                       </li>
                                     </div>
