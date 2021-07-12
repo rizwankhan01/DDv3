@@ -188,7 +188,9 @@
                                   @endforeach
                                   </td>
                                   <td><b>{{ $order->customer->name }}</b></td>
-                                  <td><a href='tel:{{ $order->customer->phone_number }}'>{{ $order->customer->phone_number }}</a></td>
+                                  <td>
+                                    <small><a href="tel:{{ $order->customer->phone_number }}"><i class="fa fa-phone"></i> Call</a> | <a href="https://wa.me/91{{ $order->customer->phone_number }}"><i class="fa fa-whatsapp"></i> Whatsapp</a></small>
+                                  </td>
                                   <td>
                                   @if($order->slot_date == date('Y-m-d'))
                                     <span class='btn btn-sm btn-danger'>{{ date('d-m-Y', strtotime($order->slot_date)) }}</span>
