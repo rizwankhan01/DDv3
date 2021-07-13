@@ -15,7 +15,7 @@
                               {{ $enquiry->model_name }}
                             @else
                               <a href='/{{ $enquiry->url }}' target='_blank'>{{ $enquiry->model_name }}</a>
-                            @endif
+                            @endif from {{ $enquiry->referer }}
                             <br><br>
                             Call: <a href='exotel_calls/{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                           </h5>
@@ -92,7 +92,7 @@
                                   <th>Model Name</th>
                                   <th>Customer</th>
                                   <th>Locality</th>
-                                  <th>Follow back</th>
+                                  <th>Referer</th>
                                   <th>Notes</th>
                                   <th>Created at</th>
                                   <th>Status</th>
@@ -113,13 +113,7 @@
                                       <small><a href='exotel_calls/{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>
                                     <td>{{ $enquiry->city }}</td>
-                                    <td>
-                                      @if(date('Y-m-d')==$enquiry->fdate)
-                                        <span class="btn btn-sm btn-success">{{ date('d-m-Y', strtotime($enquiry->fdate)) }}</span>
-                                      @elseif(!empty($enquiry->fdate))
-                                        {{ date('d-m-Y',strtotime($enquiry->fdate)) }}
-                                      @endif
-                                    </td>
+                                    <td>{{ $enquiry->referer }}</td>
                                     <td>{{ $enquiry->notes }}</td>
                                     <td>{{ $enquiry->created_at->diffForHumans() }}</td>
                                     <td>
