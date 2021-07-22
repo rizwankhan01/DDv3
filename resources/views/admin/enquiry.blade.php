@@ -15,7 +15,7 @@
                               {{ $enquiry->model_name }}
                             @else
                               <a href='/{{ $enquiry->url }}' target='_blank'>{{ $enquiry->model_name }}</a>
-                            @endif from {{ $enquiry->referer }}
+                            @endif from {{ $enquiry->referer ?? 'N/A' }}
                             <br><br>
                             Call: <a href='exotel_calls/{{ $enquiry->Customer->phone_number }}'>{{ $enquiry->customer->phone_number }}</a>
                           </h5>
@@ -113,7 +113,7 @@
                                       <small><a href='exotel_calls/{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
                                     </td>
                                     <td>{{ $enquiry->city }}</td>
-                                    <td>{{ $enquiry->referer }}</td>
+                                    <td>{{ $enquiry->referer ?? 'N/A' }}</td>
                                     <td>{{ $enquiry->notes }}</td>
                                     <td>{{ $enquiry->created_at->diffForHumans() }}</td>
                                     <td>

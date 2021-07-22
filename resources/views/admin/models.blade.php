@@ -215,6 +215,10 @@
                             <option value="0" @if(!empty($model->resource->indisplay_fingerprint) AND $model->resource->indisplay_fingerprint) selected @endif>No</option>
                           </select>
                         </div>
+                        <div class="form-group col-md-6">
+                          <label>Company Display Price</label>
+                          <input type="text" class="form-control" name="company_display_price" placeholder="Company Display Price" value="{{ $model->resource->company_display_price }}">
+                        </div>
                         </div>
                         <div class="modal-footer">
                           <a href="/models" class="btn btn-secondary">Back</a>
@@ -268,7 +272,7 @@
                                       {{ csrf_field() }}
                                       {{ method_field('delete') }}
                                       <a href='/screen-repair-{{ $model->brand->name }}-{{ $model->series }}-{{ $model->name }}' class='btn btn-sm btn-primary' target='_blank'><i class='fa fa-link'></i></a>
-                                      <a href='/models/{{ $model->id }}' class='btn btn-sm btn-warning'><i class='fa fa-pencil'></i></a>
+                                      <a href='/models/{{ $model->id }}' class='btn btn-sm btn-warning'><i class='fa fa-edit'></i></a>
                                       <!--<button type='submit' class='btn btn-sm btn-danger' onclick="return confirm('Are you sure you want to delete this?');"><i class='fa fa-trash'></i></button>-->
                                     </form>
                                   </td>

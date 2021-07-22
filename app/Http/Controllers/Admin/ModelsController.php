@@ -114,6 +114,7 @@ class ModelsController extends Controller
           $model_resources->colors             = $request->input('colors');
           $model_resources->fingerprint        = $request->input('fingerprint');
           $model_resources->indisplay_fingerprint  = $request->input('indisplay_fingerprint');
+          $model_resources->company_display_price = $request->input('company_display_price');
           $model_resources->update();
         }else{
           $model_resources  = new model_resources;
@@ -136,6 +137,7 @@ class ModelsController extends Controller
           $model_resources->colors             = $request->input('colors');
           $model_resources->fingerprint        = $request->input('fingerprint');
           $model_resources->indisplay_fingerprint  = $request->input('indisplay_fingerprint');
+            $model_resources->company_display_price = $request->input('company_display_price');
           $model_resources->save();
         }
         return redirect('/models')->with('status','Model Resource Updated Succesfully!');
