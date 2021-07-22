@@ -1,8 +1,7 @@
 @extends('layouts.master')
-@section('title') {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} Doorstep Screen Repair at {{ $pricing->ord_selling_price }} INR Only | Doctor Display @endsection
-@section('metadesc') Get your {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} screen repair from the most trusted
-  screen replacement service in Chennai, Bangalore at your doorstep in 30 minutes. Our trained technicians follow covid guidelines when they come to
-  fix your screens. You choose the place and time to repair your broken screens. Book your appointment now! @endsection
+@section('title') Doorstep {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} Screen Replacement at price {{ $pricing->ord_selling_price }} INR Only | Doctor Display @endsection
+@section('metadesc') Get your {{ $models->brand->name }} {{ $models->series }} {{ $models->name }} screen/ display replacement from the most trusted
+  screen replacement service in Bangalore and Chennai at your doorstep in 30 minutes. 90 Days replacement Warranty & Special Discounts available. @endsection
 @section('breadcrumb')
 <div class="breadcaump-area pt--100 pt_md--250 pt_sm--80 bg_image--8 breadcaump-title-bar breadcaump-title-white">
 </div>
