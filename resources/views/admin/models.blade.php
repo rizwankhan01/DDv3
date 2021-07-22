@@ -217,7 +217,7 @@
                         </div>
                         <div class="form-group col-md-6">
                           <label>Company Display Price</label>
-                          <input type="text" class="form-control" name="company_display_price" placeholder="Company Display Price" value="{{ $model->resource->company_display_price }}">
+                          <input type="text" class="form-control" name="company_display_price" placeholder="Company Display Price" value="{{ $model->resource->company_display_price ?? '' }}">
                         </div>
                         </div>
                         <div class="modal-footer">
