@@ -73,6 +73,7 @@
                     <option value="Investor">Investor</option>
                     <option value="Service Man">Service Man</option>
                     <option value="Admin">Admin</option>
+                    <option value="Warehouse">Warehouse</option>
                   </select>
                 </div>
                 </div>

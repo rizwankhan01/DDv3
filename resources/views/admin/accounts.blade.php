@@ -74,6 +74,7 @@
                                 <option value="Investor" @if($user->user_type=='Investor'){{ 'selected' }} @endif>Investor</option>
                                 <option value="Service Man" @if($user->user_type=='Service Man'){{ 'selected' }} @endif>Service Man</option>
                                 <option value="Admin" @if($user->user_type=='Admin'){{ 'selected'}} @endif>Admin</option>
+                                <option value="Warehouse" @if($user->user_type=='Warehouse'){{ 'selected'}} @endif>Warehouse</option>
                               </select>
                             </div>
                             <div class="form-group col-md-12"><hr><h6>Personal Information</h6></div>
@@ -350,7 +351,7 @@
                                   </div>
                                   <div class="tab-pane fade" id="bank-line" role="tabpanel" aria-labelledby="bank-tab-line">
                                     <div class="col-md-12 m-b-20">
-                                      <img src="../storage/{{ $user->bank_logo }}" style="width:6%;">
+                                      <img src="../storage/{{ $user->bank_logo }}" style="width:15%;"><br>
                                       <h6>{{ $user->bank_name }}</h6><span class="badge badge-success-inverse">Verified <i class="feather icon-check-circle"></i></span>
                                       <table class="table table-borderless table-responsive">
                                         <tr>

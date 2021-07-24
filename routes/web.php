@@ -68,6 +68,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/investor','Investor\HomeController');
   });
 
+  //warehouse routes
+  Route::group(['middleware' => 'warehouse'], function(){
+    Route::resource('/stockrequest', 'Warehouse\StockRequestController');
+    Route::get('/stockinhand',function(){ return view('warehouse.stockinhand'); });
+    Route::get('/purchaseorder',function(){ return view('warehouse.purchaseorder'); });
+  });
+
   //Service man routes
   Route::group(['middleware' => 'serviceman'], function(){
     Route::resource('/serviceman','Serviceman\ServicemanController');
@@ -150,8 +157,6 @@ Route::get('/newattendance', function(){ return view('admin.newattendance'); });
 Route::get('/newenq', function(){ return view('admin.newenq'); });
 Route::get('/newmail', function(){ return view('admin.newmail'); });
 Route::get('/neworder', function(){ return view('admin.neworder'); });
-//WAREHOUSE Users
-Route::get('/newstockrequest', function(){ return view('admin.newstockrequest'); });
 //JOBS PAGE
 Route::get('/jobs', function(){ return view('alljobs'); });
 

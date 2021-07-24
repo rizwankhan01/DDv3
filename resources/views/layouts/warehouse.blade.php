@@ -55,14 +55,17 @@
             <li><a href="/coupons">Coupons</a></li>
         </ul>
     </li>-->
+    <li><a href="/stockinhand" title="City stocks and Technician Stock">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Stock in Hand</span>
+    </a></li>
+    <li><a href="/purchaseorder" title="City stocks and Technician Stock">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Purchase Order</span>
+    </a></li>
     <li><a href="#" title="For Pricing and Availability">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="dashboard"><span>Stock Enquiry</span>
     </a></li>
-    <li><a href="/newstockrequest" title="Request for stock with order number">
+    <li><a href="/stockrequest" title="Request for stock with order number">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="closed"><span>Stock Requests</span>
-    </a></li>
-    <li><a href="#" title="City stocks and Technician Stock">
-      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Warehouse</span>
     </a></li>
     <li><a href="#" title="For all models/ Individual models">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="models"><span>Stock Pricing</span>

@@ -71,17 +71,27 @@ class AccountsController extends Controller
         $user->account_number   = $request->input('account_number');
         $user->account_branch   = $request->input('account_branch');
         $user->pan_number       = $request->input('pan_number');
-        $bank_logo              = explode('/', $request->file('bank_logo')->store('public'));
-        $user->bank_logo        = $bank_logo[1];
+        if($request->hasFile('bank_logo')){
+          $bank_logo              = explode('/', $request->file('bank_logo')->store('public'));
+          $user->bank_logo        = $bank_logo[1];
+        }
         //documents
-        $driving_license          = explode('/', $request->file('driving_license')->store('public'));
-        $user->driving_license    = $driving_license[1];
-        $aadhar_card              = explode('/', $request->file('aadhar_card')->store('public'));
-        $user->aadhar_card        = $aadhar_card[1];
-        $pan_card                 = explode('/', $request->file('pan_card')->store('public'));
-        $user->pan_card           = $pan_card[1];
-        $school_certificate       = explode('/', $request->file('school_certificate')->store('public'));
-        $user->school_certificate = $school_certificate[1];
+        if($request->hasFile('driving_license')){
+          $driving_license          = explode('/', $request->file('driving_license')->store('public'));
+          $user->driving_license    = $driving_license[1];
+        }
+        if($request->hasFile('aadhar_card')){
+          $aadhar_card              = explode('/', $request->file('aadhar_card')->store('public'));
+          $user->aadhar_card        = $aadhar_card[1];
+        }
+        if($request->hasFile('pan_card')){
+          $pan_card                 = explode('/', $request->file('pan_card')->store('public'));
+          $user->pan_card           = $pan_card[1];
+        }
+        if($request->hasFile('school_certificate')){
+          $school_certificate       = explode('/', $request->file('school_certificate')->store('public'));
+          $user->school_certificate = $school_certificate[1];
+        }
 
         $user->save();
         return redirect('/accounts')->with('status','New User Created Successfully!');
