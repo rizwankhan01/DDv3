@@ -9,6 +9,7 @@
           <div class="col-lg-12">
               <div class="card m-b-30">
                   <div class="card-header">
+                    @if(empty($stock))
                       <div class="widgetbar pull-right">
                           <button class="btn btn-primary-rgba" data-toggle="modal" data-target="#CreateModal"><i class="feather icon-plus mr-2"></i>Create New</button>
                           <div class="modal fade show" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="CreateModalLabel" aria-hidden="true"
@@ -21,42 +22,96 @@
                           <span aria-hidden="true">&times;</span>
                           </button>
                           </div>
-                          <form action="/models" method="post" enctype="multipart/form-data" id="addmodel">
+                          <form action="/stockinhand" method="post" id="addstock">
                             {{ csrf_field() }}
                             {{ method_field('post')}}
                             <div class="modal-body">
-                            <div class="form-group">
-                              <label>Brand</label>
-                              <select class="form-control" name="brand"><option value="">Select</option></select>
-                            </div>
-                            <div class="form-group">
-                              <label>Series</label>
-                              <select class="form-control" name="brand"><option value="">Select</option></select>
-                            </div>
-                            <div class="form-group">
-                              <label>Model</label>
-                              <select class="form-control" name="brand"><option value="">Select</option></select>
+                            <div class="row">
+                              <div class="form-group col-4">
+                                <label>Brand</label>
+                                <select class="form-control" name="brand_id" required>
+                                  <option value="">Select Brand</option>
+                                  @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                              <div class="form-group col-4">
+                                <label>Series</label>
+                                <select class="form-control" name="series_id" required><option value="">Select series</option></select>
+                              </div>
+                              <div class="form-group col-4">
+                                <label>Model</label>
+                                <select class="form-control" name="model_id" required><option value="">Select Model</option></select>
+                              </div>
                             </div>
                             <div class="form-group">
                               <label>Item Name</label>
-                              <select class="form-control" name="brand"><option value="">Select</option></select>
+                              <select class="form-control" name="item_name" required>
+                                <option value="">Select</option>
+                                <option value="Display">Display</option>
+                                <option value="Front glass">Front glass</option>
+                                <option value="Battery">Battery</option>
+                                <option value="Charging point">Charging point</option>
+                                <option value="Back glass">Back glass</option>
+                                <option value="Loud speaker">Loud speaker</option>
+                                <option value="Ear speaker">Ear speaker</option>
+                              </select>
                             </div>
                             <div class="form-group">
                               <label>Dealer</label>
-                              <select class="form-control" name="brand"><option value="">Select</option></select>
+                              <select class="form-control" name="dealer_id" required>
+                                <option value="">Select Dealer</option>
+                                @foreach($dealers as $dealer)
+                                  <option value="{{ $dealer->id }}">{{ $dealer->dealer_name }}</option>
+                                @endforeach
+                              </select>
                             </div>
                             <div class="form-group">
-                              <label>Price</label>
-                              <input type="number" class="form-control" value="" placeholder="Price">
+                              <label>Cost</label>
+                              <input type="number" class="form-control" name="cost" placeholder="Cost" required>
                             </div>
                             <div class="form-group">
                               <label>Color</label>
-                              <input type="text" class="form-control" placeholder="Color">
+                              <input type="text" class="form-control" name="color" placeholder="Color">
+                            </div>
+                            <div class="form-group">
+                              <label>Type</label>
+                              <select class="form-control" name="quality">
+                                <option value="">Select Quality</option>
+                                <option value="Basic">Basic</option>
+                                <option value="Premium">Premium</option>
+                              </select>
                             </div>
                             <div class="form-group">
                               <label>Tested?</label><br>
-                              <input type="radio" name="tested" value="Yes"> Yes
-                              <input type="radio" name="tested" value="No" checked> No
+                              <input type="radio" name="tested" value="Yes" required> Yes
+                              <input type="radio" name="tested" value="No" checked required> No
+                            </div>
+                            <div class="form-group">
+                              <label>Store Name</label><br>
+                              <select class="form-control" name="store_name">
+                                <option value="">Select Store</option>
+                                @foreach($store_names as $store_name)
+                                  <option value="{{ $store_name->store_name }}">{{ $store_name->store_name }}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Payment Status</label>
+                              <select class="form-control" name="payment_status" required>
+                                <option value="">Select Status</option>
+                                <option value="Paid">Paid</option>
+                                <option value="Pending">Pending</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Payment Type</label>
+                              <select class="form-control" name="payment_type" required>
+                                <option value="">Select Payment Type</option>
+                                <option value="Transfer/ UPI">Transfer/ UPI</option>
+                                <option value="Cash">Cash</option>
+                              </select>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -68,88 +123,20 @@
                           </div>
                       </div>
                     </div>
-                      @if(!empty($model))
-                        <h5 class="card-title">Update {{ $model->name }}'s details</h5>
+                    @endif
+                      @if(!empty($stock))
+                        <h5 class="card-title">Print QR Code</h5>
                       @else
                         <h5 class="card-title">Stock in Hand</h5>
                       @endif
                   </div>
                   <div class="card-body">
-                    @if(!empty($model))
+                    @if(!empty($stock))
                       <div class="row">
-                      <form action="/models/{{ $model->id }}" method="post" enctype="multipart/form-data" id="updatemodel" class="col-md-6">
-                        {{ csrf_field() }}
-                        {{ method_field('put')}}
-                        <h6>Model Information</h6><br>
-                        <div class="modal-body">
-                        <div class="form-group">
-                          <label>Brand Name</label>
-                          <select class="form-control" name="brand_id" required>
-                            <option value="">Select Brand</option>
-                            @foreach($brands as $brand)
-                              <option value="{{ $brand->id }}" @if($model->brand_id == $brand->id) {{ 'selected' }} @endif>{{ $brand->name }}</option>
-                            @endforeach
-                          </select>
+                        <div class="col-12">
+                          {!! QrCode::size(100)->generate($stock); !!}
                         </div>
-                        <div class="form-group">
-                          <label>Series</label>
-                          <input type="text" class="form-control" name="series" value="{{ $model->series }}" placeholder="Series" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Model Name</label>
-                          <input type="text" class="form-control" name="name" value="{{ $model->name }}" placeholder="Model Name" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Description</label>
-                          <input type="text" class="form-control" name="description" value="{{ $model->description }}" placeholder="Description" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Big Description</label>
-                          <textarea id="summernote2" name="big_description">{{ $model->big_description }}</textarea>
-                        </div>
-                        <div class="form-group">
-                          <label>Meta Title</label>
-                          <input type="text" class="form-control" name="meta_title" value="{{ $model->meta_title }}" placeholder="Meta Title" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Meta Description</label>
-                          <input type="text" class="form-control" name="meta_description" value="{{ $model->meta_description }}" placeholder="Meta Description" required>
-                        </div>
-                        <div class="form-group">
-                          <label>Model Image</label>
-                          <img src='../storage/{{ $model->image }}' style='width:25px;height:25px;'>
-                          <input type='file' class='form-control' name='model_image' accept='.png'>
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="/models" class="btn btn-secondary">Back</a>
-                        <button type="submit" onclick="document.getElementById('updatemodel').submit();" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </form>
-                      <form action="/models/{{ $model->id }}" method="post"  class="col-md-6">
-                        {{ csrf_field() }}
-                        {{ method_field('put')}}
-                        <h6>Model Resources</h6><br>
-                        <div class="modal-body row">
-                        <div class="form-group col-md-6">
-                          <label>Screen Type</label>
-                          <input type="text" class="form-control" name="screen_type" placeholder="Eg. TFT, 90Hz" value="{{ $model->resource->screen_type ?? ''}}">
-                        </div>
-                        </div>
-                        <div class="modal-footer">
-                          <a href="/models" class="btn btn-secondary">Back</a>
-                          <input type="submit" class="btn btn-primary" name="update_resources" value="Save Changes">
-                        </div>
-                      </form>
-                    </div>
-                      <hr>
-                      <form action="/models/" method="post" class="col-md-6">
-                        <h6>Send Enquiry Mail to customers</h6><br>
-                        {{ csrf_field() }}
-                        {{ method_field('put')}}
-                        <input type="email" class="form-control" name="email" placeholder="Email address" required><Br>
-                        <input type="submit" class="btn btn-primary" value="Send Chaser Mail" name="chaser">
-                      </form>
+                      </div>
                     @else
                     <h6 class="card-subtitle">You can Create/ Edit/ Delete Models Here.</h6>
                       <div class="table-responsive">
@@ -161,26 +148,30 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
-                                  <th>#</th>
                                   <th>Model</th>
                                   <th>Item Name</th>
                                   <th>Dealer</th>
-                                  <th>Price</th>
+                                  <th>Cost</th>
+                                  <th>Store</th>
+                                  <th>Payment</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Apple iPhone XS - Black</td>
-                                  <td>Display</td>
-                                  <td>Jeethu Dealer</td>
-                                  <td>2500</td>
-                                  <td>
-                                    <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-warning"><i class="fa fa-barcode"></i></button>
-                                  </td>
-                                </tr>
+                                @foreach($stocks as $stock)
+                                  <tr>
+                                    <td>{{ $stock->model->brand->name }} {{ $stock->model->series }} {{ $stock->model->name }}</td>
+                                    <td>{{ $stock->item_name }}</td>
+                                    <td>{{ $stock->dealer->dealer_name }}</td>
+                                    <td>{{ $stock->cost }}</td>
+                                    <td>{{ $stock->store_name }}</td>
+                                    <td>{{ $stock->payment_status }} / {{ $stock->payment_type }}</td>
+                                    <td>
+                                      <a href='/stockinhand/{{ $stock->id }}' class="badge badge-primary badge-rgba"><i class="fa fa-pencil"></i></a>
+                                      <a href='/stockinhand/{{ $stock->id }}' class="badge badge-warning badge-rgba"><i class="fa fa-barcode"></i></a>
+                                    </td>
+                                  </tr>
+                                @endforeach
                               </tbody>
                           </table>
                       </div>
@@ -195,15 +186,61 @@
 @endsection
 
 @section('scripts')
-  <script>
-      $('#summernote').summernote({
-        tabsize: 2,
-        height: 100
-      });
-      $('#summernote2').summernote({
-        tabsize: 2,
-        height: 100
-      });
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function ()
+    {
+            jQuery('select[name="brand_id"]').on('change',function(){
+               var brand = jQuery(this).val();
+               if(brand)
+               {
+                  jQuery.ajax({
+                     url : '/getseries/' +brand,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="series_id"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="series_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="series_id"]').empty();
+               }
+            });
+    });
+    jQuery(document).ready(function ()
+    {
+      jQuery('select[name="series_id"]').bind('change',function(){
+               var series = jQuery(this).val();
+               console.log(series);
+               if(series)
+               {
+                  jQuery.ajax({
+                     url : '/getmodels/' +series,
+                     type : "GET",
+                     dataType : "json",
+                     success:function(data)
+                     {
+                        console.log(data);
+                        jQuery('select[name="model_id"]').empty();
+                        jQuery.each(data, function(key,value){
+                           $('select[name="model_id"]').append('<option value="'+ key +'">'+ value +'</option>');
+                        });
+                     }
+                  });
+               }
+               else
+               {
+                  $('select[name="model_id"]').empty();
+               }
+            });
+    });
   </script>
   <script src="{{ asset('assets\js\jquery.min.js') }}"></script>
   <script src="{{ asset('assets\js\popper.min.js') }}"></script>
