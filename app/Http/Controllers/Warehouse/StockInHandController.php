@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Warehouse;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Brands;
+use App\Models\brands;
 use App\Models\dealers;
 use App\Models\stocks;
 use App\User;
