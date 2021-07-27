@@ -9,6 +9,7 @@ use App\Models\dealers;
 use App\Models\stocks;
 use App\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use PDF;
 
 class StockInHandController extends Controller
 {
@@ -69,8 +70,14 @@ class StockInHandController extends Controller
      */
     public function show($id)
     {
-        $stock  = $id;
-        return view('warehouse.stockinhand', compact('stock'));
+        $stock  = stocks::findOrFail($id);
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->setPaper(array(0,0,225,345));
+        $modelname = $stock->model->brand->name." ".$stock->model->series." ".$stock->model->name;
+        $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('STOCK'.$stock->id));
+        $output = "<img src='data:image/png;base64, ".$qrcode."'><br><br>Item Name: ".$modelname."  ".$stock->item_name."<br>Color: ".$stock->color."<br>Quality: ".$stock->quality;
+        $pdf->loadHTML($output);
+        return $pdf->stream();
     }
 
     /**

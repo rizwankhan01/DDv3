@@ -125,7 +125,7 @@
                     </div>
                     @endif
                       @if(!empty($stock))
-                        <h5 class="card-title">Print QR Code</h5>
+                        <h5 class="card-title">Edit Stock Details</h5>
                       @else
                         <h5 class="card-title">Stock in Hand</h5>
                       @endif
@@ -134,7 +134,7 @@
                     @if(!empty($stock))
                       <div class="row">
                         <div class="col-12">
-                          {!! QrCode::size(100)->generate($stock); !!}
+                          Edit Details
                         </div>
                       </div>
                     @else
