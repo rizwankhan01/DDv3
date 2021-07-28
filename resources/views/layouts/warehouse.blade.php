@@ -29,6 +29,7 @@
 <link href="{{ asset('assets\plugins\summernote\summernote-bs4.css') }}" rel="stylesheet">
 
 <!-- End css -->
+@livewireStyles
 </head>
 <body class="vertical-layout">
 <!-- End Infobar Setting Sidebar -->
@@ -57,6 +58,9 @@
     </li>-->
     <li><a href="/stockinhand" title="City stocks and Technician Stock">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Stock in Hand</span>
+    </a></li>
+    <li><a href="/storetransfer">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Store Transfer</span>
     </a></li>
     <li><a href="/purchaseorder" title="City stocks and Technician Stock">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="brands"><span>Purchase Order</span>
@@ -230,6 +234,7 @@
 <!-- End Containerbar -->
 <!-- Start js -->
 @yield('scripts')
+@livewireScripts
 <!-- End js -->
 </body>
 </html>

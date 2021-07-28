@@ -160,6 +160,7 @@ class OrderControlsController extends Controller
       $order  = orders::findOrFail($id);
       $order->status = 4;
       $order->cancel_reason = $request->input('cancel_reason');
+      $order->cancelled_by = auth()->user()->id;
       //dd($order->cancel_reason); mail customer
       $order->update();
       return redirect()->back();

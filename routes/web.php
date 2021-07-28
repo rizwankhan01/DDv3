@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
   //warehouse routes
   Route::group(['middleware' => 'warehouse'], function(){
     Route::resource('/stockrequest', 'Warehouse\StockRequestController');
+    Route::resource('/storetransfer', 'Warehouse\StoreTransferController');
     Route::resource('/stockinhand', 'Warehouse\StockInHandController');
     Route::get('/purchaseorder',function(){ return view('warehouse.purchaseorder'); });
   });

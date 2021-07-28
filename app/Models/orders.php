@@ -18,8 +18,14 @@ class orders extends Model
       'stock_price',
       'reschedule_reason',
       'cancel_reason',
-      'pickup_reason'
+      'pickup_reason',
+      'cancelled_by'
     ];
+
+    public function cancelledBy(){
+      return $this->belongsTo('App\User','cancelled_by');
+    }
+
     public function customer(){
       return $this->belongsTo(customers::class, 'customer_id');
     }

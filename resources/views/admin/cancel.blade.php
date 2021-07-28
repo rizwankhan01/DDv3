@@ -76,6 +76,7 @@
                                           <h4 class="mb-2 font-16">{{ date('d F, D',strtotime($order->slot_date)) }}</h4>
                                           <p class="mb-2"><i class='fa fa-clock-o'></i> {{ $order->slot_time }}</p>
                                           <span class="font-12 mb-2">Cancelled because, {{ $order->cancel_reason }}</span>
+                                          @if($order->cancelledby)<span class="font-12 mb-2">Cancelled by {{ $order->cancelledby->name }}</span>@endif
                                       </li>
                                   </div>
                                   <div class="col-12 col-md-2">
