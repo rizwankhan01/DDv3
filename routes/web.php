@@ -138,6 +138,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Mail Controller
     Route::resource('/send-mail','Admin\MailController');
+
+    //Stock
+    Route::resource('/storestock', 'Admin\StoreTransferController');
   });
 });
 
