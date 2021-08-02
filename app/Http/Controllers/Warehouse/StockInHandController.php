@@ -20,9 +20,9 @@ class StockInHandController extends Controller
      */
     public function index()
     {
+        $stocks = stocks::all();
         $brands = brands::all();
         $dealers = dealers::all();
-        $stocks = stocks::all();
         $store_names  =  user::select('store_name')->whereNotNull('store_name')->groupby('store_name')->get();
         return view('warehouse.stockinhand', compact('brands','dealers','store_names','stocks'));
     }
@@ -57,8 +57,17 @@ class StockInHandController extends Controller
         $stocks->posted_by  = auth()->user()->id;
         $stocks->payment_status = $request->input('payment_status');
         $stocks->payment_type   = $request->input('payment_type');
-        $stocks->save();
 
+        $code = random_int(100000, 999999);
+        $sku  = "SKU".$code;
+        $check = stocks::where('sku_code',$sku)->first();
+        if(empty($check->id)){
+          $stocks->sku_code = $sku;
+        }else{
+          $stocks->sku_code = "SKU".($code-1);
+        }
+        $stocks->save();
+        //dd($stocks);
         return redirect()->back();
     }
 
@@ -70,14 +79,24 @@ class StockInHandController extends Controller
      */
     public function show($id)
     {
-        $stock  = stocks::findOrFail($id);
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->setPaper(array(0,0,225,345));
-        $modelname = $stock->model->brand->name." ".$stock->model->series." ".$stock->model->name;
-        $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('STOCK'.$stock->id));
-        $output = "<img src='data:image/png;base64, ".$qrcode."'><br><br>Item Name: ".$modelname."  ".$stock->item_name."<br>Color: ".$stock->color."<br>Quality: ".$stock->quality;
-        $pdf->loadHTML($output);
-        return $pdf->stream();
+        $qr = explode('.', $id);
+        if($qr[0]=='qr'){
+          $id = $qr[1];
+          $stock  = stocks::findOrFail($id);
+          $pdf = \App::make('dompdf.wrapper');
+          $pdf->setPaper(array(0,0,225,345));
+          $modelname = $stock->model->brand->name." ".$stock->model->series." ".$stock->model->name;
+          $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('STOCK'.$stock->id));
+          $output = "<img src='data:image/png;base64, ".$qrcode."'><br><br>Item Name: ".$modelname."  ".$stock->item_name."<br>Color: ".$stock->color."<br>Quality: ".$stock->quality."<br>SKU: ".$stock->sku_code;
+          $pdf->loadHTML($output);
+          return $pdf->stream();
+        }else{
+          $stock = stocks::findOrFail($id);
+          $brands = brands::all();
+          $dealers = dealers::all();
+          $store_names  =  user::select('store_name')->whereNotNull('store_name')->groupby('store_name')->get();
+          return view('warehouse.stockinhand', compact('stock','brands','dealers','store_names'));
+        }
     }
 
     /**
@@ -100,7 +119,12 @@ class StockInHandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stock = stocks::findOrFail($id);
+        $stock->payment_status =  $request->input('payment_status');
+        $stock->payment_type   =  $request->input('payment_type');
+        $stock->update();
+
+        return redirect()->back()->with('status','Payment Status Updated Successfully!');
     }
 
     /**

@@ -107,7 +107,7 @@
                             </div>
                             <div class="form-group">
                               <label>Payment Type</label>
-                              <select class="form-control" name="payment_type" required>
+                              <select class="form-control" name="payment_type">
                                 <option value="">Select Payment Type</option>
                                 <option value="Transfer/ UPI">Transfer/ UPI</option>
                                 <option value="Cash">Cash</option>
@@ -134,7 +134,64 @@
                     @if(!empty($stock))
                       <div class="row">
                         <div class="col-12">
-                          Edit Details
+                          @if(session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                          @endif
+                          <form action="/stockinhand/{{$stock->id}}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('put')}}
+                            <div class="modal-body">
+                            <div class="form-group">
+                              <label>Item Name</label>
+                              <input type="text" class="form-control" value="{{ $stock->model->brand->name }} {{ $stock->model->series }} {{ $stock->model->name }} {{ $stock->item_name }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Dealer</label>
+                              <input type="text" class="form-control" value="{{ $stock->dealer->dealer_name }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Cost</label>
+                              <input type="number" class="form-control" name="cost" placeholder="Cost" value="{{ $stock->cost }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Color</label>
+                              <input type="text" class="form-control" name="color" placeholder="Color" value="{{ $stock->color }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Type</label>
+                              <input type="text" class="form-control" value="{{ $stock->quality }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Tested?</label><br>
+                              <input type="radio" name="tested" value="Yes" @if($stock->tested=='Yes') checked @endif disabled> Yes
+                              <input type="radio" name="tested" value="No" @if($stock->tested=='No') checked @endif disabled> No
+                            </div>
+                            <div class="form-group">
+                              <label>Store Name</label><br>
+                              <input type="text" class="form-control" value="{{ $stock->store_name }}" disabled>
+                            </div>
+                            <div class="form-group">
+                              <label>Payment Status</label>
+                              <select class="form-control" name="payment_status" required>
+                                <option value="">Select Status</option>
+                                <option value="Paid" @if($stock->payment_status=='Paid') selected @endif>Paid</option>
+                                <option value="Pending" @if($stock->payment_status=='Pending') selected @endif>Pending</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Payment Type</label>
+                              <select class="form-control" name="payment_type">
+                                <option value="">Select Payment Type</option>
+                                <option value="Transfer/ UPI" @if($stock->payment_type=='Transfer/ UPI') selected @endif>Transfer/ UPI</option>
+                                <option value="Cash" @if($stock->payment_type=='Cash') selected @endif>Cash</option>
+                              </select>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     @else
@@ -167,8 +224,8 @@
                                     <td>{{ $stock->store_name }}</td>
                                     <td>{{ $stock->payment_status }} / {{ $stock->payment_type }}</td>
                                     <td>
-                                      <a href='/stockinhand/{{ $stock->id }}' class="badge badge-primary badge-rgba"><i class="fa fa-pencil"></i></a>
-                                      <a href='/stockinhand/{{ $stock->id }}' class="badge badge-warning badge-rgba"><i class="fa fa-barcode"></i></a>
+                                      @if($stock->payment_status!=='Paid')<a href='/stockinhand/{{ $stock->id }}' class="badge badge-primary badge-rgba"><i class="fa fa-pencil"></i></a>@endif
+                                      <a href='/stockinhand/qr.{{ $stock->id }}' class="badge badge-warning badge-rgba"><i class="fa fa-barcode"></i></a>
                                     </td>
                                   </tr>
                                 @endforeach
