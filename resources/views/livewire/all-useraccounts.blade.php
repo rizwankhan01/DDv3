@@ -112,6 +112,9 @@
                               <h5 class="card-title mb-1">{{ $user->name }}</h5>
                               <p class="mb-0 font-14">{{ $user->user_type }}</p>
                               <p class="mb-4 badge badge-success">Operations</p>
+                              @if($user->active==1)
+                                <p class="mb-4 badge badge-success"><i class="mdi mdi-circle text-white"></i> Active</p>
+                              @endif
                               <p>
                                 <i class="feather icon-mail"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->email }}<br>
                                 <i class="feather icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->primary_phone }}<br>

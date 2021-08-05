@@ -129,8 +129,8 @@
                               <input type="text" class="form-control" name="bank_ifsc" value="{{ $user->bank_ifsc }}" placeholder="Bank IFSC">
                             </div>
                             <div class="form-group col-md-6">
-                              <label>Account Name</label>
-                              <input type="text" class="form-control" name="account_name" value="{{ $user->account_name }}" placeholder="Account Name">
+                              <label>Account Holder Name</label>
+                              <input type="text" class="form-control" name="account_name" value="{{ $user->account_name }}" placeholder="Account Holder Name">
                             </div>
                             <div class="form-group col-md-6">
                               <label>Account Number</label>
@@ -166,6 +166,15 @@
                               <label>School/ College/ Course Certificate  @if(!empty($user->school_certificate))<a href='/storage/{{ $user->school_certificate }}' target='_blank'><i class='fa fa-link'></i></a>@endif</label>
                               <input type='file' class='form-control' name='school_certificate' accept=".jpg, .jpeg, .png, .pdf">
                             </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-12">
+                                <label>Active</label>
+                                <div class="col-12">
+                                  <input type="radio" name="active" value="1" @if($user->active==1) checked @endif /> Yes
+                                  <input type="radio" name="active" value="0" @if($user->active==0) checked @endif /> No
+                                </div>
+                              </div>
                             </div>
                             <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Save changes</button>
@@ -203,6 +212,11 @@
                                                 <h5 class="card-title mb-1">{{ $user->name }}</h5>
                                                 <p class="mb-0 font-14">{{ $user->user_type }}</p>
                                                 <p class="mb-4 badge badge-success">Operations</p>
+                                                @if($user->active==1)
+                                                  <p class="mb-4 badge badge-success"><i class="mdi mdi-circle text-white"></i> Active</p>
+                                                @else
+                                                  <p class="mb-4 badge badge-secondary"><i class="mdi mdi-circle text-white"></i> Inactive</p>
+                                                @endif
                                                 <p>
                                                   <div class="pull-left">
                                                     <p><i class="feather icon-mail"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->email }}</p>
@@ -401,6 +415,7 @@
   <script src="{{ asset('assets\js\vertical-menu.js') }}"></script>
   <!-- Switchery js -->
   <script src="{{ asset('assets\plugins\switchery\switchery.min.js') }}"></script>
+  <script src="{{ asset('assets\js\custom\custom-switchery.js') }}"></script>
   <!-- Datatable js -->
   <script src="{{ asset('assets\plugins\datatables\jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets\plugins\datatables\dataTables.bootstrap4.min.js') }}"></script>

@@ -65,7 +65,7 @@ class HomeController extends Controller
       $allcolors = colors::where('model_id',$color->model_id)->get();
       $olist = order_lists::where('order_id',$id)->get();
       $consultation = consultation::where('order_id',$id)->first();
-      $smen  =  user::where('user_type','Service Man')->get();
+      $smen  =  user::where('user_type','Service Man')->where('active',1)->get();
       $dealers  = dealers::all();
       $corder = closedorder::where('order_id',$id)->first();
       $address = addresses::where('id',$order->address_id)->first();

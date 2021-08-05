@@ -194,6 +194,7 @@ class AccountsController extends Controller
         $image  = explode('/',$request->file('school_certificate')->store('public'));
         $user->school_certificate  = $image[1];
       }
+      $user->active = $request->input('active');
       $user->update();
       return redirect()->back()->with('status','User Accounts Updated Successfully!');
     }
