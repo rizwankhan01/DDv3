@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\orders;
+use App\Models\tickets;
 
 class ServicemanProfileController extends Controller
 {
@@ -51,8 +52,9 @@ class ServicemanProfileController extends Controller
       $user = user::findOrFail($id);
       if($user->user_type=='Service Man'){
         $orders = orders::where('serviceman_id',$user->id)->get();
+        $tickets = tickets::where('assigned_to',$user->id)->get();
       }
-      return view('admin.serviceman-profile', compact('user','orders'));
+      return view('admin.serviceman-profile', compact('user','orders','tickets'));
     }
 
     /**

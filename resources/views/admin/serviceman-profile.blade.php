@@ -15,6 +15,61 @@
                   </div>
                   <div class="card-body">
                     @if(!empty($user))
+                          <div class="parents-slider">
+                              <div class="parents-slider-item">
+                                  <div class="row align-items-center">
+                                      <div class="col-12 col-md-2">
+                                        <div class="circular">
+                                        @if(!empty($user->profile_image))
+                                          <img src="../storage/{{ $user->profile_image }}" class="img-fluid" style="border-radius:50%;" alt="parent">
+                                        @else
+                                          <img src="\assets\images\users\men.svg" class="img-fluid" style="width:50%;">
+                                        @endif
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-md-10">
+                                      <p>
+                                        <div class="pull-left">
+                                          <h5 class="card-title mb-1">{{ $user->name }}</h5>
+                                          <p class="mb-0 font-14">{{ $user->user_type }}</p>
+                                          <p class="mb-4 badge badge-success">Operations</p>
+                                          @if($user->active==1)
+                                            <p class="mb-4 badge badge-success"><i class="mdi mdi-circle text-white"></i> Active</p>
+                                          @else
+                                            <p class="mb-4 badge badge-secondary"><i class="mdi mdi-circle text-white"></i> Inactive</p>
+                                          @endif
+                                              <p><i class="feather icon-mail"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->email }}</p>
+                                              <p><i class="feather icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->primary_phone }}</p>
+                                            </div>
+                                            <div class="pull-right">
+                                                <p>
+                                                <figure style="display:flex;align-items:center;">
+                                                  <img src="{{ asset('assets/images/trophy.png') }}" style="width:10%;height:auto;">
+                                                  <figcaption><i>
+                                                    @if($orders->count() < 100)
+                                                      <h3>Fixer</h3>
+                                                    @elseif($orders->count() > 100)
+                                                      <h3>Super Fixer</h3>
+                                                    @elseif($orders->count() > 500)
+                                                      <h3>Pro Fixer</h3>
+                                                    @elseif($orders->count() > 1000)
+                                                      <h3>Master Fixer</h3>
+                                                    @elseif($orders->count() > 2000)
+                                                      <h3>Chief Fixer</h3>
+                                                    @endif
+                                                  </i></figcaption>
+                                                </figure>
+                                                </p>
+                                                <p class="btn btn-success btn-sm btn-block"><i class="feather icon-shield"></i>&nbsp;&nbsp;{{ $orders->count() }} Orders</p>
+                                                <p class="btn btn-warning btn-sm btn-block"><i class="fa fa-ticket"></i>&nbsp;&nbsp;{{ $tickets->count() }} Tickets</p>
+                                                <p><i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->city }}</p>
+                                                <p>Employee since <a href='#'>{{ date('F Y', strtotime($user->date_of_join)) }}</a></p>
+                                            </div>
+                                          </p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div><hr>
                       @if($user->user_type=='Service Man')
                         <table id="datatable-buttons" class="table table-striped table-bordered">
                             <thead>

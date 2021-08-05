@@ -204,6 +204,11 @@ class MyOrdersController extends Controller
       $words[$point = $point % 10] : '';
 
       $inwords    =   "Total in words:<br>".$result . "Rupees";
+      if($order->customer->address->city=='Chennai'){
+        $state = "Tamil Nadu";
+      }else{
+        $state = "Karnataka";
+      }
       $output .= "
       </table><br>
       <span style='float:right;font-size:14px;'>".$inwords."</span>
@@ -211,7 +216,7 @@ class MyOrdersController extends Controller
       <p style='font-size:14px;'>
       <b>Notes:</b><br>
       This is system generate invoice, Hence signature or stamp is not required.<br>
-      All disputes are subjected to Tamil Nadu Jurisdiction.<br>
+      All disputes are subjected to ".$state." Jurisdiction.<br>
       Thanks for your business.<br>
       From the date of order completion the product will have a replacement warranty for 90 days for premium and 30 days for basic screens.<br><br><br><br><br>
       <b>Declaration:</b>
