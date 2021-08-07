@@ -211,6 +211,7 @@
                                   <th>Cost</th>
                                   <th>Store</th>
                                   <th>Payment</th>
+                                  <th>Status</th>
                                   <th>Actions</th>
                               </tr>
                               </thead>
@@ -221,10 +222,12 @@
                                     <td>{{ $stock->item_name }}</td>
                                     <td>{{ $stock->dealer->dealer_name }}</td>
                                     <td>{{ $stock->cost }}</td>
-                                    <td>{{ $stock->store_name }}</td>
+                                    <td>@if(empty($stock->store_name) AND !empty($stock->returned_b)) <button class="badge badge-waning badge-rgba">Stock Returned</button> @else {{ $stock->store_name }}@endif</td>
                                     <td>{{ $stock->payment_status }} / {{ $stock->payment_type }}</td>
+                                    <td>@if($stock->status) <span class="badge badge-success">Sold</span> @else <span class="badge badge-warning">In Stock</span> @endif</td>
                                     <td>
                                       @if($stock->payment_status!=='Paid')<a href='/stockinhand/{{ $stock->id }}' class="badge badge-primary badge-rgba"><i class="fa fa-pencil"></i></a>@endif
+                                      @if($stock->returned_by)<span class="badge badge-danger badge-rgba">Returned by {{ $stock->returnedby->name }}</span>@endif
                                       <a href='/stockinhand/qr.{{ $stock->id }}' class="badge badge-warning badge-rgba"><i class="fa fa-barcode"></i></a>
                                     </td>
                                   </tr>

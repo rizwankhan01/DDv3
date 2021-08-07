@@ -19,11 +19,15 @@
             <td>{{ $stock->cost }}</td>
             <td>{{ $stock->payment_status }} / {{ $stock->payment_type }}</td>
             <td>
+              @if($stock->status)
+                <a href='/home/{{ $stock->status }}' class='btn btn-success btn-sm'>Order ID: {{ $stock->status }}</a>
+              @else
               @if(!empty($stock->transfered_by) AND $stock->approved_by==0)
                 <button wire:click="approveStock({{ $stock->id }})" class="btn btn-sm btn-warning"><i class="fa fa-clock-o"></i> Pending Approval</button>
               @else
                 <a href='/storestock/{{ $stock->id }}' class="btn btn-sm btn-warning"><i class="fa fa-barcode"></i></a>
                 <button wire:click="returnStock({{ $stock->id }})" class="btn btn-sm btn-primary"><i class="fa fa-exchange"></i> Return</button>
+              @endif
               @endif
             </td>
           </tr>
@@ -131,7 +135,7 @@
                       </div>
                       <div class="col-12"><br>
                         <label>Stock Image:</label><br>
-                        <input type="file" accept=".png, .jpg, .jpeg, .pdf" name="stock_image" required><br>
+                        <input type="file" accept=".png, .jpg, .jpeg, .pdf" name="stock_image"><br>
                       </div><br>
                       <button type='submit' class='btn btn-sm btn-primary pull-right' name='return'>Return Stock</button>
                   </form>

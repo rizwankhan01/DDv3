@@ -111,14 +111,16 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
   {{ method_field('put')}}
   <div class="modal-body">
   <div class='row'>
-    Service Man:
+    <label>Service Man:</label>
     <select class="form-control" name="serviceman" required>
       <option value="">Select</option>
       @foreach($smen as $sman)
         <option value="{{ $sman->id }}" @if($order->serviceman_id==$sman->id) selected @endif>{{ $sman->name }}</option>
       @endforeach
-    </select><br>
-    Dealer Name:
+    </select><br><br>
+    <label>SKU Code:</label>
+    <input type="text" class="form-control" name="sku_code" placeholder="SKU Code">
+    <!--Dealer Name:
     <select class="form-control" name="dealer" required>
       <option value="">Select</option>
       @foreach($dealers as $dealer)
@@ -126,7 +128,7 @@ v-bind:style="[ modalShow ? {'display':'block'} : {'display':'none'} ]">
       @endforeach
     </select><br>
     Stock Price:
-    <input type="number" class="form-control" name="stock_price" value="{{ $order->stock_price }}" placeholder="Stock Price" max="{{ $screen->price }}" required>
+    <input type="number" class="form-control" name="stock_price" value="{{ $order->stock_price }}" placeholder="Stock Price" max="{{ $screen->price }}" required>-->
   </div>
   </div>
   <div class="modal-footer">

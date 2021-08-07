@@ -351,6 +351,11 @@
             </div>
           </div>-->
             <div class="col-lg-12">
+              @if(session('status'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('status') }}
+                </div>
+              @endif
                 <div class="card m-b-30" style="background:#171C2A;">
                     <div class="card-header row">
                         <div class="col-md-10">
