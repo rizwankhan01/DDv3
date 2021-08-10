@@ -25,6 +25,18 @@ class stocks extends Model
     return $this->belongsTo('App\User','posted_by');
   }
 
+  public function transferedby(){
+    return $this->belongsTo('App\User','transfered_by');
+  }
+
+  public function returnedby(){
+    return $this->belongsTo('App\User','returned_by');
+  }
+
+  public function approvedby(){
+    return $this->belongsTo('App\User','approved_by');
+  }
+
   public function dealer(){
     return $this->belongsTo(dealers::class, 'dealer_id');
   }

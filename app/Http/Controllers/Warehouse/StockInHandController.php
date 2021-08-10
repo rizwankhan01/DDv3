@@ -86,7 +86,7 @@ class StockInHandController extends Controller
           $pdf = \App::make('dompdf.wrapper');
           $pdf->setPaper(array(0,0,225,345));
           $modelname = $stock->model->brand->name." ".$stock->model->series." ".$stock->model->name;
-          $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate('STOCK'.$stock->id));
+          $qrcode = base64_encode(QrCode::format('svg')->size(200)->errorCorrection('H')->generate($stock->sku_code));
           $output = "<img src='data:image/png;base64, ".$qrcode."'><br><br>Item Name: ".$modelname."  ".$stock->item_name."<br>Color: ".$stock->color."<br>Quality: ".$stock->quality."<br>SKU: ".$stock->sku_code;
           $pdf->loadHTML($output);
           return $pdf->stream();

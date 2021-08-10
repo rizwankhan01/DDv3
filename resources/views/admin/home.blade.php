@@ -351,6 +351,11 @@
             </div>
           </div>-->
             <div class="col-lg-12">
+              @if(session('status'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('status') }}
+                </div>
+              @endif
                 <div class="card m-b-30" style="background:#171C2A;">
                     <div class="card-header row">
                         <div class="col-md-10">
@@ -458,6 +463,13 @@
                   <div class="table-responsive">
                       <table class="table table-striped table-bordered">
                         <tbody>
+                          @if(!empty($order->stock_id))
+                          <tr>
+                            <td><b>Stock</b></td>
+                            <td>{{ $order->stock->sku_code }}</td>
+                            <td></td>
+                          </tr>
+                          @endif
                           @if(!empty($order->dealer->dealer_name))
                           <tr>
                             <td><b>Dealer</b></td>

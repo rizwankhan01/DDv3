@@ -50,4 +50,8 @@ class orders extends Model
       return $this->hasOne(closedorder::class ,'order_id','id');
     }
 
+    public function stock(){
+      return $this->belongsTo(stocks::class,'stock_id');
+    }
+
 }

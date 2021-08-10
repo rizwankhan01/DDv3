@@ -11,6 +11,7 @@ use App\Models\consultation;
 use App\Models\pricings;
 use App\Models\customers;
 use App\Models\coupons;
+use App\Models\stocks;
 
 class OrderControlsController extends Controller
 {
@@ -90,12 +91,20 @@ class OrderControlsController extends Controller
     }
 
     public function assign(Request $request, $id){
-      $order              =   orders::findOrFail($id);
-      $order->serviceman_id  =   $request->input('serviceman');
-      $order->dealer_id      =   $request->input('dealer');
-      $order->stock_price =   $request->input('stock_price');
-      $order->status      =   2;
-      $order->update();
+      $order                  =   orders::findOrFail($id);
+      $order->serviceman_id   =   $request->input('serviceman');
+      $stock                 =   stocks::where('store_name',auth()->user()->store_name)->where('sku_code',$request->input('sku_code'))->whereNull('status')->first();
+      if(!empty($stock->id)){
+        $stock->status         =   $order->id;
+        $stock->update();
+        $order->stock_id       =   $stock->id;
+        $order->dealer_id      =   $stock->dealer_id;
+        $order->stock_price    =   $stock->cost;
+        $order->status         =   2;
+        $order->update();
+      }else{
+          return redirect()->back()->with('status','Stock not found/ Sold.');
+      }
 
 
       return redirect()->back();
