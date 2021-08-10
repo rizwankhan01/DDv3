@@ -1,14 +1,15 @@
 name: Build & Deploy
 
 on:
-  push:
-    branches: [test]
-
+    push:
+        branches:
+            - test
 jobs:
-  deploy:
+  build:
+    name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Deploye Test Branch to Server
+      - name: Checkout Repository
         uses: actions/checkout@test
         with:
           host: ${{ secrets.SSH_HOST }}
