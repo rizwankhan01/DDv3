@@ -21,7 +21,8 @@ class StoreTransferController extends Controller
      */
     public function index()
     {
-      return view('admin.storetransfer');
+      $stocks = stocks::where('store_name',auth()->user()->store_name)->get();
+      return view('admin.storetransfer', compact('stocks'));
     }
 
     /**

@@ -8,6 +8,12 @@
           <div class="col-lg-12">
               <div class="card m-b-30">
                   <div class="card-header">
+                    <span class="pull-right">
+                      @if ($stocks)
+                          <span class="btn btn-sm btn-warning">Total Stock: {{ $stocks->count() }}</span>
+                          <span class="btn btn-sm btn-success">Total Stock Value: &#8377; {{ $stocks->sum('cost') }}</span>
+                      @endif
+                    </span>
                     <h5 class="card-title">Store Stock ({{ auth()->user()->store_name }})</h5>
                   </div>
                   <div class="card-body">

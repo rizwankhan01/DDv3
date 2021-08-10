@@ -19,7 +19,7 @@
             <td>{{ $stock->model->brand->name }} {{ $stock->model->series }} {{ $stock->model->name }}</td>
             <td>{{ $stock->item_name }}</td>
             <td>{{ $stock->dealer->dealer_name }}</td>
-            <td>{{ $stock->cost }}</td>
+            <td>&#8377; {{ $stock->cost }}</td>
             <td>{{ $stock->store_name }}</td>
             <td>{{ $stock->payment_status }} / {{ $stock->payment_type }}</td>
             <td>
