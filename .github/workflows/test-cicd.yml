@@ -1,0 +1,24 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ test ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploye Test Branch to Server
+        uses: actions/checkout@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          
+          script: |
+            cd /var/www/test/DDV2
+            git pull origin test
+            composer install
+            php artisan migrate
+            echo 'Deployment successful to digital ocean'
+            
