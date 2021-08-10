@@ -223,7 +223,7 @@
                                                     <p><i class="feather icon-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->primary_phone }}</p>
                                                   </div>
                                                   <div class="pull-right">
-                                                      <p><i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->city }}</p>
+                                                      <p><i class="feather icon-map-pin"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ $user->store_name }}, {{ $user->city }}</p>
                                                       <p>Employee since <a href='#'>{{ date('F Y', strtotime($user->date_of_join)) }}</a></p>
                                                   </div>
                                                 </p>

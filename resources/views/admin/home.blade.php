@@ -463,6 +463,13 @@
                   <div class="table-responsive">
                       <table class="table table-striped table-bordered">
                         <tbody>
+                          @if(!empty($order->stock_id))
+                          <tr>
+                            <td><b>Stock</b></td>
+                            <td>{{ $order->stock->sku_code }}</td>
+                            <td></td>
+                          </tr>
+                          @endif
                           @if(!empty($order->dealer->dealer_name))
                           <tr>
                             <td><b>Dealer</b></td>
