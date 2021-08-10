@@ -144,7 +144,7 @@ Route::group(['middleware' => 'auth'], function(){
   });
 });
 
-// New User Interface
+// New User Interfaces
 // New Model Create
 Route::get('/newmodel', function(){ return view('admin.newmodel'); });
 //User Leave Requests
