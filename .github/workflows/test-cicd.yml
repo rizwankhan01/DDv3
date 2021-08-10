@@ -2,14 +2,14 @@ name: Build & Deploy
 
 on:
   push:
-    branches: [ test ]
+    branches: [test]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Deploye Test Branch to Server
-        uses: actions/checkout@master
+        uses: actions/checkout@test
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_KEY }}
