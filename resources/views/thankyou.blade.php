@@ -33,7 +33,13 @@
                     <div class="classic-address text-center">
                         <div class="desc mt--15">
                             <p>
+                            @if(session('status'))
+                                <h3>Your Premium Tempered Glass Order has been confirmed.</h3>
+                                Our representative will reach out to you shortly.<br>
+                                Meantime, if you have any queries you can call us at <a href="tel:04446270777">04446270777</a>! 
+                            @else
                               Thanks for submitting that. Our representative will be in touch with you shortly.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
