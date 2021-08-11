@@ -143,8 +143,8 @@
                                     <label>City*</label>
                                     <select name="city" class="nice-select" onchange="swap_city(this.value)" autocomplete="chrome-off" required>
                                         <option value="">Select City</option>
-                                        <option value="Chennai" @if(!empty(Session::get('city'))) selected @endif>Chennai</option>
-                                        <option value="Bangalore" @if(!empty(Session::get('city'))) selected @endif>Bangalore</option>
+                                        <option value="Chennai" @if(!empty(Session::get('city')) AND Session::get('city')=='Chennai') selected @endif>Chennai</option>
+                                        <option value="Bangalore" @if(!empty(Session::get('city')) AND Session::get('city')=='Bangalore') selected @endif>Bangalore</option>
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
