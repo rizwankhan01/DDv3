@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('title') Doorstep Tempered Glass | Doctor Display @endsection
-@section('metadesc') Thanks for submitting that. Our representative will be in touch with you shortly. @endsection
+@section('title') Doorstep Tempered Glass at INR 75 | Independence Day Offer | Doctor Display @endsection
+@section('metadesc') A Bonanza offer coming your way on the Diamond Jubilee occasion of the 75th Indian Independence Day.  @endsection
 @section('pagecontent')
 <div class="slider-revoluation">
     <div id="rev_slider_13_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="home-landing"
@@ -70,9 +70,7 @@
                         <div class="content">
                             <h2 class="heading heading-h2 text-white">Premium <span class="yellow-color-2">Tempered Glass</span> at your doorstep for just <span class="yellow-color-2">&#8377;75 <small><strike>&#8377;299</strike></small></span></h2>
                             <div class="content mt--25">
-                                <p class="bk_pra font-18 line-height-1-63 text-white">We learn from landing page's best
-                                    practices and great landing pages in order to create a clear, crisp design
-                                    that suits all your needs for a responsive landing site.</p>
+                                <p class="bk_pra font-18 line-height-1-63 text-white">A Bonanza offer coming your way on the Diamond Jubilee occasion of the 75th Indian Independence Day. </p>
                             </div>
                         </div>
                     </div>
@@ -82,9 +80,10 @@
                         <!-- Strat Single Speach -->
                         <div class="single-motive-speach">
                             <div class="content">
-                                <h4 class="text-white">Successful projects</h4>
-                                <p>Since its establishment in 2000, Brook Creative has been focusing on project
-                                    management & implementation through cooperation.</p>
+                                <h4 class="text-white">Premium Tempered Glass</h4>
+                                <p>All our Rs. 299 Premium Tempered Glass replacement will be available to you at a never-before offer of Rs. 75 at your very doorstep.
+                                    What are you waiting for? 
+                                    Grab the opportunity, get a premium tempered glass for your phone and fly free, fly high! </p>
                             </div>
                         </div>
                         <!-- End Single Speach -->
@@ -92,9 +91,9 @@
                         <!-- Strat Single Speach -->
                         <div class="single-motive-speach mt--35">
                             <div class="content">
-                                <h4 class="text-white">Unique designs</h4>
-                                <p>In total, Brook Creative has created more than 2000 projects related to
-                                    constructional designing and landscaping industries worldwide.</p>
+                                <h4 class="text-white">Happy Independence Day you all!</h4>
+                                <p>Saare jahaan se acha, <br>
+                                    Hindustan humaara...</p>
                             </div>
                         </div>
                         <!-- End Single Speach -->
@@ -118,12 +117,13 @@
                     <div class="professonal-design-content">
                         <h2 class="heading heading-h2">Book your Doorstep Tempered Glass Now!</h2>
                         <div class="content mt--10 mb--40">
-                            <p class="bk_pra font-18 line-height-1-63">Providing Doorstep Tempered Glass for your mobile phone. We care about your phone.</p>
+                            <p class="bk_pra font-18 line-height-1-63">Providing Doorstep Tempered Glass for your mobile phone. Because your phone's safety is our Number One Priority.</p>
                         </div>
-                        <form action="" method="post">
+                        <form action="/doorstep-tempered-glass" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12 col-12 mb--20">
-                                    <label>Phone Model</label>
+                                    <label>Phone Model*</label>
                                     <input type="text" placeholder="Eg. Apple iPhone X" name="model" required>
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Phone Number*</label>
-                                    <input type="number" placeholder="Full Name" minlength="10" maxlength="10"  name="mobile_number" required>
+                                    <input type="number" placeholder="Phone Number" minlength="10" maxlength="10"  name="mobile_number" required>
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Address*</label>
@@ -148,7 +148,12 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
-                                    <button type="submit" class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between pull-right" name="submit">Book Tempered Glass</button>
+                                    <button type="submit" class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between pull-right" name="submit">Book Tempered Glass</button><br>
+                                    <small>
+                                        - All orders withing 15kms from our office can only be done at this price.<br>
+                                        - Slot timing will be fixed based on availability.<br>
+                                        - You can pay by Cash, Card or UPI at the time of delivery.
+                                    </small>
                                 </div>
                             </div>
                         </form>
@@ -192,9 +197,9 @@
                         <div class="content">
                             <p class="bk_pra">“{{ $review->feedback}}”</p>
                             <div class="testimonial-info">
-                                <div class="post-thumbnail">
+                                <div class="post-thumbnail" style="width:20%;height:auto;">
                                     @if(!empty($review->customer->display_picture))
-                                            <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}" style="width:40%;height:auto;">
+                                            <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}">
                                           @else
                                             <img src="assets\images\users\men.svg" alt="{{ $review->customer->name ?? 'NA' }}">
                                           @endif

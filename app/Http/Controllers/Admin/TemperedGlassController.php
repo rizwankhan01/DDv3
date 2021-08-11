@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\city_areas;
 use App\Models\tempered_glass_orders;
-use App\Models\old_feedbacks;
-use Session;
-use Spatie\Referer\Referer;
 
 class TemperedGlassController extends Controller
 {
@@ -18,9 +15,8 @@ class TemperedGlassController extends Controller
      */
     public function index()
     {
-        $areas  = city_areas::where('city', Session::get('city'))->get();
-        $reviews      = old_feedbacks::whereNotNull('brand_id')->inRandomOrder()->limit(6)->get();
-        return view('temperedglass', compact('areas','reviews'));
+        $alltg  =   tempered_glass_orders::all();
+        return view('admin.temperedglass', compact('alltg'));
     }
 
     /**
@@ -41,20 +37,7 @@ class TemperedGlassController extends Controller
      */
     public function store(Request $request)
     {
-        $neworder                   =   new tempered_glass_orders;
-        $neworder->model            =   $request->input('model');
-        $neworder->name             =   $request->input('name');
-        $neworder->phone_number     =   $request->input('mobile_number');
-        $neworder->address          =   $request->input('address');
-        $neworder->city             =   $request->input('city');
-        $neworder->referer          = app(Referer::class)->get();
-
-        if($neworder->save()){
-            return redirect('/thankyou');
-        }else{
-            return redirect('/404');
-        }
-
+        //
     }
 
     /**

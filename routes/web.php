@@ -144,6 +144,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/storestock', 'Admin\StoreTransferController');
 
     //tempered glass orders controller
+    Route::resource('/temperedglass','Admin\TemperedGlassController');
   });
 });
 

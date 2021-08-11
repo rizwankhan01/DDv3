@@ -89,6 +89,9 @@
       <li><a href="/cancel">Cancelled<span class='pull-right'>@if($cancel!=0) {{ $cancel }} @endif</span></a></li>
     </ul>
     </li>
+    <li><a href="/temperedglass">
+      <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="tickets"><span>Tempered Glass</span>
+    </a></li>
     <li><a href="/storestock">
       <img src="{{ asset('assets\images\svg-icon\dashboard.svg') }}" class="img-fluid" alt="tickets"><span>Store Stock</span>
     </a></li>
