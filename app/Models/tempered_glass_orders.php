@@ -9,12 +9,13 @@ class tempered_glass_orders extends Model
     public $table = "tempered_glass_orders";
 
     public $fillable = [
-        'model_id',
+        'model_id', //model name
         'name',
         'phone_number',
         'address',
         'city',
         'status'
+        //referer
     ];
 
     public function model() {

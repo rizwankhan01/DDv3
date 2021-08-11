@@ -15,7 +15,7 @@
                     data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
                     data-param9="" data-param10="" data-description="">
                     <!-- MAIN IMAGE -->
-                    <img src="img/revoulation/slider-home-landing-slide-01-bg.jpg" alt="" data-bgposition="center center"
+                    <img src="assets/images/slider-home-landing-slide-01-bg.png" alt="" data-bgposition="center center"
                         data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
                     <!-- LAYERS -->
 
@@ -52,8 +52,7 @@
                         data-responsive_offset="off" data-responsive="off" data-frames='[{"delay":700,"speed":500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                         data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
                         data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                        style="z-index: 8; min-width: 670px; max-width: 670px; white-space: normal; font-size: 70px; line-height: 80px; font-weight: 600; color: #ffffff; letter-spacing: 0px;">Awesome
-                        landing page design. </h3>
+                        style="z-index: 8; min-width: 670px; max-width: 670px; white-space: normal; font-size: 70px; line-height: 80px; font-weight: 600; color: #000; letter-spacing: 0px;">75th Independence Day Offer</h3>
                 </li>
             </ul>
             <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
@@ -63,16 +62,15 @@
 <main class="page-content">
 
     <!-- Start Awesome Area -->
-    <div class="brook-awesome-area ptb--150 ptb-md--80 ptb-sm--60">
+    <div class="brook-awesome-area ptb--80 ptb-md--80 ptb-sm--60 bg_color--2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-12">
                     <div class="awesome-landing-content">
                         <div class="content">
-                            <h2 class="heading heading-h2">Awesome landing <span class="theme-color">page
-                                    design.</span></h2>
+                            <h2 class="heading heading-h2 text-white">Premium <span class="yellow-color-2">Tempered Glass</span> at your doorstep for just <span class="yellow-color-2">&#8377;75 <small><strike>&#8377;299</strike></small></span></h2>
                             <div class="content mt--25">
-                                <p class="bk_pra font-18 line-height-1-63">We learn from landing page's best
+                                <p class="bk_pra font-18 line-height-1-63 text-white">We learn from landing page's best
                                     practices and great landing pages in order to create a clear, crisp design
                                     that suits all your needs for a responsive landing site.</p>
                             </div>
@@ -80,14 +78,11 @@
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 col-12 mt_md--40 mt_sm--40">
-                    <div class="awesome-landing-content">
+                    <div class="awesome-landing-content text-white">
                         <!-- Strat Single Speach -->
                         <div class="single-motive-speach">
-                            <div class="icon">
-                                <i class="icon-basic-globe"></i>
-                            </div>
                             <div class="content">
-                                <h4>Successful projects</h4>
+                                <h4 class="text-white">Successful projects</h4>
                                 <p>Since its establishment in 2000, Brook Creative has been focusing on project
                                     management & implementation through cooperation.</p>
                             </div>
@@ -96,11 +91,8 @@
 
                         <!-- Strat Single Speach -->
                         <div class="single-motive-speach mt--35">
-                            <div class="icon">
-                                <i class="ion-monitor"></i>
-                            </div>
                             <div class="content">
-                                <h4>Unique designs</h4>
+                                <h4 class="text-white">Unique designs</h4>
                                 <p>In total, Brook Creative has created more than 2000 projects related to
                                     constructional designing and landscaping industries worldwide.</p>
                             </div>
@@ -114,7 +106,7 @@
     <!-- End Awesome Area -->
 
     <!-- Start Professonal Design -->
-    <div class="brook-professonal-design bg_color--1">
+    <div class="brook-professonal-design bg_color--1 pt--80">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -123,13 +115,17 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="professonal-design-content pl--90 pl_lg--70 pl_md--30 pl_sm--30">
-                        <h2 class="heading heading-h2">Book your Doorstep Tempered Glass</h2>
-                        <div class="content mt--35 mb--65">
+                    <div class="professonal-design-content">
+                        <h2 class="heading heading-h2">Book your Doorstep Tempered Glass Now!</h2>
+                        <div class="content mt--10 mb--40">
                             <p class="bk_pra font-18 line-height-1-63">Providing Doorstep Tempered Glass for your mobile phone. We care about your phone.</p>
                         </div>
                         <form action="" method="post">
                             <div class="row">
+                                <div class="col-md-12 col-12 mb--20">
+                                    <label>Phone Model</label>
+                                    <input type="text" placeholder="Eg. Apple iPhone X" name="model" required>
+                                </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Full Name*</label>
                                     <input type="text" placeholder="Full Name" name="name" required>
@@ -140,18 +136,22 @@
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Address*</label>
-                                    <textarea name="address" required></textarea>
+                                    <input type="text" name="address" placeholder="Your Address" required>
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>City*</label>
-                                    <input type="number" placeholder="City" name="city" required>
+                                    <select name="city" class="nice-select" onchange="swap_city(this.value)" autocomplete="chrome-off" required>
+                                        <option value="">Select City</option>
+                                        <option value="Chennai" @if(!empty(Session::get('city'))) selected @endif>Chennai</option>
+                                        <option value="Bangalore" @if(!empty(Session::get('city'))) selected @endif>Bangalore</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 col-12 mb--20">
+                                    <button type="submit" class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between pull-right" name="submit">Book Tempered Glass</button>
                                 </div>
                             </div>
                         </form>
-                        <div class="profesonal_btn">
-                            <a class="brook-btn bk-btn-theme btn-sd-size btn-rounded space-between" href="#">Download
-                                now</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                             <div class="testimonial-info">
                                 <div class="post-thumbnail">
                                     @if(!empty($review->customer->display_picture))
-                                            <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}">
+                                            <img src="{{ $review->customer->display_picture }}" alt="{{ $review->customer->name }}" style="width:40%;height:auto;">
                                           @else
                                             <img src="assets\images\users\men.svg" alt="{{ $review->customer->name ?? 'NA' }}">
                                           @endif
@@ -217,7 +217,22 @@
 
     </div>
     <!-- End Testimonial Area -->
-
+    <div class="brook-call-to-action bg_color--13 ptb--70 bg-as-text2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <div class="call-content text-center text-md-left text-center">
+                        <h4 class="heading heading-h4 text-white">We're also Chennai's most trusted mobile screen repair/ replacement service.<br><a href='https://g.page/Doctordisplay?share' target='_blank'>Click here</a> to checkout our Google reviews. </h4>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-12">
+                    <div class="text-center text-md-right text-center mt_sm--30 mt_md--40 contact-form contact-form--4 yellow-color-2">
+                        <a href='tel:04446270777' class="brook-btn bk-btn-white btn-lg-size btn-rounded"><i class='fa fa-phone'></i> 04446270777</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 </main>
 @endsection
 @section('scripts')
