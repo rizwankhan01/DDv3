@@ -30,6 +30,7 @@ Route::post('/enquire','Admin\EnquiryController@store');
 Route::resource('/feedback','FeedbackController');
 Route::resource('/repository','LegendsController');
 Route::resource('/track-your-order','TrackOrderController');
+Route::resource('/doorstep-tempered-glass', 'TemperedGlassController');
 
 Route::get('/blog', function(){
   return abort(404);
@@ -141,6 +142,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Stock
     Route::resource('/storestock', 'Admin\StoreTransferController');
+
+    //tempered glass orders controller
   });
 });
 
