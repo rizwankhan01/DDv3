@@ -50,7 +50,7 @@ class TemperedGlassController extends Controller
         $neworder->referer          = app(Referer::class)->get();
 
         if($neworder->save()){
-            return redirect('/thankyou');
+            return redirect('/thankyou')->with('status','Tempered Glass');
         }else{
             return redirect('/404');
         }

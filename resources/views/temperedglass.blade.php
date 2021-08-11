@@ -132,7 +132,8 @@
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Phone Number*</label>
-                                    <input type="number" placeholder="Phone Number" minlength="10" maxlength="10"  name="mobile_number" required>
+                                    <input type="text" placeholder="Phone Number" pattern="\d*" onkeypress="return isNumberKey(event)"
+                                    minlength="10" maxlength="10"   name="mobile_number" required>
                                 </div>
                                 <div class="col-md-12 col-12 mb--20">
                                     <label>Address*</label>
@@ -152,7 +153,8 @@
                                     <small>
                                         - All orders withing 15kms from our office can only be done at this price.<br>
                                         - Slot timing will be fixed based on availability.<br>
-                                        - You can pay by Cash, Card or UPI at the time of delivery.
+                                        - You can pay by Cash, Card or UPI at the time of delivery.<br>
+                                        - Offer Valid till August 15th, 2021
                                     </small>
                                 </div>
                             </div>
@@ -227,7 +229,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-sm-12 col-12">
                     <div class="call-content text-center text-md-left text-center">
-                        <h4 class="heading heading-h4 text-white">We're also Chennai's most trusted mobile screen repair/ replacement service.<br><a href='https://g.page/Doctordisplay?share' target='_blank'>Click here</a> to checkout our Google reviews. </h4>
+                        <h4 class="heading heading-h4 text-white">We're also Chennai & Bangalore's most trusted mobile screen repair/ replacement service.<br><a href='https://g.page/Doctordisplay?share' target='_blank'>Click here</a> to checkout our Google reviews. </h4>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-12">
