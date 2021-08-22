@@ -1,26 +1,29 @@
-name: Build & Deploy
-
+name: Test Deploy
 on:
-    push:
-        branches:
-            - test
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
 jobs:
-  build:
-    name: Build & Deploy
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: 'test'
+          ref: ${{ github.head_ref }}
+      - name: Deployment
+        uses: appleboy/ssh-action@master
+        with:
           host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
-          
+
           script: |
-            cd /var/www/test/DDV2
+            cd /var/www/test/DDV2/
             git pull origin test
-            composer install
             php artisan migrate
-            echo 'Deployment successful to digital ocean'
-            
+            composer install
+            echo 'Deployed to test directory'

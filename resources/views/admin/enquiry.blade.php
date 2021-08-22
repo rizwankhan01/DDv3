@@ -109,13 +109,13 @@
                                         <a href='/{{ $enquiry->url}}' target='_blank'>{{ $enquiry->model_name }}</a>
                                       @endif
                                     </td>
-                                    <td><a href='/customers/{{ $enquiry->customer->id }}'>{{ $enquiry->customer->name }}</a><br>
-                                      <small><a href='exotel_calls/{{ $enquiry->customer->phone_number }}'>{{ $enquiry->customer->phone_number}}</a></small>
+                                    <td><a href='/customers/{{ $enquiry->customer->id ?? '' }}'>{{ $enquiry->customer->name ?? '' }}</a><br>
+                                      <small><a href='exotel_calls/{{ $enquiry->customer->phone_number ?? '' }}'>{{ $enquiry->customer->phone_number ?? ''}}</a></small>
                                     </td>
-                                    <td>{{ $enquiry->city }}</td>
+                                    <td>{{ $enquiry->city ?? '' }}</td>
                                     <td>{{ $enquiry->referer ?? 'N/A' }}</td>
-                                    <td>{{ $enquiry->notes }}</td>
-                                    <td>{{ $enquiry->created_at->diffForHumans() }}</td>
+                                    <td>{{ $enquiry->notes ?? '' }}</td>
+                                    <td>{{ $enquiry->created_at->diffForHumans() ?? '' }}</td>
                                     <td>
                                       @if(empty($enquiry->status))
                                         <a href='/enquiry/{{ $enquiry->id }}' class='btn btn-sm btn-warning'>Update Status</a>
