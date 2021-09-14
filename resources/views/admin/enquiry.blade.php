@@ -115,7 +115,7 @@
                                     <td>{{ $enquiry->city ?? '' }}</td>
                                     <td>{{ $enquiry->referer ?? 'N/A' }}</td>
                                     <td>{{ $enquiry->notes ?? '' }}</td>
-                                    <td>{{ $enquiry->created_at->diffForHumans() ?? '' }}</td>
+                                    <td>{{ $enquiry->created_at->diffForHumans() ?? 'NA' }}</td>
                                     <td>
                                       @if(empty($enquiry->status))
                                         <a href='/enquiry/{{ $enquiry->id }}' class='btn btn-sm btn-warning'>Update Status</a>
