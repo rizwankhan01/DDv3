@@ -229,7 +229,7 @@
                                     <td>@if($stock->status) <span class="badge badge-success">Sold</span> @else <span class="badge badge-warning">In Stock</span> @endif</td>
                                     <td>
                                       @if($stock->payment_status!=='Paid')<a href='/stockinhand/{{ $stock->id }}' class="badge badge-primary badge-rgba"><i class="fa fa-pencil"></i></a>@endif
-                                      @if($stock->returned_by)<span class="badge badge-danger badge-rgba">Returned by {{ $stock->returnedby->name }}</span>@endif
+                                      @if($stock->returned_by)<span class="badge badge-danger badge-rgba">Returned by {{ $stock->returnedby->name ?? '' }}</span>@endif
                                       <a href='/stockinhand/qr.{{ $stock->id }}' class="badge badge-warning badge-rgba"><i class="fa fa-barcode"></i></a>
                                     </td>
                                   </tr>
