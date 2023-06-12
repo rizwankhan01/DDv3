@@ -205,6 +205,7 @@
                           <table id="datatable-buttons" class="table table-striped table-bordered">
                               <thead>
                               <tr>
+                                  <th>Id</th>
                                   <th>SKU</th>
                                   <th>Model</th>
                                   <th>Item Name</th>
@@ -219,6 +220,7 @@
                               <tbody>
                                 @foreach($stocks as $stock)
                                   <tr>
+                                    <td>{{ $stock->id }}</td>
                                     <td>{{ $stock->sku_code }}</td>
                                     <td>{{ $stock->model->brand->name }} {{ $stock->model->series }} {{ $stock->model->name }}</td>
                                     <td>{{ $stock->item_name }}</td>
